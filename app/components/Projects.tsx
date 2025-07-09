@@ -7,23 +7,23 @@ const Projects = () => {
       <div className="carousel w-full rounded-box shadow-xl">
         <div className="carousel-item w-1/3">
           <img
-            src="https://placehold.co/400x250?text=Project+1"
-            className="w-full"
+            src="images/get-contact-background.jpg"
+            className="h-80 w-250 bg-cover"
             alt="Project 1"
           />
         </div>
         <div className="carousel-item w-1/3">
           <img
-            src="https://placehold.co/400x250?text=Project+2"
-            className="w-full"
-            alt="Project 2"
+            src="images/get-contact-background.jpg"
+            className="h-80 w-250 bg-cover"
+            alt="Project 1"
           />
         </div>
         <div className="carousel-item w-1/3">
           <img
-            src="https://placehold.co/400x250?text=Project+3"
-            className="w-full"
-            alt="Project 3"
+            src="images/get-contact-background.jpg"
+            className="h-80 w-250 bg-cover"
+            alt="Project 1"
           />
         </div>
       </div>
