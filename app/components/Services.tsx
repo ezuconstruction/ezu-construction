@@ -16,7 +16,7 @@ const Services = () => {
               description:
                 "We design and build high-quality custom homes tailored to your style, needs, and budget; from blueprint to move-in.",
               link: "services/custom-homes",
-              linktitle: "Start your custom home project",
+              linktitle: "Start your custom home",
             },
             {
               title: "Whole Home Renovations",
@@ -34,7 +34,7 @@ const Services = () => {
               description:
                 "Add valuable living space with seamless home additions that match your home's style and boost its value.",
               link: "services/home-additions",
-              linktitle: "Book a home addition consult",
+              linktitle: "Learn more about additions",
             },
             {
               title: "Kitchen Renovations",
@@ -80,7 +80,7 @@ const Services = () => {
                 <p className="pb-2 text-md">{item.description}</p>
                 <Link
                   href={item.link}
-                  className="btn btn-accent text-lg bg-accent/40 text-white hover:bg-accent hover:text-black transition duration-200 "
+                  className="btn btn-accent text-lg bg-accent/40 text-white hover:bg-accent hover:text-black transition duration-200 p-0"
                 >
                   {item.linktitle}
                 </Link>
