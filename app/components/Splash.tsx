@@ -3,8 +3,8 @@ import Link from "next/link";
 const Splash = () => {
   return (
     <div className="hero bg-base-100 min-h-screen bg-[url(/images/splash-page-background.jpg)] bg-cover flex">
-      <div className="px-8 py-10 bg-black/30 shadow-lg ring-1 ring-black/5 rounded-r-4xl backdrop-blur-xs animate-fade-in">
-        <span className="indicator-item indicator-center badge badge-secondary mb-3font-semibold">Proudly Canadian Owned 🍁</span>
+      <div className="px-8 py-10 bg-black/30 shadow-lg ring-1 ring-black/5 rounded-r-4xl backdrop-blur-xs animate-fade-in mt-15">
+        <Link className="indicator-item indicator-center badge badge-secondary mb-3 font-semibold bg-red-600/40 p-4 text-lg" href="/publications">Proudly Canadian Owned 🍁</Link>
         <h1 className="text-5xl text-white font-bold">
           <span className="text-accent hover:text-success transition duration-300">
             Your

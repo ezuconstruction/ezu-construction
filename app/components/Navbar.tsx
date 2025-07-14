@@ -35,28 +35,31 @@ const Navbar = () => {
               <p className="text-xl font-semibold text-secondary">Services</p>
               <ul className="pb-2 px-3">
                 <li>
-                  <Link href="services/custom-homes" className="text-lg">
+                  <Link href="/services/custom-homes" className="text-lg">
                     Custom Homes
                   </Link>
                 </li>
                 <li>
-                  <Link href="services/home-renovations" className="text-lg">
+                  <Link href="/services/home-renovations" className="text-lg">
                     Home Renovations
                   </Link>
                 </li>
                 <li>
-                  <Link href="services/home-additions" className="text-lg">
+                  <Link href="/services/home-additions" className="text-lg">
                     Home Additions
                   </Link>
                 </li>
                 <li>
-                  <Link href="services/kitchen-renovations" className="text-lg">
+                  <Link
+                    href="/services/kitchen-renovations"
+                    className="text-lg"
+                  >
                     Kitchen Renovations
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="services/bathroom-renovations"
+                    href="/services/bathroom-renovations"
                     className="text-lg"
                   >
                     Bathroom Renovations
@@ -64,7 +67,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    href="services/home-office-renovations"
+                    href="/services/home-office-renovations"
                     className="text-lg"
                   >
                     Home Office Renovations
@@ -78,27 +81,27 @@ const Navbar = () => {
               </p>
               <ul className="pb-2 px-3">
                 <li>
-                  <Link href="construction/drywall" className="text-lg">
+                  <Link href="/construction/drywall" className="text-lg">
                     Drywall Installation and Repair
                   </Link>
                 </li>
                 <li>
-                  <Link href="construction/flooring" className="text-lg">
+                  <Link href="/construction/flooring" className="text-lg">
                     Flooring Installation and Repair
                   </Link>
                 </li>
                 <li>
-                  <Link href="construction/tile" className="text-lg">
+                  <Link href="/construction/tile" className="text-lg">
                     Tile Installation and Repair
                   </Link>
                 </li>
                 <li>
-                  <Link href="construction/interlocking" className="text-lg">
+                  <Link href="/construction/interlocking" className="text-lg">
                     Interlocking Paving
                   </Link>
                 </li>
                 <li>
-                  <Link href="construction/painting" className="text-lg">
+                  <Link href="/construction/painting" className="text-lg">
                     Painting Services
                   </Link>
                 </li>
@@ -116,17 +119,22 @@ const Navbar = () => {
               <p className="text-xl font-semibold text-secondary">News</p>
               <ul className="pb-2 px-3">
                 <li>
-                  <Link href="social-media" className="text-lg">
+                  <Link href="/social-media" className="text-lg">
                     Social Media
                   </Link>
                 </li>
                 <li>
-                  <Link href="publications" className="text-lg">
+                  <Link href="/publications" className="text-lg">
                     Publications
                   </Link>
                 </li>
                 <li>
-                  <Link href="contact" className="text-lg">
+                  <Link href="/about" className="text-lg">
+                    Our Story
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-lg">
                     Contact Us
                   </Link>
                 </li>
@@ -155,26 +163,28 @@ const Navbar = () => {
               <summary className="font-semibold">Services</summary>
               <ul className=" w-80 bg-black/60 shadow-lg ring-1 ring-black/5 backdrop-blur-sm rounded-lg">
                 <li className="py-1">
-                  <Link href="services/custom-homes">Custom Homes</Link>
+                  <Link href="/services/custom-homes">Custom Homes</Link>
                 </li>
                 <li className="py-1">
-                  <Link href="services/home-renovations">Home Renovations</Link>
+                  <Link href="/services/home-renovations">
+                    Home Renovations
+                  </Link>
                 </li>
                 <li className="py-1">
-                  <Link href="services/home-additions">Home Additions</Link>
+                  <Link href="/services/home-additions">Home Additions</Link>
                 </li>
                 <li className="py-1">
-                  <Link href="services/kitchen-renovations">
+                  <Link href="/services/kitchen-renovations">
                     Kitchen Renovations
                   </Link>
                 </li>
                 <li className="py-1">
-                  <Link href="services/bathroom-renovations">
+                  <Link href="/services/bathroom-renovations">
                     Bathroom Renovations
                   </Link>
                 </li>
                 <li className="py-2">
-                  <Link href="services/home-office-renovations">
+                  <Link href="/services/home-office-renovations">
                     Home Office Renovations
                   </Link>
                 </li>
@@ -186,27 +196,27 @@ const Navbar = () => {
               <summary className="font-semibold">Construction</summary>
               <ul className=" w-80 bg-black/60 shadow-lg ring-1 ring-black/5 backdrop-blur-sm rounded-lg">
                 <li className="py-1">
-                  <Link href="construction/drywall">
+                  <Link href="/construction/drywall">
                     Drywall Installation and Repair
                   </Link>
                 </li>
                 <li className="py-1">
-                  <Link href="construction/flooring">
+                  <Link href="/construction/flooring">
                     Flooring Installation and Repair
                   </Link>
                 </li>
                 <li className="py-1">
-                  <Link href="construction/tile">
+                  <Link href="/construction/tile">
                     Tile Installation and Repair
                   </Link>
                 </li>
                 <li className="py-1">
-                  <Link href="construction/interlocking">
+                  <Link href="/construction/interlocking">
                     Interlocking Paving
                   </Link>
                 </li>
                 <li className="py-1">
-                  <Link href="construction/painting">Painting Services</Link>
+                  <Link href="/construction/painting">Painting Services</Link>
                 </li>
               </ul>
             </details>
@@ -221,13 +231,16 @@ const Navbar = () => {
               <summary className="font-semibold">News</summary>
               <ul className=" w-70 bg-black/60 shadow-lg ring-1 ring-black/5 backdrop-blur-sm rounded-lg">
                 <li className="py-1">
-                  <Link href="social-media">Social Media</Link>
+                  <Link href="/social-media">Social Media</Link>
                 </li>
                 <li className="py-1">
-                  <Link href="publications">Publications</Link>
+                  <Link href="/publications">Publications</Link>
                 </li>
                 <li className="py-1">
-                  <Link href="contact">Contact Us</Link>
+                  <Link href="/about">Our Story</Link>
+                </li>
+                <li className="py-1">
+                  <Link href="/contact">Contact Us</Link>
                 </li>
               </ul>
             </details>

@@ -3,7 +3,7 @@ import Link from "next/link";
 const Services = () => {
   return (
     <section className="px-2 md:px-5 py-5 md:pb-50 md:pt-20 bg-base-200 animate-fade-in bg-[url(/images/our-services-background.png)] object-cover">
-      <div className="bg-black/30 shadow-lg ring-1 ring-black/5 rounded-4xl backdrop-blur-xs animate-fade-in p-5 md:p-10">
+      <div className="bg-black/30 shadow-lg ring-1 ring-black/5 rounded-xl backdrop-blur-xs animate-fade-in p-5 md:p-10">
         <h2 className="text-4xl font-bold text-center mb-10 text-white">
           Our <span className="text-secondary text-6xl">Services</span>
         </h2>
@@ -11,7 +11,7 @@ const Services = () => {
           {[
             {
               title: "Custom Home Builders",
-              image: "images/custom-home-builders.jpg",
+              image: "/images/custom-home-builders.jpg",
               src: "Luxury custom-built home exterior",
               description:
                 "We design and build high-quality custom homes tailored to your style, needs, and budget; from blueprint to move-in.",
@@ -77,7 +77,7 @@ const Services = () => {
               </figure>
               <div className="card-body">
                 <h3 className="card-title text-2xl">{item.title}</h3>
-                <p className="pb-2 text-md">{item.description}</p>
+                <p className="pb-2 text-lg font-thin">{item.description}</p>
                 <Link
                   href={item.link}
                   className="btn btn-accent text-lg bg-accent/40 text-white hover:bg-accent hover:text-black transition duration-200 p-0"
@@ -88,55 +88,6 @@ const Services = () => {
             </div>
           ))}
         </div>
-        {/* 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="card bg-base-100 shadow-xl hover:scale-105 transition-transform pt-5">
-            <figure>
-              <img
-                src="https://placehold.co/400x200?text=Custom+Homes"
-                alt="Custom Homes"
-              />
-            </figure>
-            <div className="card-body">
-              <h3 className="card-title">Custom Home Builds</h3>
-              <p>
-                From concept to completion, we bring your vision to life with
-                expert design and construction.
-              </p>
-            </div>
-          </div>
-          <div className="card bg-base-100 shadow-xl hover:scale-105 transition-transform">
-            <figure>
-              <img
-                src="https://placehold.co/400x200?text=Renovations"
-                alt="Renovations"
-              />
-            </figure>
-            <div className="card-body">
-              <h3 className="card-title">Renovations & Additions</h3>
-              <p>
-                Transform your existing space with seamless renovations and
-                beautiful additions.
-              </p>
-            </div>
-          </div>
-          <div className="card bg-base-100 shadow-xl hover:scale-105 transition-transform">
-            <figure>
-              <img
-                src="https://placehold.co/400x200?text=Luxury+Finishes"
-                alt="Luxury Finishes"
-              />
-            </figure>
-            <div className="card-body">
-              <h3 className="card-title">Luxury Finishes</h3>
-              <p>
-                Premium materials and finishes for a truly bespoke and elegant
-                home.
-              </p>
-            </div>
-          </div>
-        </div>
-        */}
       </div>
     </section>
   );

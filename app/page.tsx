@@ -5,6 +5,7 @@ import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import GetContact from "./components/GetContact";
 import Difference from "./components/Difference";
+import Notice from "./components/Notice";
 
 export default function Home() {
   return (
@@ -12,9 +13,8 @@ export default function Home() {
       <Navbar />
       <main>
         <Splash />
+        <Notice />
         <Services />
-        <Projects />
-        <Difference />
         <GetContact />
       </main>
       <Footer />
