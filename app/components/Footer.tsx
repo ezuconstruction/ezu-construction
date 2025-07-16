@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10 pb-15">
       <aside>
-        <img src="/EZU-Red-White.png" className="w-15"></img>
+        <img src="/EZU-Red-White.png" className="w-15" alt="EZU Logo"></img>
         <p>
           © EZU Construction Inc.
           <br />

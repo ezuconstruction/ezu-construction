@@ -5,6 +5,10 @@
 
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .animate-fade-in {
     animation: fadeIn 1.5s ease;
 }

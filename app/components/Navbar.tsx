@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className="fixed navbar bg-black/30 shadow-lg ring-1 ring-black/5 backdrop-blur-sm z-50 mx-2 mt-2 w-[calc(98vw)] rounded-2xl h-0">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden" aria-label="Menu Bar">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5"
@@ -149,7 +149,7 @@ const Navbar = () => {
           <span>
             <img
               src="/EZU-Red-White.png"
-              alt="Profile Picture"
+              alt="EZU Logo"
               className="w-8 mr-1"
             />
           </span>{" "}

@@ -3,114 +3,229 @@ import Footer from "@/app/components/Footer";
 import GetContact from "@/app/components/GetContact";
 import Link from "next/link";
 
-const portfolioImages = [
+// Data for the "Types of Custom Homes" section
+const customHomeTypes = [
   {
-    title: "Custom Home 1",
+    title: "Modern & Contemporary",
+    image: "/images/modern-home.jpg",
+    description:
+      "Clean lines, open spaces, large windows, and innovative materials define these cutting-edge homes.",
+  },
+  {
+    title: "Transitional Style",
+    image: "/images/traditional-home.jpg",
+    description:
+      "A harmonious blend of traditional and contemporary elements, offering comfort with a modern edge.",
+  },
+  {
+    title: "Luxury & Estate Homes",
+    image: "/images/estate-home.jpg",
+    description:
+      "Bespoke designs, premium materials, and expansive layouts tailored for ultimate comfort and prestige.",
+  },
+];
+
+// Portfolio images (using the provided structure, but with the new placeholder)
+const customHomePortfolioImages = [
+  {
+    title: "Modern Oasis",
     image: "/images/kitchen-renovations.jpg",
-    src: "Fully upgraded kitchen with modern finishes",
+    src: "Sleek lines and expansive windows for contemporary living.",
     description:
-      "Get a functional, stylish kitchen upgrade with better storage, smarter layouts, and high-end finishes.",
-    link: "/projects",
-    linktitle: "Learn More",
+      "Designing and building modern homes that blend innovative architecture with functional elegance.",
+    link: "/projects/modern-oasis",
+    linktitle: "Explore Modern",
   },
   {
-    title: "Custom Home 2",
-    image: "/images/placeholder-image.jpg",
-    src: "Remodeled bathroom with walk-in shower",
+    title: "Traditional Elegance",
+    image: "/images/kitchen-renovations.jpg",
+    src: "Classic design with timeless appeal and intricate details.",
     description:
-      "Upgrade your bathroom with custom tiling, better lighting, and spa-inspired features - efficient and elegant.",
-    link: "/projects",
-    linktitle: "Learn More",
+      "Crafting homes that embody traditional charm, offering comfort and enduring beauty.",
+    link: "/projects/traditional-elegance",
+    linktitle: "Discover Classic",
   },
   {
-    title: "Custom Home 3",
-    image: "/images/bedroom-renovations.png",
-    src: "Cozy renovated bedroom with lighting",
+    title: "Luxury Estate",
+    image: "/images/kitchen-renovations.jpg",
+    src: "Grand scale and bespoke finishes for unparalleled luxury.",
     description:
-      "Refresh your bedroom with custom storage, modern finishes, and a layout designed for comfort and style.",
-    link: "/projects",
-    linktitle: "Learn More",
+      "Building high-end estates with custom amenities and exquisite craftsmanship for discerning clients.",
+    link: "/projects/luxury-estate",
+    linktitle: "View Luxury",
   },
 ];
 
-const faqs = [
+// Data for the "Key Custom Home Considerations" section
+const customHomeConsiderations = [
   {
-    question: "How long does a custom home build take?",
-    answer:
-      "On average, a custom home build takes between 8 to 14 months. The timeline can vary based on factors like the complexity of the design, weather conditions, permitting and inspection delays, and changes made during construction. Early planning and consistent communication help us stay on schedule.",
+    title: "Site Selection & Feasibility",
+    icon: "/globe.svg",
+    description:
+      "Choosing the right plot of land is paramount. We assess zoning, soil, topography, and utility access to ensure your vision is feasible.",
   },
   {
-    question: "Can I bring my own design or architect?",
-    answer:
-      "Absolutely! We're happy to collaborate with your chosen architect or review pre-existing plans. Alternatively, our in-house design team can work with you from scratch to create a home that meets your vision, lifestyle, and budget. Our process is flexible and designed to suit your needs.",
+    title: "Budgeting & Financial Planning",
+    icon: "/globe.svg",
+    description:
+      "Transparent cost breakdowns, contingency planning, and value engineering to keep your project on track without surprises.",
   },
   {
-    question: "Do you help with land acquisition?",
-    answer:
-      "Yes, we can assist in locating and evaluating land suitable for your build. We also work with a network of trusted local real estate agents who specialize in finding lots that align with zoning, topography, and utility access requirements, saving you time and potential legal headaches.",
+    title: "Sustainable & Energy-Efficient Design",
+    icon: "/globe.svg",
+    description:
+      "Integrating green building practices, smart home technologies, and energy-saving solutions for a future-proof home.",
   },
   {
-    question: "Can I make changes during the build process?",
-    answer:
-      "Yes, we allow for certain changes after construction begins. However, change orders may affect the budget and timeline, depending on the complexity of the request and how far along we are in the build. Our team will guide you through the implications of any modifications to help you make informed decisions.",
-  },
-  {
-    question: "Do you handle all permitting and inspections?",
-    answer:
-      "Yes, we manage the entire permitting process and coordinate all required inspections with local authorities. Our team ensures that your project is compliant with zoning laws, building codes, and environmental regulations to avoid delays or costly corrections down the line.",
+    title: "Material Selection & Sourcing",
+    icon: "/globe.svg",
+    description:
+      "Guiding you through choices for finishes, fixtures, and structural components to ensure quality, durability, and aesthetics.",
   },
 ];
 
+// FAQs tailored for custom home building
+const customHomeFaqs = [
+  {
+    question: "How long does it take to build a custom home?",
+    answer:
+      "The timeline for a custom home varies significantly based on complexity, size, and site conditions. Typically, from initial design to move-in, it can take anywhere from 12 to 24 months, sometimes longer for very large or complex projects. We provide a detailed schedule after the design phase.",
+  },
+  {
+    question: "What's the process for designing my custom home?",
+    answer:
+      "Our process begins with an in-depth consultation to understand your lifestyle, needs, and aesthetic preferences. We then move through conceptual design, architectural drawings, material selections, and 3D renderings, collaborating closely with you at every stage to bring your vision to life.",
+  },
+  {
+    question: "How much does a custom home cost in the GTA?",
+    answer:
+      "The cost of a custom home in the GTA is highly variable, influenced by land costs, size, architectural complexity, finishes, and features. It can range from $300 to over $600 per square foot, excluding land. We work with you to establish a realistic budget and provide transparent pricing throughout.",
+  },
+  {
+    question: "Do you help with land acquisition and site preparation?",
+    answer:
+      "Yes, we can assist you with site selection, evaluating potential properties for suitability, zoning, and development potential. Our services include managing all aspects of site preparation, from grading and excavation to utility connections.",
+  },
+  {
+    question:
+      "Can I incorporate smart home technology and sustainable features?",
+    answer:
+      "Absolutely. We specialize in integrating cutting-edge smart home technologies for automation, security, and energy management. We also prioritize sustainable building practices, offering options for energy-efficient systems, renewable materials, and green certifications.",
+  },
+  {
+    question: "What kind of warranty do you offer on custom homes?",
+    answer:
+      "We stand behind the quality of our work with comprehensive warranties, typically including a one-year warranty on materials and workmanship, and longer structural warranties as per industry standards and local regulations. Your peace of mind is our priority.",
+  },
+];
 
-const page = () => {
+const CustomHomesPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="hero bg-base-100 h-[80vh] bg-[url(/images/page-bg-1.png)] bg-cover flex items-end">
+      {/* Hero Section - Custom Homes Specific */}
+      <div className="hero bg-base-100 h-[80vh] bg-[url(/images/custom-home-title.jpg)] bg-cover bg-center flex items-end">
         <div className="flex flex-col m-4 md:m-10 animate-fade-in">
-          <h1 className="text-7xl font-bold">Custom Homes</h1>
-          <p className="text-lg font-light pt-2 pl-1">
-            Build your dream home from the ground up with expert design and
-            craftsmanship.
+          <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg">
+            Custom Homes
+          </h1>
+          <p className="text-lg font-light pt-2 pl-1 text-white drop-shadow">
+            Building your dream home from the ground up, tailored to your unique
+            vision.
           </p>
         </div>
       </div>
-      <div className="bg-base-300 bg-[url(/images/page-bg-2.jpg)] bg-cover p-6 md:p-10">
-        {/* Intro Paragraph */}
-        <p className="pb-10 text-lg max-w-3xl mx-auto text-center animate-fade-in">
-          Looking for reliable custom home builders to bring your vision to
-          life? We design and construct homes that reflect your lifestyle,
-          budget, and aesthetic - without cutting corners.
+
+      <div className="bg-base-300 bg-[url(/images/bg-2.jpg)] bg-cover p-6 md:p-10">
+        {/* Intro Paragraph - Custom Homes Specific */}
+        <p className="pb-10 text-lg max-w-5xl mx-auto text-center animate-fade-in my-3 ">
+          Imagine a home designed exclusively for you, reflecting your
+          lifestyle, tastes, and needs. Our custom home building service brings
+          your vision to life, from concept to completion, ensuring every detail
+          is perfectly crafted to your specifications.
         </p>
+
+        {/* Why Choose Us - Custom Homes Specific */}
         <div className="bg-black/30 shadow-lg ring-1 ring-black/5 rounded-xl backdrop-blur-lg animate-fade-in py-10 mb-10 mx-0 px-5 flex flex-col md:flex-row justify-center items-center gap-10">
-          {/* Image (will appear on top on small screens) */}
           <div>
             <img
-              src="/images/custom-home-builders.jpg"
-              alt="Why Choose Us"
+              src={"/images/custom-home-builders.jpg"}
+              alt="Why Choose Us for Custom Homes"
               className="max-w-sm w-full rounded-lg shadow-md"
             />
           </div>
-
-          {/* Text content */}
           <div>
             <h2 className="text-4xl font-bold mb-4 text-info animate-fade-in">
-              Why Choose Us?
+              Why Build Your Custom Home with Us?
             </h2>
-            <ul className="grid gap-3 text-left max-w-xl mx-auto text-lg animate-fade-in font-semibold">
-              <li>- Full-service design &amp; build process</li>
-              <li>- Licensed, insured, and experienced contractors</li>
-              <li>- Transparent budgets and timelines</li>
+            <ul className="grid gap-3 text-left text-lg animate-fade-in font-semibold">
+              <li>- Personalized design-build approach for unique homes</li>
+              <li>- Expert guidance from land acquisition to final touches</li>
+              <li>- Uncompromising quality and superior craftsmanship</li>
+              <li>- Transparent processes and clear communication</li>
               <li>
-                - Custom finishes, energy efficiency, and smart layout planning
+                - Commitment to delivering your home on time and on budget
               </li>
             </ul>
           </div>
         </div>
 
+        {/* New Section: Types of Custom Homes (Dynamic) */}
+        <div className="py-5 md:pb-10 md:pt-10 animate-fade-in">
+          <div className="bg-black/30 shadow-lg ring-1 ring-black/5 rounded-xl backdrop-blur-xs animate-fade-in p-5 md:p-10">
+            <h2 className="text-4xl font-bold text-center mb-10 text-white">
+              Discover Your{" "}
+              <span className="text-secondary text-6xl">Custom Home Style</span>
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {customHomeTypes.map((item, key) => (
+                <div
+                  className="card bg-black/30 shadow-lg ring-1 ring-black/5 rounded-lg backdrop-blur-xs animate-fade-in hover:scale-105 transition-transform pt-5"
+                  key={key}
+                >
+                  <figure>
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-100 h-60 object-cover"
+                    />
+                  </figure>
+                  <div className="card-body">
+                    <h3 className="card-title text-2xl">{item.title}</h3>
+                    <p className="pb-2 text-lg font-thin">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* New Section: Key Custom Home Considerations (Dynamic) */}
+        <div className="py-5 md:pb-10 md:pt-10 animate-fade-in mb-10">
+          <div className="bg-black/30 shadow-lg ring-1 ring-black/5 rounded-xl backdrop-blur-xs animate-fade-in p-5 md:p-10">
+            <h2 className="text-4xl font-bold text-center mb-10 text-white">
+              What to <span className="text-secondary text-6xl">Consider</span>
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8 text-lg font-semibold">
+              {customHomeConsiderations.map((item, key) => (
+                <div className="flex items-start gap-3" key={key}>
+                  <img src={item.icon} alt="Icon" className="w-9" />
+                  <div>
+                    <h3 className="text-xl font-bold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="font-thin text-base">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Our Renovation Process - Custom Homes Specific Timeline */}
         <div className="bg-black/30 shadow-lg ring-1 ring-black/5 rounded-xl backdrop-blur-lg animate-fade-in py-10 px-2 lg:px-50 pb-5 mx-0">
-          <h2 className="text-4xl font-bold mb-4 text-secondary text-center pb-2">
-            Our Custom Home Process
+          <h2 className="text-4xl font-bold mb-4 text-primary text-center pb-2">
+            Our Custom Home Building Process
           </h2>
           <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
             <li>
@@ -129,14 +244,13 @@ const page = () => {
                 </svg>
               </div>
               <div className="timeline-start mb-10 md:text-end hover:scale-105 transition-transform pr-2">
-                <time className="font-mono italic">Step 1</time>
+                <time className="font-mono italic">Phase 1</time>
                 <div className="text-lg font-black hover:text-info transition duration:300">
-                  Consultation & Vision Planning
+                  Vision & Site Assessment
                 </div>
-                Every custom home begins with a deep-dive consultation. We
-                clarify your goals, style preferences, must-haves, and budget.
-                Whether you already own land or need help sourcing a lot, we
-                guide the process from day one.
+                We begin with an in-depth consultation to understand your dream
+                home, lifestyle, and budget. We'll also assess your chosen
+                building site for optimal design and feasibility.
               </div>
               <hr className="bg-success" />
             </li>
@@ -157,14 +271,13 @@ const page = () => {
                 </svg>
               </div>
               <div className="timeline-end md:mb-10 hover:scale-105 transition-transform pl-0 md:pl-2">
-                <time className="font-mono italic">Step 2</time>
+                <time className="font-mono italic">Phase 2</time>
                 <div className="text-lg font-black hover:text-info transition duration:300">
-                  Design and Permit Handling
+                  Architectural Design & Permitting
                 </div>
-                Our experienced design-build team drafts custom floor plans and
-                ensures full compliance with local building codes. We manage all
-                zoning checks, city approvals, and permit applications, so you
-                don't have to.
+                Our architects and designers translate your vision into detailed
+                blueprints and 3D models. We handle all zoning, building
+                permits, and regulatory approvals.
               </div>
               <hr className="bg-success" />
             </li>
@@ -185,14 +298,13 @@ const page = () => {
                 </svg>
               </div>
               <div className="timeline-start mb-10 md:text-end hover:scale-105 transition-transform pr-2">
-                <time className="font-mono italic">Step 3</time>
+                <time className="font-mono italic">Phase 3</time>
                 <div className="text-lg font-black hover:text-info transition duration:300">
-                  Construction & Project Management
+                  Pre-Construction & Material Sourcing
                 </div>
-                Licensed general contractors oversee the build from foundation
-                to final trim. We keep construction timelines tight, costs
-                transparent, and quality at the highest standard—using trusted
-                trades and top-tier materials.
+                With plans approved, we finalize material selections, establish
+                a detailed construction schedule, and prepare the site, ensuring
+                all components are ready for build.
               </div>
               <hr className="bg-success" />
             </li>
@@ -213,32 +325,66 @@ const page = () => {
                 </svg>
               </div>
               <div className="timeline-end md:mb-10 hover:scale-105 transition-transform pl-0 md:pl-2">
-                <time className="font-mono italic">Step 4</time>
+                <time className="font-mono italic">Phase 4</time>
                 <div className="text-lg font-black hover:text-info transition duration:300">
-                  Final Walkthrough
+                  Construction & Quality Assurance
                 </div>
-                Before handoff, we walk you through every detail to ensure your
-                new home exceeds expectations. All work is backed by a
-                comprehensive builder's warranty for peace of mind.
+                Our skilled trades execute the build, from foundation to
+                framing, mechanical, electrical, and plumbing. Rigorous quality
+                checks and regular communication keep you informed at every
+                milestone.
+              </div>
+              <hr className="bg-success" />
+            </li>
+            <li>
+              <hr />
+              <div className="timeline-middle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div className="timeline-start mb-10 md:text-end hover:scale-105 transition-transform pr-2">
+                <time className="font-mono italic">Phase 5</time>
+                <div className="text-lg font-black hover:text-info transition duration:300">
+                  Finishing Touches & Handover
+                </div>
+                The final stages involve interior finishes, landscaping, and a
+                thorough quality inspection. We then conduct a final walkthrough
+                with you, ensuring every detail meets your expectations before
+                handing over the keys to your new custom home.
               </div>
               <hr className="bg-success" />
             </li>
           </ul>
         </div>
-        <div className="py-5 md:pb-10 md:pt-20 animate-fade-in">
+
+        {/* Recent Projects - Custom Homes Specific (Using kitchen placeholder) */}
+        <div className="py-5 md:pb-10 md:pt-20 animate-fade-in mb-5">
           <div className="bg-black/30 shadow-lg ring-1 ring-black/5 rounded-xl backdrop-blur-xs animate-fade-in p-5 md:p-10">
             <h2 className="text-4xl font-bold text-center mb-10 text-white">
-              Recent <span className="text-secondary text-6xl">Projects</span>
+              Our Recent{" "}
+              <span className="text-secondary text-6xl">
+                Custom Home Projects
+              </span>
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
-              {portfolioImages.map((item, key) => (
+              {customHomePortfolioImages.map((item, key) => (
                 <div
                   className="card bg-black/30 shadow-lg ring-1 ring-black/5 rounded-lg backdrop-blur-xs animate-fade-in hover:scale-105 transition-transform pt-5"
                   key={key}
                 >
                   <figure>
                     <img
-                      src={item.image}
+                      src={item.image} // This will be the kitchen placeholder
                       alt={item.src}
                       className="w-100 h-80 object-cover"
                     />
@@ -259,14 +405,14 @@ const page = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
+        {/* FAQ Section - Custom Homes Specific */}
         <div className="py-5 md:pb-20 animate-fade-in">
           <div className="bg-black/30 shadow-lg ring-1 ring-black/5 rounded-xl backdrop-blur-xs animate-fade-in p-5 md:p-10">
             <h2 className="text-4xl font-bold text-center mb-10 text-white">
-              <span className="text-secondary text-6xl">FAQ</span>
+              Custom Home <span className="text-secondary text-6xl">FAQ</span>
             </h2>
             <div className="mb-10 border-gray-400" id="qna">
-              {faqs.map((item, key) => (
+              {customHomeFaqs.map((item, key) => (
                 <div
                   className="collapse collapse-arrow bg-black/30 shadow-lg ring-1 ring-black/5 rounded-lg backdrop-blur-xs animate-fade-in mb-2 py-1"
                   key={key}
@@ -287,4 +433,4 @@ const page = () => {
     </div>
   );
 };
-export default page;
+export default CustomHomesPage;

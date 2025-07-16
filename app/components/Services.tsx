@@ -47,7 +47,7 @@ const Services = () => {
             },
             {
               title: "Bathroom Renovations",
-              image: "/images/placeholder-image.jpg",
+              image: "/images/bathroom-renovations.jpg",
               src: "Remodeled bathroom with walk-in shower",
               description:
                 "Upgrade your bathroom with custom tiling, better lighting, and spa-inspired features - efficient and elegant.",
@@ -55,12 +55,12 @@ const Services = () => {
               linktitle: "Upgrade your bathroom",
             },
             {
-              title: "Bedroom Renovations",
+              title: "Home Office Renovations",
               image: "/images/bedroom-renovations.png",
               src: "Cozy renovated bedroom with lighting",
               description:
                 "Refresh your bedroom with custom storage, modern finishes, and a layout designed for comfort and style.",
-              link: "services/bedroom-renovations",
+              link: "services/home-office-renovations",
               linktitle: "Refresh your bedroom space",
             },
           ].map((item, key) => (

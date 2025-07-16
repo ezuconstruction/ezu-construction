@@ -61,7 +61,6 @@ const faqs = [
   },
 ];
 
-
 const page = () => {
   return (
     <div>
@@ -77,7 +76,7 @@ const page = () => {
       </div>
       <div className="bg-base-300 bg-[url(/images/page-bg-2.jpg)] bg-cover p-6 md:p-10">
         {/* Intro Paragraph */}
-        <p className="pb-10 text-lg max-w-3xl mx-auto text-center animate-fade-in">
+        <p className="pb-10 text-lg max-w-3xl mx-auto text-center animate-fade-in my-3">
           Looking for reliable custom home builders to bring your vision to
           life? We design and construct homes that reflect your lifestyle,
           budget, and aesthetic - without cutting corners.
