@@ -61,7 +61,7 @@ const Services = () => {
               description:
                 "Refresh your bedroom with custom storage, modern finishes, and a layout designed for comfort and style.",
               link: "services/home-office-renovations",
-              linktitle: "Refresh your bedroom space",
+              linktitle: "Refresh your office space",
             },
           ].map((item, key) => (
             <div

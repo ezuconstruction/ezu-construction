@@ -7,7 +7,12 @@ const Navbar = () => {
     <div className="fixed navbar bg-black/30 shadow-lg ring-1 ring-black/5 backdrop-blur-sm z-50 mx-2 mt-2 w-[calc(98vw)] rounded-2xl h-0">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden" aria-label="Menu Bar">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost lg:hidden"
+            aria-label="Menu Bar"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5"
@@ -147,109 +152,218 @@ const Navbar = () => {
           href="/"
         >
           <span>
-            <img
-              src="/EZU-Red-White.png"
-              alt="EZU Logo"
-              className="w-8 mr-1"
-            />
+            <img src="/EZU-Red-White.png" alt="EZU Logo" className="w-8 mr-1" />
           </span>{" "}
           <span className="invisible sm:visible">EZU Construction</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 mx-10 text-[19px]">
-          <li className="mx-5">
-            <details>
-              <summary className="font-semibold">Services</summary>
-              <ul className=" w-80 bg-black/60 shadow-lg ring-1 ring-black/5 backdrop-blur-sm rounded-lg">
-                <li className="py-1">
-                  <Link href="/services/custom-homes">Custom Homes</Link>
+          <li className="mr-5">
+            <div className="dropdown hover:bg-transparent">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost text-xl hover:bg-secondary/50 py-5"
+              >
+                Services{" "}
+                <span>
+                  <img
+                    src="/down-arrow.svg"
+                    className="w-4 mt-1 ml-1 invert"
+                    alt="Down Arrow"
+                  />
+                </span>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content w-80 bg-black/60 shadow-lg backdrop-blur-sm rounded-xl"
+              >
+                <li>
+                  <Link
+                    href="/services/custom-homes"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
+                    Custom Homes
+                  </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/services/home-renovations">
+                <li>
+                  <Link
+                    href="/services/home-renovations"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
                     Home Renovations
                   </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/services/home-additions">Home Additions</Link>
+                <li>
+                  <Link
+                    href="/services/home-additions"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
+                    Home Additions
+                  </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/services/kitchen-renovations">
+                <li>
+                  <Link
+                    href="/services/kitchen-renovations"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
                     Kitchen Renovations
                   </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/services/bathroom-renovations">
+                <li>
+                  <Link
+                    href="/services/bathroom-renovations"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
                     Bathroom Renovations
                   </Link>
                 </li>
-                <li className="py-2">
-                  <Link href="/services/home-office-renovations">
+                <li>
+                  <Link
+                    href="/services/home-office-renovations"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
                     Home Office Renovations
                   </Link>
                 </li>
               </ul>
-            </details>
+            </div>
           </li>
-          <li className="mx-5">
-            <details>
-              <summary className="font-semibold">Construction</summary>
-              <ul className=" w-80 bg-black/60 shadow-lg ring-1 ring-black/5 backdrop-blur-sm rounded-lg">
-                <li className="py-1">
-                  <Link href="/construction/drywall">
+          <li className="mr-5">
+            <div className="dropdown hover:bg-transparent">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost text-xl hover:bg-secondary/50 py-5"
+              >
+                Construction{" "}
+                <span>
+                  <img
+                    src="/down-arrow.svg"
+                    className="w-4 mt-1 ml-1 invert"
+                    alt="Down Arrow"
+                  />
+                </span>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content w-80 bg-black/60 shadow-lg backdrop-blur-sm rounded-xl"
+              >
+                <li>
+                  <Link
+                    href="/construction/drywall"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
                     Drywall Installation and Repair
                   </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/construction/flooring">
+                <li>
+                  <Link
+                    href="/construction/flooring"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
                     Flooring Installation and Repair
                   </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/construction/tile">
+                <li>
+                  <Link
+                    href="/construction/tile"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
                     Tile Installation and Repair
                   </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/construction/interlocking">
+                <li>
+                  <Link
+                    href="/construction/interlocking"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
                     Interlocking Paving
                   </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/construction/painting">Painting Services</Link>
+                <li>
+                  <Link
+                    href="/construction/painting"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
+                    Painting Services
+                  </Link>
                 </li>
               </ul>
-            </details>
+            </div>
           </li>
-          <li className="mx-5">
-            <Link href="/projects" className="font-semibold">
-              Projects
-            </Link>
+          <li className="mr-5">
+            <div className="dropdown hover:bg-transparent">
+              <Link
+                role="button"
+                className="btn btn-ghost text-xl hover:bg-secondary/50 py-5"
+                href="/projects"
+              >
+                Projects
+              </Link>
+            </div>
           </li>
-          <li className="mx-5">
-            <details>
-              <summary className="font-semibold">News</summary>
-              <ul className=" w-70 bg-black/60 shadow-lg ring-1 ring-black/5 backdrop-blur-sm rounded-lg">
-                <li className="py-1">
-                  <Link href="/social-media">Social Media</Link>
+          <li className="mr-5">
+            <div className="dropdown hover:bg-transparent">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost text-xl hover:bg-secondary/50 py-5"
+              >
+                News{" "}
+                <span>
+                  <img
+                    src="/down-arrow.svg"
+                    className="w-4 mt-1 ml-1 invert"
+                    alt="Down Arrow"
+                  />
+                </span>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content w-80 bg-black/60 shadow-lg backdrop-blur-sm rounded-xl"
+              >
+                <li>
+                  <Link
+                    href="/social-media"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
+                    Social Media
+                  </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/publications">Publications</Link>
+                <li>
+                  <Link
+                    href="/publications"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
+                    Publications
+                  </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/about">Our Story</Link>
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
+                    Our Story
+                  </Link>
                 </li>
-                <li className="py-1">
-                  <Link href="/contact">Contact Us</Link>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-xl py-2 bg-transparent hover:bg-info/60 hover:backdrop-blur-lg mb-2 mx-1"
+                  >
+                    Contact Us
+                  </Link>
                 </li>
               </ul>
-            </details>
+            </div>
           </li>
         </ul>
       </div>
       <div className="navbar-end pr-2">
         <Link
-          className=" bg-accent/60 text-lg px-3 py-2 font-semibold rounded-lg hover:bg-secondary/50  hover:backdrop-blur-lg transition duration-300"
+          className="bg-accent/60 text-lg px-3 py-2 font-semibold rounded-lg hover:bg-secondary/50  hover:backdrop-blur-lg transition duration-300"
           href="/contact"
         >
           <span>Contact Us</span>
