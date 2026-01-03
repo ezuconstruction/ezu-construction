@@ -26,7 +26,7 @@ const Splash = () => {
           designed for modern living, built with precision.
         </p>
         <p className="font-bold text-lg pb-6 text-white/90">
-          Get a free consultation today and bring your vision to life!
+          Get a free consultation today and bring your vision to life.
         </p>
         <Link
           className="bg-white/90 text-black text-xl mb-6 mt-8 px-3 py-2 rounded-lg hover:bg-red-500/70 hover:text-white transition duration-200 font-semibold"
