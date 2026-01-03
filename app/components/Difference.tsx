@@ -1,6 +1,6 @@
 const Difference = () => {
   return (
-    <div className="px-2 md:px-5 py-5 pb-20 md:pt-20 bg-base-200 animate-fade-in bg-[url(/images/our-services-background.png)] object-cover">
+    <div className="px-2 md:px-5 py-5 pb-20 md:pt-20 bg-base-200 animate-fade-in bg-[url(/images/backgrounds/our-services-background.png)] object-cover">
       <h2>See the EZU Difference.</h2>
       <figure className="diff aspect-16/9" tabIndex={0}>
         <div className="diff-item-1" role="img" tabIndex={0}>
