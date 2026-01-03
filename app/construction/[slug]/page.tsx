@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const construction = constructionData.find((c) => c.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const construction = constructionData.find((c) => c.slug === slug);
   
   if (!construction) {
     return {
@@ -26,8 +27,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-const ConstructionPage = ({ params }: { params: { slug: string } }) => {
-  const construction = constructionData.find((c) => c.slug === params.slug);
+const ConstructionPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+  const construction = constructionData.find((c) => c.slug === slug);
 
   if (!construction) {
     notFound();

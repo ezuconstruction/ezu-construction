@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const article = publicationsData.find((a) => a.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const article = publicationsData.find((a) => a.slug === slug);
   
   if (!article) {
     return {
@@ -99,8 +100,9 @@ const renderContentBlock = (block: ContentBlock, index: number) => {
   }
 };
 
-const PublicationPage = ({ params }: { params: { slug: string } }) => {
-  const article = publicationsData.find((a) => a.slug === params.slug);
+const PublicationPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+  const article = publicationsData.find((a) => a.slug === slug);
 
   if (!article) {
     notFound();
