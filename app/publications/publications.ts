@@ -166,7 +166,7 @@ export const publicationsData: PublicationData[] = [
   date: "2025-12-23",
   category: "Flooring",
   image: "/images/articles/flooring-installation-hardwood-vinyl-laminate.webp",
-  readTime: "6 min read",
+  readTime: "5 min read",
   tags: ["Flooring", "Hardwood", "Vinyl Flooring", "Laminate", "Home Renovation"],
   content: [
     {
