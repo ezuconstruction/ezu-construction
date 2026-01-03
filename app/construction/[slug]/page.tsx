@@ -1,8 +1,7 @@
-import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import GetContact from "@/app/components/GetContact";
 import Link from "next/link";
 import { constructionData } from "../construction";
+import CallToAction from "@/app/components/CallToAction";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -37,7 +36,7 @@ const ConstructionPage = async ({ params }: { params: Promise<{ slug: string }> 
 
   return (
     <div>
-      <Navbar />
+      
       {/* Hero Section */}
       <div
         className="relative hero bg-base-100 h-[80vh] bg-cover bg-center flex items-end"
@@ -75,7 +74,7 @@ const ConstructionPage = async ({ params }: { params: Promise<{ slug: string }> 
               <img
                 src={construction.whyChooseUs.image}
                 alt={construction.whyChooseUs.title}
-                className="max-w-sm w-full rounded-2xl shadow-xl"
+                className="max-w-sm w-full rounded-2xl shadow-xl object-cover"
               />
             </div>
             <div>
@@ -280,7 +279,7 @@ const ConstructionPage = async ({ params }: { params: Promise<{ slug: string }> 
           </div>
         </div>
       </div>
-      <GetContact />
+      <CallToAction />
       <Footer />
     </div>
   );

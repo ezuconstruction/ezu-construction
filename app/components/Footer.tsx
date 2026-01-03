@@ -88,6 +88,12 @@ const Footer = () => {
           >
             Accessibility
           </Link>
+          <Link
+            className="hover:text-white text-white/70 font-semibold transition"
+            href="/llms"
+          >
+            I'm an AI
+          </Link>
         </div>
       </nav>
     </footer>

@@ -1,21 +1,20 @@
-import Navbar from "./components/Navbar";
-import Splash from "./components/Splash";
-import Services from "./components/Services";
-import Projects from "./components/Projects";
+import HeroSection from "./components/HeroSection";
+import TrustBadges from "./components/TrustBadges";
+import EnhancedServices from "./components/EnhancedServices";
+import CallToAction from "./components/CallToAction";
 import Footer from "./components/Footer";
-import GetContact from "./components/GetContact";
-import Difference from "./components/Difference";
 import Notice from "./components/Notice";
+import StructuredData from "./components/StructuredData";
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
+    <div className="min-h-screen">
+      <StructuredData />
       <main>
-        <Splash />
-        <Notice />
-        <Services />
-        <GetContact />
+        <HeroSection />
+        <TrustBadges />
+        <EnhancedServices />
+        <CallToAction />
       </main>
       <Footer />
     </div>

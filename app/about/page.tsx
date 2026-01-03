@@ -1,12 +1,11 @@
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import GetContact from "../components/GetContact";
+import CallToAction from "../components/CallToAction";
 import Link from "next/link";
 
 const AboutPage = () => {
   return (
     <>
-      <Navbar />
+      
       {/* Hero Section */}
       <div
         className="relative hero bg-base-100 h-[70vh] bg-cover bg-center flex items-end"
@@ -34,7 +33,6 @@ const AboutPage = () => {
         <div className="absolute inset-0 backdrop-blur-[2px]"></div>
 
         <div className="relative max-w-7xl mx-auto py-10">
-          {/* Social Media Links */}
           <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm p-8 mb-10">
             <h2 className="text-4xl font-bold text-center mb-8 text-white/90 tracking-tight">
               EZU{" "}
@@ -108,7 +106,7 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-      <GetContact />
+      <CallToAction />
       <Footer />
     </>
   );

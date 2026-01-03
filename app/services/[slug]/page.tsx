@@ -1,6 +1,5 @@
-import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import GetContact from "@/app/components/GetContact";
+import CallToAction from "@/app/components/CallToAction";
 import Link from "next/link";
 import { servicesData } from "../services";
 import { notFound } from "next/navigation";
@@ -37,7 +36,6 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
 
   return (
     <div>
-      <Navbar />
       {/* Hero Section */}
       <div
         className="relative hero bg-base-100 h-[80vh] bg-cover bg-center flex items-end"
@@ -278,7 +276,7 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
           </div>
         </div>
       </div>
-      <GetContact />
+      <CallToAction />
       <Footer />
     </div>
   );

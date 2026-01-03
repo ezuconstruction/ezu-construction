@@ -48,7 +48,7 @@ export const constructionData: ConstructionData[] = [
     introText: "Expert drywall installation and repair services to create smooth, flawless walls and ceilings. Our skilled craftsmen ensure precision in every project, from new construction to renovations and repairs.",
     bgImage: "/images/backgrounds/bg-3.jpg",
     whyChooseUs: {
-      image: "/images/services/kitchen-renovations.jpg",
+      image: "/images/construction/drywall-installation-taping-mudding-finishing-contractor.webp",
       title: "Why Choose Our Drywall Services?",
       points: [
         "Expert installation and seamless finishing",
@@ -60,19 +60,19 @@ export const constructionData: ConstructionData[] = [
     },
     types: [
       {
-        title: "Hardwood Flooring",
-        image: "/images/services/kitchen-renovations.jpg",
-        description: "Classic hardwood installation and refinishing for timeless elegance and durability."
+        title: "New Drywall Installation",
+        image: "/images/construction/new-drywall-installation-sheets-on-framing.avif",
+        description: "Full drywall installation for new builds, additions, and renovations, including hanging, fastening, and rough finishing."
       },
       {
-        title: "Laminate & Luxury Vinyl",
-        image: "/images/services/kitchen-renovations.jpg",
-        description: "Modern, affordable flooring options that mimic natural materials with easy maintenance."
+        title: "Drywall Repair & Patching",
+        image: "/images/construction/drywall-repair-patching-hole-before-after.avif",
+        description: "Repairs for holes, cracks, dents, and water-damaged areas with clean patches and blended finishes."
       },
       {
-        title: "Tile Flooring",
-        image: "/images/services/kitchen-renovations.jpg",
-        description: "Ceramic, porcelain, and natural stone tile installation for beautiful, long-lasting floors."
+        title: "Taping, Mudding & Sanding",
+        image: "/images/construction/drywall-taping-mudding-sanding-finishing.webp",
+        description: "Professional joint taping, compound application, and sanding for smooth walls ready for primer and paint."
       }
     ],
     considerations: [
@@ -127,7 +127,7 @@ export const constructionData: ConstructionData[] = [
     portfolio: [
       {
         title: "Complete Home Drywall Installation",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/new-construction-drywall-install-seamless-walls-ceilings.jpg",
         alt: "Smooth, seamless walls throughout entire home",
         description: "Professional drywall installation for new construction, ensuring perfect walls and ceilings throughout.",
         link: "/projects/drywall-installation",
@@ -135,7 +135,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Ceiling Repair & Texture Match",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/ceiling-drywall-repair-texture-matching-popcorn-ceiling.webp",
         alt: "Repaired ceiling with perfectly matched texture",
         description: "Expert repair and texture matching to restore damaged ceilings to their original appearance.",
         link: "/projects/ceiling-repair",
@@ -143,7 +143,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Basement Finishing",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/basement-finishing-drywall-moisture-resistant-finished-basement.jpg",
         alt: "Finished basement with professional drywall",
         description: "Complete basement finishing with moisture-resistant drywall and professional finishing.",
         link: "/projects/basement-drywall",
@@ -177,7 +177,7 @@ export const constructionData: ConstructionData[] = [
     introText: "Transform your home with professional flooring installation and repair services. From hardwood and laminate to tile and luxury vinyl, we provide expert installation and repair for all flooring types.",
     bgImage: "/images/backgrounds/bg-2.jpg",
     whyChooseUs: {
-      image: "/images/services/kitchen-renovations.jpg",
+      image: "/images/construction/hardwood-flooring-installation-modern-living-room.avif",
       title: "Why Choose Our Flooring Services?",
       points: [
         "Expert installation of all flooring types",
@@ -190,17 +190,17 @@ export const constructionData: ConstructionData[] = [
     types: [
       {
         title: "Hardwood Flooring",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/hardwood-flooring-installation-oak-maple-living-room.webp",
         description: "Classic hardwood installation and refinishing for timeless elegance and durability."
       },
       {
         title: "Laminate & Luxury Vinyl",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/luxury-vinyl-plank-flooring-installation-modern.jpg",
         description: "Modern, affordable flooring options that mimic natural materials with easy maintenance."
       },
       {
         title: "Tile Flooring",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/porcelain-floor-tile-installation-modern.jpg",
         description: "Ceramic, porcelain, and natural stone tile installation for beautiful, long-lasting floors."
       }
     ],
@@ -256,7 +256,7 @@ export const constructionData: ConstructionData[] = [
     portfolio: [
       {
         title: "Hardwood Floor Installation",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/hardwood-flooring-installation-crew-sanding.jpg",
         alt: "Beautiful hardwood floors throughout home",
         description: "Professional hardwood installation with expert finishing for a timeless, elegant look.",
         link: "/projects/hardwood-installation",
@@ -264,7 +264,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Luxury Vinyl Plank",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/luxury-vinyl-plank-flooring-closeup-installed.jpg",
         alt: "Modern luxury vinyl flooring",
         description: "Waterproof luxury vinyl installation perfect for high-traffic areas and moisture-prone spaces.",
         link: "/projects/luxury-vinyl",
@@ -272,7 +272,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Tile Floor Restoration",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/tile-floor-regrout-restore-cleaning.jpg",
         alt: "Restored tile floors with new grout",
         description: "Expert tile repair and grout restoration to bring old floors back to life.",
         link: "/projects/tile-restoration",
@@ -306,7 +306,7 @@ export const constructionData: ConstructionData[] = [
     introText: "Professional tile installation and repair services for bathrooms, kitchens, and throughout your home. Our skilled tile setters ensure precise installation, beautiful patterns, and long-lasting results.",
     bgImage: "/images/backgrounds/bg-3.jpg",
     whyChooseUs: {
-      image: "/images/services/kitchen-renovations.jpg",
+      image: "/images/construction/tile-installation-ceramic-porcelain-backsplash-contractor.webp",
       title: "Why Choose Our Tile Services?",
       points: [
         "Expert installation of all tile types",
@@ -319,17 +319,17 @@ export const constructionData: ConstructionData[] = [
     types: [
       {
         title: "Bathroom Tile",
-        image: "/images/services/bathroom-renovations.jpg",
+        image: "/images/construction/modern-bathroom-shower-wall-tile-installation.webp",
         description: "Waterproof tile installation for showers, floors, and walls with proper waterproofing systems."
       },
       {
         title: "Kitchen Backsplashes",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/subway-tile-kitchen-backsplash-installation.jpg",
         description: "Beautiful backsplash installations with intricate patterns and modern designs."
       },
       {
         title: "Floor Tile",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/large-format-porcelain-floor-tile-installation.avif",
         description: "Durable floor tile installation for high-traffic areas with proper subfloor preparation."
       }
     ],
@@ -385,7 +385,7 @@ export const constructionData: ConstructionData[] = [
     portfolio: [
       {
         title: "Modern Bathroom Tile",
-        image: "/images/services/bathroom-renovations.jpg",
+        image: "/images/construction/modern-bathroom-tile-shower-niche.webp",
         alt: "Beautiful modern bathroom with tile walls and floor",
         description: "Complete bathroom tile installation with waterproofing and modern design patterns.",
         link: "/projects/bathroom-tile",
@@ -393,7 +393,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Kitchen Backsplash",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/kitchen-backsplash-subway-tile-closeup.webp",
         alt: "Intricate kitchen backsplash tile work",
         description: "Custom backsplash installation with intricate patterns and premium materials.",
         link: "/projects/backsplash",
@@ -401,7 +401,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Tile Floor Restoration",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/tile-floor-regrout-restore-cleaning.jpg",
         alt: "Restored tile floors with new grout",
         description: "Expert tile and grout repair to restore old floors to like-new condition.",
         link: "/projects/tile-repair",
@@ -439,7 +439,7 @@ export const constructionData: ConstructionData[] = [
     introText: "Transform your outdoor spaces with professional interlocking paving services. From driveways and walkways to patios and pool decks, we create beautiful, durable surfaces that enhance your property's curb appeal and functionality.",
     bgImage: "/images/backgrounds/bg-5.jpg",
     whyChooseUs: {
-      image: "/images/services/kitchen-renovations.jpg",
+      image: "/images/construction/interlocking-paver-driveway-stone-walkway-patio.jpg",
       title: "Why Choose Our Interlocking Services?",
       points: [
         "Expert installation of all interlocking materials",
@@ -452,17 +452,17 @@ export const constructionData: ConstructionData[] = [
     types: [
       {
         title: "Driveways",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/driveway-interlocking.png",
         description: "Durable interlocking driveways that withstand heavy vehicle traffic and harsh weather conditions."
       },
       {
         title: "Patios & Walkways",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/interlocking-paver-driveway-stone-walkway-patio.jpg",
         description: "Beautiful patio and walkway installations for outdoor living and entertainment spaces."
       },
       {
         title: "Pool Decks",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/pool-deck-interlocking.jpg",
         description: "Slip-resistant interlocking surfaces perfect for pool areas and outdoor recreation spaces."
       }
     ],
@@ -518,15 +518,15 @@ export const constructionData: ConstructionData[] = [
     portfolio: [
       {
         title: "Interlocking Driveway",
-        image: "/images/services/kitchen-renovations.jpg",
-        alt: "Beautiful interlocking driveway installation",
+        image: "/images/construction/driveway-interlocking.png",
+        alt: "Beautiful interlocking driveway installaion",
         description: "Durable interlocking driveway with proper base and professional installation for long-lasting results.",
         link: "/projects/interlocking-driveway",
         linkTitle: "View Project"
       },
       {
         title: "Patio Installation",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/patio-interlocking.jpg",
         alt: "Elegant interlocking patio",
         description: "Beautiful patio installation with intricate patterns perfect for outdoor entertaining.",
         link: "/projects/interlocking-patio",
@@ -534,7 +534,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Walkway Restoration",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/walkway-interlocking.jpg",
         alt: "Restored interlocking walkway",
         description: "Expert repair and restoration of existing interlocking surfaces to like-new condition.",
         link: "/projects/walkway-restoration",
@@ -572,7 +572,7 @@ export const constructionData: ConstructionData[] = [
     introText: "Transform your home with professional painting services. From interior walls and ceilings to exterior siding and trim, we deliver flawless finishes that enhance your property's beauty and value.",
     bgImage: "/images/backgrounds/bg-3.jpg",
     whyChooseUs: {
-      image: "/images/services/kitchen-renovations.jpg",
+      image: "/images/construction/professional-interior-house-painting-roller-brush.webp",
       title: "Why Choose Our Painting Services?",
       points: [
         "Expert preparation and surface treatment",
@@ -585,17 +585,17 @@ export const constructionData: ConstructionData[] = [
     types: [
       {
         title: "Interior Painting",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/interior-house-painting-living-room-painter-rolling.png",
         description: "Professional interior painting for walls, ceilings, trim, and cabinets with careful preparation and flawless finishes."
       },
       {
         title: "Exterior Painting",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/exterior-house-painting-crew-ladder-siding.jpg",
         description: "Durable exterior painting for siding, trim, doors, and decks with weather-resistant paints and proper surface preparation."
       },
       {
         title: "Specialty Finishes",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/feature-wall-accent-paint-textured-finish.jpg",
         description: "Custom finishes including faux painting, texture work, and decorative techniques for unique design elements."
       }
     ],
@@ -651,7 +651,7 @@ export const constructionData: ConstructionData[] = [
     portfolio: [
       {
         title: "Complete Interior Paint",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/freshly-painted-interior-walls-trim.jpg",
         alt: "Beautifully painted interior rooms",
         description: "Professional interior painting throughout the home with careful preparation and flawless finishes.",
         link: "/projects/interior-paint",
@@ -659,7 +659,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Exterior Home Painting",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/painted-exterior-house-modern-color-scheme.jpg",
         alt: "Freshly painted exterior with new color",
         description: "Complete exterior painting with proper preparation and weather-resistant paints for lasting beauty.",
         link: "/projects/exterior-paint",
@@ -667,7 +667,7 @@ export const constructionData: ConstructionData[] = [
       },
       {
         title: "Cabinet Refinishing",
-        image: "/images/services/kitchen-renovations.jpg",
+        image: "/images/construction/kitchen-cabinet-refinishing-spray-painting.jpg",
         alt: "Refinished kitchen cabinets",
         description: "Expert cabinet painting and refinishing to transform kitchens and bathrooms without replacement.",
         link: "/projects/cabinet-paint",

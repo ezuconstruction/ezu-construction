@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 const page = () => {
   return (
     <div>
-      <Navbar />
+      
       <main className="relative min-h-screen flex items-center justify-center pt-20 pb-20 animate-fade-in bg-[url(/images/backgrounds/nice-bg.avif)] bg-cover bg-center">
         {/* Background scrim to tame the photo */}
         <div className="absolute inset-0 bg-black/55"></div>

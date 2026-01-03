@@ -1,13 +1,12 @@
 import Link from "next/link";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import GetContact from "../components/GetContact";
+import CallToAction from "../components/CallToAction";
 import { publicationsData } from "./publications";
 
 const PublicationsPage = () => {
   return (
     <>
-      <Navbar />
+      
       {/* Hero Section */}
       <div
         className="relative hero bg-base-100 h-[60vh] bg-cover bg-center flex items-end"
@@ -87,7 +86,7 @@ const PublicationsPage = () => {
           </div>
         </div>
       </div>
-      <GetContact />
+      <CallToAction />
       <Footer />
     </>
   );

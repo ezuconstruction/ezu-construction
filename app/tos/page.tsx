@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 const page = () => {
   return (
     <>
-      <Navbar />
+      
       <div className="pt-15 mx-14 min-h-screen">
         <h1 className="text-lg md:text-3xl text-left pt-6" id="tos">
           Terms of{" "}

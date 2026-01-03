@@ -1,10 +1,36 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const Navbar = () => {
+const EnhancedNavbar = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Hide navbar when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <div className="fixed navbar bg-black/45 shadow-2xl ring-1 ring-white/10 backdrop-blur-sm z-50 mx-2 mt-2 w-[calc(98vw)] rounded-2xl h-0">
+    <div
+      className={`fixed navbar bg-black/45 shadow-2xl ring-1 ring-white/10 backdrop-blur-sm z-50 mx-2 mt-2 w-[calc(98vw)] rounded-2xl h-0 transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-[11vh]"
+      }`}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -31,7 +57,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="drawer dropdown-content bg-black/80 shadow-2xl ring-1 ring-white/10 backdrop-blur-lg z-1 mt-6 p-4 w-80 rounded-2xl"
+            className="drawer dropdown-content bg-black/90 shadow-2xl ring-1 ring-white/10 backdrop-blur-lg z-1 mt-6 p-4 w-80 rounded-2xl"
           >
             <li>
               <p className="text-xl font-semibold text-red-500">Services</p>
@@ -403,4 +429,5 @@ const Navbar = () => {
     </div>
   );
 };
-export default Navbar;
+
+export default EnhancedNavbar;

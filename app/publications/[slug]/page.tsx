@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import GetContact from "@/app/components/GetContact";
+import CallToAction from "@/app/components/CallToAction";
 import { publicationsData, ContentBlock } from "../publications";
 import { notFound } from "next/navigation";
 
@@ -110,10 +109,10 @@ const PublicationPage = async ({ params }: { params: Promise<{ slug: string }> }
 
   return (
     <div>
-      <Navbar />
+      
       {/* Hero Section */}
       <div
-        className="relative hero bg-base-100 h-[65vh] bg-cover bg-center flex items-end"
+        className="relative hero bg-base-100 h-[75vh] bg-cover bg-center flex items-end"
         style={{ backgroundImage: `url(${article.image})` }}
       >
         <div className="absolute inset-0 bg-black/55"></div>
@@ -235,7 +234,7 @@ const PublicationPage = async ({ params }: { params: Promise<{ slug: string }> }
           </div>
         </div>
       </div>
-      <GetContact />
+      <CallToAction />
       <Footer />
     </div>
   );

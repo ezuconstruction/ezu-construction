@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 function Error() {
   return (
     <>
-      <Navbar />
+      
       <div className="text-center flex flex-col justify-center min-h-screen px-5 md:px-0 animate-fade-in">
         <p className="text-3xl font-semibold text-accent mt-10">404</p>
         <h1 className="mt-3 text-5xl font-bold">Page not found</h1>

@@ -271,7 +271,7 @@ export const servicesData: ServiceData[] = [
     faqs: [
       {
         question: "Do I need a permit for my renovation?",
-        answer: "Often, yes—especially for structural changes, additions, new plumbing layouts, or electrical work. We identify permit requirements early and handle the process when applicable.",
+        answer: "Often, yes-especially for structural changes, additions, new plumbing layouts, or electrical work. We identify permit requirements early and handle the process when applicable.",
       },
       {
         question: "Can we live in the home during the renovation?",
@@ -336,7 +336,7 @@ export const servicesData: ServiceData[] = [
       {
         title: "Matching Exterior & Building Systems",
         icon: "/stars.svg",
-        description: "We align cladding, roofing, insulation, windows, and mechanical systems so the addition looks consistent and performs like the rest of the home—or better.",
+        description: "We align cladding, roofing, insulation, windows, and mechanical systems so the addition looks consistent and performs like the rest of the home-or better.",
       },
       {
         title: "Timeline & Household Impact",
@@ -395,7 +395,7 @@ export const servicesData: ServiceData[] = [
     faqs: [
       {
         question: "Will a home addition increase resale value?",
-        answer: "Usually, yes—if the addition is well integrated, legally permitted, and adds high‑demand space (bedrooms, bathrooms, or a larger main floor). The best ROI comes from additions that improve layout and usability, not just square footage.",
+        answer: "Usually, yes-if the addition is well integrated, legally permitted, and adds high‑demand space (bedrooms, bathrooms, or a larger main floor). The best ROI comes from additions that improve layout and usability, not just square footage.",
       },
       {
         question: "Can you match my existing exterior?",
@@ -417,7 +417,7 @@ export const servicesData: ServiceData[] = [
     title: "Kitchen Renovations",
     subtitle: "Crafting functional, beautiful, and inspiring kitchens for your home.",
     heroImage: "/images/services/kitchen-renovation-title.jpg",
-    introText: "Kitchens fail for predictable reasons: poor workflow, not enough storage, bad lighting, and materials that do not survive real use. We redesign kitchens around how you cook and live—then build them with durable finishes, clean detailing, and disciplined project management.",
+    introText: "Kitchens fail for predictable reasons: poor workflow, not enough storage, bad lighting, and materials that do not survive real use. We redesign kitchens around how you cook and live-then build them with durable finishes, clean detailing, and disciplined project management.",
     whyChooseUs: {
       image: "/images/services/kitchen-renovations.jpg",
       title: "Why Trust Us with Your Kitchen?",
@@ -523,7 +523,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         question: "Can you do an open‑concept kitchen?",
-        answer: "Yes—when it makes sense. We confirm structure and mechanical routing first; otherwise, open‑concept becomes an expensive surprise instead of an upgrade.",
+        answer: "Yes-when it makes sense. We confirm structure and mechanical routing first; otherwise, open‑concept becomes an expensive surprise instead of an upgrade.",
       },
       {
         question: "Do I need to move out during a kitchen reno?",
@@ -541,7 +541,7 @@ export const servicesData: ServiceData[] = [
     title: "Bathroom Renovations",
     subtitle: "Crafting serene, functional, and stylish bathrooms for ultimate comfort.",
     heroImage: "/images/services/bathroom-renovation-title.png",
-    introText: "Bathrooms are unforgiving: moisture finds every shortcut. We build bathrooms with proper waterproofing, ventilation, and durable materials—then layer on lighting and layout decisions that make the space feel calm and functional.",
+    introText: "Bathrooms are unforgiving: moisture finds every shortcut. We build bathrooms with proper waterproofing, ventilation, and durable materials-then layer on lighting and layout decisions that make the space feel calm and functional.",
     whyChooseUs: {
       image: "/images/services/bathroom-renovations.jpg",
       title: "Why Trust Us with Your Bathroom Renovation?",
@@ -584,7 +584,7 @@ export const servicesData: ServiceData[] = [
       {
         title: "Fixtures, Finishes & Durability",
         icon: "/stars.svg",
-        description: "We help select materials that handle water, cleaners, and daily use—without turning the space into a maintenance project.",
+        description: "We help select materials that handle water, cleaners, and daily use-without turning the space into a maintenance project.",
       },
       {
         title: "Layout, Storage & Accessibility",
@@ -686,7 +686,7 @@ export const servicesData: ServiceData[] = [
       {
         title: "Spare Room Conversion",
         image: "/images/services/spare-room.jpg",
-       description: "Transforming an unused room or building a new extension specifically for a home office.",
+        description: "Transforming an unused room or building a new extension specifically for a home office.",
       },
       {
         title: "Integrated Work Nook",

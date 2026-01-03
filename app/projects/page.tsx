@@ -1,13 +1,12 @@
 import Link from "next/link";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import GetContact from "../components/GetContact";
+import CallToAction from "../components/CallToAction";
 import { projectsData } from "./projects";
 
 const ProjectsPage = () => {
   return (
     <>
-      <Navbar />
+      
       {/* Hero Section */}
       <div
         className="relative hero bg-base-100 h-[70vh] bg-cover bg-center flex items-end"
@@ -86,6 +85,7 @@ const ProjectsPage = () => {
           {/* Stats Section */}
           <div className="py-10 mt-10">
             <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm p-8">
+            <h2 className="text-4xl font-bold text-center mb-5 text-white/90 tracking-tight">EZU Construction</h2>
               <div className="stats stats-vertical lg:stats-horizontal shadow w-full bg-white/5">
                 <div className="stat">
                   <div className="stat-title text-white/70">
@@ -100,14 +100,14 @@ const ProjectsPage = () => {
                   <div className="stat-title text-white/70">
                     Years of Experience
                   </div>
-                  <div className="stat-value text-red-500">15+</div>
+                  <div className="stat-value text-red-500">7+</div>
                   <div className="stat-desc text-white/55">In construction</div>
                 </div>
                 <div className="stat">
                   <div className="stat-title text-white/70">
                     Satisfied Clients
                   </div>
-                  <div className="stat-value text-red-500">500+</div>
+                  <div className="stat-value text-red-500">100+</div>
                   <div className="stat-desc text-white/55">
                     Happy homeowners
                   </div>
@@ -117,7 +117,7 @@ const ProjectsPage = () => {
           </div>
         </div>
       </div>
-      <GetContact />
+      <CallToAction />
       <Footer />
     </>
   );

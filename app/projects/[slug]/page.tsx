@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import GetContact from "@/app/components/GetContact";
+import CallToAction from "@/app/components/CallToAction";
 import { projectsData } from "../projects";
 import { notFound } from "next/navigation";
 
@@ -37,7 +36,7 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
 
   return (
     <div>
-      <Navbar />
+      
       {/* Hero Section */}
       <div 
         className="relative hero bg-base-100 h-[70vh] bg-cover bg-center flex items-end"
@@ -172,7 +171,7 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
           </div>
         </div>
       </div>
-      <GetContact />
+      <CallToAction />
       <Footer />
     </div>
   );
