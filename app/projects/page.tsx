@@ -44,6 +44,7 @@ const ProjectsPage = () => {
                   Projects
                 </span>
               </h2>
+              <p className="text-center text-white/80 mb-6">Our projects are currently being cataloged and will be available soon. Check back regularly for updates!</p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projectsData.map((project) => (
                   <Link
@@ -67,7 +68,7 @@ const ProjectsPage = () => {
                       <h3 className="card-title text-2xl text-white/90 group-hover:text-red-500 transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-base text-white/70 line-clamp-2">
+                      <p className="text-base text-white/70">
                         {project.shortDescription}
                       </p>
                       <div className="card-actions justify-end mt-4">
@@ -92,7 +93,7 @@ const ProjectsPage = () => {
                     Projects Completed
                   </div>
                   <div className="stat-value text-red-500">
-                    {projectsData.length}+
+                    10+
                   </div>
                   <div className="stat-desc text-white/55">Across the GTA</div>
                 </div>
@@ -107,7 +108,7 @@ const ProjectsPage = () => {
                   <div className="stat-title text-white/70">
                     Satisfied Clients
                   </div>
-                  <div className="stat-value text-red-500">100+</div>
+                  <div className="stat-value text-red-500">60+</div>
                   <div className="stat-desc text-white/55">
                     Happy homeowners
                   </div>

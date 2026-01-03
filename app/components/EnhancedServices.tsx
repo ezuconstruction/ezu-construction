@@ -64,7 +64,7 @@ const EnhancedServices = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white/90 tracking-tight mb-4">
             Our{" "}
             <span className="text-white underline underline-offset-8 decoration-white/25 hover:decoration-red-500 transition duration-300">
-              Services
+              Residential Services
             </span>
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">

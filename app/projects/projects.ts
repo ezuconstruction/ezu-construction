@@ -21,17 +21,17 @@ export const projectsData: ProjectData[] = [
     title: "Modern Minimalist Kitchen",
     category: "Kitchen Renovation",
     image: "/images/services/kitchen-renovations.jpg",
-    description: "A stunning modern kitchen transformation featuring sleek, handle-less cabinets, integrated appliances, and smart storage solutions. This project showcases how minimalist design can create a clutter-free, highly functional space that serves as the heart of the home.",
-    shortDescription: "Sleek, handle-less cabinets with integrated appliances for a contemporary look.",
+    description: "A stunning modern kitchen transformation featuring sleek, modern cabinets with soft-close mechanisms, integrated appliances, and smart storage solutions. This project showcases how minimalist design can create a clutter-free, highly functional space that serves as the heart of the home.",
+    shortDescription: "Sleek, modern cabinets with soft-close mechanisms and integrated appliances for a contemporary look with smart storage.",
     location: "Toronto, ON",
     year: "2024",
     features: [
-      "Handle-less cabinetry with soft-close mechanisms",
-      "Integrated smart appliances",
+      "Sleek modern brushed metal cabinetry with soft-close mechanisms",
+      "Integrated smart appliances with touch controls",
       "Quartz countertops with waterfall edge",
-      "Hidden storage solutions",
-      "LED under-cabinet lighting",
-      "Large format porcelain tile flooring"
+      "Hidden storage solutions with pull-out trays",
+      "LED under-cabinet lighting with dimmer controls",
+      "Large format porcelain tile flooring with subtle texture"
     ],
     gallery: [
       "/images/services/kitchen-renovations.jpg",
@@ -45,7 +45,10 @@ export const projectsData: ProjectData[] = [
       { label: "Style", value: "Modern Minimalist" }
     ]
   },
-  {
+];
+
+/*
+{
     slug: "luxury-bathroom",
     title: "Luxury Master Bathroom",
     category: "Bathroom Renovation",
@@ -247,5 +250,4 @@ export const projectsData: ProjectData[] = [
       { label: "Style", value: "Classic Elegant" }
     ]
   }
-];
-
+*/

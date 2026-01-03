@@ -551,10 +551,6 @@ export const constructionData: ConstructionData[] = [
         answer: "Interlocking pavers have special edges that lock together, providing better stability and load distribution. They're ideal for driveways and high-traffic areas, while regular pavers work well for patios and walkways."
       },
       {
-        question: "Do you provide warranties?",
-        answer: "Yes, we provide warranties on our installation work. The specific warranty terms depend on the project and materials used. We stand behind our craftsmanship and ensure proper installation."
-      },
-      {
         question: "Can you repair existing interlocking?",
         answer: "Absolutely. We can repair settling, replace damaged stones, re-level surfaces, and restore the appearance of existing interlocking installations. We'll assess the issues and provide solutions."
       },

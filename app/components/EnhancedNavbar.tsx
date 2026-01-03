@@ -60,7 +60,7 @@ const EnhancedNavbar = () => {
             className="drawer dropdown-content bg-black/90 shadow-2xl ring-1 ring-white/10 backdrop-blur-lg z-1 mt-6 p-4 w-80 rounded-2xl"
           >
             <li>
-              <p className="text-xl font-semibold text-red-500">Services</p>
+              <p className="text-xl font-semibold text-red-500">Residential</p>
               <ul className="pb-2 px-3">
                 <li>
                   <Link
@@ -221,9 +221,9 @@ const EnhancedNavbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost text-xl hover:text-red-500 hover:bg-transparent hover:border-0 border-0 py-5 text-white/90 group"
+                className="btn btn-ghost text-xl hover:text-red-500 hover:bg-transparent hover:border-0 border-0 py-5 text-white/90 group shadow-none hover:shadow-none focus:shadow-none active:shadow-none"
               >
-                Services{" "}
+                Residential{" "}
                 <svg
                   className="w-8 h-9 mt-1 fill-white group-hover:fill-red-500 transition-colors"
                   viewBox="0 0 24 24"
@@ -292,7 +292,7 @@ const EnhancedNavbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost text-xl hover:text-red-500 hover:bg-transparent hover:border-0 border-0 py-5 text-white/90 group"
+                className="btn btn-ghost text-xl hover:text-red-500 hover:bg-transparent hover:border-0 border-0 py-5 text-white/90 group shadow-none hover:shadow-none focus:shadow-none active:shadow-none"
               >
                 Construction{" "}
                 <svg
@@ -366,7 +366,7 @@ const EnhancedNavbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost text-xl group-hover:text-red-500 group-hover:bg-transparent group-hover:border-0 border-0 py-5 text-white/90"
+                className="btn btn-ghost text-xl group-hover:text-red-500 group-hover:bg-transparent group-hover:border-0 border-0 py-5 text-white/90 shadow-none hover:shadow-none focus:shadow-none active:shadow-none"
               >
                 News{" "}
                 <svg

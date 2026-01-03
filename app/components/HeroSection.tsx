@@ -26,7 +26,7 @@ const HeroSection = () => {
           </h1>
           
           {/* Description */}
-          <p className="text-lg md:text-2xl text-white/70 max-w-2xl mb-8 animate-fade-in-up">
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-8 animate-fade-in-up">
             Custom homes and renovations built to last. We specialize in new home
             builds, kitchen and bathroom remodels, and whole-home upgrades:
             designed for modern living, built with precision.
