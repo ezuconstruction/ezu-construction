@@ -2,6 +2,17 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import CallToAction from "../components/CallToAction";
 import { publicationsData } from "./publications";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Publications - Home Construction & Renovation Insights",
+  description: "Read expert articles, guides, and trends from EZU Construction about custom home building, renovations, kitchen remodeling, and construction best practices in Toronto.",
+  openGraph: {
+    title: "Publications - EZU Construction Insights",
+    description: "Expert insights and guides on home construction, renovation, and remodeling from Toronto's trusted custom home builders.",
+    url: "https://ezuconstruction.com/publications",
+  },
+};
 
 const PublicationsPage = () => {
   return (

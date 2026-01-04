@@ -2,6 +2,17 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import CallToAction from "../components/CallToAction";
 import { projectsData } from "./projects";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Projects - Custom Homes & Renovations Portfolio",
+  description: "Explore EZU Construction's portfolio of completed custom homes, renovations, and remodeling projects across Toronto and the Greater Toronto Area.",
+  openGraph: {
+    title: "Our Projects - EZU Construction Portfolio",
+    description: "View our completed custom homes, kitchen renovations, bathroom remodels, and home additions in Toronto.",
+    url: "https://ezuconstruction.com/projects",
+  },
+};
 
 const ProjectsPage = () => {
   return (

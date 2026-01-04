@@ -1,6 +1,17 @@
 import Footer from "../components/Footer";
 import CallToAction from "../components/CallToAction";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About EZU Construction - Toronto's Custom Home Builders",
+  description: "Learn about EZU Construction's history, team, and commitment to excellence in custom home building and renovations across Toronto and the Greater Toronto Area.",
+  openGraph: {
+    title: "About EZU Construction",
+    description: "Meet Toronto's trusted custom home builders and renovation specialists. Learn about our story and commitment to quality craftsmanship.",
+    url: "https://ezuconstruction.com/about",
+  },
+};
 
 const AboutPage = () => {
   return (

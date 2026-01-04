@@ -1,4 +1,15 @@
 import Footer from "../components/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact EZU Construction - Get a Free Quote",
+  description: "Contact EZU Construction for your custom home building or renovation project in Toronto. Call (647) 766-9999 or email info@ezuconstruction.com for a free consultation.",
+  openGraph: {
+    title: "Contact EZU Construction",
+    description: "Get in touch with Toronto's expert custom home builders and renovation specialists. Free consultations available.",
+    url: "https://ezuconstruction.com/contact",
+  },
+};
 
 const page = () => {
   return (
