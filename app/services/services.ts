@@ -86,9 +86,9 @@ export const servicesData: ServiceData[] = [
         description: "We build a detailed scope and allowances plan up front, then track changes transparently so you stay in control of costs from start to finish.",
       },
       {
-        title: "Sustainable & Energy‑Efficient Design",
+        title: "Sustainable & Energy-Efficient Design",
         icon: "/stars.svg",
-        description: "High‑performance envelopes, smart HVAC planning, and durable materials reduce operating costs and improve comfort year‑round.",
+        description: "High-performance envelopes, smart HVAC planning, and durable materials reduce operating costs and improve comfort year-round.",
       },
       {
         title: "Material Selection & Sourcing",
@@ -100,7 +100,7 @@ export const servicesData: ServiceData[] = [
       {
         step: "Phase 1",
         title: "Vision & Site Assessment",
-        description: "We define goals, priorities, and must‑haves, then evaluate the site to confirm what is practical within zoning, budget, and timeline.",
+        description: "We define goals, priorities, and must-haves, then evaluate the site to confirm what is practical within zoning, budget, and timeline.",
       },
       {
         step: "Phase 2",
@@ -109,13 +109,13 @@ export const servicesData: ServiceData[] = [
       },
       {
         step: "Phase 3",
-        title: "Pre‑Construction & Material Sourcing",
-        description: "We finalize specifications, confirm allowances, order long‑lead items, and lock in a schedule so construction can run smoothly.",
+        title: "Pre-Construction & Material Sourcing",
+        description: "We finalize specifications, confirm allowances, order long-lead items, and lock in a schedule so construction can run smoothly.",
       },
       {
         step: "Phase 4",
         title: "Construction & Quality Assurance",
-        description: "We build with disciplined site management, inspections, and milestone check‑ins, keeping you updated and ensuring workmanship meets expectations.",
+        description: "We build with disciplined site management, inspections, and milestone check-ins, keeping you updated and ensuring workmanship meets expectations.",
       },
     ],
     portfolio: [
@@ -147,19 +147,19 @@ export const servicesData: ServiceData[] = [
     faqs: [
       {
         question: "How long does a custom home take in the GTA?",
-        answer: "Most projects run several months to over a year depending on complexity, permitting, and material lead times. The best way to shorten the timeline is strong early planning and ordering long‑lead items before construction starts.",
+        answer: "Most projects run several months to over a year depending on complexity, permitting, and material lead times. The best way to shorten the timeline is strong early planning and ordering long-lead items before construction starts.",
       },
       {
         question: "Can you help with design, engineering, and permits?",
-        answer: "Yes. We coordinate design, required consultants, and permitting as part of a design‑build workflow so the drawings, budget, and construction plan stay aligned.",
+        answer: "Yes. We coordinate design, required consultants, and permitting as part of a design-build workflow so the drawings, budget, and construction plan stay aligned.",
       },
       {
         question: "How do changes affect pricing?",
         answer: "Changes are priced and documented before proceeding. You see the cost and schedule impact up front, not after the fact.",
       },
       {
-        question: "Do you build energy‑efficient homes?",
-        answer: "Yes. We can incorporate higher‑performance insulation, air sealing, efficient HVAC, and smart material choices based on your goals and budget.",
+        question: "Do you build energy-efficient homes?",
+        answer: "Yes. We can incorporate higher-performance insulation, air sealing, efficient HVAC, and smart material choices based on your goals and budget.",
       },
     ],
     bgImage: "/images/backgrounds/bg-2.jpg",
@@ -195,7 +195,7 @@ export const servicesData: ServiceData[] = [
       {
         title: "Structural & Layout Changes",
         image: "/images/services/structural-changes.jpg",
-        description: "Modifying floor plans, removing walls, or adding structural elemeglobe.svgtimize space and flow.",
+        description: "Modifying floor plans, removing walls, or adding structural elements to optimize space and flow.",
       },
     ],
     considerations: [
@@ -224,7 +224,7 @@ export const servicesData: ServiceData[] = [
       {
         step: "Step 1",
         title: "Consultation & Goals",
-        description: "We walk through the space, identify pain points, and set clear priorities and constraints (budget, timeline, and must‑haves).",
+        description: "We walk through the space, identify pain points, and set clear priorities and constraints (budget, timeline, and must-haves).",
       },
       {
         step: "Step 2",
@@ -234,11 +234,11 @@ export const servicesData: ServiceData[] = [
       {
         step: "Step 3",
         title: "Build Preparation",
-        description: "We handle permits (when needed), finalize materials, and schedule trades. This is where we prevent mid‑project surprises.",
+        description: "We handle permits (when needed), finalize materials, and schedule trades. This is where we prevent mid-project surprises.",
       },
       {
         step: "Step 4",
-        title: "Construction & Close‑Out",
+        title: "Construction & Close-Out",
         description: "We execute the work with site supervision and quality checks, then complete deficiencies and a final walkthrough before handover.",
       },
     ],
@@ -283,7 +283,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         question: "How do you keep projects on schedule?",
-        answer: "By locking in scope, ordering materials early, sequencing trades properly, and avoiding mid‑stream design changes that force rework.",
+        answer: "By locking in scope, ordering materials early, sequencing trades properly, and avoiding mid-stream design changes that force rework.",
       },
     ],
     bgImage: "/images/backgrounds/bg-3.jpg",
@@ -293,7 +293,7 @@ export const servicesData: ServiceData[] = [
     title: "Home Additions",
     subtitle: "Expand your living space and enhance your home's value with seamless additions.",
     heroImage: "/images/services/home-addition-title.jpg",
-    introText: "A well‑designed addition should feel like it was always part of the house. We plan structure, rooflines, mechanicals, and exterior finishes so the new space integrates cleanly, performs well, and supports long‑term value.",
+    introText: "A well-designed addition should feel like it was always part of the house. We plan structure, rooflines, mechanicals, and exterior finishes so the new space integrates cleanly, performs well, and supports long-term value.",
     whyChooseUs: {
       image: "/images/services/home-additions.jpg",
       title: "Why Choose Us for Your Home Addition?",
@@ -326,7 +326,7 @@ export const servicesData: ServiceData[] = [
       {
         title: "Structural Integration",
         icon: "/stars.svg",
-        description: "Additions often require new foundations, beams, or tie‑ins to existing framing. We engineer the connection so loads transfer correctly and cracking is minimized.",
+        description: "Additions often require new foundations, beams, or tie-ins to existing framing. We engineer the connection so loads transfer correctly and cracking is minimized.",
       },
       {
         title: "Zoning, Setbacks, and Permits",
@@ -358,7 +358,7 @@ export const servicesData: ServiceData[] = [
       {
         step: "Step 3",
         title: "Site Prep & Structural Work",
-        description: "We prepare the site, build foundations and framing, and complete tie‑ins to the existing home with careful weatherproofing.",
+        description: "We prepare the site, build foundations and framing, and complete tie-ins to the existing home with careful weatherproofing.",
       },
       {
         step: "Step 4",
@@ -395,7 +395,7 @@ export const servicesData: ServiceData[] = [
     faqs: [
       {
         question: "Will a home addition increase resale value?",
-        answer: "Usually, yes-if the addition is well integrated, legally permitted, and adds high‑demand space (bedrooms, bathrooms, or a larger main floor). The best ROI comes from additions that improve layout and usability, not just square footage.",
+        answer: "Usually, yes-if the addition is well integrated, legally permitted, and adds high-demand space (bedrooms, bathrooms, or a larger main floor). The best ROI comes from additions that improve layout and usability, not just square footage.",
       },
       {
         question: "Can you match my existing exterior?",
@@ -403,7 +403,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         question: "How long does an addition typically take?",
-        answer: "It depends on size and complexity, but additions are multi‑month projects. Permitting and long‑lead materials can be as impactful as the construction itself.",
+        answer: "It depends on size and complexity, but additions are multi-month projects. Permitting and long-lead materials can be as impactful as the construction itself.",
       },
       {
         question: "Do you handle permits and inspections?",
@@ -455,12 +455,12 @@ export const servicesData: ServiceData[] = [
       {
         title: "Cabinetry, Storage & Function",
         icon: "/stars.svg",
-        description: "Smart storage (pantries, pull‑outs, corner solutions) often matters more than extra square footage. We design cabinetry around your habits.",
+        description: "Smart storage (pantries, pull-outs, corner solutions) often matters more than extra square footage. We design cabinetry around your habits.",
       },
       {
         title: "Electrical, Plumbing & Ventilation",
         icon: "/stars.svg",
-        description: "Lighting plans, outlet placement, and proper exhaust ventilation are non‑negotiable for a kitchen that feels good and stays clean.",
+        description: "Lighting plans, outlet placement, and proper exhaust ventilation are non-negotiable for a kitchen that feels good and stays clean.",
       },
       {
         title: "Appliance Integration & Lead Times",
@@ -472,7 +472,7 @@ export const servicesData: ServiceData[] = [
       {
         step: "Step 1",
         title: "Needs Assessment & Measurements",
-        description: "We review your current kitchen’s pain points, take detailed measurements, and define priorities (storage, seating, appliances, and style).",
+        description: "We review your current kitchen's pain points, take detailed measurements, and define priorities (storage, seating, appliances, and style).",
       },
       {
         step: "Step 2",
@@ -482,12 +482,12 @@ export const servicesData: ServiceData[] = [
       {
         step: "Step 3",
         title: "Permits, Ordering & Scheduling",
-        description: "Where required, we handle permits and coordinate ordering of cabinets, counters, fixtures, and long‑lead appliances before demolition starts.",
+        description: "Where required, we handle permits and coordinate ordering of cabinets, counters, fixtures, and long-lead appliances before demolition starts.",
       },
       {
         step: "Step 4",
         title: "Build, Install & Final Walkthrough",
-        description: "We execute demolition, rough‑ins, cabinetry, counters, and finishes with quality checks throughout, ending with a final deficiency pass.",
+        description: "We execute demolition, rough-ins, cabinetry, counters, and finishes with quality checks throughout, ending with a final deficiency pass.",
       },
     ],
     portfolio: [
@@ -522,12 +522,12 @@ export const servicesData: ServiceData[] = [
         answer: "A standard renovation is typically several weeks, but timelines depend heavily on cabinet/counter lead times and any structural or plumbing changes.",
       },
       {
-        question: "Can you do an open‑concept kitchen?",
-        answer: "Yes-when it makes sense. We confirm structure and mechanical routing first; otherwise, open‑concept becomes an expensive surprise instead of an upgrade.",
+        question: "Can you do an open-concept kitchen?",
+        answer: "Yes-when it makes sense. We confirm structure and mechanical routing first; otherwise, open-concept becomes an expensive surprise instead of an upgrade.",
       },
       {
         question: "Do I need to move out during a kitchen reno?",
-        answer: "Not always, but plan for limited cooking. Many clients set up a temporary kitchenette for the duration of demolition and rough‑ins.",
+        answer: "Not always, but plan for limited cooking. Many clients set up a temporary kitchenette for the duration of demolition and rough-ins.",
       },
       {
         question: "How do you prevent budget blowouts?",
@@ -579,7 +579,7 @@ export const servicesData: ServiceData[] = [
       {
         title: "Ventilation & Moisture Control",
         icon: "/stars.svg",
-        description: "Proper exhaust sizing, ducting, and make‑up air planning reduce humidity, protect finishes, and keep the room comfortable.",
+        description: "Proper exhaust sizing, ducting, and make-up air planning reduce humidity, protect finishes, and keep the room comfortable.",
       },
       {
         title: "Fixtures, Finishes & Durability",
@@ -605,12 +605,12 @@ export const servicesData: ServiceData[] = [
       },
       {
         step: "Step 3",
-        title: "Demolition, Rough‑Ins & Waterproofing",
+        title: "Demolition, Rough-Ins & Waterproofing",
         description: "We complete demolition, update plumbing/electrical as needed, then execute waterproofing before any finishes go in.",
       },
       {
         step: "Step 4",
-        title: "Finishes, Fixtures & Close‑Out",
+        title: "Finishes, Fixtures & Close-Out",
         description: "We install tile, vanities, fixtures, and accessories, then complete final testing and a walkthrough.",
       },
     ],
@@ -708,7 +708,7 @@ export const servicesData: ServiceData[] = [
       {
         title: "Power, Data & Connectivity",
         icon: "/stars.svg",
-        description: "Enough outlets in the right places, tidy cable routing, and reliable networking are the difference between “fine” and frictionless.",
+        description: "Enough outlets in the right places, tidy cable routing, and reliable networking are the difference between 'fine' and frictionless.",
       },
       {
         title: "Acoustics, Privacy & Background",
@@ -724,7 +724,7 @@ export const servicesData: ServiceData[] = [
       },
       {
         step: "Step 2",
-        title: "Design & Built‑In Planning",
+        title: "Design & Built-In Planning",
         description: "We propose layouts, built-ins, and finishes, then confirm a scope and budget that fits the level of upgrade you want.",
       },
       {
@@ -785,3 +785,4 @@ export const servicesData: ServiceData[] = [
     bgImage: "/images/backgrounds/bg-2.jpg",
   }
 ];
+

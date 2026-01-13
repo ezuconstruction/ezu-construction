@@ -1,14 +1,23 @@
 import Link from "next/link";
+import OptimizedImage from "./OptimizedImage";
 
 const Footer = () => {
   return (
     <footer className="footer sm:footer-horizontal bg-black/80 text-white/90 p-10 pb-15 ring-1 ring-white/10 backdrop-blur-sm">
       <aside>
-        <img src="/EZU-Red-White.png" className="w-15" alt="EZU Logo"></img>
+        <OptimizedImage
+          src="/EZU-Red-White.png"
+          alt="EZU Construction logo"
+          width={64}
+          height={64}
+          sizes="64px"
+          className="w-16 h-16"
+          priority
+        />
         <p className="text-white/70">
-          © EZU Construction Inc.
+          (c) EZU Construction Inc.
           <br />
-          All rights reserved. Proudly Canadian 🍁
+          All rights reserved. Proudly Canadian.
         </p>
       </aside>
       <nav>
@@ -76,10 +85,16 @@ const Footer = () => {
           </Link>
         </div>
         <div className="grid grid-flow-col gap-4 pt-3">
-          <Link className="hover:text-white text-white/70 font-semibold transition" href="/privacy">
+          <Link
+            className="hover:text-white text-white/70 font-semibold transition"
+            href="/privacy"
+          >
             Privacy Policy
           </Link>
-          <Link className="hover:text-white text-white/70 font-semibold transition" href="/tos">
+          <Link
+            className="hover:text-white text-white/70 font-semibold transition"
+            href="/tos"
+          >
             Terms of Service
           </Link>
           <Link
@@ -99,4 +114,5 @@ const Footer = () => {
     </footer>
   );
 };
+
 export default Footer;

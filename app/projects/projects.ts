@@ -36,7 +36,7 @@ export const projectsData: ProjectData[] = [
     gallery: [
       "/images/services/kitchen-renovations.jpg",
       "/images/services/kitchen-remodel.png",
-      "/images/open-concept-kitchen.jpg"
+      "/images/services/open-concept-kitchen.jpg"
     ],
     details: [
       { label: "Project Type", value: "Full Kitchen Renovation" },

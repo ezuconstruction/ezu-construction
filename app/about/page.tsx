@@ -5,19 +5,37 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About EZU Construction - Toronto's Custom Home Builders",
-  description: "Learn about EZU Construction's history, team, and commitment to excellence in custom home building and renovations across Toronto and the Greater Toronto Area.",
+  description:
+    "Learn about EZU Construction's history, team, and commitment to excellence in custom home building and renovations across Toronto and the Greater Toronto Area.",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
     title: "About EZU Construction",
-    description: "Meet Toronto's trusted custom home builders and renovation specialists. Learn about our story and commitment to quality craftsmanship.",
+    description:
+      "Meet Toronto's trusted custom home builders and renovation specialists. Learn about our story and commitment to quality craftsmanship.",
     url: "https://ezuconstruction.com/about",
+    images: [
+      {
+        url: "/images/backgrounds/social-media.avif",
+        width: 1200,
+        height: 630,
+        alt: "About EZU Construction",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About EZU Construction",
+    description:
+      "Meet Toronto's trusted custom home builders and renovation specialists. Learn about our story and commitment to quality craftsmanship.",
+    images: ["/images/backgrounds/social-media.avif"],
   },
 };
 
 const AboutPage = () => {
   return (
     <>
-      
-      {/* Hero Section */}
       <div
         className="relative hero bg-base-100 h-[70vh] bg-cover bg-center flex items-end"
         style={{
@@ -32,7 +50,7 @@ const AboutPage = () => {
             About EZU Construction
           </h1>
           <p className="text-lg font-light pt-2 pl-1 text-white/90 drop-shadow">
-            Documenting our history, and our future.
+            Documenting our history and our future.
           </p>
         </div>
       </div>
@@ -51,12 +69,13 @@ const AboutPage = () => {
                 Construction
               </span>
             </h2>
-            <p>Please check back later</p>
+            <p className="text-white/70 text-center">
+              Please check back later for our full story and company history.
+            </p>
           </div>
         </div>
 
         <div className="relative max-w-7xl mx-auto py-10">
-          {/* Social Media Links */}
           <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm p-8 mb-10">
             <h2 className="text-4xl font-bold text-center mb-8 text-white/90 tracking-tight">
               Follow Us on{" "}
@@ -71,7 +90,9 @@ const AboutPage = () => {
                 rel="noopener noreferrer"
                 className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-all duration-300 p-6 text-center group"
               >
-                <div className="text-5xl mb-4">📷</div>
+                <div className="text-4xl font-semibold text-white/80 mb-4">
+                  IG
+                </div>
                 <h3 className="text-2xl font-bold text-white/90 group-hover:text-red-500 transition-colors">
                   Instagram
                 </h3>
@@ -83,7 +104,9 @@ const AboutPage = () => {
                 rel="noopener noreferrer"
                 className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-all duration-300 p-6 text-center group"
               >
-                <div className="text-5xl mb-4">👥</div>
+                <div className="text-4xl font-semibold text-white/80 mb-4">
+                  FB
+                </div>
                 <h3 className="text-2xl font-bold text-white/90 group-hover:text-red-500 transition-colors">
                   Facebook
                 </h3>
@@ -95,7 +118,9 @@ const AboutPage = () => {
                 rel="noopener noreferrer"
                 className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-all duration-300 p-6 text-center group"
               >
-                <div className="text-5xl mb-4">💼</div>
+                <div className="text-4xl font-semibold text-white/80 mb-4">
+                  IN
+                </div>
                 <h3 className="text-2xl font-bold text-white/90 group-hover:text-red-500 transition-colors">
                   LinkedIn
                 </h3>
@@ -107,7 +132,9 @@ const AboutPage = () => {
                 rel="noopener noreferrer"
                 className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-all duration-300 p-6 text-center group"
               >
-                <div className="text-5xl mb-4">▶️</div>
+                <div className="text-4xl font-semibold text-white/80 mb-4">
+                  YT
+                </div>
                 <h3 className="text-2xl font-bold text-white/90 group-hover:text-red-500 transition-colors">
                   YouTube
                 </h3>

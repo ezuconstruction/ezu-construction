@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import EnhancedNavbar from "./components/EnhancedNavbar";
+import Navbar from "./components/Navbar";
 import ContactFab from "./components/ContactFab";
 import "./globals.css";
 
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "EZU Construction",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/backgrounds/splash-page-background.jpg",
         width: 1200,
         height: 630,
         alt: "EZU Construction - Custom Homes and Renovations",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "EZU Construction - Custom Homes & Renovations in Toronto",
     description: "Award-winning custom home builders and renovation specialists in Toronto. Transform your dream home into reality.",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/backgrounds/splash-page-background.jpg"],
   },
   robots: {
     index: true,
@@ -92,15 +92,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-CA">
-      <head>
-        <link rel="canonical" href="https://ezuconstruction.com" />
-        <link rel="alternate" hrefLang="en" href="https://ezuconstruction.com" />
-        <link rel="alternate" hrefLang="en-ca" href="https://ezuconstruction.com" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <EnhancedNavbar />
+        <Navbar />
         {children}
         <ContactFab />
         <Analytics />

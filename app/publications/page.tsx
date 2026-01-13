@@ -1,24 +1,47 @@
 import Link from "next/link";
 import Footer from "../components/Footer";
 import CallToAction from "../components/CallToAction";
+import OptimizedImage from "../components/OptimizedImage";
 import { publicationsData } from "./publications";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Publications - Home Construction & Renovation Insights",
-  description: "Read expert articles, guides, and trends from EZU Construction about custom home building, renovations, kitchen remodeling, and construction best practices in Toronto.",
+  description:
+    "Read expert articles, guides, and trends from EZU Construction about custom home building, renovations, kitchen remodeling, and construction best practices in Toronto.",
+  alternates: {
+    canonical: "/publications",
+  },
   openGraph: {
     title: "Publications - EZU Construction Insights",
-    description: "Expert insights and guides on home construction, renovation, and remodeling from Toronto's trusted custom home builders.",
+    description:
+      "Expert insights and guides on home construction, renovation, and remodeling from Toronto's trusted custom home builders.",
     url: "https://ezuconstruction.com/publications",
+    images: [
+      {
+        url: "/images/backgrounds/publications-background.jpg",
+        width: 1200,
+        height: 630,
+        alt: "EZU Construction publications",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Publications - EZU Construction Insights",
+    description:
+      "Expert insights and guides on home construction, renovation, and remodeling from Toronto's trusted custom home builders.",
+    images: ["/images/backgrounds/publications-background.jpg"],
   },
 };
 
 const PublicationsPage = () => {
+  const sortedArticles = [...publicationsData].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
   return (
     <>
-      
-      {/* Hero Section */}
       <div
         className="relative hero bg-base-100 h-[60vh] bg-cover bg-center flex items-end"
         style={{
@@ -34,8 +57,8 @@ const PublicationsPage = () => {
             Publications
           </h1>
           <p className="text-lg font-light pt-2 pl-1 text-white/90 drop-shadow">
-            Expert insights, guides, and trends in home construction,
-            renovation, and more.
+            Expert insights, guides, and trends in home construction, renovation,
+            and more.
           </p>
         </div>
       </div>
@@ -56,17 +79,19 @@ const PublicationsPage = () => {
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {publicationsData.map((article) => (
+            {sortedArticles.map((article) => (
               <Link
                 key={article.slug}
                 href={`/publications/${article.slug}`}
                 className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-all duration-300 overflow-hidden group"
               >
-                <figure className="relative overflow-hidden">
-                  <img
+                <figure className="relative overflow-hidden h-48">
+                  <OptimizedImage
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300 rounded-t-2xl"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-300 rounded-t-2xl"
                   />
                   <div className="absolute top-4 left-4">
                     <div className="badge bg-black/60 text-white/90 badge-lg rounded-lg">
@@ -77,7 +102,7 @@ const PublicationsPage = () => {
                 <div className="card-body">
                   <div className="flex items-center gap-2 text-sm text-white/55 mb-2">
                     <span>{article.date}</span>
-                    <span>•</span>
+                    <span>|</span>
                     <span>{article.readTime}</span>
                   </div>
                   <h3 className="card-title text-xl text-white/90 group-hover:text-red-500 transition-colors line-clamp-2">
@@ -88,7 +113,7 @@ const PublicationsPage = () => {
                   </p>
                   <div className="card-actions justify-end mt-4">
                     <button className="btn bg-white/90 text-black group-hover:bg-red-500/60 group-hover:text-white btn-sm">
-                      Read More →
+                      Read More -&gt;
                     </button>
                   </div>
                 </div>

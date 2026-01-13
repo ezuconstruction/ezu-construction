@@ -1,6 +1,37 @@
 import Footer from "../components/Footer";
 import CallToAction from "../components/CallToAction";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Social Media - EZU Construction",
+  description:
+    "Follow EZU Construction on social media for project updates, renovation tips, and behind-the-scenes content.",
+  alternates: {
+    canonical: "/social-media",
+  },
+  openGraph: {
+    title: "EZU Construction Social Media",
+    description:
+      "Follow EZU Construction on social media for project updates, renovation tips, and behind-the-scenes content.",
+    url: "https://ezuconstruction.com/social-media",
+    images: [
+      {
+        url: "/images/backgrounds/social-media.avif",
+        width: 1200,
+        height: 630,
+        alt: "EZU Construction social media",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EZU Construction Social Media",
+    description:
+      "Follow EZU Construction on social media for project updates, renovation tips, and behind-the-scenes content.",
+    images: ["/images/backgrounds/social-media.avif"],
+  },
+};
 
 const SocialMediaPage = () => {
   return (

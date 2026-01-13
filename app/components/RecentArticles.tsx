@@ -1,15 +1,22 @@
 import Link from "next/link";
 import { publicationsData } from "../publications/publications";
+import OptimizedImage from "./OptimizedImage";
 
 const RecentArticles = () => {
-  // Get the 3 most recent articles
-  const recentArticles = publicationsData.slice(0, 3);
+  const recentArticles = [...publicationsData]
+    .sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    )
+    .slice(0, 3);
 
   return (
-    <section className="relative py-16 px-4 bg-cover bg-center" style={{ backgroundImage: "url(/images/backgrounds/publications-background-dark.jpg)" }}>
+    <section
+      className="relative py-16 px-4 bg-cover bg-center"
+      style={{ backgroundImage: "url(/images/backgrounds/publications-background-dark.jpg)" }}
+    >
       <div className="absolute inset-0 bg-black/55"></div>
       <div className="absolute inset-0 backdrop-blur-[2px]"></div>
-      
+
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white/90 tracking-tight mb-4">
@@ -19,22 +26,25 @@ const RecentArticles = () => {
             </span>
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            Expert tips, trends, and guides to help you make informed decisions about your home renovation projects
+            Expert tips, trends, and guides to help you make informed decisions
+            about your home renovation projects.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {recentArticles.map((article, index) => (
+          {recentArticles.map((article) => (
             <Link
               key={article.slug}
               href={`/publications/${article.slug}`}
               className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-all duration-300 overflow-hidden group"
             >
-              <figure className="relative overflow-hidden">
-                <img
+              <figure className="relative overflow-hidden h-48">
+                <OptimizedImage
                   src={article.image}
                   alt={article.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300 rounded-t-2xl"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
                   <div className="badge bg-black/60 text-white/90 badge-lg rounded-lg">
@@ -45,7 +55,7 @@ const RecentArticles = () => {
               <div className="card-body">
                 <div className="flex items-center gap-2 text-sm text-white/55 mb-2">
                   <span>{article.date}</span>
-                  <span>•</span>
+                  <span>|</span>
                   <span>{article.readTime}</span>
                 </div>
                 <h3 className="card-title text-xl text-white/90 group-hover:text-red-500 transition-colors line-clamp-2">
@@ -56,7 +66,7 @@ const RecentArticles = () => {
                 </p>
                 <div className="card-actions justify-end mt-4">
                   <button className="btn bg-white/90 text-black group-hover:bg-red-500/60 group-hover:text-white btn-sm">
-                    Read More →
+                    Read More -&gt;
                   </button>
                 </div>
               </div>

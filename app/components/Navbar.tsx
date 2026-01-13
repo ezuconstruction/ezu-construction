@@ -1,29 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import OptimizedImage from "./OptimizedImage";
 
-const EnhancedNavbar = () => {
+const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Hide navbar when scrolling down, show when scrolling up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
-      
-      setLastScrollY(currentScrollY);
+
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <div
@@ -46,13 +46,12 @@ const EnhancedNavbar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
@@ -209,8 +208,16 @@ const EnhancedNavbar = () => {
           href="/"
         >
           <span>
-            <img src="/EZU-Red-White.png" alt="EZU Logo" className="w-8 mr-1" />
-          </span>{" "}
+            <OptimizedImage
+              src="/EZU-Red-White.png"
+              alt="EZU Construction logo"
+              width={32}
+              height={32}
+              sizes="32px"
+              className="w-8 h-8 mr-1"
+              priority
+            />
+          </span>
           <span className="invisible sm:visible">EZU Construction</span>
         </Link>
       </div>
@@ -430,4 +437,4 @@ const EnhancedNavbar = () => {
   );
 };
 
-export default EnhancedNavbar;
+export default Navbar;

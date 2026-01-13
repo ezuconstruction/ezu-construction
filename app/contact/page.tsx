@@ -4,10 +4,27 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact EZU Construction - Get a Free Quote",
   description: "Contact EZU Construction for your custom home building or renovation project in Toronto. Call (647) 766-9999 or email info@ezuconstruction.com for a free consultation.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     title: "Contact EZU Construction",
     description: "Get in touch with Toronto's expert custom home builders and renovation specialists. Free consultations available.",
     url: "https://ezuconstruction.com/contact",
+    images: [
+      {
+        url: "/images/backgrounds/nice-bg.avif",
+        width: 1200,
+        height: 630,
+        alt: "Contact EZU Construction",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact EZU Construction",
+    description: "Get in touch with Toronto's expert custom home builders and renovation specialists. Free consultations available.",
+    images: ["/images/backgrounds/nice-bg.avif"],
   },
 };
 
@@ -46,7 +63,7 @@ const page = () => {
                   <div>
                     <p className="text-white/70 text-lg mb-2">Email</p>
                     <a
-                      href="mailto:shoufeix@gmail.com"
+                      href="mailto:info@ezuconstruction.com"
                       className="text-white/90 text-xl font-semibold hover:text-white underline underline-offset-4 decoration-white/20 hover:decoration-white/50 transition"
                     >
                       info@ezuconstruction.com

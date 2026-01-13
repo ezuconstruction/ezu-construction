@@ -1,5 +1,6 @@
 import Footer from "@/app/components/Footer";
 import CallToAction from "@/app/components/CallToAction";
+import OptimizedImage from "@/app/components/OptimizedImage";
 import Link from "next/link";
 import { servicesData } from "../services";
 import { notFound } from "next/navigation";
@@ -10,10 +11,14 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const service = servicesData.find((s) => s.slug === slug);
-  
+
   if (!service) {
     return {
       title: "Service Not Found",
@@ -23,10 +28,35 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${service.title} | EZU Construction`,
     description: service.subtitle,
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
+    openGraph: {
+      title: `${service.title} | EZU Construction`,
+      description: service.subtitle,
+      images: [
+        {
+          url: service.heroImage,
+          width: 1200,
+          height: 630,
+          alt: service.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.title} | EZU Construction`,
+      description: service.subtitle,
+      images: [service.heroImage],
+    },
   };
 }
 
-const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const ServicePage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
   const { slug } = await params;
   const service = servicesData.find((s) => s.slug === slug);
 
@@ -36,7 +66,6 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
 
   return (
     <div>
-      {/* Hero Section */}
       <div
         className="relative hero bg-base-100 h-[80vh] bg-cover bg-center flex items-end"
         style={{ backgroundImage: `url(${service.heroImage})` }}
@@ -62,18 +91,19 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
         <div className="absolute inset-0 backdrop-blur-[2px]"></div>
 
         <div className="relative">
-          {/* Intro Paragraph */}
           <p className="pb-10 text-lg max-w-6xl mx-auto text-center animate-fade-in my-3 text-white/90">
             {service.introText}
           </p>
 
-          {/* Why Choose Us */}
           <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in py-10 mb-10 mx-0 px-5 flex flex-col md:flex-row justify-center items-center gap-10">
-            <div>
-              <img
+            <div className="relative max-w-sm w-full">
+              <OptimizedImage
                 src={service.whyChooseUs.image}
                 alt={service.whyChooseUs.title}
-                className="max-w-sm w-full rounded-2xl shadow-xl"
+                width={800}
+                height={600}
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="w-full rounded-2xl shadow-xl object-cover"
               />
             </div>
             <div>
@@ -81,9 +111,9 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
                 {service.whyChooseUs.title}
               </h2>
               <ul className="grid gap-3 text-left text-lg animate-fade-in font-semibold text-white/70">
-                {service.whyChooseUs.points.map((point, key) => (
-                  <li key={key} className="flex items-start gap-2">
-                    <span className="text-red-500">•</span>
+                {service.whyChooseUs.points.map((point) => (
+                  <li key={point} className="flex items-start gap-2">
+                    <span className="text-red-500">-</span>
                     <span>{point}</span>
                   </li>
                 ))}
@@ -91,7 +121,6 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
             </div>
           </div>
 
-          {/* Types Section */}
           <div className="py-5 md:pb-10 md:pt-10 animate-fade-in">
             <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in p-5 md:p-10">
               <h2 className="text-4xl font-bold text-center mb-10 text-white/90 tracking-tight">
@@ -101,16 +130,18 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
                 </span>
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {service.types.map((item, key) => (
+                {service.types.map((item) => (
                   <div
                     className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in hover:scale-105 transition-all duration-300 pt-5"
-                    key={key}
+                    key={item.title}
                   >
-                    <figure>
-                      <img
+                    <figure className="relative h-60">
+                      <OptimizedImage
                         src={item.image}
                         alt={item.title}
-                        className="w-100 h-60 object-cover rounded-t-2xl"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover rounded-t-2xl"
                       />
                     </figure>
                     <div className="card-body">
@@ -127,7 +158,6 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
             </div>
           </div>
 
-          {/* Considerations Section */}
           <div className="py-5 md:pb-10 md:pt-10 animate-fade-in mb-10">
             <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in p-5 md:p-10">
               <h2 className="text-4xl font-bold text-center mb-10 text-white/90 tracking-tight">
@@ -137,11 +167,14 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
                 </span>
               </h2>
               <div className="grid md:grid-cols-2 gap-8 text-lg font-semibold">
-                {service.considerations.map((item, key) => (
-                  <div className="flex items-start gap-3" key={key}>
-                    <img
+                {service.considerations.map((item) => (
+                  <div className="flex items-start gap-3" key={item.title}>
+                    <OptimizedImage
                       src={item.icon}
-                      alt="icon"
+                      alt=""
+                      width={32}
+                      height={32}
+                      sizes="32px"
                       className="w-8 h-8 flex-shrink-0 mt-1 invert opacity-70"
                     />
                     <div>
@@ -158,7 +191,6 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
             </div>
           </div>
 
-          {/* Process Timeline */}
           <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in py-10 px-2 lg:px-50 pb-5 mx-0">
             <h2 className="text-4xl font-bold mb-4 text-white/90 text-center pb-2 tracking-tight">
               Our {service.title}{" "}
@@ -168,7 +200,7 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
             </h2>
             <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
               {service.process.map((step, index) => (
-                <li key={index}>
+                <li key={step.title}>
                   {index > 0 && <hr className="border-white/20" />}
                   <div className="timeline-middle">
                     <svg
@@ -205,7 +237,6 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
             </ul>
           </div>
 
-          {/* Recent Projects */}
           <div className="py-5 md:pb-10 md:pt-20 animate-fade-in mb-5">
             <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in p-5 md:p-10">
               <h2 className="text-4xl font-bold text-center mb-10 text-white/90 tracking-tight">
@@ -215,16 +246,18 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
                 </span>
               </h2>
               <div className="grid md:grid-cols-3 gap-8">
-                {service.portfolio.map((item, key) => (
+                {service.portfolio.map((item) => (
                   <div
                     className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in hover:scale-105 transition-all duration-300 pt-5 group"
-                    key={key}
+                    key={item.title}
                   >
-                    <figure>
-                      <img
+                    <figure className="relative h-80">
+                      <OptimizedImage
                         src={item.image}
                         alt={item.alt}
-                        className="w-100 h-80 object-cover rounded-t-2xl"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover rounded-t-2xl"
                       />
                     </figure>
                     <div className="card-body">
@@ -247,7 +280,6 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
             </div>
           </div>
 
-          {/* FAQ Section */}
           <div className="py-5 md:pb-20 animate-fade-in">
             <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in p-5 md:p-10">
               <h2 className="text-4xl font-bold text-center mb-10 text-white/90 tracking-tight">
@@ -257,10 +289,10 @@ const ServicePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
                 </span>
               </h2>
               <div className="mb-10" id="qna">
-                {service.faqs.map((item, key) => (
+                {service.faqs.map((item) => (
                   <div
                     className="collapse collapse-arrow bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm animate-fade-in mb-2 py-1"
-                    key={key}
+                    key={item.question}
                   >
                     <input type="checkbox" name="my-accordion-2" />
                     <div className="collapse-title font-semibold text-2xl text-white/90">

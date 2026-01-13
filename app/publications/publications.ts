@@ -29,7 +29,7 @@ export const publicationsData: PublicationData[] = [
   date: "2026-01-02",
   category: "Drywall",
   image: "/images/articles/drywall-installation-residential.jpg",
-  readTime: "5 min read",
+  readTime: "7 min read",
   tags: ["Drywall", "Drywall Repair", "Interior Renovation", "Construction"],
   content: [
     {
@@ -78,8 +78,19 @@ export const publicationsData: PublicationData[] = [
       type: "quote",
       text: "Paint doesn't hide bad drywall: it makes it obvious.",
       author: "Experienced Finishing Contractor"
-    }
-  ]
+    },
+    { type: "heading", text: "Signs of Hidden Damage", level: 2 },
+    { type: "paragraph", text: "Soft spots, staining, or a musty odor usually indicate moisture behind the wall. These areas often require replacement so you can address the source and inspect framing." },
+    { type: "heading", text: "Prep and Finish Quality Matter", level: 2 },
+    { type: "paragraph", text: "A strong repair depends on proper fastening, flat seams, and feathered compound. Poor prep leads to visible ridges once lighting and paint highlight the wall." },
+    { type: "heading", text: "Replacement Scope Planning", level: 2 },
+    { type: "list", items: [
+      "Replace full sheets when damage crosses studs or spans multiple bays",
+      "Upgrade insulation or vapor barriers while walls are open",
+      "Match new drywall thickness and type to existing walls",
+      "Plan for retexturing and full wall repainting for uniform finish",
+    ] },
+    { type: "paragraph", text: "Ready to plan your renovation? Book a consultation with EZU Construction to get a detailed scope, timeline, and budget you can trust." }]
 },
 
   {
@@ -166,7 +177,7 @@ export const publicationsData: PublicationData[] = [
   date: "2026-01-01",
   category: "Flooring",
   image: "/images/articles/flooring-installation-hardwood-vinyl-laminate.webp",
-  readTime: "5 min read",
+  readTime: "7 min read",
   tags: ["Flooring", "Hardwood", "Vinyl Flooring", "Laminate", "Home Renovation"],
   content: [
     {
@@ -215,15 +226,25 @@ export const publicationsData: PublicationData[] = [
       items: [
         "Hardwood: Long lifespan, repairable, moisture-sensitive",
         "Vinyl: Waterproof, stable, ideal for basements",
-        "Laminate: Affordable, limited durability in wet areas"
+        "Laminate: Affordable, limited durability in wet areas",
       ]
     },
     {
       type: "quote",
       text: "Flooring fails when climate and usage are ignored.",
       author: "EZU Construction"
-    }
-  ]
+    },
+    { type: "heading", text: "Installation Matters More Than Brand", level: 2 },
+    { type: "paragraph", text: "Even premium flooring fails when subfloors are uneven or moisture is ignored. A flat, dry subfloor and correct expansion gaps are the biggest predictors of long-term performance." },
+    { type: "heading", text: "Best Rooms by Material", level: 2 },
+    { type: "list", items: [
+      "Hardwood: living rooms, dining rooms, and main floors with stable humidity",
+      "Vinyl: basements, entryways, and high-traffic family zones",
+      "Laminate: low-moisture spaces where budget matters most",
+    ] },
+    { type: "heading", text: "Maintenance and Lifecycle Costs", level: 2 },
+    { type: "paragraph", text: "Hardwood can be refinished multiple times, which offsets the higher initial price. Vinyl is easy to maintain but typically replaced instead of repaired. Laminate is affordable upfront but offers limited repair options." },
+    { type: "paragraph", text: "Ready to plan your renovation? Book a consultation with EZU Construction to get a detailed scope, timeline, and budget you can trust." }]
 },
 
   {
@@ -258,11 +279,11 @@ export const publicationsData: PublicationData[] = [
     {
       type: "list",
       items: [
-        "Labour (35–45%): Skilled trades, supervision, sequencing, and rework prevention",
-        "Materials (25–35%): Flooring, drywall, cabinetry, finishes",
-        "Permits & inspections (5–10%): Municipal approvals and compliance",
-        "Design & engineering (5–10%): Drawings, structural calculations",
-        "Contingency (10–15%): Hidden conditions uncovered during demolition"
+        "Labour (35-45%): Skilled trades, supervision, sequencing, and rework prevention",
+        "Materials (25-35%): Flooring, drywall, cabinetry, finishes",
+        "Permits & inspections (5-10%): Municipal approvals and compliance",
+        "Design & engineering (5-10%): Drawings, structural calculations",
+        "Contingency (10-15%): Hidden conditions uncovered during demolition",
       ]
     },
     {
@@ -314,7 +335,7 @@ export const publicationsData: PublicationData[] = [
         "Bamboo cabinetry: Rapidly renewable and durable",
         "Recycled glass countertops: Beautiful and eco-friendly",
         "Low-VOC paints: Improve indoor air quality",
-        "Energy-efficient appliances: Reduce electricity consumption"
+        "Energy-efficient appliances: Reduce electricity consumption",
       ] },
       { type: "image", src: "/images/articles/bamboo-kitchen.jpg", alt: "Kitchen with sustainable materials and modern design", caption: "Eco-friendly materials don't compromise on style or functionality." },
       { type: "heading", text: "Open-Concept Living", level: 2 },
@@ -348,7 +369,7 @@ export const publicationsData: PublicationData[] = [
         "Material Selection: Premium fixtures, tiles, and finishes significantly impact costs. High-end materials can double or triple your budget.",
         "Structural Changes: Moving plumbing, electrical, or walls adds substantial costs due to the complexity of work required.",
         "Permits and Inspections: In the GTA, permits are required for structural changes, plumbing relocations, and electrical work. Factor in permit fees and potential delays.",
-        "Labor Costs: Skilled tradespeople command premium rates, especially for specialized work like tile installation and plumbing."
+        "Labor Costs: Skilled tradespeople command premium rates, especially for specialized work like tile installation and plumbing.",
       ], ordered: true },
       { type: "image", src: "/images/services/accessible-bathroom.jpg", alt: "Modern accessible bathroom design", caption: "Accessibility features and premium finishes can impact overall renovation costs." },
       { type: "heading", text: "Budgeting Tips", level: 2 },
@@ -382,7 +403,7 @@ export const publicationsData: PublicationData[] = [
         "You customize the space to your exact needs and preferences",
         "You avoid the disruption and stress of moving",
         "You can phase the project to spread costs over time",
-        "You increase your property value while staying in a home you love"
+        "You increase your property value while staying in a home you love",
       ] },
       { type: "image", src: "/images/services/side-extention.jpg", alt: "Side extension addition", caption: "Side and rear extensions seamlessly integrate with existing home architecture." },
       { type: "heading", text: "When Moving Might Make Sense", level: 3 },
@@ -390,7 +411,7 @@ export const publicationsData: PublicationData[] = [
         "Your current location no longer meets your needs (schools, commute, lifestyle)",
         "Your lot is too small for an addition",
         "Zoning restrictions prevent the addition you need",
-        "The cost of an addition exceeds the value it would add to your home"
+        "The cost of an addition exceeds the value it would add to your home",
       ] },
       { type: "paragraph", text: "Before deciding, consult with a contractor to understand feasibility and costs. EZU Construction offers free consultations to help you explore your options and make an informed decision." }
     ]
@@ -417,7 +438,7 @@ export const publicationsData: PublicationData[] = [
         "Recycled glass countertops: Beautiful and eco-friendly",
         "Low-VOC paints and finishes: Improve indoor air quality",
         "Reclaimed wood: Adds character while reducing waste",
-        "Energy-efficient appliances: Reduce electricity and water consumption"
+        "Energy-efficient appliances: Reduce electricity and water consumption",
       ] },
       { type: "image", src: "/images/services/traditional-home.jpg", alt: "Home with sustainable features", caption: "Traditional homes can be updated with modern sustainable technologies." },
       { type: "heading", text: "Water Conservation", level: 2 },
@@ -500,7 +521,7 @@ export const publicationsData: PublicationData[] = [
         "Timeline and milestones",
         "Payment schedule",
         "Warranty information",
-        "Change order procedures"
+        "Change order procedures",
       ] },
       { type: "heading", text: "Red Flags to Avoid", level: 2 },
       { type: "list", items: [
@@ -509,11 +530,246 @@ export const publicationsData: PublicationData[] = [
         "Vague or verbal agreements",
         "Unusually low quotes",
         "Lack of references or portfolio",
-        "Poor communication or responsiveness"
+        "Poor communication or responsiveness",
       ] },
       { type: "image", src: "/images/services/basement-finishing.jpg", alt: "Professional basement finishing", caption: "Professional contractors maintain clean worksites and clear communication." },
       { type: "quote", text: "EZU Construction maintains all necessary licenses and insurance, provides detailed contracts, and prioritizes clear communication.", author: "EZU Construction" },
       { type: "paragraph", text: "We're committed to transparency and quality, ensuring your renovation experience is positive from start to finish." }
     ]
+  },
+  {
+    slug: "ontario-renovation-permits-2026-checklist",
+    title: "Ontario Renovation Permits in 2026: A Practical Checklist",
+    description: "A contractor-vetted checklist for when you need a permit in Ontario, how long it takes, and how to keep your renovation on schedule.",
+    excerpt: "Permits are where timelines slip. This 2026 checklist keeps your renovation compliant and predictable.",
+    author: "EZU Construction Team",
+    date: "2025-12-18",
+    category: "Permits & Planning",
+    image: "/images/construction/new-drywall-installation-taping-mudding-finishing-contractor.webp",
+    readTime: "8 min read",
+    tags: ["Ontario Permits", "Renovation Planning", "Building Code", "GTA", "Construction Timeline"],
+    content: [
+      { type: "paragraph", text: "Permitting requirements in Ontario are strict for a reason: they protect safety, resale value, and insurance eligibility. Missing a permit can delay a project or create expensive fixes at resale." },
+      { type: "heading", text: "Common Renovations That Require Permits", level: 2 },
+      { type: "list", ordered: true, items: [
+        "Structural changes such as removing walls or adding beams",
+        "Basement finishing that creates new bedrooms or bathrooms",
+        "Additions, including rear and side extensions",
+        "Plumbing changes that relocate fixtures or drains",
+        "Electrical upgrades that add circuits or panels",
+      ] },
+      { type: "heading", text: "Typical Permit Timelines in the GTA", level: 2 },
+      { type: "paragraph", text: "Simple interior permits can take 2 to 6 weeks. Larger additions and structural work can take 6 to 12 weeks, especially when engineering drawings or zoning reviews are required." },
+      { type: "heading", text: "Inspections That Affect Scheduling", level: 2 },
+      { type: "paragraph", text: "Rough framing, plumbing, electrical, and insulation inspections can pause work if trades are not coordinated. Build inspection windows into the schedule and keep drawings and site photos organized for quick approvals." },
+      { type: "image", src: "/images/construction/new-construction-drywall-install-seamless-walls-ceilings.jpg", alt: "New construction drywall installation", caption: "Permits often hinge on detailed drawings and scope clarity." },
+      { type: "heading", text: "How to Avoid Permit Delays", level: 2 },
+      { type: "list", items: [
+        "Finalize scope before submitting applications",
+        "Use clear architectural and engineering drawings",
+        "Align design with Ontario Building Code requirements",
+        "Plan inspections in the schedule, not as an afterthought",
+      ] },
+      { type: "paragraph", text: "The best timeline protection is early planning. Experienced contractors coordinate the permit package and schedule inspections so construction can move without surprises." },
+      { type: "heading", text: "What You Need Before Applying", level: 2 },
+      { type: "list", items: [
+        "Clear scope notes and floor plans that match the proposed work",
+        "Engineering details for structural changes or additions",
+        "Product specs for critical assemblies when required",
+        "A realistic construction timeline that includes inspections",
+      ] },
+      { type: "heading", text: "What Happens if You Skip Permits", level: 2 },
+      { type: "paragraph", text: "Unpermitted work can delay resale, void insurance coverage, and require costly tear-outs if inspectors flag issues later. The cost of proper permits is usually far less than the cost of rework." },
+      { type: "heading", text: "Permit vs. Minor Repair", level: 2 },
+      { type: "paragraph", text: "Cosmetic changes like painting, flooring replacement, and cabinet refacing rarely need permits. The moment you touch structure, plumbing, or electrical, the permit conversation starts." },
+      { type: "paragraph", text: "Ready to plan your renovation? Book a consultation with EZU Construction to get a detailed scope, timeline, and budget you can trust." }]
+  },
+  {
+    slug: "basement-finishing-roi-2026-gta",
+    title: "Basement Finishing ROI in 2026: What Adds Real Value in the GTA",
+    description: "Understand which basement upgrades deliver the strongest return on investment in the GTA, from layout choices to moisture management.",
+    excerpt: "Basement ROI comes from livability, not just square footage. Here is what buyers and appraisers actually value.",
+    author: "EZU Construction Team",
+    date: "2025-12-12",
+    category: "Basement Renovations",
+    image: "/images/construction/basement-finishing-drywall-moisture-resistant-finished-basement.jpg",
+    readTime: "8 min read",
+    tags: ["Basement Finishing", "ROI", "GTA Renovations", "Moisture Control", "Home Value"],
+    content: [
+      { type: "paragraph", text: "A finished basement can deliver strong ROI in the GTA, but only when it feels like livable space rather than a rushed project. Buyers pay for comfort, light, and function." },
+      { type: "heading", text: "High-Value Basement Features", level: 2 },
+      { type: "list", items: [
+        "Proper ceiling height and recessed lighting",
+        "Dedicated bedroom or office with egress compliance",
+        "Moisture-resistant flooring and insulation",
+        "A full or three-piece bathroom",
+      ] },
+      { type: "heading", text: "Focus on Moisture and Air Quality", level: 2 },
+      { type: "paragraph", text: "Basements that feel dry and fresh sell better. Proper vapor control, dehumidification, and upgraded insulation prevent odors and long-term damage." },
+      { type: "heading", text: "What Hurts ROI", level: 2 },
+      { type: "paragraph", text: "Low ceiling heights, poor ventilation, and visible moisture issues quickly erase value. Skipping waterproofing or using inappropriate flooring often leads to expensive fixes later." },
+      { type: "image", src: "/images/services/basement-finishing.jpg", alt: "Finished basement with modern materials", caption: "Dry, bright basements sell faster and for more." },
+      { type: "paragraph", text: "For the best ROI, treat the basement like a primary living space. Plan layout, mechanicals, and finishes with the same care you would give the main floor." },
+      { type: "heading", text: "Layout That Sells", level: 2 },
+      { type: "paragraph", text: "Open layouts with a defined bedroom or office test best with buyers. Avoid awkward corridors and keep mechanical rooms accessible without dominating the floor plan." },
+      { type: "heading", text: "Comfort and Soundproofing", level: 2 },
+      { type: "paragraph", text: "Insulated ceilings, resilient channels, and solid-core doors reduce noise transfer and make basements feel like a true living space." },
+      { type: "heading", text: "Rental Suite Considerations", level: 2 },
+      { type: "paragraph", text: "If you are planning for rental income, plan egress, fire separation, and independent ventilation early. These requirements can impact layout and budget." },
+      { type: "paragraph", text: "Ready to plan your renovation? Book a consultation with EZU Construction to get a detailed scope, timeline, and budget you can trust." }]
+  },
+  {
+    slug: "energy-efficient-renovations-ontario-2026",
+    title: "Energy-Efficient Renovations in Ontario: 2026 Priorities",
+    description: "A contractor-led guide to the upgrades that reduce energy costs the most in Ontario homes, from insulation to HVAC sizing.",
+    excerpt: "In 2026, energy efficiency is not optional. These upgrades cut costs and improve comfort year-round.",
+    author: "EZU Construction Team",
+    date: "2025-11-30",
+    category: "Energy Efficiency",
+    image: "/images/construction/painted-exterior-house-modern-color-scheme.jpg",
+    readTime: "9 min read",
+    tags: ["Energy Efficiency", "Home Upgrades", "Ontario Renovations", "HVAC", "Insulation"],
+    content: [
+      { type: "paragraph", text: "Energy efficiency upgrades deliver two benefits: lower monthly bills and a more comfortable home. In Ontario, the biggest gains come from the building envelope, not just appliances." },
+      { type: "heading", text: "Best ROI Upgrades for 2026", level: 2 },
+      { type: "list", items: [
+        "Air sealing and insulation upgrades in attics and basements",
+        "High-performance windows and doors",
+        "Right-sized HVAC systems with smart controls",
+        "Heat pump water heaters in all-electric homes",
+      ] },
+      { type: "heading", text: "Plan for Audits and Incentives", level: 2 },
+      { type: "paragraph", text: "Energy audits help prioritize upgrades, and rebate programs can offset costs. We recommend reviewing current federal and provincial incentives during the planning phase so you can coordinate eligible scopes." },
+      { type: "image", src: "/images/construction/freshly-painted-interior-walls-trim.jpg", alt: "Freshly finished interior with efficiency upgrades", caption: "Comfort improves when insulation and air sealing are done right." },
+      { type: "paragraph", text: "Upgrades should be sequenced. Start with the envelope, then address HVAC and finishes. This prevents rework and keeps the budget under control." },
+      { type: "heading", text: "Envelope First, Then Systems", level: 2 },
+      { type: "paragraph", text: "Insulation and air sealing reduce heat loss before you size new HVAC equipment. This prevents oversizing and improves comfort and efficiency." },
+      { type: "heading", text: "Common Mistakes to Avoid", level: 2 },
+      { type: "list", items: [
+        "Skipping air sealing because insulation looks adequate",
+        "Installing high-efficiency HVAC without duct balancing",
+        "Ignoring basement and attic ventilation details",
+        "Upgrading windows without addressing moisture sources",
+      ] },
+      { type: "heading", text: "How to Measure Results", level: 2 },
+      { type: "paragraph", text: "Track utility bills before and after upgrades, and use blower door tests when possible to validate air sealing improvements." },
+      { type: "paragraph", text: "Ready to plan your renovation? Book a consultation with EZU Construction to get a detailed scope, timeline, and budget you can trust." }]
+  },
+  {
+    slug: "open-concept-vs-defined-spaces-2026",
+    title: "Open Concept vs Defined Spaces: 2026 Layout Choices for Families",
+    description: "A practical comparison of open concept and defined layouts, including acoustics, storage, and resale preferences across the GTA.",
+    excerpt: "Open concept is not always the answer. In 2026, flexible, defined spaces are back for good reasons.",
+    author: "EZU Construction Team",
+    date: "2025-11-20",
+    category: "Design Trends",
+    image: "/images/services/open-concept-kitchen.jpg",
+    readTime: "7 min read",
+    tags: ["Open Concept", "Floor Plan Design", "Family Homes", "GTA Renovations"],
+    content: [
+      { type: "paragraph", text: "Open concept layouts create light and flow, but they also reduce privacy and storage. Defined spaces can feel more functional when families work, cook, and relax at the same time." },
+      { type: "heading", text: "When Open Concept Works Best", level: 2 },
+      { type: "list", items: [
+        "Entertaining-focused homes with large kitchen islands",
+        "Smaller main floors where daylight matters",
+        "Clear sight lines for families with young children",
+      ] },
+      { type: "heading", text: "Why Defined Rooms Are Back", level: 2 },
+      { type: "paragraph", text: "Dedicated rooms improve acoustics, reduce visual clutter, and allow better storage. Many 2026 renovations add partial walls, sliding doors, or multi-use zones instead of fully open plans." },
+      { type: "heading", text: "Hybrid Layouts Win", level: 2 },
+      { type: "paragraph", text: "Glass partitions, pocket doors, and built-in storage let you keep sight lines while controlling noise. These hybrid layouts are especially popular for work-from-home households." },
+      { type: "image", src: "/images/services/kitchen-renovations.jpg", alt: "Kitchen and living space with defined zones", caption: "Defined zones improve function without losing flow." },
+      { type: "paragraph", text: "The right choice is project-specific. The best layouts balance openness with quiet spaces for work, sleep, and storage." },
+      { type: "heading", text: "Storage and Mechanical Planning", level: 2 },
+      { type: "paragraph", text: "Open layouts remove walls that often hold storage and duct chases. Plan built-ins, pantries, and mechanical routing early so the space stays functional." },
+      { type: "heading", text: "Resale and Appraisal Notes", level: 2 },
+      { type: "paragraph", text: "Defined dining rooms and flexible offices still appeal to many buyers, especially families. The strongest resale comes from a layout that feels intentional, not just open." },
+      { type: "heading", text: "Questions to Ask Before Demolition", level: 2 },
+      { type: "list", items: [
+        "Where will storage and pantry space move to?",
+        "How will sound travel between kitchen and living zones?",
+        "Can HVAC and lighting be rebalanced for the new layout?",
+        "Will the layout support future family needs?",
+      ] },
+      { type: "paragraph", text: "Ready to plan your renovation? Book a consultation with EZU Construction to get a detailed scope, timeline, and budget you can trust." }]
+  },
+  {
+    slug: "smart-home-renovations-2026-upgrades",
+    title: "Smart Home Renovations in 2026: Upgrades That Hold Value",
+    description: "Which smart home upgrades actually improve resale value and daily comfort in the GTA, plus which ones to skip.",
+    excerpt: "Not all smart tech ages well. These 2026 upgrades deliver real value, reliability, and resale appeal.",
+    author: "EZU Construction Team",
+    date: "2025-11-05",
+    category: "Smart Homes",
+    image: "/images/articles/smart-kitchen.webp",
+    readTime: "7 min read",
+    tags: ["Smart Home", "Home Automation", "Kitchen Renovation", "GTA", "Resale Value"],
+    content: [
+      { type: "paragraph", text: "Smart home upgrades should make life easier, not add maintenance. The best systems focus on reliability, energy savings, and security." },
+      { type: "heading", text: "High-Value Smart Upgrades", level: 2 },
+      { type: "list", items: [
+        "Smart thermostats with zoning support",
+        "Hardwired security cameras and doorbells",
+        "Lighting controls with scene presets",
+        "Smart water shutoff valves for leak protection",
+      ] },
+      { type: "heading", text: "Upgrades to Avoid", level: 2 },
+      { type: "paragraph", text: "Overly complex systems without local control tend to fail when apps or subscriptions change. Prioritize hardwired infrastructure and simple user controls." },
+      { type: "heading", text: "Wiring and Infrastructure First", level: 2 },
+      { type: "paragraph", text: "Run power, data, and conduit during renovation so upgrades stay clean and serviceable. CAT6 cabling, central hubs, and dedicated circuits make future tech swaps painless." },
+      { type: "image", src: "/images/services/kitchen-renovations.jpg", alt: "Modern kitchen with integrated smart appliances", caption: "Smart upgrades should be functional and durable." },
+      { type: "paragraph", text: "Plan smart home upgrades during renovation to avoid surface wiring and to integrate lighting, HVAC, and security cleanly." },
+      { type: "heading", text: "Security and Privacy Considerations", level: 2 },
+      { type: "paragraph", text: "Choose systems that offer local control and clear privacy settings. Hardwired equipment and reputable vendors reduce outages and improve long-term support." },
+      { type: "heading", text: "Smart Home Planning Checklist", level: 2 },
+      { type: "list", items: [
+        "Centralize networking equipment in a ventilated hub",
+        "Plan for PoE camera and doorbell runs",
+        "Add dedicated circuits for smart appliances",
+        "Document device locations for future servicing",
+      ] },
+      { type: "heading", text: "Resale Impact", level: 2 },
+      { type: "paragraph", text: "Buyers respond well to clean, reliable systems they can understand quickly. Keep controls simple and avoid obscure platforms that are hard to support." },
+      { type: "paragraph", text: "Ready to plan your renovation? Book a consultation with EZU Construction to get a detailed scope, timeline, and budget you can trust." }]
+  },
+  {
+    slug: "aging-in-place-renovations-gta",
+    title: "Aging-in-Place Renovations in the GTA: Safe, Stylish, and Resale-Smart",
+    description: "Plan aging-in-place upgrades that improve daily safety without compromising design or resale value, from bathrooms to entryways.",
+    excerpt: "Safe can still be beautiful. These aging-in-place upgrades improve comfort now and protect resale later.",
+    author: "EZU Construction Team",
+    date: "2025-10-10",
+    category: "Accessibility",
+    image: "/images/services/accessible-bathroom.jpg",
+    readTime: "7 min read",
+    tags: ["Accessibility", "Aging in Place", "Bathroom Renovation", "GTA", "Home Safety"],
+    content: [
+      { type: "paragraph", text: "Aging-in-place renovations focus on safety, comfort, and long-term livability. The best upgrades feel intentional and blend into the home's design." },
+      { type: "heading", text: "High-Impact Areas to Upgrade", level: 2 },
+      { type: "list", items: [
+        "Curbless showers with slip-resistant tile",
+        "Wider doorways and clear circulation paths",
+        "Lever handles and reachable storage",
+        "Entry ramps or low-rise steps with railings",
+      ] },
+      { type: "heading", text: "Lighting and Wayfinding", level: 2 },
+      { type: "paragraph", text: "Layered lighting, motion sensors, and clear contrast between floors and walls reduce falls and improve daily comfort. These upgrades feel subtle but make a big difference." },
+      { type: "image", src: "/images/services/accessible-bathroom.jpg", alt: "Accessible bathroom design", caption: "Barrier-free bathrooms improve safety without sacrificing style." },
+      { type: "paragraph", text: "The goal is to create a home that supports independence while remaining comfortable for guests and future buyers." },
+      { type: "heading", text: "Bathrooms First", level: 2 },
+      { type: "paragraph", text: "Curbless showers, grab bar blocking, and non-slip surfaces reduce risk quickly. These upgrades provide immediate safety while keeping the space modern." },
+      { type: "heading", text: "Stairs and Entry Safety", level: 2 },
+      { type: "paragraph", text: "Continuous handrails, well-lit steps, and low-rise entries improve day-to-day access. Consider slip-resistant exterior materials for winter conditions." },
+      { type: "heading", text: "Kitchen and Storage Reach", level: 2 },
+      { type: "paragraph", text: "Pull-out shelves, drawer-based lower cabinets, and accessible appliance heights reduce strain. Small changes in reach make daily routines far easier." },
+      { type: "heading", text: "Quick Wins That Add Confidence", level: 2 },
+      { type: "list", items: [
+        "Lever handles on doors and faucets",
+        "Non-glare lighting in hallways and bathrooms",
+        "Night lights or motion sensors for evening navigation",
+        "Contrasting edge strips on stairs",
+      ] },
+      { type: "paragraph", text: "Ready to plan your renovation? Book a consultation with EZU Construction to get a detailed scope, timeline, and budget you can trust." }]
   }
 ];
+
