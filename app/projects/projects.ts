@@ -8,7 +8,7 @@ export interface ProjectData {
   location?: string;
   year?: string;
   features: string[];
-  gallery?: string[];
+  gallery?: Array<string | { src: string; caption?: string }>;
   details: {
     label: string;
     value: string;
@@ -17,34 +17,244 @@ export interface ProjectData {
 
 export const projectsData: ProjectData[] = [
   {
-    slug: "modern-kitchen",
-    title: "Modern Minimalist Kitchen",
-    category: "Kitchen Renovation",
-    image: "/images/services/kitchen-renovations.jpg",
-    description: "A stunning modern kitchen transformation featuring sleek, modern cabinets with soft-close mechanisms, integrated appliances, and smart storage solutions. This project showcases how minimalist design can create a clutter-free, highly functional space that serves as the heart of the home.",
-    shortDescription: "Sleek, modern cabinets with soft-close mechanisms and integrated appliances for a contemporary look with smart storage.",
-    location: "Toronto, ON",
-    year: "2024",
-    features: [
-      "Sleek modern brushed metal cabinetry with soft-close mechanisms",
-      "Integrated smart appliances with touch controls",
-      "Quartz countertops with waterfall edge",
-      "Hidden storage solutions with pull-out trays",
-      "LED under-cabinet lighting with dimmer controls",
-      "Large format porcelain tile flooring with subtle texture"
-    ],
-    gallery: [
-      "/images/services/kitchen-renovations.jpg",
-      "/images/services/kitchen-remodel.png",
-      "/images/services/open-concept-kitchen.jpg"
-    ],
-    details: [
-      { label: "Project Type", value: "Full Kitchen Renovation" },
-      { label: "Duration", value: "8 weeks" },
-      { label: "Square Footage", value: "350 sq ft" },
-      { label: "Style", value: "Modern Minimalist" }
-    ]
-  },
+  slug: "custom-home-construction-vaughan",
+  title: "Luxury Custom Home Construction",
+  category: "Custom Home Construction",
+  image: "/images/projects/custom-home-vaughan-after.png",
+  description: "A ground-up custom home construction designed with a focus on refined craftsmanship, architectural detail, and timeless luxury. This Vaughan residence features bespoke millwork, coffered ceilings, premium stone surfaces, and thoughtfully integrated built-ins, delivering a cohesive high-end aesthetic across every living space.",
+  shortDescription: "A luxury custom-built home showcasing bespoke millwork, architectural ceilings, and premium finishes throughout.",
+  location: "Vaughan, ON",
+  year: "2025",
+  features: [
+    "Custom millwork and cabinetry with decorative panel detailing",
+    "Coffered and tray ceilings with integrated recessed lighting",
+    "Statement stone feature walls with built-in linear fireplaces",
+    "Premium hardwood flooring installed throughout main living areas",
+    "Built-in shelving and storage designed for both function and display",
+    "High-end finishes and precise detailing across all interior spaces"
+  ],
+  gallery: [
+    {
+      src: "/images/projects/custom-home-vaughan-after-living.png",
+      caption: "Elegant living space featuring a stunning marble fireplace surround as the focal point, complemented by custom built-in cabinetry with open shelving, rich light hardwood flooring, and sophisticated architectural details throughout."
+    },
+    {
+      src: "/images/projects/custom-home-vaughan-after.png",
+      caption: "Luxury kitchen showcasing bespoke white cabinetry with decorative artisan doors, dramatic book-matched marble countertops and island, professional-grade range hood, coffered ceiling with intricate detailing, and dark hardwood flooring that flows seamlessly through the space."
+    },
+    {
+      src: "/images/projects/custom-home-vaughan-after-office.png",
+      caption: "Sophisticated executive office featuring a dramatic coffered ceiling, stunning book-matched marble fireplace wall with linear fireplace, custom built-in cabinetry and shelving, sleek dark flooring, and abundant natural light creating an impressive professional workspace."
+    }
+  ],
+  details: [
+    { label: "Project Type", value: "Custom Home Construction" },
+    { label: "Property Type", value: "Detached Residential Home" },
+    { label: "Style", value: "Luxury Contemporary / Transitional" },
+    { label: "Location", value: "Vaughan, Ontario" },
+    { label: "Year", value: "2025" }
+  ]
+},
+  {
+  slug: "apartment-kitchen-renovation",
+  title: "Contemporary Apartment Kitchen Renovation",
+  category: "Apartment Renovation",
+  image: "/images/projects/apartment-kitchen-renovation-after.jpeg",
+  description: "A complete transformation of a dated apartment kitchen into a clean, contemporary space. The renovation replaces traditional cabinetry and finishes with high-gloss modern surfaces, integrated appliances, upgraded lighting, and a streamlined layout that maximizes storage and visual openness despite a compact footprint.",
+  shortDescription: "A full apartment kitchen upgrade with modern cabinetry, integrated appliances, and a brighter, more efficient layout.",
+  location: "Toronto, ON",
+  year: "2024",
+  features: [
+    "High-gloss flat-panel cabinetry for a clean, modern aesthetic",
+    "Quartz countertops with straight-edge profile",
+    "Integrated refrigerator and concealed range hood",
+    "Upgraded modern lighting fixtures with warm LED output",
+    "Contemporary backsplash with subtle veining",
+    "Optimized storage layout designed for apartment-scale kitchens"
+  ],
+  gallery: [
+    {src: "/images/projects/apartment-kitchen-renovation-before.jpeg", caption : "Simple but dated kitchen with light wood cabinetry, dark countertops, and basic tile flooring - a clean slate ready for transformation."},
+    {src: "/images/projects/apartment-kitchen-renovation-after.jpeg", caption : "Stunning modern renovation featuring elegant quartz countertops and backsplash, contemporary vertical wood paneling, and warm hardwood flooring throughout."},
+  ],
+  details: [
+    { label: "Project Type", value: "Apartment Kitchen Renovation" },
+    { label: "Duration", value: "6 weeks" },
+    { label: "Square Footage", value: "Approx. 250 sq ft" },
+    { label: "Style", value: "Contemporary / Modern" },
+    { label: "Location", value: "Burlington, Ontario" },
+    { label: "Year", value: "2025" },
+  ]
+},
+{
+  slug: "luxury-kitchen-renovation-toronto",
+  title: "Luxury Contemporary Kitchen Renovation",
+  category: "Kitchen Renovation",
+  image: "/images/after.png",
+  description: "A dramatic transformation of a traditional kitchen into a refined, high-end contemporary space. This renovation introduces custom full-height cabinetry, layered lighting, premium materials, and a bold island centerpiece, turning the kitchen into a functional showpiece designed for both everyday living and entertaining.",
+  shortDescription: "A high-end kitchen renovation featuring custom cabinetry, statement lighting, and a large multifunctional island.",
+  location: "Toronto, ON",
+  year: "2025",
+  features: [
+    "Custom full-height matte cabinetry with brass hardware accents",
+    "Oversized island with integrated seating and waterfall-style stone surface",
+    "Premium quartz countertops and full-height matching backsplash",
+    "Statement pendant lighting paired with recessed ceiling lights",
+    "Integrated built-in appliances for a seamless appearance",
+    "Warm engineered hardwood flooring for contrast and balance"
+  ],
+  gallery: [
+    {
+      src: "/images/before.png",
+      caption: "Original kitchen with light wood cabinetry, tiled flooring, and a central island that lacked visual impact and modern functionality."
+    },
+    {
+      src: "/images/after.png",
+      caption: "Striking contemporary renovation showcasing custom dark cabinetry, elegant stone surfaces, dramatic pendant lighting, and a spacious island designed for entertaining."
+    }
+  ],
+  details: [
+    { label: "Project Type", value: "Full Kitchen Renovation" },
+    { label: "Duration", value: "8 weeks" },
+    { label: "Square Footage", value: "Approx. 400 sq ft" },
+    { label: "Style", value: "Luxury Contemporary" },
+    { label: "Location", value: "Toronto, Ontario" },
+    { label: "Year", value: "2025" }
+  ]
+  
+},
+{
+  slug: "lakeside-bungalow-whole-home-renovation",
+  title: "Lakeside Bungalow Whole Home Renovation",
+  category: "Whole Home Renovation",
+  image: "/images/after3.png",
+  description: "A full-scale renovation of a dated lakeside bungalow, transforming enclosed, underlit interiors into a bright, open, and modern living environment. The project reimagines the home from top to bottom with structural reconfiguration, updated finishes, improved lighting, and contemporary materials—balancing modern comfort with the relaxed character of a waterfront property.",
+  shortDescription: "A complete bungalow transformation featuring open-concept living, modern finishes, and improved natural light throughout.",
+  location: "Carrying Place, ON",
+  year: "2024",
+  features: [
+    "Full interior demolition and reconfiguration for open-concept living",
+    "New drywall, ceilings, and recessed LED lighting throughout",
+    "Modern flooring installed across all living spaces",
+    "Redesigned living and dining areas with improved flow",
+    "Updated wall finishes with neutral, contemporary colour palette",
+    "Enhanced natural light through enlarged and repositioned windows"
+  ],
+  gallery: [
+    {
+      src: "/images/projects/lakeside-bungalow-renovation-before-1.png",
+      caption: "Original interior with compartmentalized rooms, dated finishes, and limited natural light typical of older bungalow layouts."
+    },
+    {
+      src: "/images/before3.png",
+      caption: "Pre-renovation basement and living areas showing low ceilings, exposed structural elements, and worn flooring."
+    },
+    {
+      src: "/images/before2.png",
+      caption: "Dated basement space with worn gray carpet, and cluttered furniture creating a dreary, uninviting atmosphere that desperately needs modernization."
+    },
+    {
+      src: "/images/projects/lakeside-bungalow-renovation-after-1.png",
+      caption: "Bright, open-concept living and dining space with modern flooring, clean white walls, and recessed lighting."
+    },
+    {
+      src: "/images/after2.jpg",
+      caption: "Reimagined lower level featuring contemporary finishes, improved lighting, and a functional recreational layout."
+    },
+    {
+      src: "/images/after3.png",
+      caption: "Spacious modern living area with defined zones for entertaining, dining, and relaxation while maintaining an open feel."
+    }
+  ],
+  details: [
+    { label: "Project Type", value: "Whole Home Renovation" },
+    { label: "Duration", value: "12 weeks" },
+    { label: "Property Type", value: "Lakeside Bungalow" },
+    { label: "Style", value: "Modern Contemporary" },
+    { label: "Location", value: "Carrying Place, Ontario" },
+    { label: "Year", value: "2024" }
+  ]
+},
+{
+  slug: "kitchen-renovation-etobicoke",
+  title: "Transitional Kitchen Renovation",
+  category: "Kitchen Renovation",
+  image: "/images/projects/etobicoke-kitchen-renovation-1.png",
+  description: "A thoughtfully designed kitchen renovation blending timeless cabinetry with modern detailing. This Etobicoke project emphasizes balance—clean white millwork, warm wood accents, and elegant stone surfaces—resulting in a bright, functional space that feels refined without being over-designed.",
+  shortDescription: "A bright, transitional kitchen featuring custom cabinetry, quartz surfaces, and warm wood accents.",
+  location: "Etobicoke, ON",
+  year: "2023",
+  features: [
+    "Custom shaker-style cabinetry with brass hardware",
+    "Quartz countertops with subtle marble veining",
+    "Full-height quartz backsplash for a seamless finish",
+    "Statement wood-clad range hood with integrated lighting",
+    "Glass-front display cabinets with interior LED lighting",
+    "Recessed ceiling lighting for even, ambient illumination"
+  ],
+  gallery: [
+    {
+      src: "/images/projects/etobicoke-kitchen-renovation-1.png",
+      caption: "Spacious kitchen layout showcasing a large quartz island with integrated sink and refined brass fixtures."
+    },
+    {
+      src: "/images/projects/etobicoke-kitchen-renovation-2.png",
+      caption: "Cooking area highlighted by a custom wood range hood, gas cooktop, and full-height quartz backsplash."
+    },
+    {
+      src: "/images/projects/etobicoke-kitchen-renovation-3.png",
+      caption: "Built-in cabinetry wall combining storage, display shelving, and integrated appliances for a cohesive look."
+    },
+    {
+      src: "/images/projects/etobicoke-kitchen-renovation-4.png",
+      caption: "Glass-front cabinets with soft interior lighting adding depth and visual interest to the kitchen design."
+    }
+  ],
+  details: [
+    { label: "Project Type", value: "Kitchen Renovation" },
+    { label: "Style", value: "Transitional / Contemporary" },
+    { label: "Duration", value: "10 weeks" },
+    { label: "Square Footage", value: "Approx. 300 sq ft" },
+    { label: "Location", value: "Etobicoke, Ontario" },
+    { label: "Year", value: "2023" }
+  ]
+},
+{
+  slug: "kitchen-renovation-richmond-hill",
+  title: "Modern Kitchen Renovation",
+  category: "Kitchen Renovation",
+  image: "/images/projects/richmond-hill-kitchen-renovation-1.jpeg",
+  description: "A complete kitchen transformation modernizing a once dark and enclosed space into a bright, functional, and contemporary kitchen. The renovation focuses on clean white cabinetry, streamlined layouts, and improved lighting to enhance usability while maintaining a warm, inviting feel.",
+  shortDescription: "A bright, modern kitchen renovation with white cabinetry, updated lighting, and a refined island layout.",
+  location: "Richmond Hill, ON",
+  year: "2024",
+  features: [
+    "Full-height white shaker-style cabinetry for a clean, timeless look",
+    "Large central island with dark stone countertop for contrast",
+    "Updated recessed ceiling lighting for even illumination",
+    "Integrated appliance panels for a seamless appearance",
+    "Modern pendant lighting above the island",
+    "Refinished hardwood flooring to unify the space"
+  ],
+  gallery: [
+    {
+      src: "/images/projects/richmond-hill-kitchen-renovation-2.jpeg",
+      caption: "Outdated kitchen with dark cherry cabinetry, black granite countertops, and cluttered counters showing wear and tear, with mismatched appliances and dated pendant lighting that made the space feel heavy and closed in."
+    },
+    {
+      src: "/images/projects/richmond-hill-kitchen-renovation-1.jpeg",
+      caption: "Bright, transformative kitchen renovation featuring crisp white cabinetry with extended height for maximum storage, sleek dark countertops, modern under-cabinet lighting, stainless steel appliances making a clean, sophisticated culinary space."
+    }
+  ],
+  details: [
+    { label: "Project Type", value: "Kitchen Renovation" },
+    { label: "Style", value: "Transitional" },
+    { label: "Duration", value: "5 weeks" },
+    { label: "Square Footage", value: "Approx. 300 sq ft" },
+    { label: "Location", value: "Richmond Hill, Ontario" },
+    { label: "Year", value: "2024" }
+  ]
+}
+
 ];
 
 /*

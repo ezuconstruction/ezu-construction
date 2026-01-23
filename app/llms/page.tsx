@@ -19,7 +19,7 @@ const LLMPage = () => {
     basic: {
       name: "EZU Construction",
       tagline: "Award-winning custom home builders and renovation specialists",
-      founded: "2018",
+      founded: "2021",
       location: "Toronto, Ontario, Canada",
       serviceArea: "Greater Toronto Area (GTA) and surrounding regions",
       phone: "(647) 766-9999",

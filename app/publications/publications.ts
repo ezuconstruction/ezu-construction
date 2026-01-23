@@ -21,6 +21,164 @@ export interface PublicationData {
 
 export const publicationsData: PublicationData[] = [
   {
+  slug: "home-renovation-trends-gta-2026",
+  title: "Home Renovation Trends in the GTA for 2026: What Homeowners Want Now",
+  description: "A GTA-focused look at 2026 renovation trends, from warmer finishes to smarter storage and energy-first upgrades that boost comfort and resale.",
+  excerpt: "2026 trends in the GTA are less about flash and more about comfort, efficiency, and smart layouts.",
+  author: "EZU Construction Team",
+  date: "2026-01-05",
+  category: "Renovation Trends",
+  image: "/images/services/home-renovation-title.jpg",
+  readTime: "7 min read",
+  tags: ["Home Renovation Trends", "GTA Renovations", "Design Trends 2026", "Home Improvement"],
+  content: [
+    { type: "paragraph", text: "GTA homeowners in 2026 are prioritizing practical upgrades that make homes feel better to live in and easier to maintain. The strongest trends focus on comfort, storage, and energy efficiency rather than flashy finishes." },
+    { type: "heading", text: "Warm Minimalism Replaces Cold Modern", level: 2 },
+    { type: "paragraph", text: "Expect softer color palettes, warmer woods, and textured surfaces. Clean lines still matter, but the overall feel is calmer and more livable." },
+    { type: "image", src: "/images/articles/bamboo-kitchen.jpg", alt: "Warm minimalist kitchen with natural finishes", caption: "Warmer woods and softer finishes are replacing stark, cold modern looks." },
+    { type: "heading", text: "Storage-First Layouts", level: 2 },
+    { type: "paragraph", text: "Floor plans are being reworked around storage: hidden pantries, built-ins, and mudrooms. Homeowners want less clutter and better daily function." },
+    { type: "list", items: [
+      "Full-height pantry walls in kitchens",
+      "Custom built-ins for family rooms",
+      "Mudroom lockers and bench storage",
+      "Integrated appliance garages",
+    ] },
+    { type: "heading", text: "Energy Efficiency as a Baseline", level: 2 },
+    { type: "paragraph", text: "Insulation upgrades, air sealing, and right-sized HVAC are now standard in major renovations. Buyers expect lower operating costs and consistent comfort." },
+    { type: "image", src: "/images/articles/painted-walls.jpg", alt: "Freshly finished interior upgrades", caption: "Envelope upgrades and HVAC sizing lead 2026 renovation priorities." },
+    { type: "heading", text: "Flexible Spaces for Work and Family", level: 2 },
+    { type: "paragraph", text: "Hybrid work is still shaping layouts. Home offices, flex rooms, and pocket-door zones are replacing purely open plans." },
+    { type: "quote", text: "The best renovations in 2026 feel calm, efficient, and built for real life.", author: "EZU Construction Team" }
+  ]
+},
+
+  {
+  slug: "gta-buyers-market-2026-renovation-moves",
+  title: "GTA Buyer's Market 2026: Renovation Moves That Protect Value",
+  description: "In a buyer's market, smart, targeted renovations help protect selling price and reduce time on market. Here is what works in the GTA.",
+  excerpt: "When buyers have leverage, upgrades must be strategic. These are the renovations that still move the needle.",
+  author: "EZU Construction Team",
+  date: "2026-01-04",
+  category: "Market Insights",
+  image: "/images/articles/gta-buyers-market.avif",
+  readTime: "6 min read",
+  tags: ["GTA Buyer Market", "Home Renovation", "Real Estate", "Home Value"],
+  content: [
+    { type: "paragraph", text: "The GTA is experiencing a buyer's market, which means pricing is sensitive and buyers can compare properties closely. Renovations that improve first impressions and reduce objections make the biggest impact." },
+    { type: "heading", text: "Focus on High-Visibility Areas", level: 2 },
+    { type: "paragraph", text: "Kitchens, bathrooms, and entryways decide how buyers feel in the first 30 seconds. In a softer market, these spaces carry even more weight." },
+    { type: "image", src: "/images/articles/entryway-refresh-gta.jpg", alt: "Bright entryway refresh in a GTA home", caption: "Clean, bright entryways set the tone for showings." },
+    { type: "heading", text: "Avoid Over-Renovating", level: 2 },
+    { type: "paragraph", text: "Major layout changes or luxury upgrades rarely pay back in a buyer's market. Stick to clean finishes, functional fixes, and reliable systems." },
+    { type: "list", items: [
+      "Fresh paint in neutral tones",
+      "Updated lighting and modern fixtures",
+      "Minor kitchen refacing or hardware upgrades",
+      "Bathroom refresh with new vanity and mirrors",
+    ] },
+    { type: "heading", text: "De-Risk the Home", level: 2 },
+    { type: "paragraph", text: "Buyers are wary of hidden costs. Address moisture issues, aging mechanicals, and visible wear before listing." },
+    { type: "quote", text: "In a buyer's market, simplicity and condition win over high-end finishes.", author: "EZU Construction Team" }
+  ]
+},
+
+  {
+  slug: "renovate-before-selling-gta-buyers-market",
+  title: "Should You Renovate Before Selling in a GTA Buyer's Market?",
+  description: "A practical guide to deciding which renovations make sense before listing, and which ones waste money in today's GTA buyer's market.",
+  excerpt: "Not every renovation pays back. These are the upgrades that still matter when buyers have the leverage.",
+  author: "EZU Construction Team",
+  date: "2026-01-03",
+  category: "Real Estate",
+  image: "/images/services/whole-home-renovation.jpg",
+  readTime: "6 min read",
+  tags: ["Renovate Before Selling", "GTA Real Estate", "Home Value", "Listing Prep"],
+  content: [
+    { type: "paragraph", text: "In a buyer's market, renovation decisions must be ROI-driven. The goal is to remove objections, not chase every trend." },
+    { type: "heading", text: "Upgrades That Still Pay Back", level: 2 },
+    { type: "list", items: [
+      "Paint, flooring, and lighting updates",
+      "Kitchen hardware, faucets, and backsplash refresh",
+      "Bathroom fixture updates and modern mirrors",
+      "Curb appeal improvements like doors and landscaping",
+    ] },
+    { type: "image", src: "/images/construction/painted-exterior-house-modern-color-scheme.jpg", alt: "Exterior refresh with a modern paint scheme", caption: "Curb appeal sets buyer expectations before they step inside." },
+    { type: "heading", text: "When to Skip a Full Renovation", level: 2 },
+    { type: "paragraph", text: "If the home needs a full gut or structural changes, buyers may prefer a lower price instead. Large renovations can delay listing and reduce flexibility." },
+    { type: "heading", text: "Timing and Scope", level: 2 },
+    { type: "paragraph", text: "Short, targeted renovation scopes usually outperform long, expensive remodels. The goal is a clean, neutral presentation with no obvious defects." },
+    { type: "quote", text: "The best pre-sale renovations remove friction, not add complexity.", author: "EZU Construction Team" }
+  ]
+},
+
+  {
+  slug: "kitchen-renovation-cost-gta-2026",
+  title: "Kitchen Renovation Cost in the GTA: 2026 Price Ranges",
+  description: "A clear 2026 cost breakdown for GTA kitchen renovations, including price ranges by scope, materials, and layout changes.",
+  excerpt: "Kitchen renovation costs in the GTA vary widely. This guide explains what drives price and how to budget realistically in 2026.",
+  author: "EZU Construction Team",
+  date: "2026-01-02",
+  category: "Cost Guides",
+  image: "/images/services/kitchen-renovations.jpg",
+  readTime: "7 min read",
+  tags: ["Kitchen Renovation Cost", "GTA", "Home Renovation", "2026 Pricing"],
+  content: [
+    { type: "paragraph", text: "Kitchen renovation costs in the GTA depend on layout changes, cabinetry quality, and mechanical work. A realistic budget helps avoid mid-project changes and delays." },
+    { type: "heading", text: "Typical 2026 Price Ranges", level: 2 },
+    { type: "list", items: [
+      "Cosmetic refresh: $15k to $35k",
+      "Mid-range renovation: $35k to $70k",
+      "High-end renovation: $70k to $130k+",
+    ] },
+    { type: "image", src: "/images/construction/kitchen-cabinet-refinishing-spray-painting.jpg", alt: "Kitchen cabinet refinishing and spray painting", caption: "Cabinetry and layout changes are the biggest cost drivers." },
+    { type: "heading", text: "What Drives Cost the Most", level: 2 },
+    { type: "paragraph", text: "Changing the layout, moving plumbing, and upgrading electrical loads increase cost quickly. Custom cabinetry and premium countertops add another major layer." },
+    { type: "heading", text: "How to Keep Budgets Predictable", level: 2 },
+    { type: "list", items: [
+      "Finalize appliance specs early",
+      "Limit layout changes unless necessary",
+      "Choose a clear cabinet grade and finish",
+      "Plan lighting and electrical loads up front",
+    ] },
+    { type: "quote", text: "The best kitchen budgets are built around scope clarity, not guesswork.", author: "EZU Construction Team" }
+  ]
+},
+
+  {
+  slug: "basement-renovation-cost-gta-2026",
+  title: "Basement Renovation Cost in the GTA: 2026 Guide",
+  description: "GTA basement renovation costs in 2026, including price ranges by scope, moisture management, and layout complexity.",
+  excerpt: "Basement renovation pricing depends on scope and moisture control. Here is a realistic 2026 cost guide for GTA homeowners.",
+  author: "EZU Construction Team",
+  date: "2026-01-01",
+  category: "Cost Guides",
+  image: "/images/services/basement-finishing.jpg",
+  readTime: "7 min read",
+  tags: ["Basement Renovation Cost", "GTA", "2026 Pricing", "Home Renovation"],
+  content: [
+    { type: "paragraph", text: "Basement renovations in the GTA range from simple rec rooms to full legal suites. Costs swing based on moisture control, ceiling height, and plumbing needs." },
+    { type: "heading", text: "2026 Cost Ranges by Scope", level: 2 },
+    { type: "list", items: [
+      "Basic finishing: $25k to $45k",
+      "Family suite with bathroom: $45k to $85k",
+      "Legal rental suite: $80k to $140k+",
+    ] },
+    { type: "image", src: "/images/construction/basement-finishing-drywall-moisture-resistant-finished-basement.jpg", alt: "Finished basement with moisture-resistant materials", caption: "Moisture control and insulation drive long-term performance." },
+    { type: "heading", text: "Hidden Costs to Plan For", level: 2 },
+    { type: "paragraph", text: "Moisture management, egress windows, and mechanical upgrades often add significant cost. These items are critical for safety, comfort, and resale." },
+    { type: "heading", text: "Budget Planning Tips", level: 2 },
+    { type: "list", items: [
+      "Confirm ceiling heights and duct routing early",
+      "Plan bathroom rough-ins before framing",
+      "Choose moisture-resistant flooring and insulation",
+      "Allocate a contingency for hidden conditions",
+    ] },
+    { type: "quote", text: "Basements pay off when they feel dry, bright, and fully finished.", author: "EZU Construction Team" }
+  ]
+},
+
+  {
   slug: "drywall-installation-vs-repair-when-to-replace",
   title: "Drywall Installation vs Repair: When You Should Replace Instead of Patch",
   description: "Learn when drywall repair is sufficient and when full replacement is the only long-term solution, based on structure, finish quality, and cost.",
@@ -640,7 +798,7 @@ export const publicationsData: PublicationData[] = [
       ] },
       { type: "heading", text: "Plan for Audits and Incentives", level: 2 },
       { type: "paragraph", text: "Energy audits help prioritize upgrades, and rebate programs can offset costs. We recommend reviewing current federal and provincial incentives during the planning phase so you can coordinate eligible scopes." },
-      { type: "image", src: "/images/construction/freshly-painted-interior-walls-trim.jpg", alt: "Freshly finished interior with efficiency upgrades", caption: "Comfort improves when insulation and air sealing are done right." },
+      { type: "image", src: "/images/construction/painted-walls.jpg", alt: "Freshly finished interior with efficiency upgrades", caption: "Comfort improves when insulation and air sealing are done right." },
       { type: "paragraph", text: "Upgrades should be sequenced. Start with the envelope, then address HVAC and finishes. This prevents rework and keeps the budget under control." },
       { type: "heading", text: "Envelope First, Then Systems", level: 2 },
       { type: "paragraph", text: "Insulation and air sealing reduce heat loss before you size new HVAC equipment. This prevents oversizing and improves comfort and efficiency." },

@@ -99,7 +99,10 @@ const ProjectPage = async ({
           <div className="py-10">
             <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm p-8">
               <h2 className="text-3xl font-bold mb-4 text-white/90 tracking-tight">
-                Project Overview
+                Project{" "}
+                <span className="text-white underline underline-offset-8 decoration-white/25 hover:decoration-red-500 transition-all duration-300 overflow-hidden">
+                  Overview
+                </span>
               </h2>
               <p className="text-lg text-white/90 leading-relaxed">
                 {project.description}
@@ -111,7 +114,10 @@ const ProjectPage = async ({
             <div className="py-5">
               <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm p-8">
                 <h2 className="text-3xl font-bold mb-6 text-white/90 tracking-tight">
-                  Project Details
+                  Project{" "}
+                  <span className="text-white underline underline-offset-8 decoration-white/25 hover:decoration-red-500 transition-all duration-300 overflow-hidden">
+                    Details
+                  </span>
                 </h2>
                 <div className="grid md:grid-cols-2 gap-4">
                   {project.details.map((detail) => (
@@ -135,7 +141,7 @@ const ProjectPage = async ({
               <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm p-8">
                 <h2 className="text-3xl font-bold mb-6 text-white/90 tracking-tight">
                   Key{" "}
-                  <span className="text-white underline underline-offset-8 decoration-white/25">
+                  <span className="text-white underline underline-offset-8 decoration-white/25 hover:decoration-red-500 transition-all duration-300 overflow-hidden">
                     Features
                   </span>
                 </h2>
@@ -169,27 +175,37 @@ const ProjectPage = async ({
               <div className="bg-black/45 shadow-2xl ring-1 ring-white/10 rounded-2xl backdrop-blur-sm p-8">
                 <h2 className="text-3xl font-bold mb-6 text-white/90 tracking-tight">
                   Project{" "}
-                  <span className="text-white underline underline-offset-8 decoration-white/25">
+                  <span className="text-white underline underline-offset-8 decoration-white/25 hover:decoration-red-500 transition-all duration-300 overflow-hidden">
                     Gallery
                   </span>
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {project.gallery.map((image, key) => (
-                    <div
-                      key={`${project.slug}-${image}-${key}`}
-                      className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300"
-                    >
-                      <figure className="relative h-64">
-                        <OptimizedImage
-                          src={image}
-                          alt={`${project.title} - Image ${key + 1}`}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          className="object-cover"
-                        />
+                  {project.gallery.map((item, key) => {
+                    const image =
+                      typeof item === "string" ? { src: item } : item;
+
+                    return (
+                      <figure
+                        key={`${project.slug}-${image.src}-${key}`}
+                        className="card bg-white/5 shadow-xl ring-1 ring-white/10 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300"
+                      >
+                        <div className="relative h-64">
+                          <OptimizedImage
+                            src={image.src}
+                            alt={`${project.title} - Image ${key + 1}`}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="object-cover"
+                          />
+                        </div>
+                        {image.caption && (
+                          <figcaption className="px-4 pb-4 pt-3 text-white/80">
+                            {image.caption}
+                          </figcaption>
+                        )}
                       </figure>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
