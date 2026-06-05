@@ -3,6 +3,7 @@ import { servicesData } from "./services/services";
 import { constructionData } from "./construction/construction";
 import { projectsData } from "./projects/projects";
 import { publicationsData } from "./publications/publications";
+import { locationsData } from "./data/locations";
 
 const BASE_URL = "https://ezuconstruction.ca";
 
@@ -100,11 +101,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
+  const locationRoutes: MetadataRoute.Sitemap = locationsData.map((loc) => ({
+    url: toUrl(`/locations/${loc.slug}`),
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticRoutes,
     ...serviceRoutes,
     ...constructionRoutes,
     ...projectRoutes,
     ...publicationRoutes,
+    ...locationRoutes,
   ];
 }

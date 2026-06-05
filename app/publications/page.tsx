@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Publications - EZU Construction Insights",
     description:
       "Expert insights and guides on home construction, renovation, and remodeling from Toronto's trusted custom home builders.",
-    url: "https://ezuconstruction.com/publications",
+    url: "https://ezuconstruction.ca/publications",
     images: [
       {
         url: "/images/backgrounds/publications-background.jpg",
@@ -35,10 +35,29 @@ export const metadata: Metadata = {
   },
 };
 
-const PublicationsPage = () => {
+const ARTICLES_PER_PAGE = 9;
+
+const PublicationsPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) => {
+  const { page } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || "1", 10));
+
   const sortedArticles = [...publicationsData].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+
+  const totalPages = Math.ceil(sortedArticles.length / ARTICLES_PER_PAGE);
+  const safePage = Math.min(currentPage, totalPages);
+  const startIndex = (safePage - 1) * ARTICLES_PER_PAGE;
+  const paginatedArticles = sortedArticles.slice(
+    startIndex,
+    startIndex + ARTICLES_PER_PAGE
+  );
+
+  const pageUrl = (p: number) => (p === 1 ? "/publications" : `/publications?page=${p}`);
 
   return (
     <>
@@ -71,15 +90,20 @@ const PublicationsPage = () => {
         <div className="absolute inset-0 backdrop-blur-[2px]"></div>
 
         <div className="relative max-w-7xl mx-auto py-10">
-          <h2 className="text-5xl font-bold text-center mb-10 text-white/90 tracking-tight">
-            Latest{" "}
-            <span className="text-white underline underline-offset-8 decoration-white/25 hover:decoration-red-500 transition-all duration-300 overflow-hidden">
-              Articles
-            </span>
-          </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-2">
+            <h2 className="text-5xl font-bold text-white/90 tracking-tight">
+              Latest{" "}
+              <span className="text-white underline underline-offset-8 decoration-white/25 hover:decoration-red-500 transition-all duration-300">
+                Articles
+              </span>
+            </h2>
+            <p className="text-white/50 text-sm">
+              {sortedArticles.length} articles &mdash; page {safePage} of {totalPages}
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sortedArticles.map((article) => (
+            {paginatedArticles.map((article) => (
               <Link
                 key={article.slug}
                 href={`/publications/${article.slug}`}
@@ -120,6 +144,48 @@ const PublicationsPage = () => {
               </Link>
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-14 flex-wrap">
+              <Link
+                href={pageUrl(safePage - 1)}
+                aria-disabled={safePage === 1}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${
+                  safePage === 1
+                    ? "pointer-events-none bg-white/5 text-white/20"
+                    : "bg-white/10 text-white/80 hover:bg-white/20"
+                }`}
+              >
+                &larr; Prev
+              </Link>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                <Link
+                  key={p}
+                  href={pageUrl(p)}
+                  className={`w-10 h-10 flex items-center justify-center rounded-lg text-sm font-semibold transition ${
+                    p === safePage
+                      ? "bg-red-500 text-white shadow-lg shadow-red-500/30"
+                      : "bg-white/10 text-white/70 hover:bg-white/20"
+                  }`}
+                >
+                  {p}
+                </Link>
+              ))}
+
+              <Link
+                href={pageUrl(safePage + 1)}
+                aria-disabled={safePage === totalPages}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${
+                  safePage === totalPages
+                    ? "pointer-events-none bg-white/5 text-white/20"
+                    : "bg-white/10 text-white/80 hover:bg-white/20"
+                }`}
+              >
+                Next &rarr;
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <CallToAction />

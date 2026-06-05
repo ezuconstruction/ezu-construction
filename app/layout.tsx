@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navbar from "./components/Navbar";
 import ContactFab from "./components/ContactFab";
+import MobileCTABar from "./components/MobileCTABar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     default: "EZU Construction - Custom Homes & Renovations in Toronto",
     template: "%s | EZU Construction"
   },
-  description: "Award-winning custom home builders and renovation specialists in Toronto. Specializing in custom homes, kitchen renovations, bathroom remodels, and home additions. Licensed, insured, and 5-star rated.",
+  description: "EZU Construction — custom home builders and renovation specialists serving Toronto & GTA since 2016. Custom homes, kitchen & bathroom renovations, home additions, laneway suites, and basement finishing. Licensed, insured, 5-star rated. Free quote.",
   keywords: [
     "custom homes toronto",
     "home renovations toronto",
@@ -33,6 +34,16 @@ export const metadata: Metadata = {
     "luxury home builders",
     "home remodeling toronto",
     "construction company toronto",
+    "laneway suite toronto",
+    "garden suite toronto",
+    "basement renovation toronto",
+    "home renovation markham",
+    "custom home builders markham",
+    "renovation contractor GTA",
+    "general contractor toronto",
+    "kitchen renovation GTA",
+    "basement finishing toronto",
+    "secondary suite toronto",
     "EZU Construction"
   ],
   authors: [{ name: "EZU Construction" }],
@@ -43,14 +54,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://ezuconstruction.com"),
+  metadataBase: new URL("https://ezuconstruction.ca"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "EZU Construction - Custom Homes & Renovations in Toronto",
-    description: "Award-winning custom home builders and renovation specialists in Toronto. Transform your dream home into reality with our expert craftsmanship.",
-    url: "https://ezuconstruction.com",
+    description: "EZU Construction — custom home builders and renovation specialists serving Toronto & GTA since 2016. Free quote.",
+    url: "https://ezuconstruction.ca",
     siteName: "EZU Construction",
     images: [
       {
@@ -80,9 +91,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+  /* verification: { google: "ADD_YOUR_GOOGLE_SEARCH_CONSOLE_CODE_HERE" }, */
 };
 
 export default function RootLayout({
@@ -98,6 +107,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <ContactFab />
+        <MobileCTABar />
         <Analytics />
         <SpeedInsights />
       </body>

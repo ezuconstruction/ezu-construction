@@ -783,6 +783,626 @@ export const servicesData: ServiceData[] = [
       },
     ],
     bgImage: "/images/backgrounds/bg-2.jpg",
-  }
+  },
+  {
+    slug: "laneway-garden-suites",
+    title: "Laneway & Garden Suites",
+    subtitle: "Design, permits, and construction of laneway and garden suites in Toronto & GTA.",
+    heroImage: "/images/services/custom-home-title.jpg",
+    introText: "Toronto's laneway and garden suite program lets homeowners add a fully independent dwelling unit on their property — generating rental income, housing family, or simply adding long-term value. We handle the entire process: zoning review, architectural design, permits, and construction, so you don't need to coordinate multiple contractors.",
+    whyChooseUs: {
+      image: "/images/services/custom-home-builders.jpg",
+      title: "Why Build Your Laneway Suite with EZU?",
+      points: [
+        "End-to-end service: zoning, design, permits, and construction",
+        "Deep experience with City of Toronto laneway suite bylaws",
+        "Fixed-price contracts — no surprise invoices mid-project",
+        "In-house trades reduce coordination delays",
+        "Rental income potential from day one of occupancy",
+      ],
+    },
+    types: [
+      {
+        title: "Laneway Suites",
+        image: "/images/services/modern-home.jpg",
+        description: "Fully detached residential units built above or adjacent to the rear laneway garage. City of Toronto approved and rental-ready.",
+      },
+      {
+        title: "Garden Suites",
+        image: "/images/services/traditional-home.jpg",
+        description: "Standalone accessory dwelling units in the rear yard, available across the GTA. Ideal for multi-generational families or rental income.",
+      },
+      {
+        title: "Coach Houses",
+        image: "/images/services/estate-home.jpg",
+        description: "Purpose-built detached suites above a new or existing garage structure, maximizing use of your rear lot.",
+      },
+    ],
+    considerations: [
+      {
+        title: "Zoning & Bylaw Eligibility",
+        icon: "/stars.svg",
+        description: "Not every property qualifies. We assess your lot against City of Toronto or municipal bylaws before you invest in design — saving time and money.",
+      },
+      {
+        title: "Design & Architectural Plans",
+        icon: "/stars.svg",
+        description: "We produce construction-ready drawings and coordinate engineering so your permit submission is complete and accurate the first time.",
+      },
+      {
+        title: "Utility Connections & Mechanical",
+        icon: "/stars.svg",
+        description: "Laneway suites require independent electrical, plumbing, and HVAC connections. We plan these from the start to avoid expensive retrofits.",
+      },
+      {
+        title: "Rental Income & ROI Planning",
+        icon: "/stars.svg",
+        description: "A well-built laneway suite in Toronto can generate $2,000–$3,500/month in rental income. We help you size and spec the suite to maximize your return.",
+      },
+    ],
+    process: [
+      {
+        step: "Step 1",
+        title: "Feasibility & Zoning Review",
+        description: "We assess your lot dimensions, lane access, and applicable bylaws to confirm eligibility and outline viable suite configurations.",
+      },
+      {
+        step: "Step 2",
+        title: "Architectural Design & Engineering",
+        description: "We produce full architectural drawings, coordinate structural engineering, and prepare a complete permit submission package.",
+      },
+      {
+        step: "Step 3",
+        title: "Permit Approval & Pre-Construction",
+        description: "We manage the permit process, coordinate utility connection applications, and finalize material selections before construction begins.",
+      },
+      {
+        step: "Step 4",
+        title: "Construction & Occupancy",
+        description: "We build the suite with in-house trades and disciplined site management, completing inspections and delivering a rental-ready unit.",
+      },
+    ],
+    portfolio: [
+      {
+        title: "Modern Laneway Suite",
+        image: "/images/projects/luxury-kitchen-renovation-toronto/after-1.jpg",
+        alt: "Modern laneway suite exterior in Toronto",
+        description: "A contemporary 600 sq ft laneway suite generating $2,800/month rental income for the homeowner.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Garden Suite Addition",
+        image: "/images/projects/lakeside-bungalow/after-1.jpg",
+        alt: "Detached garden suite in rear yard",
+        description: "A 550 sq ft detached garden suite designed for multi-generational living with private entrance.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Coach House Build",
+        image: "/images/services/custom-home-builders.jpg",
+        alt: "Coach house above garage in Toronto",
+        description: "Two-storey coach house above a new double garage — maximizing the rear lot while preserving parking.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is my property eligible for a laneway suite in Toronto?",
+        answer: "Eligibility depends on lot size, lane access, setbacks, and zoning. Most properties in Toronto with rear lane access qualify. We assess eligibility at no charge during the initial consultation.",
+      },
+      {
+        question: "How much does a laneway suite cost in Toronto?",
+        answer: "Laneway suites typically range from $280,000–$450,000 depending on size, finishes, and existing conditions. The investment is often offset by rental income within 8–12 years.",
+      },
+      {
+        question: "How long does it take to build a laneway suite?",
+        answer: "From initial design to occupancy, most laneway suite projects take 12–18 months: 3–5 months for design and permitting, 6–9 months for construction.",
+      },
+      {
+        question: "Do you handle all permits for laneway suites?",
+        answer: "Yes. We manage the full permit process including the building permit, utility connection applications, and all required inspections through to occupancy.",
+      },
+    ],
+    bgImage: "/images/backgrounds/bg-3.jpg",
+  },
+  {
+    slug: "basement-renovations",
+    title: "Basement Renovations",
+    subtitle: "Transforming unfinished basements into legal suites, family rooms, home gyms, and income-generating spaces.",
+    heroImage: "/images/services/home-renovation-title.jpg",
+    introText: "A finished basement adds living space, property value, and often a significant income stream. Whether you want a legal second suite, a family entertainment room, or a home gym, we design and build basements that are properly waterproofed, code-compliant, and built to last.",
+    whyChooseUs: {
+      image: "/images/services/whole-home-renovation.jpg",
+      title: "Why Trust EZU with Your Basement?",
+      points: [
+        "Ontario Building Code expertise for legal suite requirements",
+        "Proper waterproofing and moisture management — done first",
+        "Licensed electrical, plumbing, and HVAC trades in-house",
+        "Basement suites that generate $1,500–$2,500/month rental income",
+        "Full-service from design and permits to final finishes",
+      ],
+    },
+    types: [
+      {
+        title: "Legal Second Suite",
+        image: "/images/services/full-home-remodel.jpeg",
+        description: "A fully separate, OBC-compliant rental unit with independent entrance, kitchen, bathroom, and egress windows.",
+      },
+      {
+        title: "Family Room & Entertainment",
+        image: "/images/services/basement-finishing.jpg",
+        description: "Open-concept finished basements designed for home theatres, playrooms, bars, and family gathering spaces.",
+      },
+      {
+        title: "Home Gym & Wellness",
+        image: "/images/services/structural-changes.jpg",
+        description: "Purpose-built gym spaces with proper flooring, ventilation, ceiling height consideration, and rubber underlayment.",
+      },
+    ],
+    considerations: [
+      {
+        title: "Waterproofing & Moisture Control",
+        icon: "/stars.svg",
+        description: "Basement moisture is the root cause of most failures. We address drainage, vapour barriers, and waterproofing before any framing or finishes go in.",
+      },
+      {
+        title: "Legal Suite Requirements (OBC)",
+        icon: "/stars.svg",
+        description: "Legal suites require minimum ceiling heights, egress windows, fire separations, and separate mechanical systems. We design to code from day one.",
+      },
+      {
+        title: "Ceiling Height & Underpinning",
+        icon: "/stars.svg",
+        description: "Low ceilings can often be addressed through underpinning or bench footing. We evaluate options and costs honestly before you commit.",
+      },
+      {
+        title: "Permits & Inspections",
+        icon: "/stars.svg",
+        description: "Basement renovations frequently require building permits, especially for suites, structural changes, and new plumbing. We handle the full permit process.",
+      },
+    ],
+    process: [
+      {
+        step: "Step 1",
+        title: "Assessment & Design",
+        description: "We assess existing conditions (moisture, heights, mechanical), define the scope, and produce a layout that maximizes the space.",
+      },
+      {
+        step: "Step 2",
+        title: "Permits & Material Planning",
+        description: "We handle permit submissions, confirm material selections, and schedule trades so the build starts without delays.",
+      },
+      {
+        step: "Step 3",
+        title: "Waterproofing & Rough-Ins",
+        description: "We address moisture first, then complete structural, plumbing, electrical, and HVAC rough-ins before closing walls.",
+      },
+      {
+        step: "Step 4",
+        title: "Finishes & Inspection",
+        description: "We install drywall, flooring, cabinetry, fixtures, and trim, then complete all required inspections and final walkthrough.",
+      },
+    ],
+    portfolio: [
+      {
+        title: "Legal Basement Suite",
+        image: "/images/projects/kitchen-renovation-etobicoke/after-1.jpg",
+        alt: "Finished legal basement suite with kitchen and bathroom",
+        description: "A fully permitted legal suite generating $2,200/month — built with fire separation, egress windows, and independent entry.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Home Theatre Basement",
+        image: "/images/projects/luxury-kitchen-renovation-toronto/after-2.jpg",
+        alt: "Finished basement home theatre",
+        description: "Open-concept entertainment basement with home theatre nook, wet bar, and custom millwork storage.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Basement Gym & Wellness",
+        image: "/images/services/whole-home-renovation.jpg",
+        alt: "Finished basement home gym",
+        description: "Purpose-built gym space with rubber flooring, mirrored wall, and commercial-grade ventilation.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need a permit to finish my basement?",
+        answer: "Most basement finishing projects require a permit — especially if you're adding a bathroom, creating a rental suite, or making structural changes. We identify permit requirements upfront.",
+      },
+      {
+        question: "How much does a basement renovation cost in Toronto?",
+        answer: "A standard finished basement runs $50,000–$100,000+. A legal suite with separate kitchen and bathroom typically costs $80,000–$130,000 depending on existing conditions and finishes.",
+      },
+      {
+        question: "What makes a basement suite 'legal' in Ontario?",
+        answer: "Legal suites require OBC-minimum ceiling heights (1.95m), egress windows, fire-rated separation, a separate entrance, and independent mechanical systems. We build to these standards.",
+      },
+      {
+        question: "Can you fix an existing damp or leaky basement?",
+        answer: "Yes. We address interior waterproofing (drainage channels, sump pumps, vapour barriers) and can coordinate exterior waterproofing where needed before finishing the space.",
+      },
+    ],
+    bgImage: "/images/backgrounds/bg-4.jpg",
+  },
+  {
+    slug: "sunroom-outdoor-living",
+    title: "Sunrooms & Outdoor Living",
+    subtitle: "Extending your living space into the outdoors with four-season sunrooms, covered patios, and outdoor kitchens.",
+    heroImage: "/images/services/home-addition-title.jpg",
+    introText: "A well-built sunroom or covered outdoor living space adds usable square footage, increases property value, and transforms how you use your home year-round. We design and build three-season and four-season rooms, covered decks, pergolas, and outdoor kitchens that integrate seamlessly with your existing home.",
+    whyChooseUs: {
+      image: "/images/services/home-additions.jpg",
+      title: "Why Build Outdoor Living with EZU?",
+      points: [
+        "Three-season and four-season rooms built to Ontario climate standards",
+        "Seamless exterior integration — matches your existing home",
+        "Energy-efficient glazing options for year-round comfort",
+        "Permit management included for all structural additions",
+        "Turnkey: from design and foundation to electrical and finishes",
+      ],
+    },
+    types: [
+      {
+        title: "Four-Season Sunrooms",
+        image: "/images/services/house-sunroom.jpg",
+        description: "Fully insulated, heated and cooled rooms with thermally broken frames and triple-pane glazing — usable year-round even in Canadian winters.",
+      },
+      {
+        title: "Three-Season Rooms & Screen Rooms",
+        image: "/images/services/side-extention.jpg",
+        description: "Covered, screened living areas that connect the indoors to the outdoors from spring through fall.",
+      },
+      {
+        title: "Covered Patios & Outdoor Kitchens",
+        image: "/images/services/second-story-addition.jpg",
+        description: "Permanent covered patio structures with optional outdoor kitchen, gas fireplace, and weatherproof finishes.",
+      },
+    ],
+    considerations: [
+      {
+        title: "Foundation & Structural Support",
+        icon: "/stars.svg",
+        description: "Sunrooms and additions require proper footings below the frost line. We engineer foundations that won't settle or heave through Toronto winters.",
+      },
+      {
+        title: "Glazing & Thermal Performance",
+        icon: "/stars.svg",
+        description: "The right glazing system is the difference between a cold greenhouse and a comfortable four-season room. We spec glazing matched to your climate goals.",
+      },
+      {
+        title: "Permits & Zoning",
+        icon: "/stars.svg",
+        description: "All structural additions require building permits. We confirm setback compliance and manage the full permit process.",
+      },
+      {
+        title: "Exterior Matching & Aesthetics",
+        icon: "/stars.svg",
+        description: "We align rooflines, cladding, and trim so the addition looks like it was always part of the house, not an afterthought.",
+      },
+    ],
+    process: [
+      {
+        step: "Step 1",
+        title: "Design & Zoning Review",
+        description: "We confirm setbacks, lot coverage, and propose a design that meets your goals and passes permit review.",
+      },
+      {
+        step: "Step 2",
+        title: "Engineering & Permits",
+        description: "We coordinate structural engineering and submit a complete permit package, managing any revision requests from the city.",
+      },
+      {
+        step: "Step 3",
+        title: "Foundation & Structure",
+        description: "We build frost-proof footings, frame the structure, install glazing systems, and weatherproof the envelope.",
+      },
+      {
+        step: "Step 4",
+        title: "Interior Finishes & Handover",
+        description: "We complete electrical, flooring, trim, and any outdoor kitchen elements, then walk through the completed space with you.",
+      },
+    ],
+    portfolio: [
+      {
+        title: "Four-Season Sunroom",
+        image: "/images/services/house-sunroom.jpg",
+        alt: "Four-season sunroom addition",
+        description: "A 400 sq ft four-season room with radiant floor heating and floor-to-ceiling glazing.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Covered Outdoor Kitchen",
+        image: "/images/services/home-additions.jpg",
+        alt: "Covered outdoor kitchen and patio",
+        description: "A 300 sq ft covered outdoor kitchen with gas grill, stone counters, and integrated lighting.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Three-Season Screen Room",
+        image: "/images/services/side-extention.jpg",
+        alt: "Three-season screened porch",
+        description: "A screened room addition seamlessly connected to the main living area through new French doors.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the difference between a three-season and four-season sunroom?",
+        answer: "A three-season room is screened or lightly glazed and usable spring through fall. A four-season room is fully insulated, heated, and cooled — comfortable in Canadian winters.",
+      },
+      {
+        question: "Do sunroom additions require a permit?",
+        answer: "Yes, all structural additions require building permits. We manage the full permit process including drawings, submissions, and inspections.",
+      },
+      {
+        question: "How much does a sunroom cost in Toronto?",
+        answer: "Three-season rooms typically range from $40,000–$80,000. Four-season rooms with proper insulation and glazing typically run $80,000–$150,000+.",
+      },
+      {
+        question: "Can you match my existing home exterior?",
+        answer: "Yes. We align rooflines, siding, and trim to match your existing home's style as closely as possible.",
+      },
+    ],
+    bgImage: "/images/backgrounds/bg-5.jpg",
+  },
+  {
+    slug: "garage-conversions",
+    title: "Garage Conversions",
+    subtitle: "Converting attached or detached garages into living space, home offices, studios, or rental suites.",
+    heroImage: "/images/services/home-renovation-title.jpg",
+    introText: "An underused garage is one of the most cost-effective spaces to convert in the GTA. Converting a garage into a legal suite, home office, gym, or studio adds significant value without the cost of a full addition — because the structure and roof already exist. We handle design, permits, insulation, mechanical, and finishes.",
+    whyChooseUs: {
+      image: "/images/services/whole-home-renovation.jpg",
+      title: "Why Convert Your Garage with EZU?",
+      points: [
+        "Significant value add at a lower cost than a full addition",
+        "Legal suite conversions that comply with OBC requirements",
+        "All trades in-house: electrical, plumbing, HVAC, insulation",
+        "Permit management included — we handle all submissions",
+        "Fast turnaround: most conversions complete in 8–14 weeks",
+      ],
+    },
+    types: [
+      {
+        title: "Legal Suite Conversion",
+        image: "/images/services/full-home-remodel.jpeg",
+        description: "Converting a detached or attached garage into a legal accessory dwelling unit with kitchen, bathroom, and egress windows.",
+      },
+      {
+        title: "Home Office & Studio",
+        image: "/images/services/home-office.jpg",
+        description: "Transforming a garage into a fully insulated, soundproofed, and temperature-controlled home office or creative studio.",
+      },
+      {
+        title: "Gym & Recreation Room",
+        image: "/images/services/basement-finishing.jpg",
+        description: "Purpose-built gym space with rubber flooring, high ceilings, and proper ventilation — separated from the main house.",
+      },
+    ],
+    considerations: [
+      {
+        title: "Structural Assessment",
+        icon: "/stars.svg",
+        description: "Garage slabs are typically not insulated and may need to be built up or replaced. We assess existing conditions before committing to a scope.",
+      },
+      {
+        title: "Insulation & Thermal Envelope",
+        icon: "/stars.svg",
+        description: "Garages have minimal insulation. Proper wall, ceiling, and slab insulation is essential for year-round comfort in Ontario's climate.",
+      },
+      {
+        title: "Permits & Zoning",
+        icon: "/stars.svg",
+        description: "Converting a garage to living space always requires a building permit. We confirm zoning compatibility and manage the full permit process.",
+      },
+      {
+        title: "Mechanical Systems",
+        icon: "/stars.svg",
+        description: "New suites or offices need independent electrical panels, heating/cooling, and plumbing where applicable. We plan mechanical systems from the start.",
+      },
+    ],
+    process: [
+      {
+        step: "Step 1",
+        title: "Assessment & Design",
+        description: "We assess the existing structure, confirm zoning eligibility, and design the converted space to your intended use.",
+      },
+      {
+        step: "Step 2",
+        title: "Permits & Pre-Construction",
+        description: "We submit for building permits, finalize material selections, and coordinate utility connections as required.",
+      },
+      {
+        step: "Step 3",
+        title: "Structural & Mechanical Rough-Ins",
+        description: "We upgrade insulation, complete electrical and plumbing rough-ins, and address any structural modifications required.",
+      },
+      {
+        step: "Step 4",
+        title: "Finishes & Handover",
+        description: "We install drywall, flooring, fixtures, and trim, then complete inspections and final walkthrough.",
+      },
+    ],
+    portfolio: [
+      {
+        title: "Garage to Rental Suite",
+        image: "/images/projects/kitchen-renovation-richmond-hill/after-1.jpg",
+        alt: "Converted garage rental suite",
+        description: "A detached garage converted to a 400 sq ft legal rental suite generating $1,800/month.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Garage Home Office",
+        image: "/images/services/home-office.jpg",
+        alt: "Garage converted to home office",
+        description: "A double garage converted into a soundproofed, fully climate-controlled home office and meeting room.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Garage Gym Conversion",
+        image: "/images/services/basement-finishing.jpg",
+        alt: "Garage converted to home gym",
+        description: "Single garage converted to a private home gym with rubber flooring, mirrors, and dedicated electrical.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can I legally live in a converted garage in Ontario?",
+        answer: "Yes, if the conversion meets OBC requirements for minimum ceiling heights, egress, fire separation, and mechanical systems. We design conversions to be fully code-compliant.",
+      },
+      {
+        question: "How much does a garage conversion cost?",
+        answer: "Garage conversions typically cost $60,000–$120,000 depending on the intended use, existing conditions, and whether plumbing is required.",
+      },
+      {
+        question: "Do I need a permit to convert my garage?",
+        answer: "Yes. Converting a garage to any form of living space always requires a building permit. We manage the full permit process.",
+      },
+      {
+        question: "Will converting my garage affect my property value?",
+        answer: "A well-executed, permitted conversion almost always adds value — especially in the GTA where additional living space and rental income are highly prized.",
+      },
+    ],
+    bgImage: "/images/backgrounds/bg-2.jpg",
+  },
+  {
+    slug: "secondary-suites",
+    title: "Secondary Suites",
+    subtitle: "Building legal, income-generating secondary suites within your existing home.",
+    heroImage: "/images/services/home-renovation-title.jpg",
+    introText: "Secondary suites — whether in a basement, above a garage, or carved from existing main-floor space — are one of the most financially effective investments a GTA homeowner can make. We design and build OBC-compliant secondary suites that pass all inspections, generate real rental income, and integrate cleanly into your home.",
+    whyChooseUs: {
+      image: "/images/services/whole-home-renovation.jpg",
+      title: "Why Build a Secondary Suite with EZU?",
+      points: [
+        "Deep expertise in Ontario Building Code secondary suite requirements",
+        "Permit management from design through to occupancy permit",
+        "All trades in-house: electrical, plumbing, framing, insulation, finishes",
+        "Suites that generate $1,500–$2,500/month in rental income",
+        "Multigenerational family configurations handled with care and discretion",
+      ],
+    },
+    types: [
+      {
+        title: "Basement Secondary Suite",
+        image: "/images/services/basement-finishing.jpg",
+        description: "OBC-compliant basement suite with fire separation, egress windows, separate entry, and independent mechanical systems.",
+      },
+      {
+        title: "Above-Garage Suite",
+        image: "/images/services/second-story-addition.jpg",
+        description: "Suite built above an existing or new garage, providing complete separation from the main residence.",
+      },
+      {
+        title: "Main Floor In-Law Suite",
+        image: "/images/services/full-home-remodel.jpeg",
+        description: "A self-contained suite carved from main-floor space — ideal for multigenerational families needing accessible, single-level accommodation.",
+      },
+    ],
+    considerations: [
+      {
+        title: "Fire Separation Requirements",
+        icon: "/stars.svg",
+        description: "OBC requires fire-rated separation between the suite and the main dwelling. We build this correctly from the start — it cannot be retrofitted cheaply.",
+      },
+      {
+        title: "Egress Windows",
+        icon: "/stars.svg",
+        description: "Every bedroom in a secondary suite requires a minimum-sized egress window. We factor this into the design and confirm window sizing before construction.",
+      },
+      {
+        title: "Separate Mechanical Systems",
+        icon: "/stars.svg",
+        description: "Legal suites require independent heating, electrical panels, and metering in most municipalities. We plan mechanical separation from day one.",
+      },
+      {
+        title: "Rental Registration",
+        icon: "/stars.svg",
+        description: "Some GTA municipalities require secondary suite registration. We advise on local requirements so you can rent legally and insure the unit properly.",
+      },
+    ],
+    process: [
+      {
+        step: "Step 1",
+        title: "Feasibility & Design",
+        description: "We assess your home's existing conditions, confirm OBC requirements, and design a suite layout that maximizes livability and rental appeal.",
+      },
+      {
+        step: "Step 2",
+        title: "Permit Submission",
+        description: "We prepare and submit a complete permit package including drawings, fire separation details, and mechanical specifications.",
+      },
+      {
+        step: "Step 3",
+        title: "Construction & Rough-Ins",
+        description: "We complete framing, fire-rated assemblies, electrical, plumbing, and HVAC rough-ins with inspections at each required stage.",
+      },
+      {
+        step: "Step 4",
+        title: "Finishes & Occupancy",
+        description: "We install finishes, pass final inspections, and hand over a rental-ready suite with all occupancy requirements met.",
+      },
+    ],
+    portfolio: [
+      {
+        title: "Basement Legal Suite",
+        image: "/images/projects/kitchen-renovation-etobicoke/after-1.jpg",
+        alt: "Finished legal basement secondary suite",
+        description: "Two-bedroom legal suite with separate entry, full kitchen, and $2,100/month rental income.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "In-Law Suite Conversion",
+        image: "/images/services/whole-home-renovation.jpg",
+        alt: "Main floor in-law suite conversion",
+        description: "A main-floor bedroom wing converted to a self-contained accessible suite for a multigenerational family.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+      {
+        title: "Above-Garage Suite",
+        image: "/images/services/second-story-addition.jpg",
+        alt: "Suite built above existing garage",
+        description: "500 sq ft suite above an existing double garage with private external staircase and separate utility metering.",
+        link: "/projects",
+        linkTitle: "View Projects",
+      },
+    ],
+    faqs: [
+      {
+        question: "What makes a secondary suite 'legal' in Ontario?",
+        answer: "A legal secondary suite must comply with the Ontario Building Code: minimum ceiling heights, egress windows in bedrooms, fire separation, separate mechanical systems, and a separate entry. It must also be permitted by the municipality.",
+      },
+      {
+        question: "How much rental income can a secondary suite generate?",
+        answer: "In the GTA, secondary suites typically generate $1,500–$2,800/month depending on size, location, and quality of finishes.",
+      },
+      {
+        question: "How long does it take to build a secondary suite?",
+        answer: "Most secondary suite projects take 3–6 months from permit approval to occupancy, depending on scope and existing conditions.",
+      },
+      {
+        question: "Can I add a secondary suite to a semi-detached or townhouse?",
+        answer: "Yes, in most cases. We assess your specific property and confirm zoning and OBC compliance before committing to a scope.",
+      },
+    ],
+    bgImage: "/images/backgrounds/bg-3.jpg",
+  },
 ];
 

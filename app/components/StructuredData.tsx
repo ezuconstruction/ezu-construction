@@ -1,42 +1,47 @@
 const StructuredData = () => {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "GeneralContractor", "HomeAndConstructionBusiness"],
+    "@id": "https://ezuconstruction.ca/#organization",
     "name": "EZU Construction",
-    "description": "Award-winning custom home builders and renovation specialists in Toronto",
-    "url": "https://ezuconstruction.com",
-    "telephone": "6477669999",
+    "description": "EZU Construction is a Canadian-owned custom home builder and full-service renovation contractor serving Toronto and the Greater Toronto Area since 2016. We specialize in custom homes, home additions, kitchen renovations, bathroom renovations, basement finishing, laneway suites, and all residential and commercial construction trades.",
+    "url": "https://ezuconstruction.ca",
+    "telephone": "+16477669999",
     "email": "info@ezuconstruction.com",
+    "foundingDate": "2016",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Toronto",
+      "streetAddress": "435 Steelcase Rd E",
+      "addressLocality": "Markham",
       "addressRegion": "ON",
-      "addressCountry": "CA",
-      "postalCode": "L3R 2M2"
+      "postalCode": "L3R 2M2",
+      "addressCountry": "CA"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "43.6532",
-      "longitude": "-79.3832"
+      "latitude": "43.8561",
+      "longitude": "-79.3370"
     },
-    "openingHours": "Mo-Fr 08:00-18:00",
+    "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-14:00"],
     "priceRange": "$$$",
-    "image": "https://ezuconstruction.com/EZU-Red-White.png",
+    "image": "https://ezuconstruction.ca/EZU-Red-White.png",
+    "logo": "https://ezuconstruction.ca/EZU-Red-White.png",
     "sameAs": [
       "https://www.facebook.com/ezuconstruction",
-      "https://www.instagram.com/ezuconstruction",
-      "https://www.linkedin.com/company/ezu-construction"
+      "https://www.instagram.com/ezu.construction/",
+      "https://www.linkedin.com/company/ezu-construction",
+      "https://www.youtube.com/@ezuconstruction"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Construction Services",
+      "name": "Construction & Renovation Services",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
             "name": "Custom Home Building",
-            "description": "Design and build high-quality custom homes tailored to your style and needs"
+            "description": "Design-to-build custom homes tailored to your lot, lifestyle, and budget across the GTA"
           }
         },
         {
@@ -44,7 +49,7 @@ const StructuredData = () => {
           "itemOffered": {
             "@type": "Service",
             "name": "Home Renovations",
-            "description": "Transform your entire home with expert renovations"
+            "description": "Full-home remodels, open-concept conversions, and structural renovations"
           }
         },
         {
@@ -52,7 +57,7 @@ const StructuredData = () => {
           "itemOffered": {
             "@type": "Service",
             "name": "Kitchen Renovations",
-            "description": "Get a functional, stylish kitchen upgrade with better storage and layouts"
+            "description": "Custom kitchen remodels with cabinetry, countertops, layouts, and appliance integration"
           }
         },
         {
@@ -60,7 +65,7 @@ const StructuredData = () => {
           "itemOffered": {
             "@type": "Service",
             "name": "Bathroom Renovations",
-            "description": "Upgrade your bathroom with custom tiling and spa-inspired features"
+            "description": "Bathroom upgrades with waterproofing, tile, fixtures, and spa-inspired design"
           }
         },
         {
@@ -68,7 +73,31 @@ const StructuredData = () => {
           "itemOffered": {
             "@type": "Service",
             "name": "Home Additions",
-            "description": "Add valuable living space with seamless home additions"
+            "description": "Second-story additions, rear extensions, and sunroom additions"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Laneway & Garden Suites",
+            "description": "Design, permits, and construction of laneway and garden suites in Toronto and GTA"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Basement Renovations",
+            "description": "Basement finishing, legal suites, walkout conversions, and income suite development"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Commercial Renovations",
+            "description": "Office fit-outs, retail, restaurant, and multi-unit residential commercial renovations"
           }
         }
       ]
@@ -79,14 +108,26 @@ const StructuredData = () => {
       "reviewCount": "50",
       "bestRating": "5"
     },
+    "areaServed": [
+      { "@type": "City", "name": "Toronto", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "Markham", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "Vaughan", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "Richmond Hill", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "Mississauga", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "Brampton", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "Oakville", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "North York", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "Scarborough", "addressRegion": "ON", "addressCountry": "CA" },
+      { "@type": "City", "name": "Etobicoke", "addressRegion": "ON", "addressCountry": "CA" }
+    ],
     "serviceArea": {
       "@type": "GeoCircle",
       "geoMidpoint": {
         "@type": "GeoCoordinates",
-        "latitude": "43.6532",
-        "longitude": "-79.3832"
+        "latitude": "43.8561",
+        "longitude": "-79.3370"
       },
-      "geoRadius": "50000"
+      "geoRadius": "60000"
     }
   };
 

@@ -1,6 +1,7 @@
 import Footer from "@/app/components/Footer";
 import Link from "next/link";
 import OptimizedImage from "@/app/components/OptimizedImage";
+import Breadcrumb from "@/app/components/Breadcrumb";
 import { constructionData } from "../construction";
 import CallToAction from "@/app/components/CallToAction";
 import { notFound } from "next/navigation";
@@ -74,7 +75,13 @@ const ConstructionPage = async ({
         <div className="absolute inset-0 backdrop-blur-[2px]"></div>
 
         <div className="relative m-4 md:m-10 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-white/90 drop-shadow-lg tracking-tight">
+          <Breadcrumb
+            items={[
+              { name: "Construction", url: "https://ezuconstruction.ca/construction" },
+              { name: construction.title, url: `https://ezuconstruction.ca/construction/${construction.slug}` },
+            ]}
+          />
+          <h1 className="text-5xl md:text-7xl font-bold text-white/90 drop-shadow-lg tracking-tight mt-2">
             {construction.title}
           </h1>
           <p className="text-xl font-light pt-2 pl-1 text-white/90 drop-shadow">
