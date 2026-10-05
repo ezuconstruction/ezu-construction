@@ -1,0 +1,38 @@
+---
+import { ChevronRight } from '@lucide/astro';
+interface Props { items: { href?: string; label: string }[]; home?: string }
+const { items, home = 'Home' } = Astro.props;
+const all = [{ href: '/', label: home }, ...items];
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: all.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.href ? { item: new URL(c.href, Astro.site).href } : {}),
+  })),
+};
+---
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    {items.map((c, i) => (
+      <li>
+        {i > 0 && <ChevronRight size={16} aria-hidden="true" />}
+        {c.href && i < items.length - 1 ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(ld)} />
+
+<style>
+  .crumbs ol { display: flex; flex-wrap: nowrap; min-width: 0; align-items: center; gap: 0.25rem 0.4rem; list-style: none; margin: 0 0 1.75rem; padding: 0; font-size: 1rem; color: var(--ink); }
+  .crumbs li { display: inline-flex; align-items: center; gap: 0.4rem; flex: none; white-space: nowrap; }
+  .crumbs li:last-child { flex: 0 1 auto; min-width: 0; }
+  .crumbs li:last-child span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumbs li :global(svg) { color: #8a9095; flex: none; }
+  .crumbs a { color: var(--ink); font-weight: 500; text-decoration: underline; text-decoration-color: #b3b9b4; text-underline-offset: 0.25em; }
+  .crumbs a:hover { color: var(--seal); text-decoration-color: var(--seal); }
+  .crumbs [aria-current] { color: var(--ink-2); }
+</style>

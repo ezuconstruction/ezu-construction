@@ -1,0 +1,290 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/tos",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/llms",
+      "destination": "/llms.txt",
+      "permanent": true
+    },
+    {
+      "source": "/social-media",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/publications",
+      "destination": "/journal",
+      "permanent": true
+    },
+    {
+      "source": "/publications/laneway-suite-cost-toronto-2026",
+      "destination": "/journal/laneway-suite-cost-toronto",
+      "permanent": true
+    },
+    {
+      "source": "/publications/ontario-home-renovation-grants-rebates-2026",
+      "destination": "/journal/ontario-home-renovation-rebates",
+      "permanent": true
+    },
+    {
+      "source": "/publications/kitchen-renovation-cost-gta-2026",
+      "destination": "/journal/kitchen-renovation-cost-gta",
+      "permanent": true
+    },
+    {
+      "source": "/publications/basement-renovation-cost-gta-2026",
+      "destination": "/journal/basement-renovation-cost-gta",
+      "permanent": true
+    },
+    {
+      "source": "/publications/bathroom-renovation-cost-guide",
+      "destination": "/journal/bathroom-renovation-cost-gta",
+      "permanent": true
+    },
+    {
+      "source": "/publications/full-home-renovation-cost-breakdown-ontario",
+      "destination": "/services/home-renovations",
+      "permanent": true
+    },
+    {
+      "source": "/publications/home-renovation-trends-gta-2026",
+      "destination": "/journal",
+      "permanent": true
+    },
+    {
+      "source": "/publications/gta-buyers-market-2026-renovation-moves",
+      "destination": "/journal",
+      "permanent": true
+    },
+    {
+      "source": "/publications/renovate-before-selling-gta-buyers-market",
+      "destination": "/journal",
+      "permanent": true
+    },
+    {
+      "source": "/publications/drywall-installation-vs-repair-when-to-replace",
+      "destination": "/services/trades",
+      "permanent": true
+    },
+    {
+      "source": "/publications/custom-home-builder-vs-general-contractor-ontario",
+      "destination": "/services/custom-homes",
+      "permanent": true
+    },
+    {
+      "source": "/publications/hardwood-vs-vinyl-vs-laminate-canadian-homes",
+      "destination": "/services/trades",
+      "permanent": true
+    },
+    {
+      "source": "/publications/kitchen-renovation-trends-2026",
+      "destination": "/journal/best-kitchen-layouts-gta-homes",
+      "permanent": true
+    },
+    {
+      "source": "/publications/home-addition-vs-moving",
+      "destination": "/journal/renovate-add-or-rebuild",
+      "permanent": true
+    },
+    {
+      "source": "/publications/sustainable-home-renovation",
+      "destination": "/journal/ontario-home-renovation-rebates",
+      "permanent": true
+    },
+    {
+      "source": "/publications/custom-home-building-process",
+      "destination": "/process",
+      "permanent": true
+    },
+    {
+      "source": "/publications/choosing-right-contractor",
+      "destination": "/journal/how-to-compare-renovation-quotes",
+      "permanent": true
+    },
+    {
+      "source": "/publications/ontario-renovation-permits-2026-checklist",
+      "destination": "/journal/do-i-need-a-building-permit-ontario",
+      "permanent": true
+    },
+    {
+      "source": "/publications/basement-finishing-roi-2026-gta",
+      "destination": "/journal/basement-renovation-cost-gta",
+      "permanent": true
+    },
+    {
+      "source": "/publications/energy-efficient-renovations-ontario-2026",
+      "destination": "/journal/ontario-home-renovation-rebates",
+      "permanent": true
+    },
+    {
+      "source": "/publications/open-concept-vs-defined-spaces-2026",
+      "destination": "/journal/removing-a-load-bearing-wall",
+      "permanent": true
+    },
+    {
+      "source": "/publications/smart-home-renovations-2026-upgrades",
+      "destination": "/services/home-renovations",
+      "permanent": true
+    },
+    {
+      "source": "/publications/aging-in-place-renovations-gta",
+      "destination": "/journal/multigenerational-home-design-gta",
+      "permanent": true
+    },
+    {
+      "source": "/publications/exterior-renovation-curb-appeal-toronto-2026",
+      "destination": "/services/trades",
+      "permanent": true
+    },
+    {
+      "source": "/publications/outdoor-living-space-renovation-gta-2026",
+      "destination": "/services/trades",
+      "permanent": true
+    },
+    {
+      "source": "/publications/hcra-vs-tarion-ontario-homeowner-guide",
+      "destination": "/journal/hcra-vs-tarion-ontario-homeowner-guide",
+      "permanent": true
+    },
+    {
+      "source": "/publications/how-long-does-home-addition-take-toronto",
+      "destination": "/journal/how-long-does-home-addition-take-toronto",
+      "permanent": true
+    },
+    {
+      "source": "/publications/toronto-secondary-suite-legalization-guide",
+      "destination": "/journal/toronto-secondary-suite-legalization-guide",
+      "permanent": true
+    },
+    {
+      "source": "/publications/garage-conversion-living-space-toronto",
+      "destination": "/journal/garage-conversion-living-space-toronto",
+      "permanent": true
+    },
+    {
+      "source": "/publications/best-kitchen-layouts-gta-homes",
+      "destination": "/journal/best-kitchen-layouts-gta-homes",
+      "permanent": true
+    },
+    {
+      "source": "/publications/master-bathroom-renovation-features-gta",
+      "destination": "/journal/master-bathroom-renovation-features-gta",
+      "permanent": true
+    },
+    {
+      "source": "/publications/second-story-vs-rear-addition-gta",
+      "destination": "/journal/second-story-vs-rear-addition-gta",
+      "permanent": true
+    },
+    {
+      "source": "/publications/attic-conversion-toronto-homes",
+      "destination": "/journal/attic-conversion-toronto-homes",
+      "permanent": true
+    },
+    {
+      "source": "/publications/basement-suite-vs-laneway-suite-toronto",
+      "destination": "/journal/basement-suite-vs-laneway-suite-toronto",
+      "permanent": true
+    },
+    {
+      "source": "/construction",
+      "destination": "/services/trades",
+      "permanent": true
+    },
+    {
+      "source": "/construction/:slug",
+      "destination": "/services/trades",
+      "permanent": true
+    },
+    {
+      "source": "/services/secondary-suites",
+      "destination": "/services/basement-renovations",
+      "permanent": true
+    },
+    {
+      "source": "/services/garage-conversions",
+      "destination": "/services/home-additions",
+      "permanent": true
+    },
+    {
+      "source": "/services/sunroom-outdoor-living",
+      "destination": "/services/home-additions",
+      "permanent": true
+    },
+    {
+      "source": "/services/home-office-renovations",
+      "destination": "/services/home-renovations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/north-york",
+      "destination": "/locations/toronto",
+      "permanent": true
+    },
+    {
+      "source": "/locations/scarborough",
+      "destination": "/locations/toronto",
+      "permanent": true
+    },
+    {
+      "source": "/locations/etobicoke",
+      "destination": "/locations/toronto",
+      "permanent": true
+    },
+    {
+      "source": "/locations/mississauga",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/oakville",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/renovation-cost-calculator",
+      "destination": "/journal",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    }
+  ]
+}

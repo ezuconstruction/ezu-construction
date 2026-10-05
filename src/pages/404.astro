@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { services } from '../data/services';
+---
+<Base title="Page not found" description="The page you were looking for has moved or doesn’t exist." noindex fit>
+  <section class="wrap nf">
+    <h1>This page isn’t here</h1>
+    <p class="lede">It may have moved when we rebuilt the site. Try one of these:</p>
+    <ul>
+      <li><a href="/projects">Projects</a></li>
+      {services.map((s) => <li><a href={`/services/${s.slug}`}>{s.name}</a></li>)}
+      <li><a href="/journal">Journal</a></li>
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .nf { padding-block: clamp(2rem, 1rem + 3vw, 4rem); }
+  .nf h1 { font-size: clamp(2.2rem, 1.4rem + 3vw, 3.75rem); }
+  .nf ul { columns: 2; max-width: 36rem; padding-left: 1.1em; }
+  .nf li { margin-bottom: 0.4rem; }
+  @media (max-width: 640px), (max-height: 760px) {
+    .nf { padding-block: 1.25rem; }
+    .nf h1 { font-size: clamp(2rem, 1.4rem + 2vw, 3rem); }
+    .nf .lede { font-size: var(--step-0); }
+    .nf li { margin-bottom: 0.25rem; }
+  }
+  .nf li::marker { color: var(--seal); }
+</style>

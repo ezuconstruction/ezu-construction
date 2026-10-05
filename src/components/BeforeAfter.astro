@@ -1,0 +1,28 @@
+---
+// Before and after as two separate photos, side by side on wider screens.
+import Photo from './Photo.astro';
+import type { ImageMetadata } from 'astro';
+type Shot = { src: ImageMetadata; alt: string };
+interface Props { before: Shot; after: Shot; note?: string; sizes?: string; lang?: 'en' | 'zh' }
+const { before, after, note, sizes = '(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw', lang = 'en' } = Astro.props;
+const [tBefore, tAfter] = lang === 'zh' ? ['改造前', '改造后'] : ['Before', 'After'];
+---
+<figure class="ba">
+  <div class="pair">
+    <div><Photo src={before.src} alt={before.alt} sizes={sizes} ratio="4/3" /><span class="tag">{tBefore}</span></div>
+    <div><Photo src={after.src} alt={after.alt} sizes={sizes} ratio="4/3" /><span class="tag tag--after">{tAfter}</span></div>
+  </div>
+  {note && <figcaption>{note}</figcaption>}
+</figure>
+
+<style>
+  .pair { display: grid; gap: 0.75rem; }
+  @media (min-width: 640px) { .pair { grid-template-columns: 1fr 1fr; } }
+  .pair > div { position: relative; }
+  .tag {
+    position: absolute; left: 0.75rem; top: 0.75rem;
+    background: #fff; color: var(--ink); font-size: 1rem; font-weight: 600;
+    padding: 0.35rem 0.75rem; border-radius: var(--radius);
+  }
+  .tag--after { background: var(--seal); color: #fff; }
+</style>

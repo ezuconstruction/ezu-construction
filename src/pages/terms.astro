@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Terms of Use" description="Terms of use for the EZU Construction website.">
+  <article class="wrap legal prose">
+    <h1>Terms of use</h1>
+    <p class="muted">Last updated October 3, 2026</p>
+    <p>This website is published by {site.legalName}. By using it you agree to these terms.</p>
+    <h2>General information, not advice</h2>
+    <p>Our guides and the cost ranges in them are general information based on our experience in the Greater Toronto Area. They aren’t a quote, and they aren’t engineering, legal or financial advice. Building codes, by-laws, rebates and prices change. Confirm anything that matters with the relevant municipality or a qualified professional, and rely only on a written estimate for your specific project.</p>
+    <h2>Photos and content</h2>
+    <p>Project photos show work by EZU Construction unless a caption says otherwise. Some illustrative images in guides and service pages are stock photography. Text and project photos on this site are owned by EZU Construction and may not be reused without permission.</p>
+    <h2>Links</h2>
+    <p>We link to government and third-party websites for convenience. We aren’t responsible for their content.</p>
+    <h2>Governing law</h2>
+    <p>These terms are governed by the laws of Ontario and the federal laws of Canada that apply in Ontario.</p>
+  </article>
+</Base>
+<style>.legal { padding-block: clamp(2rem, 1.5rem + 3vw, 4.5rem) var(--space-section); }</style>

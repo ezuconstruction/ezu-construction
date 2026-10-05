@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Accessibility" description="EZU Construction's commitment to an accessible website and how to reach us in another format.">
+  <article class="wrap legal prose">
+    <h1>Accessibility</h1>
+    <p>We want everyone to be able to use this website, including people who use screen readers, keyboards, magnification or other assistive technology. We build it to the Web Content Accessibility Guidelines (WCAG) 2.1 level AA, in the spirit of Ontario’s Accessibility for Ontarians with Disabilities Act.</p>
+    <h2>What we’ve done</h2>
+    <ul>
+      <li>Text and controls meet colour contrast guidelines.</li>
+      <li>Every page works with a keyboard, with a visible focus outline and a skip link.</li>
+      <li>Images have text descriptions, and before-and-after photos are labelled.</li>
+      <li>The site respects your device’s reduced-motion setting.</li>
+      <li>Pages use standard HTML headings, lists and form labels.</li>
+    </ul>
+    <h2>Tell us about a barrier</h2>
+    <p>If something on this site doesn’t work for you, or you need information in another format, call <a href={site.phoneHref}>{site.phone}</a> or email <a href={`mailto:${site.email}`}>{site.email}</a>. We’ll respond and help.</p>
+    <h2>On site</h2>
+    <p>We also design and build for accessibility: barrier-free showers, wider doorways, ramps, main-floor bedrooms and in-law suites. See our guide to <a href="/journal/multigenerational-home-design-gta">designing a multigenerational home</a>.</p>
+  </article>
+</Base>
+<style>.legal { padding-block: clamp(2rem, 1.5rem + 3vw, 4.5rem) var(--space-section); }</style>

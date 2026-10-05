@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+import { Phone, Mail, MapPin, Languages, ListChecks } from '@lucide/astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Base title="Contact EZU Construction: Book a Consultation" description={`Book a site visit or ask a question. Call ${site.phone}, email ${site.email}, or send project details online. Based at ${site.address.street}, Markham.`} alternate={{ en: '/contact', zh: '/zh#contact' }}>
+  <PageHero title="Request a consultation" lede="Share a few details about your home and what you have in mind. A rough idea is all you need!" />
+
+  <section class="wrap layout">
+    <div class="form-col"><ContactForm /></div>
+    <aside class="info">
+      <div>
+        <p class="label"><Phone size={16} aria-hidden="true" />Call</p>
+        <p class="big"><a href={site.phoneHref}>{site.phone}</a></p>
+        <p class="small muted">{site.hours}</p>
+      </div>
+      <div>
+        <p class="label"><Mail size={16} aria-hidden="true" />Email</p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+      <div>
+        <p class="label"><MapPin size={16} aria-hidden="true" />Office</p>
+        <address>{site.address.street}<br />{site.address.city}, {site.address.region} {site.address.postal}</address>
+        <p><a href={site.mapUrl} rel="noopener">Open in Google Maps</a></p>
+      </div>
+      <div>
+        <p class="label" lang="zh-Hans"><Languages size={16} aria-hidden="true" />中文</p>
+        <p lang="zh-Hans">我们可以用普通话交流。<a href="/zh">中文页面</a></p>
+      </div>
+      <div class="next">
+        <p class="label"><ListChecks size={16} aria-hidden="true" />What happens next</p>
+        <ol>
+          <li>Our team contacts you within one business day.</li>
+          <li>We visit your home to assess the scope.</li>
+          <li>You receive a detailed written quote.</li>
+        </ol>
+      </div>
+    </aside>
+  </section>
+</Base>
+
+<script is:inline>
+  // Preselect the project type when arriving from a service page (?service=slug). Progressive enhancement only.
+  (function () {
+    var s = new URLSearchParams(location.search).get('service');
+    var sel = document.getElementById('f-type');
+    if (!s || !sel) return;
+    var label = { 'custom-homes': 'Custom homes', 'home-additions': 'Home additions', 'home-renovations': 'Whole-home renovations', 'kitchen-renovations': 'Kitchen renovations', 'bathroom-renovations': 'Bathroom renovations', 'basement-renovations': 'Basements and second suites', 'laneway-garden-suites': 'Laneway and garden suites', 'trades': 'Trades and repairs' }[s];
+    if (label) sel.value = label;
+  })();
+</script>
+
+<style>
+  .layout { display: grid; gap: 3rem 5rem; padding-bottom: var(--space-section); }
+  @media (min-width: 1000px) { .layout { grid-template-columns: minmax(0, 1fr) 20rem; } }
+  .info { display: grid; gap: 1.75rem; align-content: start; border-top: 2px solid var(--ink); padding-top: 1.25rem; }
+  .info p { margin: 0 0 0.3rem; }
+  .label { display: flex; align-items: center; gap: 0.4rem; font-size: var(--step--1); color: var(--ink-2); }
+  .label :global(svg) { color: var(--seal); }
+  .big { font-size: var(--step-2); font-weight: 650; font-stretch: 75%; }
+  .big a { text-decoration: none; }
+  address { font-style: normal; margin-bottom: 0.4rem; }
+  .info a { text-decoration-color: var(--seal); }
+  .next ol { margin: 0.4rem 0 0; padding-left: 1.2em; color: var(--ink-2); }
+  .next li { margin-bottom: 0.4rem; }
+  .next li::marker { color: var(--seal); font-weight: 600; }
+</style>

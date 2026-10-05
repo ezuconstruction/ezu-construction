@@ -1,0 +1,57 @@
+---
+import { site } from '../data/site';
+import { services } from '../data/services';
+interface Props { lang?: 'en' | 'zh'; preset?: string }
+const { lang = 'en', preset } = Astro.props;
+const zh = lang === 'zh';
+const t = zh
+  ? {
+      name: '您的姓名', email: '电子邮箱', phone: '电话', type: '项目类型', choose: '请选择（可不填）',
+      message: '项目简介', messageHint: '例如：想翻新厨房和主卫，房子大约 1990 年建成', submit: '发送咨询',
+      note: '我们会在一个工作日内回复。', subject: '网站中文咨询', other: '其他 / 不确定',
+    }
+  : {
+      name: 'Name', email: 'Email', phone: 'Phone', type: 'Project type', choose: 'Choose one (optional)',
+      message: 'Project details', messageHint: 'For example: kitchen and main bathroom, house built around 1990', submit: 'Send request',
+      note: 'Our team replies within one business day.', subject: 'Website enquiry', other: 'Not sure yet',
+    };
+const next = new URL('/contact/thanks', site.url).href;
+---
+<form class="contact-form" action={site.formAction} method="POST">
+  <input type="hidden" name="_subject" value={t.subject} />
+  <input type="hidden" name="_next" value={next} />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+
+  <div class="field"><label for="f-name">{t.name}</label><input id="f-name" name="name" type="text" autocomplete="name" required /></div>
+  <div class="field"><label for="f-phone">{t.phone}</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" /></div>
+  <div class="field"><label for="f-email">{t.email}</label><input id="f-email" name="email" type="email" autocomplete="email" required /></div>
+  <div class="field">
+    <label for="f-type">{t.type}</label>
+    <select id="f-type" name="project_type">
+      <option value="">{t.choose}</option>
+      {services.map((s) => <option value={s.name} selected={preset === s.slug}>{zh ? s.zh : s.name}</option>)}
+      <option value="Other">{t.other}</option>
+    </select>
+  </div>
+  <div class="field wide">
+    <label for="f-msg">{t.message}</label>
+    <textarea id="f-msg" name="message" rows="4" aria-describedby="f-msg-hint" required></textarea>
+    <span class="hint" id="f-msg-hint">{t.messageHint}</span>
+  </div>
+  <div class="submit wide">
+    <button class="btn" type="submit">{t.submit}</button>
+    <p class="small muted">{t.note}</p>
+  </div>
+</form>
+
+<style>
+  /* One grid for every field, so labels and inputs line up across both columns */
+  .contact-form { display: grid; gap: 1.25rem 1.5rem; align-items: start; }
+  @media (min-width: 640px) { .contact-form { grid-template-columns: 1fr 1fr; } .wide { grid-column: 1 / -1; } }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  textarea { min-height: 7.5rem; }
+  .submit { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 0.25rem; }
+  .submit p { margin: 0; }
+</style>

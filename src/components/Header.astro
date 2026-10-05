@@ -1,0 +1,216 @@
+---
+import Logo from './Logo.astro';
+import ServiceIcon from './ServiceIcon.astro';
+import { Image } from 'astro:assets';
+import { Phone, Menu, X, ChevronDown } from '@lucide/astro';
+import { site, nav } from '../data/site';
+import { services } from '../data/services';
+
+const path = Astro.url.pathname.replace(/\.html$/, '');
+const isActive = (href: string) => path === href || path.startsWith(href + '/');
+const links = nav.filter((n) => n.href !== '/services');
+---
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label="EZU Construction, home">
+      <Logo height={32} />
+      <span>EZU Construction</span>
+    </a>
+
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        <li class="dd">
+          <a class="dd-btn" href="/services" aria-current={isActive('/services') ? 'page' : undefined}>Services</a>
+          <button type="button" class="dd-toggle" popovertarget="services-menu" aria-label="Show the services menu"><ChevronDown size={16} aria-hidden="true" /></button>
+        </li>
+        {links.map((item) => (
+          <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <a class="phone" href={site.phoneHref}><Phone size={17} aria-hidden="true" />{site.phone}</a>
+      <a class="btn" href="/contact">Book a consultation</a>
+    </div>
+
+    <a class="call-icon" href={site.phoneHref} aria-label={`Call ${site.phone}`}><Phone size={20} aria-hidden="true" /></a>
+    <details class="menu">
+      <summary><Menu size={20} class="i-open" aria-hidden="true" /><X size={20} class="i-close" aria-hidden="true" />Menu</summary>
+      <div class="menu-panel">
+        <p class="menu-label">Services</p>
+        <ul class="menu-services">
+          {services.map((s) => <li><a href={`/services/${s.slug}`}><ServiceIcon slug={s.slug} size={22} />{s.name}</a></li>)}
+        </ul>
+        <ul class="menu-main">
+          {links.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/zh" lang="zh-Hans">中文</a></li>
+        </ul>
+        <div class="menu-cta">
+          <a class="btn" href="/contact">Book a consultation</a>
+          <a class="btn btn--ghost" href={site.phoneHref}><Phone size={18} aria-hidden="true" />Call {site.phone}</a>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>
+
+<!-- Services dropdown: native popover. Opens on hover (mouse) or click, closes on Esc, outside click or
+     when the pointer leaves. The preview on the right follows the item the pointer rests on. -->
+<div id="services-menu" popover class="mega">
+  <div class="wrap mega-grid">
+    <div>
+      <ul class="mega-list">
+        {services.map((s, i) => (
+          <li class:list={{ on: i === 0 }}>
+            <a href={`/services/${s.slug}`}><ServiceIcon slug={s.slug} size={22} /><span>{s.name}</span></a>
+            <a class="pv" href={`/services/${s.slug}`} tabindex="-1" aria-hidden="true">
+              <span class="pv-img"><Image src={s.image} alt="" widths={[320, 640]} sizes="320px" format="webp" quality={68} loading="lazy" /></span>
+              <span class="pv-name">{s.name}</span>
+              <span class="pv-text">{s.short}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mega-foot">Not sure of your needs? <a href="/services">See all services</a> or <a href="/contact">contact us</a>.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btn = document.querySelector<HTMLElement>('.primary .dd'); // hovering the Services link or its chevron opens the menu
+  const menu = document.getElementById('services-menu');
+  if (btn && menu) {
+    // Hover to open for mouse users; a short grace period lets the pointer travel from the button to the panel.
+    let t = 0;
+    const open = (e: PointerEvent) => { if (e.pointerType !== 'mouse') return; clearTimeout(t); if (!menu.matches(':popover-open')) menu.showPopover(); };
+    const close = (e: PointerEvent) => { if (e.pointerType !== 'mouse') return; clearTimeout(t); t = window.setTimeout(() => menu.hidePopover(), 250); };
+    btn.addEventListener('pointerenter', open);
+    btn.addEventListener('pointerleave', close);
+    menu.addEventListener('pointerenter', () => clearTimeout(t));
+    menu.addEventListener('pointerleave', close);
+
+    // Preview follows the item the pointer rests on (not every item it passes), and keyboard focus
+    const items = menu.querySelectorAll('.mega-list > li');
+    const show = (li: Element) => items.forEach((x) => x.classList.toggle('on', x === li));
+    let h = 0;
+    items.forEach((li) => {
+      li.addEventListener('pointerenter', () => { clearTimeout(h); h = window.setTimeout(() => show(li), 110); });
+      li.addEventListener('focusin', () => show(li));
+    });
+    menu.querySelector('.mega-list')!.addEventListener('pointerleave', () => clearTimeout(h));
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; gap: 2rem; min-height: 4.5rem; }
+  .brand {
+    display: flex; align-items: center; gap: 0.6rem;
+    text-decoration: none; font-stretch: 75%; font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em;
+    margin-right: auto; white-space: nowrap;
+  }
+  @media (max-width: 420px) { .brand { font-size: 1.15rem; gap: 0.45rem; } .menu summary { padding: 0 0.7rem; } }
+  .brand:hover { color: var(--ink); }
+  .primary ul { display: flex; align-items: center; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
+  .primary a, .dd-btn {
+    text-decoration: none; font: inherit; font-weight: 500; color: var(--ink);
+    position: relative; display: inline-flex; align-items: center; line-height: 1.5; padding-block: 0.4rem; border: 0; background: none; cursor: pointer;
+  }
+  .primary a::after, .dd-btn::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--seal);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+  }
+  .primary a:hover::after, .dd-btn:hover::after { transform: scaleX(1); }
+  .primary [aria-current='page']::after { transform: scaleX(1); animation: underline 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both; }
+  @keyframes underline { from { transform: scaleX(0); } }
+  @media (prefers-reduced-motion: reduce) { .primary a::after, .dd-btn::after { transition: none; animation: none !important; } }
+  .dd { display: flex; align-items: center; gap: 0.1rem; }
+  .dd-toggle { display: inline-grid; place-items: center; width: 1.6rem; height: 1.75rem; padding: 0; border: 0; border-radius: var(--radius); background: none; color: var(--ink); cursor: pointer; }
+  .dd-toggle:hover { color: var(--seal); }
+  .dd-toggle:focus-visible { outline: none; box-shadow: var(--ring); }
+  .dd-toggle :global(svg) { transition: transform 0.15s; }
+  :global(body:has(#services-menu:popover-open)) .dd-btn { color: var(--seal); }
+  :global(body:has(#services-menu:popover-open)) .dd-toggle { color: var(--seal); }
+  :global(body:has(#services-menu:popover-open)) .dd-toggle :global(svg) { transform: rotate(180deg); }
+  .primary a:hover, .dd-btn:hover { color: var(--seal); }
+  .actions { display: flex; align-items: center; gap: 1.25rem; }
+  .phone { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-weight: 600; white-space: nowrap; }
+  .phone :global(svg) { color: var(--seal); }
+  .actions .btn { padding: 0.7em 1.1em; }
+
+  /* Dropdown panel sits directly under the sticky header */
+  .mega {
+    position: fixed; inset: calc(4.5rem + 1px) 0 auto 0; margin: 0; width: 100%; max-width: none;
+    max-height: calc(100dvh - 4.5rem); overflow-y: auto;
+    padding: 1.5rem 0 1.25rem; border: 0; border-bottom: 1px solid var(--line);
+    background: #fff; color: var(--ink); box-shadow: 0 18px 30px -12px rgba(30, 35, 38, 0.18);
+  }
+  .mega-grid { position: relative; min-height: 18.5rem; padding-right: calc(21rem + var(--gutter)); }
+  .mega-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.15rem 1.5rem; }
+  .mega-list > li > a:first-child {
+    display: flex; align-items: center; gap: 0.75rem; min-height: 3rem; padding: 0.55rem 0.75rem; margin-inline: -0.75rem;
+    border-radius: var(--radius); text-decoration: none; font-weight: 600; font-size: 1.05rem;
+  }
+  .mega-list :global(.svc-icon) { color: var(--seal); flex: none; }
+  .mega-list > li:hover > a:first-child, .mega-list > li:focus-within > a:first-child { background: var(--plaster); color: var(--ink); }
+  .mega-foot { margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.95rem; }
+  .mega-foot a { color: var(--ink); text-decoration-color: var(--seal); }
+
+  /* Preview column: one panel per service, stacked in the same spot; the hovered one shows */
+  .pv {
+    position: absolute; top: 0; right: var(--gutter); width: 20rem;
+    display: grid; gap: 0.35rem; text-decoration: none; color: var(--ink);
+    opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0s 0.25s;
+  }
+  .pv-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--plaster); margin-bottom: 0.4rem; }
+  .pv-img :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .pv-name { font-weight: 650; font-stretch: 75%; font-size: 1.35rem; line-height: 1.1; }
+  .pv-text { color: var(--ink-2); font-size: 0.95rem; line-height: 1.45; }
+  .mega-list > li.on .pv { opacity: 1; visibility: visible; transition: opacity 0.25s ease; }
+  @media (prefers-reduced-motion: reduce) { .pv { transition: none; } }
+
+  /* Mobile menu */
+  .menu { display: none; }
+  .menu summary, .call-icon {
+    list-style: none; cursor: pointer; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.75rem;
+    padding: 0 0.9rem; border: 1px solid #c5cac5; border-radius: var(--radius); background: #fff;
+  }
+  .call-icon { display: none; padding: 0; width: 2.75rem; justify-content: center; color: var(--seal); }
+  .menu summary::-webkit-details-marker { display: none; }
+  .menu :global(.i-close), .menu[open] :global(.i-open) { display: none; }
+  .menu[open] :global(.i-close) { display: block; }
+  .menu[open] summary { background: var(--plaster); }
+  .menu-panel {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: #fff; border-bottom: 1px solid var(--line);
+    padding: 0.75rem var(--gutter) 1.5rem;
+    max-height: calc(100dvh - 4.5rem); overflow-y: auto;
+  }
+  .menu-panel ul { list-style: none; margin: 0; padding: 0; }
+  .menu-label { margin: 0.5rem 0 0.25rem; font-weight: 600; color: var(--ink-2); }
+  .menu-services a { display: flex; align-items: center; gap: 0.75rem; min-height: 3rem; font-size: 1.1rem; font-weight: 600; text-decoration: none; }
+  .menu-services :global(.svc-icon) { color: var(--seal); }
+  .menu-main { margin-top: 0.75rem !important; border-top: 1px solid var(--line) !important; padding-top: 0.5rem !important; columns: 2; column-gap: 1.5rem; }
+  .menu-main a { display: block; padding: 0.6rem 0; font-size: 1.05rem; text-decoration: none; }
+  .menu-cta { display: grid; gap: 0.6rem; margin-top: 1rem; }
+
+  @media (max-width: 1080px) {
+    .primary { display: none; }
+  }
+  @media (max-width: 760px) {
+    .actions { display: none; }
+    .menu { display: block; }
+    .call-icon { display: inline-flex; }
+    .bar { gap: 0.5rem; }
+  }
+  @media (min-width: 761px) and (max-width: 1080px) {
+    .menu { display: block; }
+  }
+</style>

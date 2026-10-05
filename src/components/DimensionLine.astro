@@ -1,0 +1,39 @@
+---
+// A drawing-style dimension line. Segment widths are proportional to their duration,
+// so the motif carries real information (how long each phase takes), not decoration.
+interface Props { phases: { label: string; weeks: [number, number] }[]; caption?: string }
+const { phases, caption } = Astro.props;
+const mid = (w: [number, number]) => (w[0] + w[1]) / 2;
+const fmt = (w: [number, number]) => (w[0] === w[1] ? `${w[0]} wk` : `${w[0]}–${w[1]} wk`);
+const total: [number, number] = [phases.reduce((a, p) => a + p.weeks[0], 0), phases.reduce((a, p) => a + p.weeks[1], 0)];
+---
+<figure class="dim">
+  <ol>
+    {phases.map((p) => (
+      <li style={`--grow:${mid(p.weeks)}`}>
+        <span class="rule" aria-hidden="true"></span>
+        <span class="label">{p.label}</span>
+        <span class="weeks">{fmt(p.weeks)}</span>
+      </li>
+    ))}
+  </ol>
+  <figcaption>{caption ?? `Typical overall: ${total[0]}–${total[1]} weeks.`}</figcaption>
+</figure>
+
+<style>
+  .dim ol { display: flex; list-style: none; margin: 0; padding: 0; }
+  .dim li { flex: var(--grow) 1 0; min-width: 8.5rem; display: grid; grid-template-rows: auto auto 1fr; gap: 0.35rem; padding-right: 0.75rem; }
+  .rule { position: relative; height: 14px; border-left: 1px solid var(--ink); }
+  .rule::after { content: ''; position: absolute; left: 0; right: -0.5rem; top: 7px; border-top: 1px solid var(--ink); }
+  .dim li:last-child .rule { border-right: 1px solid var(--ink); }
+  .dim li:last-child .rule::after { right: 0; }
+  .dim li:last-child { padding-right: 0; }
+  .label { font-weight: 600; line-height: 1.25; font-size: 0.95rem; }
+  .weeks { color: var(--seal-dark); font-weight: 600; font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+  @media (max-width: 640px) {
+    .dim ol { flex-direction: column; gap: 0.9rem; }
+    .dim li { grid-template-columns: 1fr auto; padding: 0 0 0 1rem; border-left: 1px solid var(--ink); }
+    .rule { display: none; }
+    .weeks { text-align: right; }
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Cta from '../../components/Cta.astro';
+import ImageBand from '../../components/ImageBand.astro';
+import ServiceIcon from '../../components/ServiceIcon.astro';
+import { locations, type Location } from '../../data/locations';
+import { projectBySlug } from '../../data/projects';
+import { services } from '../../data/services';
+import { site } from '../../data/site';
+import { getCollection } from 'astro:content';
+import { TreeDeciduous, Landmark, Building, WavesHorizontal, Gavel, Mountain } from '@lucide/astro';
+const ruleIcon = { tree: TreeDeciduous, heritage: Landmark, units: Building, water: WavesHorizontal, variance: Gavel, moraine: Mountain };
+
+export function getStaticPaths() {
+  return locations.map((l) => ({ params: { slug: l.slug }, props: { l } }));
+}
+interface Props { l: Location }
+const { l } = Astro.props;
+const work = l.projects.map((s) => projectBySlug(s)!).filter(Boolean);
+const band = work[0]?.gallery.find((g) => g.src !== work[0].cover.src)
+  ? { ...work[0].gallery.find((g) => g.src !== work[0].cover.src)!, title: work[0].title }
+  : work[1] ? { src: work[1].cover.src, alt: work[1].cover.alt, title: work[1].title } : null;
+const guides = (await getCollection('journal', (a) => a.data.lang === 'en' && l.articles.includes(a.id)))
+  .sort((a, b) => l.articles.indexOf(a.id) - l.articles.indexOf(b.id));
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: l.title,
+  about: { '@id': `${site.url}/#org` },
+  spatialCoverage: { '@type': 'City', name: l.name, containedInPlace: { '@type': 'AdministrativeArea', name: 'Ontario' } },
+};
+import PageHero from '../../components/PageHero.astro';
+---
+<Base title={l.title} description={l.description} image={work[0]?.cover.src} jsonld={ld}>
+  <PageHero crumbs={[{ href: '/locations', label: 'Service areas' }, { label: l.name }]} title={`Building and renovating in ${l.name}`} lede={l.lede} image={work[0]?.cover.src} imageAlt={work[0]?.cover.alt} caption={work[0] ? `${work[0].city === l.slug ? '' : 'Nearby: '}${work[0].type} in ${work[0].location.replace(', Ontario', '')}.` : undefined}>
+    <a class="btn" href="/contact">Book a site visit in {l.name}</a>
+  </PageHero>
+
+  <section class="wrap intro">
+    <div class="prose">{l.intro.map((p) => <p>{p}</p>)}</div>
+    <div class="hoods">
+      <p class="hoods-title">Neighbourhoods we work in</p>
+      <p class="muted">{l.neighbourhoods.join(', ')}.</p>
+    </div>
+  </section>
+
+  <section class="section section--plaster">
+    <div class="wrap">
+      <div class="section-head"><h2>What {l.name} houses are like</h2><p>What we usually find in each era of house, and the work it tends to need.</p></div>
+      <dl class="eras">
+        {l.housing.map((h) => <div><dt>{h.era}</dt><dd>{h.body}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+
+  {band && <ImageBand src={band.src} alt={band.alt} caption={`From ${band.title.charAt(0).toLowerCase() + band.title.slice(1)}.`} />}
+
+  <section class="section section--ink">
+    <div class="wrap">
+      <div class="section-head"><h2>Local rules that can affect your project</h2><p>These are what most often change the design, cost or timing of a {l.name} project. We check each one before any drawings are made.</p></div>
+      <ul class="features features--2">
+        {l.rules.map((r) => {
+          const I = ruleIcon[r.icon];
+          return (
+          <li>
+            <I size={22} aria-hidden="true" />
+            <div>
+              <h3>{r.title}</h3>
+              <p>{r.body}</p>
+              {r.link && <p class="small"><a href={r.link.href} rel="noopener">{r.link.label}</a></p>}
+            </div>
+          </li>
+        ); })}
+      </ul>
+    </div>
+  </section>
+
+  {work.length > 0 && (
+    <section class="section section--plaster">
+      <div class="wrap">
+        <div class="section-head"><h2>{work.some((w) => w.city === l.slug) ? `Our work in and near ${l.name}` : 'Projects near ' + l.name}</h2></div>
+        <div class="cards">{work.map((p) => <ProjectCard project={p} />)}</div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="svc">
+        <h2>What we build in {l.name}</h2>
+        <ul>{services.map((s) => <li><a href={`/services/${s.slug}`}><ServiceIcon slug={s.slug} size={22} /><span><strong>{s.name}</strong><small>{s.short}</small></span></a></li>)}</ul>
+      </div>
+      {guides.length > 0 && (
+        <div class="guides">
+          <h2>Reading for {l.name} homeowners</h2>
+          <ul>{guides.map((g) => <li><a href={`/journal/${g.id}`}><span class="cat">{g.data.category}</span>{g.data.title}</a></li>)}</ul>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Cta title={`Planning a project in ${l.name}?`} />
+</Base>
+
+<style>
+  .intro { display: grid; gap: 2.5rem 5rem; padding-bottom: var(--space-section); }
+  @media (min-width: 1000px) { .intro { grid-template-columns: minmax(0, 1fr) 20rem; } }
+  .intro .prose { font-size: var(--step-1); line-height: 1.6; }
+  .hoods { border-top: 2px solid var(--ink); padding-top: 1rem; align-self: start; }
+  .hoods-title { font-weight: 650; margin-bottom: 0.4rem; }
+  .eras { display: grid; gap: 2rem 2.5rem; margin: 0; }
+  @media (min-width: 900px) { .eras { grid-template-columns: repeat(3, 1fr); } }
+  .eras div { border-top: 1px solid #c9cdc8; padding-top: 1rem; }
+  .eras dt { font-size: var(--step-2); font-stretch: 75%; font-weight: 650; margin-bottom: 0.5rem; }
+  .eras dd { margin: 0; color: var(--ink-2); }
+  .cards { display: grid; gap: 2.5rem 2rem; }
+  @media (min-width: 700px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .two { display: grid; gap: 3rem 5rem; }
+  @media (min-width: 1000px) { .two { grid-template-columns: 7fr 5fr; } }
+  .two h2 { font-size: var(--step-2); margin-bottom: 1.25rem; }
+  .svc ul, .guides ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .svc li, .guides li { border-bottom: 1px solid var(--line); }
+  .svc a { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; padding: 0.85rem 0; text-decoration: none; }
+  .svc a :global(svg) { color: var(--seal); margin-top: 0.1rem; }
+  .svc strong { display: block; font-weight: 650; }
+  .svc small { display: block; color: var(--ink-2); font-size: 0.95rem; }
+  .svc a:hover strong, .guides a:hover { color: var(--seal); }
+  .guides a { display: grid; gap: 0.2rem; padding: 0.9rem 0; text-decoration: none; font-weight: 600; line-height: 1.35; }
+  .guides .cat { font-size: var(--step--1); color: var(--seal-dark); font-weight: 600; }
+</style>

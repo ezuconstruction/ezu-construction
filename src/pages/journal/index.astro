@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import Cta from '../../components/Cta.astro';
+import { getCollection } from 'astro:content';
+
+const all = (await getCollection('journal', (a) => a.data.lang === 'en')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const cats = ['Costs', 'Planning', 'Permits and rules', 'Suites and units', 'Design'] as const;
+const groups = cats.map((c) => ({ c, id: c.toLowerCase().replace(/\s+/g, '-'), items: all.filter((a) => a.data.category === c) })).filter((g) => g.items.length);
+import PageHero from '../../components/PageHero.astro';
+import heroImg from '../../assets/stock/blueprints.jpg';
+import { Image } from 'astro:assets';
+const [lead, ...next] = all.slice(0, 4);
+const fmt = (d: Date) => d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+<Base title="Journal: Renovation and Building Guides for GTA Homeowners" description="Costs, timelines, permits and design guides for Toronto and York Region homeowners, written by a general contractor from real projects.">
+  <PageHero title="Journal" lede="Practical guidance on costs, timelines, permits and design for homeowners across the Greater Toronto Area, drawn from the projects we deliver." image={heroImg} imageAlt="Architectural floor plans with a pencil and compass">
+    <nav class="jump" aria-label="Topics">
+      {groups.map((g) => <a href={`#${g.id}`}>{g.c} <span class="muted">{g.items.length}</span></a>)}
+    </nav>
+  </PageHero>
+
+  <section class="section section--plaster recent">
+    <div class="wrap">
+      <div class="section-head"><h2>Recent</h2><p>The latest guides from our team.</p></div>
+      <div class="recent-grid">
+        <a class="lead" href={'/journal/' + lead.id}>
+          <span class="lead-img"><Image src={lead.data.image} alt="" widths={[480, 800, 1200]} sizes="(min-width: 1000px) 680px, 100vw" format="webp" quality={74} loading="lazy" /></span>
+          <span class="cat">{lead.data.category}</span>
+          <span class="lead-t">{lead.data.title}</span>
+          <span class="lead-d">{lead.data.description}</span>
+          <time datetime={lead.data.date.toISOString().slice(0, 10)}>{fmt(lead.data.date)}</time>
+        </a>
+        <ArticleList items={next} compact />
+      </div>
+    </div>
+  </section>
+
+  {groups.map((g) => (
+    <section class="wrap group" id={g.id}>
+      <h2>{g.c}</h2>
+      <ArticleList items={g.items} />
+    </section>
+  ))}
+  <Cta title="Have a question we haven’t answered?" text="Ask us. If it’s a question other homeowners are likely to have, we may write the answer up here too." />
+</Base>
+
+<style>
+  .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .jump a { padding: 0.45rem 0.85rem; border: 1px solid #c5cac5; border-radius: var(--radius); text-decoration: none; font-weight: 500; }
+  .jump a:hover { border-color: var(--seal); color: var(--seal); }
+  .recent-grid { display: grid; gap: 2.5rem 3.5rem; align-items: start; }
+  @media (min-width: 1000px) { .recent-grid { grid-template-columns: 7fr 5fr; } }
+  .recent-grid :global(.article-list) { border-top-color: #c9cdc8; }
+  .recent-grid :global(.article-list li) { border-bottom-color: #c9cdc8; }
+  .lead { display: grid; gap: 0.5rem; text-decoration: none; }
+  .lead-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #e2e4df; margin-bottom: 0.6rem; }
+  .lead-img :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .lead:hover .lead-img :global(img) { transform: scale(1.02); }
+  .cat { font-size: var(--step--1); color: var(--seal-dark); font-weight: 600; }
+  .lead-t { font-size: var(--step-3); font-stretch: 75%; font-weight: 650; line-height: 1.08; text-wrap: balance; }
+  .lead:hover .lead-t { color: var(--seal); }
+  .lead-d { color: var(--ink-2); max-width: 60ch; text-wrap: pretty; }
+  .lead time { font-size: var(--step--1); color: var(--ink-2); }
+  .group { padding-block: 2.5rem 1.5rem; }
+  .group h2 { font-size: var(--step-3); margin-bottom: 1rem; }
+  .group:last-of-type { padding-bottom: var(--space-section); }
+</style>

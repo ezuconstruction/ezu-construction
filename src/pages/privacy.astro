@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Privacy Policy" description="How EZU Construction collects, uses and protects personal information submitted through this website.">
+  <article class="wrap legal prose">
+    <h1>Privacy policy</h1>
+    <p class="muted">Last updated October 3, 2026</p>
+    <p>{site.legalName} respects your privacy and handles personal information in line with Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA).</p>
+    <h2>What we collect</h2>
+    <p>When you send us a request, we collect what you enter: your name, email address, phone number, the city of your project, and the details you choose to share. We use it to reply to you, arrange a site visit and prepare an estimate. We don’t sell it, rent it or use it for unrelated marketing.</p>
+    <h2>How the form works</h2>
+    <p>Our contact form is delivered to our inbox by FormSubmit, a third-party form service. Your message passes through their servers to reach us. We keep project correspondence for as long as needed to quote, build and warranty the work, and as required for tax and legal records.</p>
+    <h2>Analytics</h2>
+    <p>We use Vercel Web Analytics and Speed Insights to count page views and measure how fast pages load. They don’t use cookies and don’t identify individual visitors.</p>
+    <h2>Your choices</h2>
+    <p>You can ask us what personal information we hold about you, ask us to correct it, or ask us to delete it where we aren’t required to keep it. Email <a href={`mailto:${site.email}`}>{site.email}</a> or write to us at {site.address.street}, {site.address.city}, {site.address.region} {site.address.postal}.</p>
+  </article>
+</Base>
+<style>.legal { padding-block: clamp(2rem, 1.5rem + 3vw, 4.5rem) var(--space-section); }</style>

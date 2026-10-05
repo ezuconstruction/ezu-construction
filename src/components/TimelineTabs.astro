@@ -1,0 +1,133 @@
+---
+// Typical timelines, one tab per project type (tab behaviour lives in Base.astro, styles in global.css).
+import { Image } from 'astro:assets';
+import { PencilRuler, Package, ClipboardCheck, HardHat, Info, Timer } from '@lucide/astro';
+import DimensionLine from './DimensionLine.astro';
+import ServiceIcon from './ServiceIcon.astro';
+import { services } from '../data/services';
+
+const detail: Record<string, { tab: string; phases: string[]; extends: string }> = {
+  'kitchen-renovations': {
+    tab: 'Kitchen',
+    phases: [
+      'Layout, cabinet drawings and selections for counters, tile, fixtures and appliances, finalized before anything is ordered.',
+      'Cabinetry is built to the approved drawings. Demolition and rough-in are timed to finish as the cabinets arrive.',
+      'Demolition, plumbing and electrical rough-in, drywall, cabinet installation, counters, tile and final fixtures.',
+    ],
+    extends: 'Moving plumbing or gas, removing a wall, and imported stone or appliances with long lead times.',
+  },
+  'bathroom-renovations': {
+    tab: 'Bathroom',
+    phases: [
+      'Layout, waterproofing approach and selections for tile, vanity, fixtures and glass.',
+      'Fixtures, vanity, tile and custom glass are ordered and on hand before demolition begins.',
+      'Demolition, rough-ins, waterproofing, tile, fixtures, glass and final finishing.',
+    ],
+    extends: 'Relocating the toilet or drain, custom glass, heated floors and curbless showers.',
+  },
+  'basement-renovations': {
+    tab: 'Basement',
+    phases: [
+      'Layout, moisture assessment and permit drawings, including egress and fire separation for a second unit.',
+      'The municipality reviews the drawings. A legal second unit needs a building permit in every GTA city.',
+      'Waterproofing, framing, insulation, mechanical rough-ins, inspections, drywall and finishes.',
+    ],
+    extends: 'Underpinning, waterproofing repairs, a new separate entrance and egress window cuts.',
+  },
+  'home-additions': {
+    tab: 'Addition',
+    phases: [
+      'Architectural design within the zoning envelope, structural engineering and permit drawings.',
+      'Building permit review. A minor variance, if needed, adds a Committee of Adjustment hearing.',
+      'Foundations or structural reinforcement, framing, roofing, tie-in to the existing house, mechanicals and finishes.',
+    ],
+    extends: 'Minor variances, winter foundation work and electrical service upgrades.',
+  },
+  'home-renovations': {
+    tab: 'Whole home',
+    phases: [
+      'Floor plan, structural changes and full selections, finalized so long-lead items can be ordered early.',
+      'Building, plumbing and HVAC permits for structural and mechanical changes.',
+      'Demolition, structural work, new wiring and plumbing, insulation, inspections, drywall and finishes throughout.',
+    ],
+    extends: 'Conditions found behind the walls of older homes, and late changes to selections.',
+  },
+  'custom-homes': {
+    tab: 'Custom home',
+    phases: [
+      'Zoning and site review, architectural design, engineering, and tree and grading reports.',
+      'Demolition and building permits, plus site plan or variance approvals where required.',
+      'Demolition, excavation, foundations, framing, building envelope, mechanicals, inspections and finishes.',
+    ],
+    extends: 'Minor variances, protected trees and winter excavation.',
+  },
+};
+const items = Object.keys(detail).map((slug) => services.find((s) => s.slug === slug)!);
+const iconFor = (label: string) => (/permit/i.test(label) ? ClipboardCheck : /lead|order/i.test(label) ? Package : /design|feasib|drawing/i.test(label) ? PencilRuler : HardHat);
+const fmt = (w: [number, number]) => `${w[0]}–${w[1]} weeks`;
+const total = (t: { weeks: [number, number] }[]): [number, number] => [t.reduce((a, p) => a + p.weeks[0], 0), t.reduce((a, p) => a + p.weeks[1], 0)];
+---
+<div class="tl-tabs" data-tabs>
+  <div class="tablist" role="tablist" aria-label="Project type">
+    {items.map((s, i) => (
+      <button type="button" role="tab" id={`tl-tab-${s.slug}`} aria-controls={`tl-panel-${s.slug}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+        <ServiceIcon slug={s.slug} size={20} />{detail[s.slug].tab}
+      </button>
+    ))}
+  </div>
+
+  {items.map((s) => {
+    const d = detail[s.slug];
+    const t = total(s.timeline!);
+    return (
+      <div class="panel" role="tabpanel" id={`tl-panel-${s.slug}`} aria-labelledby={`tl-tab-${s.slug}`} tabindex="0">
+        <div class="pic">
+          <Image src={s.image} alt={s.imageAlt} widths={[480, 800]} sizes="(min-width: 1000px) 440px, 100vw" format="webp" quality={72} loading="lazy" />
+          <p class="total"><Timer size={20} aria-hidden="true" /><span><strong>{t[0]}–{t[1]} weeks</strong> typical overall</span></p>
+        </div>
+        <div class="body">
+          <h3><a href={`/services/${s.slug}`}>{s.name}</a></h3>
+          <DimensionLine phases={s.timeline!} caption=" " />
+          <ol class="phases">
+            {s.timeline!.map((p, i) => {
+              const I = iconFor(p.label);
+              return (
+                <li>
+                  <I size={22} aria-hidden="true" />
+                  <div><p class="ph"><strong>{p.label}</strong><span>{fmt(p.weeks)}</span></p><p>{d.phases[i]}</p></div>
+                </li>
+              );
+            })}
+          </ol>
+          <p class="ext"><Info size={18} aria-hidden="true" /><span><strong>What can extend it:</strong> {d.extends}</span></p>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+
+<style>
+
+  .panel { display: grid; gap: 2rem 4rem; align-items: start; }
+  .panel[hidden] { display: none; }
+  .panel:focus-visible { outline: 2px solid var(--seal); outline-offset: 6px; }
+  @media (min-width: 1000px) { .panel { grid-template-columns: 5fr 7fr; } }
+  .pic { position: relative; }
+  .pic :global(img) { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; background: var(--plaster); }
+  .total { display: flex; align-items: center; gap: 0.6rem; margin: 1rem 0 0; font-size: var(--step-1); }
+  .total :global(svg) { color: var(--seal); flex: none; }
+  .body h3 { font-size: var(--step-3); margin-bottom: 1.25rem; }
+  .body h3 a { text-decoration: none; }
+  .body h3 a:hover { color: var(--seal); }
+  .body :global(.dim figcaption) { display: none; }
+  .phases { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; gap: 1.25rem; }
+  .phases li { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.9rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+  .phases :global(svg) { color: var(--seal); margin-top: 0.15rem; }
+  .phases p { margin: 0; color: var(--ink-2); }
+  .ph { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; margin-bottom: 0.3rem !important; color: var(--ink) !important; }
+  .ph span { color: var(--seal-dark); font-weight: 600; white-space: nowrap; }
+  .ext { display: flex; align-items: flex-start; gap: 0.6rem; margin: 1.75rem 0 0; padding: 1rem 1.1rem; background: var(--plaster); border-radius: var(--radius); color: var(--ink-2); }
+  .ext :global(svg) { flex: none; margin-top: 0.2rem; color: var(--ink); }
+  .ext strong { color: var(--ink); }
+</style>

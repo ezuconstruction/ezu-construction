@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import TimelineTabs from '../components/TimelineTabs.astro';
+import Cta from '../components/Cta.astro';
+import { Receipt, PenLine, MessageSquare } from '@lucide/astro';
+import ProcessScroll from '../components/ProcessScroll.astro';
+import headPhoto from '../assets/projects/etobicoke-kitchen-2.jpg';
+import PageHero from '../components/PageHero.astro';
+---
+<Base title="Our Process: How We Deliver Renovations and Custom Homes" description="How EZU Construction delivers a renovation or custom home in the GTA: site visit, design, permits, construction and warranty, with typical timelines.">
+  <PageHero title="Our process" lede="Five clearly defined stages, from the first site visit to final sign-off. The same disciplined approach applies whether we are renovating a kitchen or building a new home." image={headPhoto} imageAlt="White kitchen with a white oak range hood and full-height quartz backsplash" caption="Kitchen renovation, Etobicoke." />
+
+  <ProcessScroll headingLevel="h2" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>Typical timelines</h2><p>How long common projects take in the GTA, phase by phase. Permit review is the most variable stage.</p></div>
+      <TimelineTabs />
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap cols">
+      <div>
+        <Receipt size={30} aria-hidden="true" />
+        <h2>Payments</h2>
+        <p>A deposit at signing, progress payments as each stage is completed and inspected, and a final payment once the deficiency list is closed. You never pay ahead of the work.</p>
+      </div>
+      <div>
+        <PenLine size={30} aria-hidden="true" />
+        <h2>Changes</h2>
+        <p>Every change is documented with its cost and schedule impact, and no work proceeds until you approve it in writing.</p>
+      </div>
+      <div>
+        <MessageSquare size={30} aria-hidden="true" />
+        <h2>Your role</h2>
+        <p>Timely decisions on selections, access to the house as agreed, and a designated contact on your side for questions as they arise.</p>
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .cols { display: grid; gap: 2.5rem 3rem; }
+  @media (min-width: 900px) { .cols { grid-template-columns: repeat(3, 1fr); } }
+  .cols h2 { font-size: var(--step-2); }
+  .cols p { color: #c3c9c4; margin: 0; }
+  .cols :global(svg) { color: var(--seal); margin-bottom: 0.9rem; }
+</style>

@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import Seal from '../components/Seal.astro';
+import Logo from '../components/Logo.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../data/site';
+import { FileText, PenLine, UserRound, ClipboardCheck, BadgeCheck, ShieldCheck } from '@lucide/astro';
+import office from '../assets/projects/vaughan-custom-home-office.jpg';
+import PageHero from '../components/PageHero.astro';
+import Photo from '../components/Photo.astro';
+import paperwork from '../assets/stock/documents-calculator.jpg';
+---
+<Base title="About EZU Construction: Markham General Contractor Since 2016" description="EZU Construction is a family-owned general contractor in Markham, building custom homes and renovations across Toronto and York Region since 2016." image={office}>
+  <PageHero title="A family builder who has done it all" lede="EZU Construction is a family-owned general contractor, founded in Markham in 2016 on a clear principle: build properly, price transparently and standing by our work." image={office} imageAlt="Home office with a coffered ceiling, stone fireplace wall and built-in cabinets" caption="The office in our 2025 Vaughan custom home." />
+
+  <section class="wrap story">
+    <div class="prose">
+      <p>Our partners came to contracting the hands-on way, building and renovating complete homes from the foundation to the final finish. That experience is the foundation of how we run every project: we understand what each trade needs from the one before it, where schedules are won and lost, and what a house looks like inside the walls.</p>
+      <p>Over the years we have built a network of trusted specialists: framers, electricians, plumbers, tile setters, millworkers, stone fabricators and roofers. On every project we assign the best-qualified trade to each phase and manage them as one coordinated team, on one schedule, under one contract.</p>
+      <p>The result is a firm that delivers across the full range of residential work, from new custom homes and second-storey additions to kitchens, legal basement suites and single-trade projects. The scale changes; the standard does not.</p>
+    </div>
+    <aside class="facts">
+      <dl>
+        <div><dt>Founded</dt><dd>{site.founded}, Markham, Ontario</dd></div>
+        <div><dt>Ownership</dt><dd>Family-owned and operated</dd></div>
+        <div><dt>Office</dt><dd>{site.address.street}, {site.address.city}</dd></div>
+        <div><dt>Work</dt><dd>Custom homes, additions, renovations, second suites, single trades</dd></div>
+        <div><dt>Area</dt><dd>Toronto and York Region</dd></div>
+        <div><dt>Languages</dt><dd>English and Mandarin</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap seal-rows">
+      <div class="srow" id="seal">
+      <Seal size={140} link={false} />
+      <div>
+        <h2>The seal</h2>
+        <p class="lede">In Chinese tradition, a seal or chop is how you sign something that matters. In Ontario, a professional engineer seals a drawing to say they stand behind it.</p>
+        <p>We put ours on a project for the same reason. The character is 筑, which means “to build”. At completion, our team walks the finished work with you, resolves every item on the deficiency list and signs the project off. Warranty service is handled by the same team that built it.</p>
+      </div>
+      </div>
+      <div class="srow flip">
+      <div>
+        <h2>The mark</h2>
+        <p class="lede">Our logo is the three letters of our name: an E and a Z standing inside a U.</p>
+        <p>Read together, they form 山, the Chinese character for mountain, a long-standing symbol of permanence. It reflects what we intend to be: a company that endures, and remains accountable, long after your project is complete.</p>
+      </div>
+      <Logo height={140} u="#ffffff" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--plaster">
+    <div class="wrap">
+      <div class="section-head"><h2>What you can hold us to</h2><p>These are the commitments in every EZU contract.</p></div>
+      <ul class="features">
+        <li><FileText size={22} aria-hidden="true" /><div><h3>A written, itemized price</h3><p>You see what each part costs. Anything not yet chosen is an allowance with the amount stated, so you know where the number can move.</p></div></li>
+        <li><PenLine size={22} aria-hidden="true" /><div><h3>No work without approval</h3><p>If something changes, or we find a problem behind a wall, we show you, price it and get your written approval before doing it.</p></div></li>
+        <li><UserRound size={22} aria-hidden="true" /><div><h3>A dedicated project team</h3><p>Your project manager coordinates the schedule and the trades, backed by our partners, from the first visit through the warranty period.</p></div></li>
+        <li><ClipboardCheck size={22} aria-hidden="true" /><div><h3>Permits and inspections handled</h3><p>We apply for the permits, meet the inspectors and keep the paperwork, so your project is on record and insurable.</p></div></li>
+        <li><BadgeCheck size={22} aria-hidden="true" /><div><h3>Licensed trades where the law requires them</h3><p>Electrical by an ESA-licensed contractor, gas by TSSA-registered technicians, and new homes under an HCRA licence.</p></div></li>
+        <li><ShieldCheck size={22} aria-hidden="true" /><div><h3>A written warranty</h3><p>Our workmanship is covered in writing, and new homes carry Ontario’s statutory new-home warranty.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap check">
+      <div>
+      <h2>What to ask any contractor, including us</h2>
+      <div class="prose">
+        <p>Whoever you hire, ask for these before you sign. A good contractor will have them ready.</p>
+        <ul>
+          <li>A certificate of commercial general liability insurance, naming the amount of coverage.</li>
+          <li>A WSIB clearance certificate, so you aren’t liable if a worker is injured on your property.</li>
+          <li>For a new home, the builder’s HCRA licence number, which you can check on the Ontario Builder Directory.</li>
+          <li>References from projects similar to yours, completed in the last few years.</li>
+          <li>A written contract with a payment schedule tied to completed work, not dates.</li>
+        </ul>
+        <p>Our guide to <a href="/journal/how-to-compare-renovation-quotes">comparing renovation quotes</a> goes into more detail.</p>
+      </div>
+      </div>
+      <Photo src={paperwork} alt="Printed quotes and forms on a desk beside a calculator" ratio="4/3" sizes="(min-width: 1000px) 460px, 100vw" />
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .story { display: grid; gap: 2.5rem 5rem; padding-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
+  @media (min-width: 1000px) { .story { grid-template-columns: minmax(0, 1fr) 20rem; } }
+  .story .prose { font-size: var(--step-1); line-height: 1.6; }
+  .story .prose .lede { color: var(--ink); font-size: var(--step-2); line-height: 1.35; max-width: 34ch; }
+  .facts dl { margin: 0; border-top: 2px solid var(--ink); }
+  .facts div { padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
+  .facts dt { font-size: var(--step--1); color: var(--ink-2); }
+  .facts dd { margin: 0.15rem 0 0; font-weight: 600; }
+  .seal-rows { display: grid; gap: 4rem; }
+  .srow { display: grid; gap: 2rem 4rem; align-items: center; }
+  .srow p:not(.lede) { max-width: 60ch; }
+  .srow .lede { color: #e3e6e2; }
+  @media (min-width: 800px) {
+    .srow { grid-template-columns: 9rem 1fr; }
+    .srow.flip { grid-template-columns: 1fr 9rem; }
+    .srow > :global(svg) { width: 140px; height: auto; }
+    .srow.flip > :global(svg) { justify-self: end; }
+    .srow.flip > div { justify-self: end; max-width: 60ch; }
+  }
+  @media (max-width: 799px) { .srow.flip > :global(svg) { order: -1; } }
+  .check { display: grid; gap: 2.5rem 5rem; align-items: center; }
+  @media (min-width: 1000px) { .check { grid-template-columns: 7fr 5fr; } }
+  .check h2 { max-width: 22ch; }
+</style>

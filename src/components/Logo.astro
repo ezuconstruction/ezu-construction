@@ -1,0 +1,12 @@
+---
+// The EZU mark from the original artwork: a red E and Z standing on a solid U.
+// Together they form 山 (mountain), the client's symbol for a company built to last.
+interface Props { height?: number; u?: string }
+const { height = 36, u = '#1e2326' } = Astro.props;
+const width = Math.round(height * (960 / 891));
+---
+<svg width={width} height={height} viewBox="0 69 960 891" aria-hidden="true">
+  <path fill={u} d="M0 480H138V822H822V480H960V960H0Z"/>
+  <path fill="#CF2B23" d="M237 99H452V234H301V386H447V522H301V686H452V822H237Z"/>
+  <path fill="#CF2B23" d="M492 99H720V220L577 686H723V822H492V693L634 234H492Z"/>
+</svg>

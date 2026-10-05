@@ -1,0 +1,98 @@
+---
+// The five stages of a project. On wide screens the photo pins to the left and swaps as each stage
+// scrolls through the middle of the screen; on phones it pins above the text. Without JavaScript
+// every stage stays readable and the first photo stays put.
+import { Image } from 'astro:assets';
+import { Ruler, PencilRuler, ClipboardCheck, HardHat, Stamp } from '@lucide/astro';
+import consult from '../assets/stock/process-consultation.jpg';
+import design from '../assets/stock/process-design.jpg';
+import prep from '../assets/projects/construction-excavation.jpg';
+import framing from '../assets/projects/construction-framed-house.jpg';
+import handover from '../assets/projects/vaughan-custom-home-living.jpg';
+
+import type { ImageMetadata } from 'astro';
+interface Props { headingLevel?: 'h2' | 'h3'; finish?: { src: ImageMetadata; alt: string }; tone?: 'plaster' | 'paper'; lang?: 'en' | 'zh' }
+const { headingLevel: H = 'h3', finish, tone = 'plaster', lang = 'en' } = Astro.props;
+
+const steps = [
+  { icon: Ruler, t: 'Consultation and site visit', b: 'We meet at your home to understand your goals, assess the structure and mechanical systems, and outline what can be achieved within your budget.', img: consult, alt: 'Team reviewing a floor plan together around a table' },
+  { icon: PencilRuler, t: 'Design and written quote', b: 'Drawings, selections and an itemized quote. Items not yet selected are listed as stated allowances, and every payment in the contract is tied to completed work.', img: design, alt: 'Architectural floor plans with drafting pencils and a ruler' },
+  { icon: ClipboardCheck, t: 'Permits and preparation', b: 'We manage engineering, permit applications and utility locates, and order long-lead materials early so the schedule never waits on a delivery.', img: prep, alt: 'Excavator working the site of one of our custom homes in Richmond Hill' },
+  { icon: HardHat, t: 'Construction', b: 'Your project manager coordinates every trade and inspection and sends a written progress update each week. Any change is priced and approved in writing before work proceeds.', img: framing, alt: 'One of our custom homes in Richmond Hill, framed and sheathed' },
+  { icon: Stamp, t: 'Handover and warranty', b: 'We walk the finished project with you, resolve every deficiency and provide your warranty documents. After you move in, our team remains your point of contact.', img: finish?.src ?? handover, alt: finish?.alt ?? 'Finished living room with a book-matched stone fireplace wall in an EZU custom home' },
+];
+// Chinese wording for the same five stages (title, text, photo description)
+const zh = [
+  ['上门咨询与现场评估', '我们上门了解您的需求，评估房屋结构与水电暖系统，并说明在预算内可以实现哪些改造。', '团队围坐在桌前一起查看平面图'],
+  ['设计与书面报价', '图纸、选材与分项报价。尚未选定的项目以预留金额列明，合同中的每一笔付款都与已完成的工程挂钩。', '建筑图纸、绘图铅笔和直尺'],
+  ['许可证与开工准备', '我们负责工程设计、许可证申请和地下管线定位，并提前订购长周期材料，确保工期不会因等货而延误。', '挖掘机在我们位于列治文山的定制住宅工地作业'],
+  ['施工', '项目经理统筹所有工种与政府检查，每周提供书面进度汇报。任何变更都先报价、经您书面确认后再施工。', '我们在列治文山建造的定制住宅，已完成框架与外墙板'],
+  ['交付与保修', '我们陪您逐项验收、整改所有问题，并提供保修文件。入住之后，我们的团队依然随时为您服务。', '我们建造的定制住宅客厅，大理石壁炉墙'],
+];
+if (lang === 'zh') steps.forEach((s, i) => { s.t = zh[i][0]; s.b = zh[i][1]; if (i < 4 || !finish) s.alt = zh[i][2]; });
+---
+<div class:list={['trap', { paper: tone === 'paper' }]} data-trap>
+  <div class="media" aria-hidden="true">
+    {steps.map((s, i) => (
+      <Image class:list={{ on: i === 0 }} src={s.img} alt="" widths={[480, 800, 1200]} sizes="(min-width: 900px) 50vw, 100vw" format="webp" quality={70} loading="lazy" />
+    ))}
+  </div>
+  <ol class="steps">
+    {steps.map((s, i) => {
+      const I = s.icon;
+      return (
+        <li class:list={{ on: i === 0 }}><div class="card">
+          <div class="marker"><span class="num">{String(i + 1).padStart(2, '0')}<span class="of"> / {String(steps.length).padStart(2, '0')}</span></span><I size={28} aria-hidden="true" /></div>
+          <H>{s.t}</H>
+          <p>{s.b}</p>
+        </div></li>
+      );
+    })}
+  </ol>
+</div>
+
+<script>
+  // The stage crossing the middle of the viewport becomes active and brings its photo forward.
+  document.querySelectorAll<HTMLElement>('[data-trap]').forEach((trap) => {
+    const imgs = trap.querySelectorAll('.media img');
+    const items = [...trap.querySelectorAll('.steps li')];
+    const cards = [...trap.querySelectorAll('.steps .card')];
+    trap.classList.add('js');
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        const i = cards.indexOf(e.target as HTMLElement);
+        items.forEach((li, j) => li.classList.toggle('on', j === i));
+        imgs.forEach((im, j) => im.classList.toggle('on', j === i));
+      }
+    }, { rootMargin: matchMedia('(min-width: 900px)').matches ? '-40% 0px -40% 0px' : '-58% 0px -22% 0px' }); // phones: the band sits below the pinned photo
+    cards.forEach((el) => io.observe(el));
+  });
+</script>
+
+<style>
+  .trap { display: grid; background: var(--plaster); }
+  .trap.paper { background: var(--paper); }
+  .media { position: sticky; top: calc(4.5rem + 1px); z-index: 1; overflow: hidden; background: #d9dbd6; height: 38vh; }
+  .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.6s ease; }
+  .media img.on { opacity: 1; }
+
+  .steps { list-style: none; margin: 0; padding: 0 var(--gutter); counter-reset: s; }
+  .steps li { min-height: 52vh; display: flex; flex-direction: column; justify-content: center; padding-block: 2.5rem; max-width: 34rem; }
+  .js .steps li:not(.on) .num { color: var(--ink-2); }
+  .js .steps li:not(.on) .marker { border-bottom-color: #c3c8c3; }
+  .marker { transition: border-color 0.4s ease; display: flex; align-items: center; justify-content: space-between; padding-bottom: 1rem; margin-bottom: 1.25rem; border-bottom: 2px solid var(--ink); }
+  .num { transition: color 0.4s ease; font-stretch: 75%; font-weight: 650; font-size: var(--step-4); line-height: 1; color: var(--seal); }
+  .of { font-size: var(--step-1); color: var(--ink-2); font-weight: 500; }
+  .marker :global(svg) { color: var(--ink); }
+  .steps :is(h2, h3) { font-size: var(--step-3); margin-bottom: 0.6rem; }
+  .steps p { margin: 0; color: var(--ink-2); font-size: var(--step-1); line-height: 1.5; }
+
+  @media (min-width: 900px) {
+    .trap { grid-template-columns: 1fr 1fr; }
+    .media { height: calc(100vh - 4.5rem - 1px); }
+    .steps { padding: 0 var(--gutter) 0 clamp(2.5rem, 5vw, 6rem); }
+    .steps li { min-height: 85vh; padding-block: 4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .media img, .num, .marker { transition: none; } }
+</style>

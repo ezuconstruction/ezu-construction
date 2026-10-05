@@ -1,0 +1,107 @@
+---
+import Seal from './Seal.astro';
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class:list={['site-footer', { compact }]}>
+  {!compact && (
+  <div class="wrap grid">
+    <div class="sign">
+      <a class="f-brand" href="/" aria-label="EZU Construction, home"><Logo height={40} u="#ffffff" /><span>EZU Construction</span></a>
+      <p class="sign-line">Every project carries our seal: the team’s sign-off that the work meets our standard.<Seal size={22} class="end-seal" /></p>
+      <address>
+        {site.legalName}<br />
+        {site.address.street}<br />
+        {site.address.city}, {site.address.region} {site.address.postal}<br />
+        <a href={site.phoneHref}>{site.phone}</a><br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </address>
+    </div>
+
+    <nav aria-label="Services">
+      <p class="col-title">Services</p>
+      <ul>{services.map((s) => <li><a href={`/services/${s.slug}`}>{s.name}</a></li>)}</ul>
+    </nav>
+
+    <nav aria-label="Areas">
+      <p class="col-title">Where we build</p>
+      <ul>
+        {locations.map((l) => <li><a href={`/locations/${l.slug}`}>{l.name}</a></li>)}
+        <li><a href="/locations">All service areas</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="Company">
+      <p class="col-title">Company</p>
+      <ul>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/process">Process</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/journal">Journal</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/zh" lang="zh-Hans">中文服务</a></li>
+      </ul>
+    </nav>
+  </div>
+  )}
+
+  <div class="wrap"><div class="base">
+    <p>© {year} {site.legalName}{!compact && ` Serving the Greater Toronto Area since ${site.founded}.`}</p>
+    <ul>
+      {compact && <li><a href={site.phoneHref}>{site.phone}</a></li>}
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/accessibility">Accessibility</a></li>
+      {!compact && <li><a href={site.social.instagram} rel="me noopener">Instagram</a></li>}
+      {!compact && <li><a href={site.social.facebook} rel="me noopener">Facebook</a></li>}
+    </ul>
+  </div></div>
+</footer>
+
+<style>
+  .site-footer { background: var(--ink); color: #dfe2df; padding-top: clamp(3.5rem, 3rem + 3vw, 5.5rem); }
+  .site-footer a { color: #fff; text-decoration-color: rgba(255, 255, 255, 0.35); }
+  .site-footer a:hover { color: #fff; text-decoration-color: var(--seal); }
+  .grid { display: grid; gap: 2rem 1.5rem; grid-template-columns: 1fr 1fr; }
+  .sign { grid-column: 1 / -1; }
+  @media (min-width: 720px) { .grid { gap: 2.5rem; } }
+  /* Below the four-column layout, services become one wrapped row so long names don’t stack */
+  @media (max-width: 1039px) {
+    nav[aria-label='Services'] { grid-column: 1 / -1; }
+    nav[aria-label='Services'] ul { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; }
+    nav[aria-label='Services'] li { margin: 0; }
+  }
+  @media (max-width: 719px) {
+    .sign-line { font-size: var(--step-0); margin: 0.9rem 0 1rem; }
+    address { line-height: 1.55; font-size: 0.95rem; }
+    nav li { margin-bottom: 0.35rem; }
+    .base { margin-top: 2.5rem; }
+  }
+  @media (min-width: 1040px) { .grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; } .sign { grid-column: auto; } }
+  .f-brand { display: inline-flex; align-items: center; gap: 0.65rem; text-decoration: none; color: #fff; font-stretch: 75%; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.01em; }
+  .f-brand:hover { color: #fff; }
+  /* The seal closes the sign-off line, like an end mark */
+  .sign-line :global(.end-seal) { display: inline-block; vertical-align: -0.2em; margin-left: 0.45em; }
+  .sign-line { margin: 1.1rem 0 1.25rem; max-width: 34ch; font-size: var(--step-1); line-height: 1.4; color: #fff; }
+  address { font-style: normal; line-height: 1.7; }
+  .col-title { margin: 0 0 0.75rem; font-weight: 650; color: #fff; font-stretch: 75%; font-size: 1.2rem; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin-bottom: 0.45rem; }
+  nav a { text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+  .base {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem;
+    margin-top: 3.5rem; padding-block: 1.5rem 2rem; border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: var(--step--1); color: #b9bfbb;
+  }
+  .base p { margin: 0; }
+  .compact { padding-top: 0; }
+  .compact .base { margin-top: 0; padding-block: 1.1rem; border-top: 0; }
+  .base ul { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+  .base li { margin: 0; }
+</style>

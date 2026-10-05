@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import { Image } from 'astro:assets';
+import { services } from '../../data/services';
+import ServiceIcon from '../../components/ServiceIcon.astro';
+import PageHero from '../../components/PageHero.astro';
+import heroImg from '../../assets/projects/vaughan-custom-home-kitchen.jpg';
+---
+<Base title="Services: Custom Homes, Additions and Renovations" description="Custom homes, additions, whole-home renovations, kitchens, bathrooms, basements, laneway suites and trades across Toronto and York Region.">
+  <PageHero title="Services" lede="From new custom homes to single-trade work, we manage every project end to end and assign the right specialist to each phase, under one contract and one schedule." image={heroImg} imageAlt="Kitchen with glass-front upper cabinets and a marble island in our Vaughan custom home" caption="Kitchen, Vaughan custom home." />
+
+  <section class="wrap list">
+    {services.map((s, i) => (
+      <article class="row">
+        <a class="img" href={`/services/${s.slug}`} tabindex="-1" aria-hidden="true">
+          <Image src={s.image} alt="" widths={[480, 768]} sizes="(min-width: 900px) 380px, 100vw" format="webp" quality={74} loading={i < 2 ? 'eager' : 'lazy'} />
+        </a>
+        <div class="txt">
+          <h2><ServiceIcon slug={s.slug} size={30} /><a href={`/services/${s.slug}`}>{s.name}</a></h2>
+          <p>{s.short}</p>
+        </div>
+      </article>
+    ))}
+  </section>
+  <Cta />
+</Base>
+
+<style>
+  .list { padding-bottom: var(--space-section); }
+  .row { display: grid; gap: 1.25rem 3rem; padding-block: 2rem; border-top: 1px solid var(--line); align-items: center; }
+  @media (min-width: 760px) { .row { grid-template-columns: 22rem 1fr; } }
+  .img { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: var(--plaster); }
+  .img :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .txt h2 { font-size: var(--step-3); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .txt h2 :global(svg) { color: var(--seal); flex: none; }
+  .txt h2 a { text-decoration: none; }
+  .txt h2 a:hover { color: var(--seal); }
+  .txt p { color: var(--ink-2); max-width: 52ch; }
+  .range { margin: 0; color: var(--ink) !important; font-weight: 600; }
+  .range .muted { font-weight: 400; }
+</style>

@@ -1,0 +1,17 @@
+---
+import { House, HousePlus, Hammer, ChefHat, Bath, DoorStairwell, HouseHeart, Wrench } from '@lucide/astro';
+interface Props { slug: string; size?: number; class?: string }
+const { slug, size = 28, class: cls } = Astro.props;
+const map = {
+  'custom-homes': House,
+  'home-additions': HousePlus,
+  'home-renovations': Hammer,
+  'kitchen-renovations': ChefHat,
+  'bathroom-renovations': Bath,
+  'basement-renovations': DoorStairwell,
+  'laneway-garden-suites': HouseHeart,
+  trades: Wrench,
+} as const;
+const Icon = map[slug as keyof typeof map] ?? House;
+---
+<Icon size={size} stroke-width={1.6} class:list={['svc-icon', cls]} aria-hidden="true" />
