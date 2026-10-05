@@ -5,3 +5,9 @@ dist/
 .env*
 .DS_Store
 *.log
+
+# Original client photos; the site uses resized copies in src/assets/projects
+src/assets/charcoal-walnut/
+src/assets/cottage/
+src/assets/richmond-hill-house-NEW/
+src/assets/under-construction-rhill-dontmakeasproject/
