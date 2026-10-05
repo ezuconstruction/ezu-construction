@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://ezuconstruction.ca/sitemap.xml
