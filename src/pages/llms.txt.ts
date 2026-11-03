@@ -10,7 +10,9 @@ export async function GET() {
   const u = (p: string) => new URL(p, site.url).href;
   const text = `# ${site.name}
 
-> ${site.name} is a family-owned general contractor based in Markham, Ontario, Canada, founded in ${site.founded}. It builds custom homes and renovates houses across Toronto and York Region (Markham, Richmond Hill, Vaughan): home additions, whole-home renovations, kitchens, bathrooms, basements and legal second suites, laneway and garden suites, and single trades. The team works in English and Mandarin.
+> ${site.name} is a family-owned general contractor based in Markham, Ontario, Canada, founded in ${site.founded}. It builds custom homes and renovates houses across Toronto and York Region (Markham, Richmond Hill, Vaughan): home additions, whole-home renovations, kitchens, bathrooms, basements and legal second suites, laneway and garden suites, and single trades. The team works in English and Mandarin. It takes on projects in the Greater Toronto Area only.
+
+Full text of every service page, project and guide: ${u('/llms-full.txt')}
 
 - Address: ${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postal}
 - Phone: ${site.phone}

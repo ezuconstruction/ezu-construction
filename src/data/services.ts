@@ -89,7 +89,7 @@ export const services: Service[] = [
       { q: 'Can we visit the site during construction?', a: 'Yes, and we encourage it. Visits are scheduled with your project manager so someone walks you through progress and the decisions coming up. You also receive a written update with photos every week.' },
       { q: 'Is a new custom home covered by a warranty?', a: 'Yes. A new home built for you on your land is enrolled in Ontario’s statutory new-home warranty, and we add our own written workmanship warranty. We handle the enrolment and paperwork before construction begins.', cta: 'Talk to us about your build' },
     ],
-    articles: ['custom-home-cost-gta', 'renovate-add-or-rebuild', 'hcra-vs-tarion-ontario-homeowner-guide', 'tree-permits-before-you-build'],
+    articles: ['custom-home-cost-gta', 'renovate-add-or-rebuild', 'hcra-vs-tarion-ontario-homeowner-guide', 'tree-permits-before-you-build', 'building-through-gta-winter'],
   },
   {
     slug: 'home-additions',
@@ -134,7 +134,7 @@ export const services: Service[] = [
       { q: 'Do you handle the permit?', a: 'Yes. We prepare and submit the application, respond to the plans examiner’s comments and book every inspection. If the design needs a minor variance, we prepare that application and represent the project at the Committee of Adjustment.' },
       { q: 'How much does an addition cost?', a: 'It depends far more on structure, foundations and the tie-in to the existing house than on square footage alone. We price from engineered drawings after a site visit, so the number reflects your house rather than an average.', cta: 'Request a consultation' },
     ],
-    articles: ['second-story-vs-rear-addition-gta', 'how-long-does-home-addition-take-toronto', 'garage-conversion-living-space-toronto', 'attic-conversion-toronto-homes'],
+    articles: ['second-story-vs-rear-addition-gta', 'how-long-does-home-addition-take-toronto', 'garage-conversion-living-space-toronto', 'attic-conversion-toronto-homes', 'building-through-gta-winter'],
   },
   {
     slug: 'home-renovations',
@@ -179,7 +179,7 @@ export const services: Service[] = [
       { q: 'Will a renovation qualify for rebates?', a: 'Insulation, air sealing, windows and heat pumps often qualify for Ontario’s Home Renovation Savings Program, and some upgrades need an energy assessment before work starts. We flag eligible items during planning and itemize them on your quote so claiming is straightforward.' },
       { q: 'Where do we start?', a: 'With a site visit. We walk the house with you, look at the structure and mechanicals, talk through priorities and budget, and then outline the scope and next steps in writing.', cta: 'Book a site visit' },
     ],
-    articles: ['renovate-add-or-rebuild', 'removing-a-load-bearing-wall', 'older-home-surprises', 'ontario-home-renovation-rebates'],
+    articles: ['renovate-add-or-rebuild', 'removing-a-load-bearing-wall', 'older-home-surprises', 'ontario-home-renovation-rebates', 'heat-pumps-older-gta-homes', 'aging-in-place-renovation-gta'],
   },
   {
     slug: 'kitchen-renovations',
@@ -224,7 +224,7 @@ export const services: Service[] = [
       { q: 'Can you move the sink, the range or a wall?', a: 'Usually, yes. Moving plumbing, gas or a load-bearing wall adds cost and sometimes a permit, so we confirm what’s behind the walls and price each option before you commit.' },
       { q: 'Do you help with design?', a: 'Yes. We plan the layout with you around how you cook and use the room, then work through cabinetry, counters, lighting and appliances with our cabinet and stone partners.', cta: 'Start your kitchen consultation' },
     ],
-    articles: ['kitchen-renovation-cost-gta', 'wok-kitchen-ventilation', 'best-kitchen-layouts-gta-homes', 'removing-a-load-bearing-wall'],
+    articles: ['kitchen-renovation-cost-gta', 'wok-kitchen-ventilation', 'best-kitchen-layouts-gta-homes', 'removing-a-load-bearing-wall', 'condo-renovation-toronto-rules'],
   },
   {
     slug: 'bathroom-renovations',
@@ -269,7 +269,7 @@ export const services: Service[] = [
       { q: 'Can you add heated floors?', a: 'Yes. Electric radiant heat under tile is affordable to install during a renovation and runs on its own thermostat. It’s one of the most appreciated upgrades in a primary bathroom.' },
       { q: 'Do you renovate condo bathrooms?', a: 'Yes. Condo work involves building management approval, elevator bookings and restricted working hours, and we plan around all of them from the start.', cta: 'Tell us about your bathroom' },
     ],
-    articles: ['bathroom-renovation-cost-gta', 'master-bathroom-renovation-features-gta', 'multigenerational-home-design-gta'],
+    articles: ['bathroom-renovation-cost-gta', 'master-bathroom-renovation-features-gta', 'multigenerational-home-design-gta', 'aging-in-place-renovation-gta', 'condo-renovation-toronto-rules'],
   },
   {
     slug: 'basement-renovations',
@@ -401,7 +401,7 @@ export const services: Service[] = [
       { q: 'Is smaller work covered by a warranty?', a: 'Yes. Every job, large or small, is covered by our written workmanship warranty.' },
       { q: 'Can you combine several trades in one visit?', a: 'Yes, and it’s usually more efficient. Flooring, paint and trim, for example, can be sequenced back to back under one invoice.' },
     ],
-    articles: ['older-home-surprises', 'how-to-compare-renovation-quotes', 'do-i-need-a-building-permit-ontario'],
+    articles: ['older-home-surprises', 'how-to-compare-renovation-quotes', 'do-i-need-a-building-permit-ontario', 'window-door-replacement-cost-gta'],
   },
 ];
 

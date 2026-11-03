@@ -3,7 +3,8 @@ import '../styles/global.css';
 import fontUrl from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { site } from '../data/site';
+import { site, areasServed } from '../data/site';
+import { services } from '../data/services';
 import defaultOg from '../assets/projects/etobicoke-kitchen-1.jpg';
 import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
@@ -34,6 +35,7 @@ const org = {
   '@id': `${site.url}/#org`,
   name: site.name,
   legalName: site.legalName,
+  description: 'Family-owned general contractor in Markham, Ontario, building custom homes and renovations across the Greater Toronto Area since 2016. Projects in the GTA only. English and Mandarin.',
   url: site.url,
   logo: `${site.url}/logo.png`,
   image: ogUrl,
@@ -55,7 +57,17 @@ const org = {
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '18:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '09:00', closes: '14:00' },
   ],
-  areaServed: ['Toronto', 'Markham', 'Richmond Hill', 'Vaughan', 'York Region', 'Greater Toronto Area'].map((name) => ({ '@type': 'Place', name })),
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Greater Toronto Area, Ontario, Canada' },
+    ...areasServed.map((name) => ({ '@type': 'City', name: `${name}, Ontario` })),
+  ],
+  hasMap: site.mapUrl,
+  knowsAbout: ['Custom home construction', 'Home additions', 'Whole-home renovations', 'Kitchen renovations', 'Bathroom renovations', 'Basement finishing', 'Legal second suites', 'Laneway and garden suites', 'Ontario Building Code permits', 'Wok kitchen ventilation'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Construction and renovation services',
+    itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name, description: s.short, url: `${site.url}/services/${s.slug}` } })),
+  },
   sameAs: Object.values(site.social),
 };
 const website = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, alternateName: 'EZU', url: `${site.url}/`, inLanguage: ['en-CA', 'zh-Hans'], publisher: { '@id': `${site.url}/#org` } };

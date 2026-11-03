@@ -136,3 +136,20 @@ Two guides a month, timed to the season: permits and additions in late winter, b
 - No pages for 40 towns where EZU has never worked.
 - No buying links or using link networks.
 - No keyword-stuffed footers or hidden text.
+
+## 6. AI assistants and answer engines
+
+ChatGPT search and Copilot in Edge draw heavily on Bing's index, Brave Search runs its own index but follows the rules set for Googlebot, and Perplexity and Claude use their own crawlers. What's in place on the site:
+
+- `robots.txt` explicitly allows the search and AI crawlers (Googlebot, Bingbot, Applebot, OAI-SearchBot, ChatGPT-User, GPTBot, Claude-SearchBot, Claude-User, ClaudeBot, PerplexityBot, Perplexity-User, DuckAssistBot, Google-Extended, Applebot-Extended).
+- `llms.txt` (short index) and `llms-full.txt` (full text of every service, project and guide), generated from the site data at build time.
+- Structured data: the organization with its service catalogue, the GTA-only service area and topics it knows about; FAQ structured data on every service page; Article data with images on every guide.
+- IndexNow: the key file is `public/fa9a7a7b1d7d8961af28c619ecde7186.txt`. After each deploy, run `npm run indexnow` to tell Bing (and IndexNow partners) about every URL in the sitemap.
+
+To do outside the site (accounts needed):
+- [ ] Bing Webmaster Tools: import the property from Search Console, submit the sitemap. Bing had almost nothing indexed for the domain in November 2026.
+- [ ] Bing Places for Business: claim the listing (feeds Copilot and Bing Maps, and influences ChatGPT's local answers).
+- [ ] Apple Business Connect: claim the listing (feeds Siri, Apple Maps and Apple Intelligence).
+- [ ] Vercel: add `www.ezuconstruction.ca` to the project, redirecting to `ezuconstruction.ca`. In November 2026 it had no valid certificate, so the www address showed a security warning.
+- [ ] Keep the business name, address, phone and email identical everywhere (site, Google Business Profile, Bing Places, Apple, directories).
+- [ ] Every few months, ask ChatGPT, Copilot, Perplexity and Google a fixed set of questions ("best general contractor in Markham", "basement second suite contractor Richmond Hill", "wok kitchen renovation Toronto") and note whether EZU is mentioned or cited.

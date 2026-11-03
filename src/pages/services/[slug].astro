@@ -40,6 +40,11 @@ const workTitle: Record<string, string> = {
   'home-renovations': 'Whole-home renovations we’ve done',
 };
 const weeks = s.timeline ? [s.timeline.reduce((a, t) => a + t.weeks[0], 0), s.timeline.reduce((a, t) => a + t.weeks[1], 0)] : null;
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: s.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
 const ld = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -52,7 +57,7 @@ const ld = {
 };
 import PageHero from '../../components/PageHero.astro';
 ---
-<Base title={s.title} description={s.description} image={s.image} jsonld={ld}>
+<Base title={s.title} description={s.description} image={s.image} jsonld={[ld, faqLd]}>
   <PageHero crumbs={[{ href: '/services', label: 'Services' }, { label: s.name }]} title={s.name} lede={s.short} image={s.image} imageAlt={s.imageAlt} caption={s.imageIsProject ? 'A finished EZU project.' : undefined} icon={s.slug}>
     <div class="btn-row">
       <a class="btn" href={`/contact?service=${s.slug}`}>Book a consultation</a>

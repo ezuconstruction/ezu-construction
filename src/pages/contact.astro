@@ -21,6 +21,11 @@ import PageHero from '../components/PageHero.astro';
         <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
       </div>
       <div>
+        <p class="label"><MapPin size={16} aria-hidden="true" />Service area</p>
+        <p>Toronto, York Region and the rest of the Greater Toronto Area. We don’t take on projects outside the GTA.</p>
+        <p><a href="/locations">See our service areas</a></p>
+      </div>
+      <div>
         <p class="label"><MapPin size={16} aria-hidden="true" />Office</p>
         <address>{site.address.street}<br />{site.address.city}, {site.address.region} {site.address.postal}</address>
         <p><a href={site.mapUrl} rel="noopener">Open in Google Maps</a></p>
