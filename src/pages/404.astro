@@ -1,4 +1,5 @@
 ---
+// The host serves this one page for every missing URL, so it carries both languages.
 import Base from '../layouts/Base.astro';
 import { services } from '../data/services';
 ---
@@ -11,6 +12,7 @@ import { services } from '../data/services';
       {services.map((s) => <li><a href={`/services/${s.slug}`}>{s.name}</a></li>)}
       <li><a href="/journal">Journal</a></li>
     </ul>
+    <p class="zh" lang="zh-Hans">找不到这个页面，可能是网站改版时移动了。请前往<a href="/zh">中文首页</a>、<a href="/zh/services">服务项目</a>或<a href="/zh/guides">中文指南</a>。</p>
   </section>
 </Base>
 
@@ -19,6 +21,7 @@ import { services } from '../data/services';
   .nf h1 { font-size: clamp(2.2rem, 1.4rem + 3vw, 3.75rem); }
   .nf ul { columns: 2; max-width: 36rem; padding-left: 1.1em; }
   .nf li { margin-bottom: 0.4rem; }
+  .nf .zh { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--ink-2); max-width: 36rem; }
   @media (max-width: 640px), (max-height: 760px) {
     .nf { padding-block: 1.25rem; }
     .nf h1 { font-size: clamp(2rem, 1.4rem + 2vw, 3rem); }

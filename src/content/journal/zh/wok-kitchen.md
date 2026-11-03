@@ -7,6 +7,8 @@ image: ../../../assets/projects/vaughan-custom-home-kitchen.jpg
 imageAlt: 带石材背景墙和黄铜装饰烟机罩的专业炉灶
 imageCaption: 我们在旺市建造的定制住宅厨房。
 lang: zh
+translation: wok-kitchen-ventilation
+services: [kitchen-renovations]
 ---
 
 北美的房子大多按西式烹饪设计：烟机风量小、开放式厨房连着客厅。中式爆炒、油炸产生的油烟远超这种设计的承受能力，结果就是满屋油烟味、橱柜表面一层油。

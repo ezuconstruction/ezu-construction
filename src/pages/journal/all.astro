@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 
 const all = (await getCollection('journal', (a) => a.data.lang === 'en')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<Base title="All Articles: Renovation and Building Guides" description="Every EZU Construction guide on renovation and building costs, timelines, permits and design for GTA homeowners, newest first.">
+<Base title="All Articles: Renovation and Building Guides" description="Every EZU Construction guide on renovation and building costs, timelines, permits and design for GTA homeowners, newest first." switchTo="/zh/guides">
   <PageHero crumbs={[{ href: '/journal', label: 'Journal' }, { label: 'All articles' }]} title="All articles" lede={`All ${all.length} of our guides for GTA homeowners, newest first.`} />
   <section class="wrap list">
     <ArticleList items={all} />

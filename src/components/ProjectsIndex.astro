@@ -1,0 +1,52 @@
+---
+// One template for /projects and /zh/projects.
+import Base from '../layouts/Base.astro';
+import ProjectCard from './ProjectCard.astro';
+import PageHero from './PageHero.astro';
+import Cta from './Cta.astro';
+import { Image } from 'astro:assets';
+import { projects, projectBySlug } from '../data/projects';
+
+interface Props { lang?: 'en' | 'zh' }
+const { lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
+const order = ['custom-home-construction-vaughan', 'modern-custom-home-richmond-hill', 'custom-home-stone-and-stucco', 'luxury-kitchen-renovation-toronto', 'kitchen-renovation-etobicoke', 'lakeside-bungalow-whole-home-renovation', 'kitchen-renovation-richmond-hill', 'apartment-kitchen-renovation'];
+const sorted = [...projects].sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
+// Hero collage: the strongest photo from five projects
+const collage = [
+  { p: 'custom-home-construction-vaughan', src: projectBySlug('custom-home-construction-vaughan')!.cover },
+  { p: 'luxury-kitchen-renovation-toronto', src: projectBySlug('luxury-kitchen-renovation-toronto')!.cover },
+  { p: 'luxury-kitchen-renovation-toronto', src: projectBySlug('luxury-kitchen-renovation-toronto')!.gallery.find((g) => /ensuite/i.test(g.alt))! },
+  { p: 'modern-custom-home-richmond-hill', src: projectBySlug('modern-custom-home-richmond-hill')!.gallery[0] }, // summer view reads better small
+  { p: 'kitchen-renovation-etobicoke', src: projectBySlug('kitchen-renovation-etobicoke')!.cover },
+];
+const t = zh
+  ? { title: '项目案例 | 定制住宅与房屋翻新 | EZU Construction', description: 'EZU Construction 的真实项目：旺市和列治文山的定制住宅、多伦多各地的厨房，以及全屋翻新，附改造前后对比照片。', h1: '项目案例', lede: '我们的团队在大多伦多地区完成的定制住宅、厨房和全屋翻新项目。', ctaTitle: '在找特定类型的项目？', ctaText: '如有需要，我们可以根据您计划的工程范围，提供更多项目案例和客户推荐人。' }
+  : { title: 'Projects: Custom Homes and Renovations We Have Built', description: 'Real EZU Construction projects: custom homes in Vaughan and Richmond Hill, kitchens across Toronto, and whole-home renovations, with before and after photos.', h1: 'Projects', lede: 'Custom homes, kitchens and whole-home renovations completed by our team across the Greater Toronto Area.', ctaTitle: 'Looking for something specific?', ctaText: 'Additional projects and client references are available on request, matched to the scope you’re planning.' };
+---
+<Base lang={lang} title={t.title} description={t.description} alternate={{ en: '/projects', zh: '/zh/projects' }}>
+  <PageHero title={t.h1} lede={t.lede}>
+    <div slot="media" class="collage">
+      {collage.map((c, i) => (
+        <a href={`${zh ? '/zh' : ''}/projects/${c.p}`} tabindex="-1" aria-hidden="true">
+          <Image src={c.src.src} alt="" widths={[320, 480, 720]} sizes={i > 2 ? '(min-width: 1000px) 330px, 50vw' : '(min-width: 1000px) 220px, 33vw'} format="webp" quality={72} loading="eager" fetchpriority={i === 3 ? 'high' : 'auto'} />
+        </a>
+      ))}
+    </div>
+  </PageHero>
+  <section class="wrap grid">
+    {sorted.map((p, i) => <ProjectCard project={p} lang={lang} headingLevel="h2" priority={i < 2} sizes="(min-width: 1040px) 560px, (min-width: 700px) 50vw, 100vw" />)}
+  </section>
+  <Cta title={t.ctaTitle} text={t.ctaText} lang={lang} />
+</Base>
+
+<style>
+  .grid { display: grid; gap: 3rem 2rem; padding-bottom: var(--space-section); }
+  @media (min-width: 700px) { .grid { grid-template-columns: 1fr 1fr; } }
+  /* Hero collage: three across the top, two wider below, same 4:3 footprint as other heroes */
+  .collage { display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 1fr 1.3fr; gap: 6px; aspect-ratio: 4 / 3; }
+  .collage a { grid-column: span 2; overflow: hidden; background: var(--plaster); }
+  .collage a:nth-child(n + 4) { grid-column: span 3; }
+  .collage :global(img) { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .collage a:hover :global(img) { transform: scale(1.03); }
+</style>

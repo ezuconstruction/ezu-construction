@@ -7,6 +7,7 @@ image: ../../assets/projects/vaughan-custom-home-kitchen.jpg
 imageAlt: Kitchen with a professional range under a stone-clad hood with brass banding
 imageCaption: The range wall in our Vaughan custom home.
 services: [kitchen-renovations, custom-homes]
+translation: zh/wok-kitchen
 ---
 
 High-heat stir-frying, deep-frying and searing produce far more smoke, grease and moisture than most North American kitchens are designed for. In an open-concept house, a weak hood means the smell reaches the bedrooms and a film of grease settles on the cabinets.

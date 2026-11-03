@@ -1,0 +1,134 @@
+---
+// One template for /journal/[slug] and /zh/[slug], so both languages share the same layout.
+import { getImage } from 'astro:assets';
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ApplyButton from './ApplyButton.astro';
+import AfterFirstParagraph from './AfterFirstParagraph.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import Photo from './Photo.astro';
+import Seal from './Seal.astro';
+import ArticleList from './ArticleList.astro';
+import Cta from './Cta.astro';
+import { serviceBySlug } from '../data/services';
+import { site } from '../data/site';
+import { Info } from '@lucide/astro';
+
+interface Props { entry: CollectionEntry<'journal'>; all: CollectionEntry<'journal'>[] }
+const { entry, all } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const zh = d.lang === 'zh';
+const slug = entry.id.replace(/^zh\//, '');
+const path = zh ? `/zh/${slug}` : `/journal/${slug}`;
+// Rebate guides quote subsidy amounts, not prices, so the price disclaimer is for cost guides only
+const mentionsPrices = !d.apply && (zh ? /\$\d|加元/ : /\$\d/).test(entry.body ?? '');
+const fmt = (x: Date) => x.toLocaleDateString(zh ? 'zh-CN' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const iso = (x: Date) => x.toISOString().slice(0, 10);
+const related = all
+  .filter((a) => a.id !== entry.id)
+  .map((a) => ({ a, score: a.data.services.filter((s) => d.services.includes(s)).length + (a.data.category === d.category ? 0.5 : 0) }))
+  .sort((x, y) => y.score - x.score || y.a.data.date.valueOf() - x.a.data.date.valueOf())
+  .slice(0, 3)
+  .map((x) => x.a);
+const svc = d.services.map((s) => serviceBySlug(s)).filter(Boolean);
+const t = zh
+  ? {
+      crumbs: [{ href: '/zh/guides', label: '中文指南' }], updated: '最后更新',
+      note: '文中价格只是帮助规划的大致区间，不是报价。每栋房子、每种选材都不一样，准确价格以我们上门查看后的书面分项报价为准。',
+      sign: ['EZU Construction 团队根据在多伦多和约克区的实际项目撰写。费用和规定会变化，如有过时之处，欢迎', '告诉我们', '。'],
+      asideTitle: '有类似的项目？', book: '预约上门咨询', call: '或致电', more: '更多中文指南', contact: '/zh/contact',
+    }
+  : {
+      crumbs: [{ href: '/journal', label: 'Journal' }], updated: 'updated',
+      note: 'The prices in this guide are rough ranges to help you plan, not quotes. Every house and every set of choices is different. Your price comes from a written quote after we’ve seen the house.',
+      sign: ['Written by the EZU Construction team, serving the GTA region. ', 'Contact us', ' for your next construction project.'],
+      asideTitle: 'Planning a project like this?', book: 'Book a consultation', call: 'Or call', more: 'More guides', contact: '/contact',
+    };
+const ldImage = await getImage({ src: d.image, width: 1200, format: 'jpeg', quality: 80 });
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.title,
+  image: new URL(ldImage.src, site.url).href,
+  description: d.description,
+  datePublished: iso(d.date),
+  dateModified: iso(d.updated ?? d.date),
+  mainEntityOfPage: new URL(path, site.url).href,
+  author: { '@id': `${site.url}/#org` },
+  publisher: { '@id': `${site.url}/#org` },
+  inLanguage: zh ? 'zh-Hans' : 'en-CA',
+};
+const pair = d.translation && (zh ? { en: `/journal/${d.translation}`, zh: path } : { en: path, zh: `/${d.translation}` });
+---
+<Base lang={d.lang} title={zh ? `${d.title} | EZU Construction` : d.seoTitle ?? d.title} description={d.description} image={d.image} type="article" jsonld={ld} alternate={pair || undefined}>
+  <article class="wrap article">
+    <header class="head rise">
+      <Breadcrumbs home={zh ? '首页' : undefined} items={[...t.crumbs, { label: d.title }]} />
+      <p class="meta"><span class="cat">{d.category}</span> <time datetime={iso(d.date)}>{fmt(d.date)}</time>{d.updated && <> ({t.updated} <time datetime={iso(d.updated)}>{fmt(d.updated)}</time>)</>}</p>
+      <h1>{d.title}</h1>
+      <p class="lede">{d.description}</p>
+    </header>
+
+    <Photo src={d.image} alt={d.imageAlt} caption={d.imageCaption} priority sizes="(min-width: 1240px) 1160px, 100vw" ratio="16/8" class="cover rise-late" />
+
+    <div class="body">
+      <div class="prose">
+        {mentionsPrices && <p class="note"><Info size={20} aria-hidden="true" /><span>{t.note}</span></p>}
+        {d.apply ? (
+          <AfterFirstParagraph><Content /><ApplyButton slot="insert" apply={d.apply} lang={d.lang} /></AfterFirstParagraph>
+        ) : <Content />}
+        {d.apply && <ApplyButton apply={d.apply} lang={d.lang} />}
+        <footer class="signoff">
+          <Seal size={44} />
+          <p>{t.sign[0]}<a href={t.contact}>{t.sign[1]}</a>{t.sign[2]}</p>
+        </footer>
+      </div>
+      {svc.length > 0 && (
+        <aside class="aside" aria-label={t.asideTitle}>
+          <p class="aside-title">{t.asideTitle}</p>
+          <ul>{svc.map((s) => <li><a href={`${zh ? '/zh' : ''}/services/${s!.slug}`}>{zh ? s!.zh : s!.name}</a></li>)}</ul>
+          <a class="btn" href={t.contact}>{t.book}</a>
+          <p class="small muted">{t.call} <a href={site.phoneHref}>{site.phone}</a></p>
+        </aside>
+      )}
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <h2 class="rel-title">{t.more}</h2>
+        <ArticleList items={related} lang={d.lang} />
+      </div>
+    </section>
+  )}
+  <Cta lang={d.lang} />
+</Base>
+
+<style>
+  .article { padding-top: var(--page-top); }
+  .head { max-width: 52rem; }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: var(--step--1); color: var(--ink-2); margin-bottom: 1rem; }
+  .cat { color: var(--seal); font-weight: 600; }
+  .head h1 { font-size: var(--step-4); }
+  .head .lede { margin-bottom: 2.5rem; }
+  .article :global(.cover) { margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+  .body { display: grid; gap: 3rem; }
+  @media (min-width: 1040px) { .body { grid-template-columns: minmax(0, 1fr) 17rem; gap: 5rem; } }
+  .prose { font-size: 1.0625rem; line-height: 1.7; }
+  @media (min-width: 900px) { .prose { font-size: 1.125rem; } }
+  .aside { align-self: start; position: sticky; top: 6.5rem; padding-top: 1rem; border-top: 2px solid var(--ink); }
+  .aside-title { font-weight: 650; font-stretch: 75%; font-size: var(--step-2); margin-bottom: 0.75rem; }
+  .aside ul { list-style: none; padding: 0; margin: 0 0 1.25rem; }
+  .aside li { margin-bottom: 0.4rem; }
+  .aside li a { text-decoration-color: var(--seal); }
+  .aside .small { margin-top: 0.75rem; }
+  @media (max-width: 1039px) { .aside { position: static; } }
+  .signoff { display: flex; gap: 1rem; align-items: flex-start; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: var(--step--1); color: var(--ink-2); }
+  .signoff p { margin: 0; }
+  .rel-title { font-size: var(--step-3); margin-bottom: 1.5rem; }
+  .note { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; margin: 0 0 2rem; padding: 1rem 1.25rem; background: var(--plaster); border-left: 3px solid var(--seal); font-size: var(--step--1); line-height: 1.55; }
+  .note :global(svg) { color: var(--seal); margin-top: 0.1rem; }
+</style>

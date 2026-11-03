@@ -16,11 +16,12 @@ interface Props {
   type?: 'website' | 'article';
   lang?: 'en' | 'zh';
   alternate?: { en: string; zh: string }; // paths for hreflang pairs
+  switchTo?: string; // language tag target when the other language has a related page but not a translation
   noindex?: boolean;
   jsonld?: object | object[];
   fit?: boolean; // single-screen page: content fills the viewport, slim footer
 }
-const { title, description, image = defaultOg, type = 'website', lang = 'en', alternate, noindex = false, jsonld, fit = false } = Astro.props;
+const { title, description, image = defaultOg, type = 'website', lang = 'en', alternate, switchTo, noindex = false, jsonld, fit = false } = Astro.props;
 const cleanPath = Astro.url.pathname.replace(/\.html$/, '').replace(/(^|\/)index$/, '').replace(/\/$/, '') || '/';
 const canonical = new URL(cleanPath, site.url).href;
 const og = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', format: 'jpeg', quality: 80 });
@@ -115,11 +116,11 @@ const blocks = [org, ...(cleanPath === '/' ? [website] : []), ...(jsonld ? (Arra
   </head>
   <body class:list={{ fit }}>
     <a class="skip" href="#main">{lang === 'zh' ? '跳到主要内容' : 'Skip to content'}</a>
-    <Header />
+    <Header lang={lang} alternate={alternate} switchTo={switchTo} />
     <main id="main">
       <slot />
     </main>
-    <Footer compact={fit} />
+    <Footer compact={fit} lang={lang} />
     <dialog class="lightbox" aria-label={lang === 'zh' ? '放大查看图片' : 'Enlarged photo'}>
       <button type="button" class="lb-close" aria-label={lang === 'zh' ? '关闭' : 'Close'}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       <figure><img alt="" /><figcaption></figcaption></figure>

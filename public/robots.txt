@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 Disallow: /contact/thanks
+Disallow: /zh/contact/thanks
 
 # Search and AI assistants, named explicitly so the welcome is unambiguous.
 # Bing powers Copilot in Edge and much of ChatGPT search; Brave Search follows the Googlebot rules.
@@ -21,5 +22,6 @@ User-agent: Google-Extended
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /contact/thanks
+Disallow: /zh/contact/thanks
 
 Sitemap: https://ezuconstruction.ca/sitemap.xml

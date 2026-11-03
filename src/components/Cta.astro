@@ -1,10 +1,11 @@
 ---
 import { Phone } from '@lucide/astro';
 import { site } from '../data/site';
-interface Props { title?: string; text?: string }
+interface Props { title?: string; text?: string; lang?: 'en' | 'zh' }
+const zh = Astro.props.lang === 'zh';
 const {
-  title = 'Have a project in mind?',
-  text = 'Book a consultation with our team. We’ll assess your home, review the options with you and follow up with a detailed written quote.',
+  title = zh ? '有装修或建房计划？' : 'Have a project in mind?',
+  text = zh ? '预约我们的团队上门咨询。我们会查看您的房子，和您一起讨论方案，然后提供详细的书面报价。' : 'Book a consultation with our team. We’ll assess your home, review the options with you and follow up with a detailed written quote.',
 } = Astro.props;
 ---
 <section class="cta">
@@ -14,8 +15,8 @@ const {
       <p class="lede">{text}</p>
     </div>
     <div class="actions">
-      <a class="btn" href="/contact">Book a consultation</a>
-      <a class="btn btn--ghost" href={site.phoneHref}><Phone size={18} aria-hidden="true" />Call {site.phone}</a>
+      <a class="btn" href={zh ? '/zh/contact' : '/contact'}>{zh ? '预约上门咨询' : 'Book a consultation'}</a>
+      <a class="btn btn--ghost" href={site.phoneHref}><Phone size={18} aria-hidden="true" />{zh ? '致电' : 'Call'} {site.phone}</a>
     </div>
   </div>
 </section>

@@ -14,7 +14,7 @@ import { ArrowRight } from '@lucide/astro';
 const [lead, ...next] = all.slice(0, 4);
 const fmt = (d: Date) => d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
-<Base title="Journal: Renovation and Building Guides for GTA Homeowners" description="Costs, timelines, permits and design guides for Toronto and York Region homeowners, written by a general contractor from real projects.">
+<Base title="Journal: Renovation and Building Guides for GTA Homeowners" description="Costs, timelines, permits and design guides for Toronto and York Region homeowners, written by a general contractor from real projects." alternate={{ en: '/journal', zh: '/zh/guides' }}>
   <PageHero title="Journal" lede="Practical guidance on costs, timelines, permits and design for homeowners across the Greater Toronto Area, drawn from the projects we deliver." image={heroImg} imageAlt="Architectural floor plans with a pencil and compass">
     <nav class="jump" aria-label="Topics">
       {groups.map((g) => <a href={`#${g.id}`}>{g.c} <span class="muted">{g.items.length}</span></a>)}

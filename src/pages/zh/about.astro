@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seal from '../../components/Seal.astro';
+import Logo from '../../components/Logo.astro';
+import Cta from '../../components/Cta.astro';
+import PageHero from '../../components/PageHero.astro';
+import Photo from '../../components/Photo.astro';
+import { site } from '../../data/site';
+import { FileText, PenLine, UserRound, ClipboardCheck, BadgeCheck, ShieldCheck } from '@lucide/astro';
+import office from '../../assets/projects/vaughan-custom-home-office.jpg';
+import paperwork from '../../assets/stock/documents-calculator.jpg';
+---
+<Base lang="zh" title="关于 EZU Construction | 万锦家族经营的总承包商，普通话沟通" description="EZU Construction 是总部位于万锦的家族经营总承包商，自 2016 年起在多伦多和约克区建造定制住宅、做房屋翻新。全程普通话沟通，书面分项报价。" image={office} alternate={{ en: '/about', zh: '/zh/about' }}>
+  <PageHero home="首页" crumbs={[{ href: '/zh', label: '中文' }, { label: '关于我们' }]} title="什么都做过的家族建筑商" lede="EZU Construction 是一家家族经营的总承包商，2016 年在万锦成立，始终坚持一个原则：认真施工、透明报价、对自己的工程负责到底。我们可以全程用普通话与您沟通。" image={office} imageAlt="旺市定制住宅中的书房：格子天花、石材壁炉墙和嵌入式书柜" caption="我们 2025 年在旺市建造的定制住宅书房。" />
+
+  <section class="wrap story">
+    <div class="prose">
+      <p>我们的合伙人是从一线干起的，亲手建造和翻新过一栋又一栋完整的房子，从地基一直做到最后的饰面。这段经历决定了我们管理每个项目的方式：我们清楚每个工种需要上一个工种留下什么，工期在哪里赢、在哪里输，也知道一栋房子墙里面是什么样子。</p>
+      <p>多年来，我们建立了一个信得过的专业团队网络：框架、电工、水管、瓷砖、木作、石材加工和屋顶师傅。每个项目中，我们为每个阶段安排最合适的师傅，并作为一个团队统一调度：一个时间表，一份合同。</p>
+      <p>因此，我们能承接各类住宅工程，从新建定制住宅、加建二层，到厨房、合法地下室出租单元和单项工程。规模会变，标准不变。</p>
+    </div>
+    <aside class="facts">
+      <dl>
+        <div><dt>成立</dt><dd>{site.founded} 年，安省万锦</dd></div>
+        <div><dt>经营</dt><dd>家族所有、家族经营</dd></div>
+        <div><dt>办公室</dt><dd>{site.address.street}, {site.address.city}（万锦）</dd></div>
+        <div><dt>业务</dt><dd>定制住宅、扩建、翻新、出租单元、单项工程</dd></div>
+        <div><dt>服务地区</dt><dd>多伦多和约克区</dd></div>
+        <div><dt>语言</dt><dd>普通话和英语</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap seal-rows">
+      <div class="srow" id="seal">
+        <Seal size={140} link={false} />
+        <div>
+          <h2>印章</h2>
+          <p class="lede">在中国传统里，重要的东西要盖章确认。在安省，专业工程师在图纸上盖章，表示他对图纸负责。</p>
+          <p>我们在项目上盖章也是同样的意思。印章上的字是“筑”，意思是建造。工程完工时，我们的团队陪您逐项验收，整改清单上的每一项都处理完毕后签字确认。保修服务也由建造它的同一个团队负责。</p>
+        </div>
+      </div>
+      <div class="srow flip">
+        <div>
+          <h2>标志</h2>
+          <p class="lede">我们的标志由公司名称的三个字母组成：E 和 Z 立在 U 之中。</p>
+          <p>合在一起，它们组成了“山”字，象征长久和稳固。这也是我们对自己的期望：做一家长久经营的公司，在您的项目完工之后，依然对它负责。</p>
+        </div>
+        <Logo height={140} u="#ffffff" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--plaster">
+    <div class="wrap">
+      <div class="section-head"><h2>我们对您的承诺</h2><p>这些承诺写在每一份 EZU 合同里。</p></div>
+      <ul class="features">
+        <li><FileText size={22} aria-hidden="true" /><div><h3>书面分项报价</h3><p>每部分多少钱一目了然。尚未选定的项目以“预留金额”列明，您清楚知道价格可能在哪里变动。</p></div></li>
+        <li><PenLine size={22} aria-hidden="true" /><div><h3>未经确认不施工</h3><p>如有变更，或在墙里发现问题，我们会先带您看、报价，取得您的书面确认后才施工。</p></div></li>
+        <li><UserRound size={22} aria-hidden="true" /><div><h3>专属项目团队</h3><p>项目经理负责协调工期和各工种，合伙人全程支持，从第一次上门一直到保修期结束。</p></div></li>
+        <li><ClipboardCheck size={22} aria-hidden="true" /><div><h3>许可证与检查由我们负责</h3><p>我们申请许可证、配合检查员并保管文件，让您的工程有据可查、可以投保。</p></div></li>
+        <li><BadgeCheck size={22} aria-hidden="true" /><div><h3>依法使用持牌师傅</h3><p>电力工程由 ESA 持牌承包商完成，燃气由 TSSA 注册技师完成，新建住宅持有 HCRA 执照。</p></div></li>
+        <li><ShieldCheck size={22} aria-hidden="true" /><div><h3>书面保修</h3><p>我们的施工质量有书面保修，新建住宅另有安省法定新房保修。</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap check">
+      <div>
+        <h2>请任何承包商提供这些，包括我们</h2>
+        <div class="prose">
+          <p>无论您请谁，签约前都请对方提供以下文件。正规的承包商会随时准备好。</p>
+          <ul>
+            <li>商业综合责任保险证明，并写明保额。</li>
+            <li>WSIB 清关证明（clearance certificate），工人在您家受伤时您不必承担责任。</li>
+            <li>如果是新建住宅，建筑商的 HCRA 执照号码，可在安省建筑商名录（Ontario Builder Directory）核实。</li>
+            <li>近几年完成的、与您项目类似的工程推荐人。</li>
+            <li>书面合同，付款与已完成的工程挂钩，而不是按日期付款。</li>
+          </ul>
+          <p>我们的<a href="/zh/renovation-cost-guide">中文装修费用指南</a>也介绍了如何比较报价。</p>
+        </div>
+      </div>
+      <Photo src={paperwork} alt="桌上的报价单、表格和计算器" ratio="4/3" sizes="(min-width: 1000px) 460px, 100vw" />
+    </div>
+  </section>
+
+  <Cta lang="zh" />
+</Base>
+
+<style>
+  .story { display: grid; gap: 2.5rem 5rem; padding-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
+  @media (min-width: 1000px) { .story { grid-template-columns: minmax(0, 1fr) 20rem; } }
+  .story .prose { font-size: var(--step-1); line-height: 1.7; }
+  .facts dl { margin: 0; border-top: 2px solid var(--ink); }
+  .facts div { padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
+  .facts dt { font-size: var(--step--1); color: var(--ink-2); }
+  .facts dd { margin: 0.15rem 0 0; font-weight: 600; }
+  .seal-rows { display: grid; gap: 4rem; }
+  .srow { display: grid; gap: 2rem 4rem; align-items: center; }
+  .srow p:not(.lede) { max-width: 40em; }
+  .srow .lede { color: #e3e6e2; }
+  @media (min-width: 800px) {
+    .srow { grid-template-columns: 9rem 1fr; }
+    .srow.flip { grid-template-columns: 1fr 9rem; }
+    .srow > :global(svg) { width: 140px; height: auto; }
+    .srow.flip > :global(svg) { justify-self: end; }
+    .srow.flip > div { justify-self: end; max-width: 40em; }
+  }
+  @media (max-width: 799px) { .srow.flip > :global(svg) { order: -1; } }
+  .check { display: grid; gap: 2.5rem 5rem; align-items: center; }
+  @media (min-width: 1000px) { .check { grid-template-columns: 7fr 5fr; } }
+</style>

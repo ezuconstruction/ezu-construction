@@ -1,0 +1,9 @@
+---
+// Renders the default slot with the "insert" slot placed right after its first paragraph,
+// so a markdown article can carry a component (the Apply button) under its opening description.
+const body = await Astro.slots.render('default');
+const insert = await Astro.slots.render('insert');
+const i = body.indexOf('</p>') + 4;
+const html = i > 3 ? body.slice(0, i) + insert + body.slice(i) : insert + body;
+---
+<Fragment set:html={html} />

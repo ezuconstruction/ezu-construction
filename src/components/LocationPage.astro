@@ -1,0 +1,157 @@
+---
+// One template for /locations/[slug] and /zh/locations/[slug].
+import Base from '../layouts/Base.astro';
+import ProjectCard from './ProjectCard.astro';
+import Cta from './Cta.astro';
+import ImageBand from './ImageBand.astro';
+import ServiceIcon from './ServiceIcon.astro';
+import PageHero from './PageHero.astro';
+import type { Location } from '../data/locations';
+import { localizeLocation } from '../data/locations-zh';
+import { projectBySlug } from '../data/projects';
+import { localizeProject } from '../data/projects-zh';
+import { services } from '../data/services';
+import { servicesZh } from '../data/zh';
+import { site } from '../data/site';
+import { getCollection } from 'astro:content';
+import { TreeDeciduous, Landmark, Building, WavesHorizontal, Gavel, Mountain } from '@lucide/astro';
+const ruleIcon = { tree: TreeDeciduous, heritage: Landmark, units: Building, water: WavesHorizontal, variance: Gavel, moraine: Mountain };
+
+interface Props { location: Location; lang?: 'en' | 'zh' }
+const { location, lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
+const pre = zh ? '/zh' : '';
+const l = localizeLocation(location, lang);
+const base = l.projects.map((s) => projectBySlug(s)!).filter(Boolean);
+const work = base.map((p) => localizeProject(p, lang));
+const band = work[0]?.gallery.find((g) => g.src !== work[0].cover.src)
+  ? { ...work[0].gallery.find((g) => g.src !== work[0].cover.src)!, title: work[0].title }
+  : work[1] ? { src: work[1].cover.src, alt: work[1].cover.alt, title: work[1].title } : null;
+// English guides for the English page; on /zh, the Chinese translations of those guides that exist
+const guides = (await getCollection('journal', (a) => (zh ? a.data.lang === 'zh' && l.articles.includes(a.data.translation ?? '') : a.data.lang === 'en' && l.articles.includes(a.id))));
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: l.title,
+  about: { '@id': `${site.url}/#org` },
+  spatialCoverage: { '@type': 'City', name: location.name, containedInPlace: { '@type': 'AdministrativeArea', name: 'Ontario' } },
+  ...(zh ? { inLanguage: 'zh-Hans' } : {}),
+};
+const nearby = work[0] && work[0].city !== l.slug;
+const t = zh
+  ? {
+      crumbs: '服务地区', h1: `在${l.name}建房与装修`, book: `预约${l.name}上门咨询`,
+      caption: work[0] ? `${nearby ? '附近：' : ''}${work[0].type}，${work[0].location}。` : undefined,
+      hoods: '我们施工的社区', housingH: `${l.name}的房子是什么样的`, housingP: '各个年代的房子里通常会发现什么，以及常见的装修需求。',
+      band: band ? `摘自“${band.title}”。` : '',
+      rulesH: '可能影响您项目的本地规定', rulesP: `这些是最常改变${l.name}项目设计、造价或工期的因素。我们在出图之前会逐一核查。`,
+      workH: work.some((w) => w.city === l.slug) ? `我们在${l.name}及周边的项目` : `${l.name}附近的项目`,
+      svcH: `我们在${l.name}的服务`, guidesH: `给${l.name}房主的指南`, cta: `在${l.name}有项目计划？`,
+    }
+  : {
+      crumbs: 'Service areas', h1: `Building and renovating in ${l.name}`, book: `Book a site visit in ${l.name}`,
+      caption: work[0] ? `${nearby ? 'Nearby: ' : ''}${work[0].type} in ${work[0].location.replace(', Ontario', '')}.` : undefined,
+      hoods: 'Neighbourhoods we work in', housingH: `What ${l.name} houses are like`, housingP: 'What we usually find in each era of house, and the work it tends to need.',
+      band: band ? `From ${band.title.charAt(0).toLowerCase() + band.title.slice(1)}.` : '',
+      rulesH: 'Local rules that can affect your project', rulesP: `These are what most often change the design, cost or timing of a ${l.name} project. We check each one before any drawings are made.`,
+      workH: work.some((w) => w.city === l.slug) ? `Our work in and near ${l.name}` : 'Projects near ' + l.name,
+      svcH: `What we build in ${l.name}`, guidesH: `Reading for ${l.name} homeowners`, cta: `Planning a project in ${l.name}?`,
+    };
+---
+<Base lang={lang} title={l.title} description={l.description} image={work[0]?.cover.src} jsonld={ld} alternate={{ en: `/locations/${l.slug}`, zh: `/zh/locations/${l.slug}` }}>
+  <PageHero home={zh ? '首页' : undefined} crumbs={[{ href: `${pre}/locations`, label: t.crumbs }, { label: l.name }]} title={t.h1} lede={l.lede} image={work[0]?.cover.src} imageAlt={work[0]?.cover.alt} caption={t.caption}>
+    <a class="btn" href={`${pre}/contact`}>{t.book}</a>
+  </PageHero>
+
+  <section class="wrap intro">
+    <div class="prose">{l.intro.map((p) => <p>{p}</p>)}</div>
+    <div class="hoods">
+      <p class="hoods-title">{t.hoods}</p>
+      <p class="muted">{l.neighbourhoods.join(', ')}{zh ? '' : '.'}</p>
+    </div>
+  </section>
+
+  <section class="section section--plaster">
+    <div class="wrap">
+      <div class="section-head"><h2>{t.housingH}</h2><p>{t.housingP}</p></div>
+      <dl class="eras">
+        {l.housing.map((h) => <div><dt>{h.era}</dt><dd>{h.body}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+
+  {band && <ImageBand src={band.src} alt={band.alt} caption={t.band} />}
+
+  <section class="section section--ink">
+    <div class="wrap">
+      <div class="section-head"><h2>{t.rulesH}</h2><p>{t.rulesP}</p></div>
+      <ul class="features features--2">
+        {l.rules.map((r) => {
+          const I = ruleIcon[r.icon];
+          return (
+          <li>
+            <I size={22} aria-hidden="true" />
+            <div>
+              <h3>{r.title}</h3>
+              <p>{r.body}</p>
+              {r.link && <p class="small"><a href={r.link.href} rel="noopener">{r.link.label}</a></p>}
+            </div>
+          </li>
+        ); })}
+      </ul>
+    </div>
+  </section>
+
+  {base.length > 0 && (
+    <section class="section section--plaster">
+      <div class="wrap">
+        <div class="section-head"><h2>{t.workH}</h2></div>
+        <div class="cards">{base.map((p) => <ProjectCard project={p} lang={lang} />)}</div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="svc">
+        <h2>{t.svcH}</h2>
+        <ul>{services.map((s) => <li><a href={`${pre}/services/${s.slug}`}><ServiceIcon slug={s.slug} size={22} /><span><strong>{zh ? s.zh : s.name}</strong><small>{zh ? servicesZh[s.slug].short : s.short}</small></span></a></li>)}</ul>
+      </div>
+      {guides.length > 0 && (
+        <div class="guides">
+          <h2>{t.guidesH}</h2>
+          <ul>{guides.map((g) => <li><a href={zh ? `/zh/${g.id.replace(/^zh\//, '')}` : `/journal/${g.id}`}><span class="cat">{g.data.category}</span>{g.data.title}</a></li>)}</ul>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Cta title={t.cta} lang={lang} />
+</Base>
+
+<style>
+  .intro { display: grid; gap: 2.5rem 5rem; padding-bottom: var(--space-section); }
+  @media (min-width: 1000px) { .intro { grid-template-columns: minmax(0, 1fr) 20rem; } }
+  .intro .prose { font-size: var(--step-1); line-height: 1.6; }
+  .hoods { border-top: 2px solid var(--ink); padding-top: 1rem; align-self: start; }
+  .hoods-title { font-weight: 650; margin-bottom: 0.4rem; }
+  .eras { display: grid; gap: 2rem 2.5rem; margin: 0; }
+  @media (min-width: 900px) { .eras { grid-template-columns: repeat(3, 1fr); } }
+  .eras div { border-top: 1px solid #c9cdc8; padding-top: 1rem; }
+  .eras dt { font-size: var(--step-2); font-stretch: 75%; font-weight: 650; margin-bottom: 0.5rem; }
+  .eras dd { margin: 0; color: var(--ink-2); }
+  .cards { display: grid; gap: 2.5rem 2rem; }
+  @media (min-width: 700px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .two { display: grid; gap: 3rem 5rem; }
+  @media (min-width: 1000px) { .two { grid-template-columns: 7fr 5fr; } }
+  .two h2 { font-size: var(--step-2); margin-bottom: 1.25rem; }
+  .svc ul, .guides ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .svc li, .guides li { border-bottom: 1px solid var(--line); }
+  .svc a { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; padding: 0.85rem 0; text-decoration: none; }
+  .svc a :global(svg) { color: var(--seal); margin-top: 0.1rem; }
+  .svc strong { display: block; font-weight: 650; }
+  .svc small { display: block; color: var(--ink-2); font-size: 0.95rem; }
+  .svc a:hover strong, .guides a:hover { color: var(--seal); }
+  .guides a { display: grid; gap: 0.2rem; padding: 0.9rem 0; text-decoration: none; font-weight: 600; line-height: 1.35; }
+  .guides .cat { font-size: var(--step--1); color: var(--seal-dark); font-weight: 600; }
+</style>

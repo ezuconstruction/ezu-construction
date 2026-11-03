@@ -1,0 +1,117 @@
+---
+// One template for /projects/[slug] and /zh/projects/[slug].
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import Photo from './Photo.astro';
+import TitleBlock from './TitleBlock.astro';
+import BeforeAfter from './BeforeAfter.astro';
+import ProjectCard from './ProjectCard.astro';
+import Seal from './Seal.astro';
+import Cta from './Cta.astro';
+import { projects, type Project } from '../data/projects';
+import { localizeProject } from '../data/projects-zh';
+import { serviceBySlug } from '../data/services';
+import { locationBySlug } from '../data/locations';
+
+interface Props { project: Project; lang?: 'en' | 'zh' }
+const { project, lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
+const pre = zh ? '/zh' : '';
+const p = localizeProject(project, lang);
+const svc = serviceBySlug(p.service)!;
+const loc = p.city ? locationBySlug(p.city) : undefined;
+const more = projects.filter((x) => x.slug !== p.slug).sort((a, b) => Number(b.service === p.service) - Number(a.service === p.service)).slice(0, 2);
+const gallery = p.gallery.filter((g) => g.src !== p.cover.src);
+const fullDesc = zh ? `${p.summary}EZU Construction 完成的${p.type}${p.year ? `，${p.year} 年` : ''}。` : `${p.summary} ${p.type}${p.year ? `, ${p.year}` : ''}, by EZU Construction.`;
+const description = fullDesc.length <= 160 ? fullDesc : p.summary;
+const t = zh
+  ? { crumbs: '项目案例', did: '我们做了什么', service: '服务', area: '地区', ba: '改造前后对比', signed: `由 EZU Construction 完工并签字验收${p.year ? `（${p.year} 年）` : ''}。`, more: '更多项目', cta: '有类似的计划？' }
+  : { crumbs: 'Projects', did: 'What we did', service: 'Service', area: 'Area', ba: 'Before and after', signed: `Completed and signed off by EZU Construction${p.year ? ` in ${p.year}` : ''}.`, more: 'More of our work', cta: 'Planning something similar?' };
+---
+<Base lang={lang} title={zh ? `${p.title} | EZU Construction` : p.title} description={description} image={p.cover.src} alternate={{ en: `/projects/${p.slug}`, zh: `/zh/projects/${p.slug}` }}>
+  <article>
+    <header class="wrap head rise">
+      <Breadcrumbs home={zh ? '首页' : undefined} items={[{ href: `${pre}/projects`, label: t.crumbs }, { label: p.title }]} />
+      <h1>{p.title}</h1>
+      <p class="lede">{p.summary}</p>
+    </header>
+
+    <div class="wrap rise-late">
+      <Photo src={p.cover.src} alt={p.cover.alt} priority sizes="(min-width: 1240px) 1160px, 100vw" ratio="16/9" />
+      <div class="tb"><TitleBlock rows={p.facts} /></div>
+    </div>
+
+    <section class="section story-section">
+      <div class="wrap story">
+        <div class="prose">
+          {p.story.map((para) => <p>{para}</p>)}
+        </div>
+        <aside>
+          <h2 class="aside-h">{t.did}</h2>
+          <ul class="scope">{p.scope.map((s) => <li>{s}</li>)}</ul>
+          <p class="small muted">{t.service}{zh ? '：' : ': '}<a href={`${pre}/services/${svc.slug}`}>{zh ? svc.zh : svc.name}</a>{loc && <>{zh ? '。' : '. '}{t.area}{zh ? '：' : ': '}<a href={`${pre}/locations/${loc.slug}`}>{zh ? loc.zh : loc.name}</a></>}{zh ? '。' : '.'}</p>
+        </aside>
+      </div>
+    </section>
+
+    {p.pairs && p.pairs.length > 0 && (
+      <section class="section section--plaster">
+        <div class="wrap pairs">
+          <h2>{t.ba}</h2>
+          {p.pairs.map((pair) => <BeforeAfter before={pair.before} after={pair.after} note={pair.note} lang={lang} />)}
+        </div>
+      </section>
+    )}
+
+    {gallery.length > 0 && (
+      <section class="section gallery-section">
+        <div class="wrap">
+          {p.galleryTitle && <h2 class="more-h">{p.galleryTitle}</h2>}
+          <div class:list={['gallery', { single: gallery.length === 1 }]}>{gallery.map((g) => <Photo src={g.src} alt={g.alt} caption={g.caption} ratio={gallery.length === 1 ? '16/9' : undefined} sizes={gallery.length === 1 ? '(min-width: 1240px) 1160px, 100vw' : '(min-width: 760px) 580px, 100vw'} />)}</div>
+        </div>
+      </section>
+    )}
+
+    <div class="wrap signed">
+      <Seal size={52} />
+      <p>{t.signed}</p>
+    </div>
+  </article>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="more-h">{t.more}</h2>
+      <div class="more">{more.map((m) => <ProjectCard project={m} lang={lang} />)}</div>
+    </div>
+  </section>
+  <Cta title={t.cta} lang={lang} />
+</Base>
+
+<style>
+  .head { padding-block: var(--page-top) 2.5rem; }
+  .head h1 { font-size: var(--step-5); line-height: 0.98; letter-spacing: -0.02em; max-width: 16ch; }
+  :global(html[lang^='zh']) .head h1 { line-height: 1.15; max-width: 14em; }
+  .head .lede { margin: 0; }
+  .tb { margin-top: 1.25rem; }
+  .story { display: grid; gap: 3rem 5rem; }
+  @media (min-width: 1000px) { .story { grid-template-columns: minmax(0, 1fr) 20rem; } }
+  .story .prose { font-size: var(--step-1); line-height: 1.6; }
+  .aside-h { font-size: var(--step-2); margin-bottom: 0.75rem; }
+  .scope { padding-left: 1.1em; margin: 0 0 1.5rem; }
+  .scope li { margin-bottom: 0.45rem; }
+  .scope li::marker { color: var(--seal); }
+  .pairs { display: grid; gap: 3rem; }
+  .pairs h2 { margin: 0; }
+  /* Two-column masonry so portrait and landscape photos sit together without cropping */
+  .gallery { columns: 2 22rem; column-gap: 2rem; }
+  .gallery > :global(*) { break-inside: avoid; margin-bottom: 2rem; }
+  .gallery.single { columns: 1; }
+  /* Story and gallery share the white background, so one gap between them, not two */
+  .story-section + .gallery-section { padding-top: 0; }
+  .gallery-section { padding-bottom: 0; }
+  .signed { display: flex; align-items: center; gap: 1rem; padding-block: clamp(2.5rem, 2rem + 2vw, 4rem); color: var(--ink-2); border-bottom: 1px solid var(--line); }
+  .signed p { margin: 0; }
+  .more-h { font-size: var(--step-3); }
+  .more { display: grid; gap: 2.5rem 2rem; }
+  @media (min-width: 700px) { .more { grid-template-columns: 1fr 1fr; } }
+</style>

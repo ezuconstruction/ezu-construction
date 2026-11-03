@@ -1,0 +1,17 @@
+---
+// The big "apply" link on rebate and subsidy guides: most readers arrive looking for exactly this.
+import { ExternalLink } from '@lucide/astro';
+interface Props { apply: { label: string; url: string }; lang?: 'en' | 'zh' }
+const { apply, lang = 'en' } = Astro.props;
+const host = new URL(apply.url).hostname.replace(/^www\./, '');
+---
+<div class="apply">
+  <a class="btn apply-btn" href={apply.url} rel="noopener" target="_blank">{apply.label}<ExternalLink size={20} aria-hidden="true" /></a>
+  <p class="small muted">{lang === 'zh' ? `前往官方网站 ${host} 申请。EZU Construction 与该计划无关联。` : `Opens the official site, ${host}. EZU Construction isn’t affiliated with the program.`}</p>
+</div>
+
+<style is:global>
+  .apply { display: grid; justify-items: start; gap: 0.5rem; margin: 1.75rem 0; }
+  .apply-btn { font-size: var(--step-1); padding: 0.9em 1.5em; gap: 0.6rem; }
+  .apply p { margin: 0; }
+</style>

@@ -17,6 +17,8 @@ const journal = defineCollection({
       imageCaption: z.string().optional(),
       services: z.array(z.string()).default([]),
       lang: z.enum(['en', 'zh']).default('en'),
+      translation: z.string().optional(), // id of the same article in the other language
+      apply: z.object({ label: z.string(), url: z.string().url() }).optional(), // official application link, shown as a big button
     }),
 });
 

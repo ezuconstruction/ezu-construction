@@ -1,78 +1,12 @@
 ---
-import { getImage } from 'astro:assets';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import Photo from '../../components/Photo.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import Seal from '../../components/Seal.astro';
-import { site } from '../../data/site';
+import ArticlePage from '../../components/ArticlePage.astro';
 
 export async function getStaticPaths() {
   const all = await getCollection('journal', (a) => a.data.lang === 'zh');
   return all.map((entry) => ({ params: { slug: entry.id.replace(/^zh\//, '') }, props: { entry, all } }));
 }
 interface Props { entry: CollectionEntry<'journal'>; all: CollectionEntry<'journal'>[] }
-const { entry, all } = Astro.props;
-const { Content } = await render(entry);
-const d = entry.data;
-const mentionsPrices = /\$\d|加元/.test(entry.body ?? '');
-const others = all.filter((a) => a.id !== entry.id);
-const ldImage = await getImage({ src: d.image, width: 1200, format: 'jpeg', quality: 80 });
-const ld = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: d.title,
-  image: new URL(ldImage.src, 'https://ezuconstruction.ca').href,
-  description: d.description,
-  datePublished: d.date.toISOString().slice(0, 10),
-  dateModified: (d.updated ?? d.date).toISOString().slice(0, 10),
-  author: { '@id': `${site.url}/#org` },
-  publisher: { '@id': `${site.url}/#org` },
-  inLanguage: 'zh-Hans',
-};
 ---
-<Base lang="zh" title={`${d.title} | EZU Construction`} description={d.description} image={d.image} type="article" jsonld={ld}>
-  <article class="wrap art">
-    <Breadcrumbs home="首页" items={[{ href: '/zh', label: '中文' }, { label: d.title }]} />
-    <p class="meta small"><time datetime={d.date.toISOString().slice(0, 10)}>{d.date.toISOString().slice(0, 10)}</time></p>
-    <h1>{d.title}</h1>
-    <p class="lede">{d.description}</p>
-    <Photo src={d.image} alt={d.imageAlt} caption={d.imageCaption} priority ratio="16/8" sizes="(min-width: 1240px) 1160px, 100vw" />
-    <div class="prose body">
-      {mentionsPrices && <p class="note">文中价格只是帮助规划的大致区间，不是报价。每栋房子、每种选材都不一样，准确价格以我们上门查看后的书面分项报价为准。</p>}
-      <Content />
-    </div>
-    <footer class="signoff">
-      <Seal size={44} />
-      <p>EZU Construction 团队根据在多伦多和约克区的实际项目撰写。费用和规定会变化，如有过时之处，欢迎<a href="/zh#contact">告诉我们</a>。</p>
-    </footer>
-    <div class="cta">
-      <a class="btn" href="/zh#contact">预约上门咨询</a>
-      <a class="btn btn--ghost" href={site.phoneHref}>致电 {site.phone}</a>
-    </div>
-    {others.length > 0 && (
-      <section class="more">
-        <h2>更多中文指南</h2>
-        <ul>{others.map((o) => <li><a href={`/zh/${o.id.replace(/^zh\//, '')}`}>{o.data.title}</a></li>)}</ul>
-      </section>
-    )}
-  </article>
-</Base>
-
-<style>
-  .art { padding-block: var(--page-top) var(--space-section); }
-  .meta { color: var(--ink-2); margin-bottom: 0.5rem; }
-  .art h1 { font-size: clamp(1.9rem, 1.4rem + 2vw, 3rem); max-width: 24em; }
-  .art .lede { margin-bottom: 2rem; }
-  .body { margin-top: 2.5rem; font-size: 1.0625rem; max-width: 40em; }
-  .signoff { display: flex; gap: 1rem; align-items: flex-start; max-width: 40em; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: var(--step--1); color: var(--ink-2); }
-  .signoff p { margin: 0; }
-  .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-  .more { margin-top: 3.5rem; }
-  .note { margin: 0 0 2rem; padding: 1rem 1.25rem; background: var(--plaster); border-left: 3px solid var(--seal); font-size: var(--step--1); }
-  .more h2 { font-size: var(--step-2); }
-  .more ul { padding-left: 1.2em; }
-  .more li { margin-bottom: 0.4rem; }
-  .more li::marker { color: var(--seal); }
-</style>
+<ArticlePage {...Astro.props} />

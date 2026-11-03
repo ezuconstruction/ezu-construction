@@ -1,14 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-interface Props { items: CollectionEntry<'journal'>[]; base?: string; cols?: boolean; compact?: boolean }
-const { items, base = '/journal', cols = false, compact = false } = Astro.props;
-const fmt = (d: Date) => d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+interface Props { items: CollectionEntry<'journal'>[]; base?: string; cols?: boolean; compact?: boolean; lang?: 'en' | 'zh' }
+const { items, lang = 'en', base = lang === 'zh' ? '/zh' : '/journal', cols = false, compact = false } = Astro.props;
+const fmt = (d: Date) => d.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
 <ul class:list={['article-list', { cols, compact }]}>
   {items.map((a) => (
     <li>
-      <a href={`${base}/${a.id}`}>
+      <a href={`${base}/${a.id.replace(/^zh\//, '')}`}>
         <span class="thumb"><Image src={a.data.image} alt="" widths={[240, 400]} sizes="(min-width: 860px) 200px, 112px" format="webp" quality={70} /></span>
         <span class="text">
           <span class="cat">{a.data.category}</span>

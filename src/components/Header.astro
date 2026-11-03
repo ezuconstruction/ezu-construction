@@ -5,14 +5,26 @@ import { Image } from 'astro:assets';
 import { Phone, Menu, X, ChevronDown } from '@lucide/astro';
 import { site, nav } from '../data/site';
 import { services } from '../data/services';
+import { servicesZh } from '../data/zh';
 
+interface Props { lang?: 'en' | 'zh'; alternate?: { en: string; zh: string }; switchTo?: string }
+const { lang = 'en', alternate, switchTo } = Astro.props;
+const zh = lang === 'zh';
 const path = Astro.url.pathname.replace(/\.html$/, '');
 const isActive = (href: string) => path === href || path.startsWith(href + '/');
-const links = nav.filter((n) => n.href !== '/services');
+const links: { href: string; label: string; en?: boolean }[] = zh
+  ? [{ href: '/zh/projects', label: '项目案例' }, { href: '/zh/process', label: '项目流程' }, { href: '/zh/about', label: '关于我们' }, { href: '/zh/guides', label: '装修指南' }]
+  : nav.filter((n) => n.href !== '/services');
+const svc = services.map((s) => (zh ? { ...s, href: `/zh/services/${s.slug}`, name: s.zh, short: servicesZh[s.slug].short } : { ...s, href: `/services/${s.slug}` }));
+// Pages without a hand-written Chinese version open in Google Translate, so the tag always translates the page in view
+const machineZh = `https://ezuconstruction-ca.translate.goog${path === "/" ? "/" : path}?_x_tr_sl=en&_x_tr_tl=zh-CN&_x_tr_hl=zh-CN`;
+const t = zh
+  ? { home: 'EZU Construction 中文首页', homeHref: '/zh', services: '服务', servicesHref: '/zh/services', showMenu: '展开服务菜单', book: '预约咨询', contact: '/zh/contact', contactLabel: '联系我们', call: '致电', menu: '菜单', switchLabel: 'English', switchHref: alternate?.en ?? switchTo ?? '/', switchLang: 'en' }
+  : { home: 'EZU Construction, home', homeHref: '/', services: 'Services', servicesHref: '/services', showMenu: 'Show the services menu', book: 'Book a consultation', contact: '/contact', contactLabel: 'Contact', call: 'Call', menu: 'Menu', switchLabel: '中文', switchHref: alternate?.zh ?? switchTo ?? machineZh, switchLang: 'zh-Hans' };
 ---
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="/" aria-label="EZU Construction, home">
+    <a class="brand" href={t.homeHref} aria-label={t.home}>
       <Logo height={32} />
       <span>EZU Construction</span>
     </a>
@@ -20,39 +32,40 @@ const links = nav.filter((n) => n.href !== '/services');
     <nav class="primary" aria-label="Primary">
       <ul>
         <li class="dd">
-          <a class="dd-btn" href="/services" aria-current={isActive('/services') ? 'page' : undefined}>Services</a>
-          <button type="button" class="dd-toggle" popovertarget="services-menu" aria-label="Show the services menu"><ChevronDown size={16} aria-hidden="true" /></button>
+          <a class="dd-btn" href={t.servicesHref} aria-current={isActive('/services') || isActive('/zh/services') ? 'page' : undefined}>{t.services}</a>
+          <button type="button" class="dd-toggle" popovertarget="services-menu" aria-label={t.showMenu}><ChevronDown size={16} aria-hidden="true" /></button>
         </li>
         {links.map((item) => (
-          <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
+          <li><a href={item.href} hreflang={item.en ? 'en' : undefined} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
         ))}
       </ul>
     </nav>
 
     <div class="actions">
       <a class="phone" href={site.phoneHref}><Phone size={17} aria-hidden="true" />{site.phone}</a>
-      <a class="btn" href="/contact">Book a consultation</a>
+      <a class="btn" href={t.contact}>{t.book}</a>
     </div>
 
-    <a class="call-icon" href={site.phoneHref} aria-label={`Call ${site.phone}`}><Phone size={20} aria-hidden="true" /></a>
+    <a class="call-icon" href={site.phoneHref} aria-label={`${t.call} ${site.phone}`}><Phone size={20} aria-hidden="true" /></a>
     <details class="menu">
-      <summary><Menu size={20} class="i-open" aria-hidden="true" /><X size={20} class="i-close" aria-hidden="true" />Menu</summary>
+      <summary><Menu size={20} class="i-open" aria-hidden="true" /><X size={20} class="i-close" aria-hidden="true" />{t.menu}</summary>
       <div class="menu-panel">
-        <p class="menu-label">Services</p>
+        <p class="menu-label">{t.services}</p>
         <ul class="menu-services">
-          {services.map((s) => <li><a href={`/services/${s.slug}`}><ServiceIcon slug={s.slug} size={22} />{s.name}</a></li>)}
+          {svc.map((s) => <li><a href={s.href}><ServiceIcon slug={s.slug} size={22} />{s.name}</a></li>)}
         </ul>
         <ul class="menu-main">
-          {links.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/zh" lang="zh-Hans">中文</a></li>
+          {links.map((item) => <li><a href={item.href} hreflang={item.en ? 'en' : undefined}>{item.label}</a></li>)}
+          <li><a href={t.contact}>{t.contactLabel}</a></li>
         </ul>
         <div class="menu-cta">
-          <a class="btn" href="/contact">Book a consultation</a>
-          <a class="btn btn--ghost" href={site.phoneHref}><Phone size={18} aria-hidden="true" />Call {site.phone}</a>
+          <a class="btn" href={t.contact}>{t.book}</a>
+          <a class="btn btn--ghost" href={site.phoneHref}><Phone size={18} aria-hidden="true" />{t.call} {site.phone}</a>
         </div>
       </div>
     </details>
+    <!-- Language tag: hangs from the bottom edge of the bar and goes to this page in the other language -->
+    <a class="lang-tag" href={t.switchHref} lang={t.switchLang} hreflang={t.switchLang}>{t.switchLabel}</a>
   </div>
 </header>
 
@@ -62,10 +75,10 @@ const links = nav.filter((n) => n.href !== '/services');
   <div class="wrap mega-grid">
     <div>
       <ul class="mega-list">
-        {services.map((s, i) => (
+        {svc.map((s, i) => (
           <li class:list={{ on: i === 0 }}>
-            <a href={`/services/${s.slug}`}><ServiceIcon slug={s.slug} size={22} /><span>{s.name}</span></a>
-            <a class="pv" href={`/services/${s.slug}`} tabindex="-1" aria-hidden="true">
+            <a href={s.href}><ServiceIcon slug={s.slug} size={22} /><span>{s.name}</span></a>
+            <a class="pv" href={s.href} tabindex="-1" aria-hidden="true">
               <span class="pv-img"><Image src={s.image} alt="" widths={[320, 640]} sizes="320px" format="webp" quality={68} loading="lazy" /></span>
               <span class="pv-name">{s.name}</span>
               <span class="pv-text">{s.short}</span>
@@ -73,7 +86,9 @@ const links = nav.filter((n) => n.href !== '/services');
           </li>
         ))}
       </ul>
-      <p class="mega-foot">Not sure of your needs? <a href="/services">See all services</a> or <a href="/contact">contact us</a>.</p>
+      {zh
+        ? <p class="mega-foot">不确定需要哪项服务？<a href={t.contact}>联系我们</a>，我们来建议。</p>
+        : <p class="mega-foot">Not sure of your needs? <a href="/services">See all services</a> or <a href="/contact">contact us</a>.</p>}
     </div>
   </div>
 </div>
@@ -109,7 +124,15 @@ const links = nav.filter((n) => n.href !== '/services');
     background: #fff;
     border-bottom: 1px solid var(--line);
   }
-  .bar { display: flex; align-items: center; gap: 2rem; min-height: 4.5rem; }
+  .bar { display: flex; align-items: center; gap: 2rem; min-height: 4.5rem; position: relative; }
+  .lang-tag {
+    position: absolute; top: 100%; right: var(--gutter); z-index: 1;
+    padding: 0.15rem 0.7rem 0.3rem; background: #fff; border: 1px solid var(--line); border-top: 0;
+    border-radius: 0 0 var(--radius) var(--radius); box-shadow: 0 4px 8px -6px rgba(30, 35, 38, 0.25);
+    font-size: 0.8rem; font-weight: 600; line-height: 1.4; color: var(--ink-2); text-decoration: none;
+  }
+  .lang-tag:hover { color: var(--seal); }
+  .lang-tag:focus-visible { outline: none; box-shadow: var(--ring); }
   .brand {
     display: flex; align-items: center; gap: 0.6rem;
     text-decoration: none; font-stretch: 75%; font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em;
@@ -120,7 +143,7 @@ const links = nav.filter((n) => n.href !== '/services');
   .primary ul { display: flex; align-items: center; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
   .primary a, .dd-btn {
     text-decoration: none; font: inherit; font-weight: 500; color: var(--ink);
-    position: relative; display: inline-flex; align-items: center; line-height: 1.5; padding-block: 0.4rem; border: 0; background: none; cursor: pointer;
+    position: relative; display: inline-flex; align-items: center; line-height: 1.5; padding-block: 0.4rem; border: 0; background: none; cursor: pointer; white-space: nowrap;
   }
   .primary a::after, .dd-btn::after {
     content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--seal);

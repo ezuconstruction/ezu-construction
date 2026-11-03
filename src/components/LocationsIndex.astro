@@ -1,0 +1,65 @@
+---
+// One template for /locations and /zh/locations.
+import Base from '../layouts/Base.astro';
+import Cta from './Cta.astro';
+import PageHero from './PageHero.astro';
+import { locations } from '../data/locations';
+import { localizeLocation, areaZh } from '../data/locations-zh';
+import { areasServed, site } from '../data/site';
+import heroImg from '../assets/projects/custom-home-exterior.jpg';
+
+interface Props { lang?: 'en' | 'zh' }
+const { lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
+const pre = zh ? '/zh' : '';
+const others = areasServed.filter((a) => !locations.some((l) => l.name === a));
+const t = zh
+  ? {
+      title: '服务地区 | 多伦多、万锦、列治文山、旺市 | EZU Construction', description: 'EZU Construction 总部位于万锦，在多伦多和约克区施工，包括列治文山、旺市、北约克、士嘉堡和怡陶碧谷。普通话沟通。',
+      h1: '服务地区', lede: `EZU Construction 服务整个大多伦多地区，总部位于万锦 ${site.address.street}。`, alt: '成熟街道上的石材外立面两层定制住宅', caption: '我们在大多伦多地区建造的一栋定制住宅。',
+      alsoH: '我们也在这些地区施工', also: `${others.map((a) => areaZh[a] ?? a).join('、')}，合适的项目也可以更远。我们在 Carrying Place 的`, alsoLink: '湖畔平房', alsoEnd: '就是一例。', range: '不确定是否在服务范围内？', rangeLink: '把地址发给我们', rangeEnd: '，我们告诉您。',
+    }
+  : {
+      title: 'Service Areas: Toronto, Markham, Richmond Hill and Vaughan', description: 'Based in Markham, EZU Construction builds across Toronto and York Region, including Richmond Hill, Vaughan, North York, Scarborough and Etobicoke.',
+      h1: 'Where we build', lede: `EZU Construction serves the GTA, with our office headquartered at ${site.address.street} in ${site.address.city}.`, alt: 'Two-storey custom home with a stone facade on an established street', caption: 'One of our custom homes in the GTA.',
+      alsoH: 'We also work in', also: `${others.join(', ')}, and further afield for the right project. Our `, alsoLink: 'lakeside bungalow', alsoEnd: ' in Carrying Place is one example.', range: 'Not sure if you’re in range? ', rangeLink: 'Send us your address', rangeEnd: ' and we’ll tell you.',
+    };
+---
+<Base lang={lang} title={t.title} description={t.description} alternate={{ en: '/locations', zh: '/zh/locations' }}>
+  <PageHero title={t.h1} lede={t.lede} image={heroImg} imageAlt={t.alt} caption={t.caption} />
+
+  <section class="wrap cities">
+    {locations.map((loc) => {
+      const l = localizeLocation(loc, lang);
+      return (
+        <a href={`${pre}/locations/${l.slug}`} class="city">
+          <h2>{l.name} <span class="other" lang={zh ? 'en' : 'zh-Hans'}>{zh ? loc.name : loc.zh}</span></h2>
+          <p>{l.lede}</p>
+          <p class="small muted">{l.neighbourhoods.slice(0, 6).join(', ')}</p>
+        </a>
+      );
+    })}
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap also">
+      <h2>{t.alsoH}</h2>
+      <p>{t.also}<a href={`${pre}/projects/lakeside-bungalow-whole-home-renovation`}>{t.alsoLink}</a>{t.alsoEnd}</p>
+      <p>{t.range}<a href={`${pre}/contact`}>{t.rangeLink}</a>{t.rangeEnd}</p>
+    </div>
+  </section>
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .cities { display: grid; gap: 0 3rem; padding-bottom: var(--space-section); }
+  @media (min-width: 800px) { .cities { grid-template-columns: 1fr 1fr; } }
+  .city { display: block; padding: 1.75rem 0; border-top: 1px solid var(--line); text-decoration: none; }
+  .city h2 { font-size: var(--step-3); margin-bottom: 0.5rem; }
+  .city:hover h2 { color: var(--seal); }
+  .other { display: block; margin-top: 0.3rem; font-stretch: 100%; font-weight: 500; font-size: 0.55em; color: var(--ink-2); }
+  .city p { color: var(--ink-2); max-width: 50ch; margin-bottom: 0.5rem; }
+  .also { max-width: 62ch; }
+  .also a { color: #fff; text-decoration-color: var(--seal); }
+  .also p { color: #c3c9c4; }
+</style>

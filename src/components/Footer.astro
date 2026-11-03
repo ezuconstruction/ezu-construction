@@ -4,16 +4,25 @@ import Logo from './Logo.astro';
 import { site } from '../data/site';
 import { services } from '../data/services';
 import { locations } from '../data/locations';
-interface Props { compact?: boolean }
-const { compact = false } = Astro.props;
+import { cityZh } from '../data/zh';
+interface Props { compact?: boolean; lang?: 'en' | 'zh' }
+const { compact = false, lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
 const year = new Date().getFullYear();
+const t = zh
+  ? { home: '/zh', sign: '每个项目都盖有我们的印章：代表团队确认工程达到我们的标准。', services: '服务', areas: '服务地区', allAreas: '全部服务地区', company: '公司',
+      company_links: [{ href: '/zh/about', label: '关于我们' }, { href: '/zh/contact', label: '联系我们' }, { href: '/zh/guides', label: '中文指南' }, { href: '/zh/projects', label: '项目案例' }, { href: '/zh/process', label: '项目流程' }, { href: '/', label: 'English', en: true }],
+      since: ` 自 ${site.founded} 年起服务大多伦多地区。` }
+  : { home: '/', sign: 'Every project carries the seal of approval.', services: 'Services', areas: 'Where we build', allAreas: 'All service areas', company: 'Company',
+      company_links: [{ href: '/projects', label: 'Projects' }, { href: '/process', label: 'Process' }, { href: '/about', label: 'About' }, { href: '/journal', label: 'Journal' }, { href: '/contact', label: 'Contact' }, { href: '/zh', label: '中文服务', zh: true }],
+      since: ` Serving the Greater Toronto Area since ${site.founded}.` };
 ---
 <footer class:list={['site-footer', { compact }]}>
   {!compact && (
   <div class="wrap grid">
     <div class="sign">
-      <a class="f-brand" href="/" aria-label="EZU Construction, home"><Logo height={40} u="#ffffff" /><span>EZU Construction</span></a>
-      <p class="sign-line">Every project carries our seal: the team’s sign-off that the work meets our standard.<Seal size={22} class="end-seal" /></p>
+      <a class="f-brand" href={t.home} aria-label="EZU Construction"><Logo height={40} u="#ffffff" /><span>EZU Construction</span></a>
+      <p class="sign-line">{t.sign}<Seal size={22} class="end-seal" /></p>
       <address>
         {site.legalName}<br />
         {site.address.street}<br />
@@ -24,39 +33,34 @@ const year = new Date().getFullYear();
     </div>
 
     <nav aria-label="Services">
-      <p class="col-title">Services</p>
-      <ul>{services.map((s) => <li><a href={`/services/${s.slug}`}>{s.name}</a></li>)}</ul>
+      <p class="col-title">{t.services}</p>
+      <ul>{services.map((s) => <li><a href={zh ? `/zh/services/${s.slug}` : `/services/${s.slug}`}>{zh ? s.zh : s.name}</a></li>)}</ul>
     </nav>
 
     <nav aria-label="Areas">
-      <p class="col-title">Where we build</p>
+      <p class="col-title">{t.areas}</p>
       <ul>
-        {locations.map((l) => <li><a href={`/locations/${l.slug}`}>{l.name}</a></li>)}
-        <li><a href="/locations">All service areas</a></li>
+        {locations.map((l) => <li><a href={`${zh ? '/zh' : ''}/locations/${l.slug}`}>{zh ? cityZh[l.slug] ?? l.name : l.name}</a></li>)}
+        <li><a href={zh ? '/zh/locations' : '/locations'}>{t.allAreas}</a></li>
       </ul>
     </nav>
 
     <nav aria-label="Company">
-      <p class="col-title">Company</p>
+      <p class="col-title">{t.company}</p>
       <ul>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/process">Process</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/journal">Journal</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/zh" lang="zh-Hans">中文服务</a></li>
+        {t.company_links.map((l) => <li><a href={l.href} hreflang={'en' in l ? 'en' : undefined} lang={'zh' in l ? 'zh-Hans' : 'en' in l && l.label === 'English' ? 'en' : undefined}>{l.label}</a></li>)}
       </ul>
     </nav>
   </div>
   )}
 
   <div class="wrap"><div class="base">
-    <p>© {year} {site.legalName}{!compact && ` Serving the Greater Toronto Area since ${site.founded}.`}</p>
+    <p>© {year} {site.legalName}{!compact && t.since}</p>
     <ul>
       {compact && <li><a href={site.phoneHref}>{site.phone}</a></li>}
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/terms">Terms</a></li>
-      <li><a href="/accessibility">Accessibility</a></li>
+      <li><a href={zh ? '/zh/privacy' : '/privacy'}>{zh ? '隐私政策' : 'Privacy'}</a></li>
+      <li><a href={zh ? '/zh/terms' : '/terms'}>{zh ? '使用条款' : 'Terms'}</a></li>
+      <li><a href={zh ? '/zh/accessibility' : '/accessibility'}>{zh ? '无障碍' : 'Accessibility'}</a></li>
       {!compact && <li><a href={site.social.instagram} rel="me noopener">Instagram</a></li>}
       {!compact && <li><a href={site.social.facebook} rel="me noopener">Facebook</a></li>}
     </ul>

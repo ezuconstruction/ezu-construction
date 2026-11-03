@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import Cta from '../../components/Cta.astro';
+import { getCollection } from 'astro:content';
+import heroImg from '../../assets/stock/blueprints.jpg';
+
+const all = (await getCollection('journal', (a) => a.data.lang === 'zh')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base lang="zh" title="中文装修指南 | 补贴、新规与费用 | EZU Construction" description="大多伦多地区房主的中文装修指南：政府补贴与截止日期、各城市加建出租单元新规、装修费用和地下室出租单元，由万锦总承包商 EZU Construction 撰写。" alternate={{ en: '/journal', zh: '/zh/guides' }}>
+  <PageHero home="首页" crumbs={[{ href: '/zh', label: '中文' }, { label: '中文指南' }]} title="中文装修指南" lede="政府补贴和截止日期、各城市的新规定、费用和工期。根据我们在多伦多和约克区的实际项目撰写，并随政策变化更新。" image={heroImg} imageAlt="建筑平面图、铅笔和圆规" />
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="all-title">全部指南</h2>
+      <ArticleList items={all} lang="zh" />
+    </div>
+  </section>
+
+  <Cta lang="zh" title="还有没解答的问题？" text="欢迎直接问我们。如果是很多房主都关心的问题，我们也会写成中文指南。" />
+</Base>
+
+<style>
+  .all-title { font-size: var(--step-3); margin-bottom: 1.5rem; }
+</style>

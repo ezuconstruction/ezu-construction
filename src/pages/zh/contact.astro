@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import PageHero from '../../components/PageHero.astro';
+import { site } from '../../data/site';
+import { Phone, Mail, MapPin, Languages, ListChecks } from '@lucide/astro';
+---
+<Base lang="zh" title="联系 EZU Construction | 预约万锦、多伦多装修上门咨询" description={`预约上门看房或咨询装修问题。致电 ${site.phone}，发邮件至 ${site.email}，或在线提交项目简介。办公室位于万锦 ${site.address.street}。全程普通话沟通。`} alternate={{ en: '/contact', zh: '/zh/contact' }}>
+  <PageHero home="首页" crumbs={[{ href: '/zh', label: '中文' }, { label: '联系我们' }]} title="预约上门咨询" lede="简单介绍一下您的房子和想法，有个大概方向就可以。我们会在一个工作日内用中文回复您。" />
+
+  <section class="wrap layout">
+    <div class="form-col"><ContactForm lang="zh" /></div>
+    <aside class="info">
+      <div>
+        <p class="label"><Phone size={16} aria-hidden="true" />电话</p>
+        <p class="big"><a href={site.phoneHref}>{site.phone}</a></p>
+        <p class="small muted">周一至周五 8:00–18:00，周六 9:00–14:00</p>
+      </div>
+      <div>
+        <p class="label"><Mail size={16} aria-hidden="true" />电子邮箱</p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+      <div>
+        <p class="label"><Languages size={16} aria-hidden="true" />语言</p>
+        <p>从咨询、报价到施工汇报，全程可用普通话沟通。</p>
+      </div>
+      <div>
+        <p class="label"><MapPin size={16} aria-hidden="true" />服务地区</p>
+        <p>多伦多、约克区（万锦、列治文山、旺市等）及大多伦多其他地区。</p>
+      </div>
+      <div>
+        <p class="label"><MapPin size={16} aria-hidden="true" />办公室</p>
+        <address>{site.address.street}<br />{site.address.city}（万锦）, {site.address.region} {site.address.postal}</address>
+        <p><a href={site.mapUrl} rel="noopener">在 Google 地图中打开</a></p>
+      </div>
+      <div class="next">
+        <p class="label"><ListChecks size={16} aria-hidden="true" />接下来</p>
+        <ol>
+          <li>我们的团队在一个工作日内联系您。</li>
+          <li>上门查看您的房子，确认工程范围。</li>
+          <li>您收到一份详细的书面分项报价。</li>
+        </ol>
+      </div>
+    </aside>
+  </section>
+</Base>
+
+<script is:inline>
+  // Preselect the project type when arriving from a service page (?service=slug). Option values are the English names.
+  (function () {
+    var s = new URLSearchParams(location.search).get('service');
+    var sel = document.getElementById('f-type');
+    if (!s || !sel) return;
+    var label = { 'custom-homes': 'Custom homes', 'home-additions': 'Home additions', 'home-renovations': 'Whole-home renovations', 'kitchen-renovations': 'Kitchen renovations', 'bathroom-renovations': 'Bathroom renovations', 'basement-renovations': 'Basements and second suites', 'laneway-garden-suites': 'Laneway and garden suites', 'trades': 'Trades and repairs' }[s];
+    if (label) sel.value = label;
+  })();
+</script>
+
+<style>
+  .layout { display: grid; gap: 3rem 5rem; padding-bottom: var(--space-section); }
+  @media (min-width: 1000px) { .layout { grid-template-columns: minmax(0, 1fr) 20rem; } }
+  .info { display: grid; gap: 1.75rem; align-content: start; border-top: 2px solid var(--ink); padding-top: 1.25rem; }
+  .info p { margin: 0 0 0.3rem; }
+  .label { display: flex; align-items: center; gap: 0.4rem; font-size: var(--step--1); color: var(--ink-2); }
+  .label :global(svg) { color: var(--seal); }
+  .big { font-size: var(--step-2); font-weight: 650; font-stretch: 75%; }
+  .big a { text-decoration: none; }
+  address { font-style: normal; margin-bottom: 0.4rem; }
+  .info a { text-decoration-color: var(--seal); }
+  .next ol { margin: 0.4rem 0 0; padding-left: 1.2em; color: var(--ink-2); }
+  .next li { margin-bottom: 0.4rem; }
+  .next li::marker { color: var(--seal); font-weight: 600; }
+</style>

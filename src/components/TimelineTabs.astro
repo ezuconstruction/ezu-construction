@@ -5,6 +5,10 @@ import { PencilRuler, Package, ClipboardCheck, HardHat, Info, Timer } from '@luc
 import DimensionLine from './DimensionLine.astro';
 import ServiceIcon from './ServiceIcon.astro';
 import { services } from '../data/services';
+import { servicesZh, serviceAltsZh } from '../data/zh';
+
+interface Props { lang?: 'en' | 'zh' }
+const zh = Astro.props.lang === 'zh';
 
 const detail: Record<string, { tab: string; phases: string[]; extends: string }> = {
   'kitchen-renovations': {
@@ -62,35 +66,93 @@ const detail: Record<string, { tab: string; phases: string[]; extends: string }>
     extends: 'Minor variances, protected trees and winter excavation.',
   },
 };
+const detailZh: Record<string, { tab: string; phases: string[]; extends: string }> = {
+  'kitchen-renovations': {
+    tab: '厨房',
+    phases: [
+      '格局、橱柜图纸，以及台面、瓷砖、五金洁具和电器的选择，在订货之前全部确定。',
+      '橱柜按确认的图纸制作。拆除和水电预埋安排在橱柜到货时正好完成。',
+      '拆除、水管和电路预埋、石膏板、橱柜安装、台面、瓷砖和最后的五金洁具。',
+    ],
+    extends: '移动水管或燃气管、拆墙，以及订货周期长的进口石材或电器。',
+  },
+  'bathroom-renovations': {
+    tab: '浴室',
+    phases: [
+      '格局、防水方案，以及瓷砖、浴室柜、洁具和玻璃的选择。',
+      '洁具、浴室柜、瓷砖和定制玻璃在拆除之前全部订好、到货。',
+      '拆除、预埋、防水、贴砖、洁具、玻璃和最后收尾。',
+    ],
+    extends: '移动马桶或下水、定制玻璃、地暖和无门槛淋浴。',
+  },
+  'basement-renovations': {
+    tab: '地下室',
+    phases: [
+      '格局、潮湿评估和许可证图纸，包括出租单元的逃生窗和防火分隔。',
+      '市政府审图。大多伦多地区每个城市的合法出租单元都需要建筑许可证。',
+      '防水、框架、保温、水电暖预埋、政府检查、石膏板和饰面。',
+    ],
+    extends: '下挖加深、防水修补、新建独立入口和切割逃生窗洞。',
+  },
+  'home-additions': {
+    tab: '扩建',
+    phases: [
+      '在分区限制范围内的建筑设计、结构设计和许可证图纸。',
+      '建筑许可证审批。如需小幅变更，还要经过调整委员会听证。',
+      '地基或结构加固、框架、屋顶、与原有房屋衔接、水电暖和饰面。',
+    ],
+    extends: '小幅变更、冬季地基施工和电力扩容。',
+  },
+  'home-renovations': {
+    tab: '全屋翻新',
+    phases: [
+      '平面布局、结构改动和全部选材确定，让长周期材料尽早订货。',
+      '结构和机电改动所需的建筑、水管和暖通许可证。',
+      '拆除、结构施工、新电路和水管、保温、政府检查、石膏板和全屋饰面。',
+    ],
+    extends: '老房子墙内发现的问题，以及后期更改选材。',
+  },
+  'custom-homes': {
+    tab: '定制住宅',
+    phases: [
+      '分区和场地核查、建筑设计、结构设计，以及树木和地势报告。',
+      '拆除许可证和建筑许可证，需要时还包括场地规划或小幅变更审批。',
+      '拆除、开挖、地基、框架、外围护、水电暖、政府检查和饰面。',
+    ],
+    extends: '小幅变更、受保护树木和冬季开挖。',
+  },
+};
 const items = Object.keys(detail).map((slug) => services.find((s) => s.slug === slug)!);
 const iconFor = (label: string) => (/permit/i.test(label) ? ClipboardCheck : /lead|order/i.test(label) ? Package : /design|feasib|drawing/i.test(label) ? PencilRuler : HardHat);
-const fmt = (w: [number, number]) => `${w[0]}–${w[1]} weeks`;
+const fmt = (w: [number, number]) => `${w[0]}–${w[1]}${zh ? ' 周' : ' weeks'}`;
 const total = (t: { weeks: [number, number] }[]): [number, number] => [t.reduce((a, p) => a + p.weeks[0], 0), t.reduce((a, p) => a + p.weeks[1], 0)];
 ---
 <div class="tl-tabs" data-tabs>
-  <div class="tablist" role="tablist" aria-label="Project type">
+  <div class="tablist" role="tablist" aria-label={zh ? '项目类型' : 'Project type'}>
     {items.map((s, i) => (
       <button type="button" role="tab" id={`tl-tab-${s.slug}`} aria-controls={`tl-panel-${s.slug}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
-        <ServiceIcon slug={s.slug} size={20} />{detail[s.slug].tab}
+        <ServiceIcon slug={s.slug} size={20} />{(zh ? detailZh : detail)[s.slug].tab}
       </button>
     ))}
   </div>
 
   {items.map((s) => {
-    const d = detail[s.slug];
+    const d = (zh ? detailZh : detail)[s.slug];
+    const labels = zh ? servicesZh[s.slug].timeline! : s.timeline!.map((p) => p.label);
+    const phases = s.timeline!.map((p, i) => ({ ...p, label: labels[i] }));
     const t = total(s.timeline!);
     return (
       <div class="panel" role="tabpanel" id={`tl-panel-${s.slug}`} aria-labelledby={`tl-tab-${s.slug}`} tabindex="0">
         <div class="pic">
-          <Image src={s.image} alt={s.imageAlt} widths={[480, 800]} sizes="(min-width: 1000px) 440px, 100vw" format="webp" quality={72} loading="lazy" />
-          <p class="total"><Timer size={20} aria-hidden="true" /><span><strong>{t[0]}–{t[1]} weeks</strong> typical overall</span></p>
+          <Image src={s.image} alt={zh ? serviceAltsZh[s.slug].image : s.imageAlt} widths={[480, 800]} sizes="(min-width: 1000px) 440px, 100vw" format="webp" quality={72} loading="lazy" />
+          <p class="total"><Timer size={20} aria-hidden="true" />{zh ? <span>典型总工期 <strong>{t[0]}–{t[1]} 周</strong></span> : <span><strong>{t[0]}–{t[1]} weeks</strong> typical overall</span>}</p>
         </div>
         <div class="body">
-          <h3><a href={`/services/${s.slug}`}>{s.name}</a></h3>
-          <DimensionLine phases={s.timeline!} caption=" " />
+          <h3><a href={`${zh ? '/zh' : ''}/services/${s.slug}`}>{zh ? s.zh : s.name}</a></h3>
+          <DimensionLine phases={phases} caption=" " lang={zh ? 'zh' : 'en'} />
           <ol class="phases">
-            {s.timeline!.map((p, i) => {
-              const I = iconFor(p.label);
+            {phases.map((p, i) => {
+              const I = iconFor(s.timeline![i].label);
               return (
                 <li>
                   <I size={22} aria-hidden="true" />
@@ -99,7 +161,7 @@ const total = (t: { weeks: [number, number] }[]): [number, number] => [t.reduce(
               );
             })}
           </ol>
-          <p class="ext"><Info size={18} aria-hidden="true" /><span><strong>What can extend it:</strong> {d.extends}</span></p>
+          <p class="ext"><Info size={18} aria-hidden="true" /><span><strong>{zh ? '可能延长工期的因素：' : 'What can extend it: '}</strong>{d.extends}</span></p>
         </div>
       </div>
     );

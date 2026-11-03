@@ -1,0 +1,267 @@
+---
+// One template for / and /zh, so the Chinese homepage is a translation of the English one, not a separate design.
+import Base from '../layouts/Base.astro';
+import Photo from './Photo.astro';
+import Seal from './Seal.astro';
+import ProjectCard from './ProjectCard.astro';
+import BeforeAfter from './BeforeAfter.astro';
+import ProcessScroll from './ProcessScroll.astro';
+import ArticleList from './ArticleList.astro';
+import ServiceIcon from './ServiceIcon.astro';
+import Cta from './Cta.astro';
+import { ArrowRight } from '@lucide/astro';
+import { services } from '../data/services';
+import { servicesZh, cityZh } from '../data/zh';
+import { projectBySlug } from '../data/projects';
+import { locations } from '../data/locations';
+import { getCollection } from 'astro:content';
+import hero from '../assets/projects/etobicoke-kitchen-1.jpg';
+
+interface Props { lang?: 'en' | 'zh' }
+const { lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
+const pre = zh ? '/zh' : '';
+
+const featured = ['custom-home-construction-vaughan', 'modern-custom-home-richmond-hill', 'luxury-kitchen-renovation-toronto'].map((s) => projectBySlug(s)!);
+const toronto = projectBySlug('luxury-kitchen-renovation-toronto')!;
+const lakeside = projectBySlug('lakeside-bungalow-whole-home-renovation')!;
+const condo = projectBySlug('apartment-kitchen-renovation')!;
+const comparisons = [
+  { title: zh ? '多伦多厨房' : 'Kitchen, Toronto', pair: toronto.pairs![0], href: `${pre}/projects/${toronto.slug}`, zhNote: '同一个空间、同样的格局，收纳、岛台和饰面全部焕新。' },
+  { title: zh ? '伯灵顿公寓厨房' : 'Condo kitchen, Burlington', pair: condo.pairs![0], href: `${pre}/projects/${condo.slug}`, zhNote: '地板从入户一直铺到厨房，整体连贯通透。' },
+  { title: zh ? 'Carrying Place 游戏室' : 'Games room, Carrying Place', pair: lakeside.pairs![1], href: `${pre}/projects/${lakeside.slug}`, zhNote: '闲置的地下层改造成全家人的游戏室。' },
+  { title: zh ? 'Carrying Place 开放式客餐厅' : 'Open-concept living, Carrying Place', pair: lakeside.pairs![0], href: `${pre}/projects/${lakeside.slug}`, zhNote: '封闭的小房间打通为明亮的客餐厅。' },
+];
+const latest = (await getCollection('journal', (a) => a.data.lang === lang))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
+const t = zh
+  ? {
+      title: '万锦装修公司 | 多伦多、列治文山、旺市定制住宅与房屋翻新 | EZU Construction',
+      description: 'EZU Construction 是总部位于万锦的家族企业，自 2016 年起在多伦多及约克区建造定制住宅、做房屋加建、全屋翻新、厨房浴室装修与地下室合法出租单元。全程普通话沟通，书面分项报价。',
+      mark: '您的', h1rest: '下一个家。',
+      lede: '经久耐用的定制住宅与房屋翻新。我们专注于新建住宅、厨房和浴室改造以及全屋升级，为现代生活而设计。全程可用普通话沟通。',
+      book: '预约上门咨询', seeProjects: '查看项目案例', heroAlt: '翻新后的白色厨房：仿大理石石英石瀑布岛台、白橡木烟罩和黄铜吊灯',
+      heroCap: '2023 年怡陶碧谷厨房翻新。', seeProject: '查看项目',
+      workH: '近期项目', workP: '我们的团队在大多伦多地区完成的定制住宅与翻新项目。', allProjects: '全部项目',
+      buildH: '我们的服务', buildP: '我们的团队从地基开始建造和翻新过完整的房子。这些经验贯穿每一个项目：我们清楚每个工种如何依赖上一个工种，并与大多伦多地区最有实力的专业师傅合作。',
+      baH: '改造前后对比', baP: '同一个空间，在我们手中焕然一新。', baLabel: '改造对比',
+      processH: '项目流程', processP: '五个清晰的阶段，一个负责到底的团队，从第一次上门到最终验收。', processLink: '流程与工期',
+      sealH: '为什么我们的项目盖章', sealLede: '在中国传统里，印章就是签名。在安省，工程师在图纸上盖章，表示有合格的专业人士对它负责。我们的印章也是这个意思。',
+      sealP: '工程完工时，我们的团队陪您逐项验收，整改每一项问题，然后签字确认。印章上的字是“筑”，意思是建造。',
+      areasH: '服务地区', areasP: '我们总部位于万锦，服务多伦多、约克区及大多伦多其他地区。', allAreas: '全部服务地区', moreAreas: 'Aurora、Stouffville、Mississauga 等',
+      guidesH: '装修指南', guidesP: '根据我们完成的项目整理的费用、工期、许可证和补贴实用指南。', allGuides: '全部指南', guidesHref: '/zh/guides',
+    }
+  : {
+      title: 'EZU Construction | Custom Homes and Renovations, Markham & GTA',
+      description: 'Family-owned Markham general contractor building custom homes, additions, kitchens, basements and second suites across Toronto and York Region since 2016.',
+      mark: 'Your', h1rest: ' next home.',
+      lede: 'Custom homes and renovations built to last. We specialize in new home builds, kitchen and bathroom remodels, and whole-home upgrades. Designed for modern living.',
+      book: 'Book a consultation', seeProjects: 'See our projects', heroAlt: 'Renovated white kitchen with a marble-look quartz waterfall island, white oak hood and brass pendants',
+      heroCap: 'Kitchen renovation in Etobicoke, 2023.', seeProject: 'See the project',
+      workH: 'Recent work', workP: 'Custom homes and renovations delivered by our team across the Greater Toronto Area.', allProjects: 'All projects',
+      buildH: 'What we build', buildP: 'Our team has built and renovated complete homes from the foundation up. That experience informs every project we take on: we know how each trade depends on the last, and we work with the most capable specialists in the GTA.',
+      baH: 'Before and after', baP: 'The same rooms, transformed by our team.', baLabel: 'Comparison',
+      processH: 'How a project works', processP: 'Five defined stages, one accountable team, from the first site visit to final sign-off.', processLink: 'Process and timelines',
+      sealH: 'Why our work carries a seal', sealLede: 'In Chinese tradition, a seal is a signature. In Ontario, an engineer’s seal on a drawing means a qualified person stands behind it. Ours means the same thing.',
+      sealP: 'At completion, our team walks the finished work with you, resolves every deficiency and signs the project off. The character on our seal is 筑, “to build”.',
+      areasH: 'Where we build', areasP: 'Headquartered in Markham, we serve Toronto, York Region and the wider Greater Toronto Area.', allAreas: 'All service areas', moreAreas: 'Aurora, Stouffville, Mississauga and more',
+      guidesH: 'Guides and insights', guidesP: 'Practical guidance on costs, timelines and permits from the projects we deliver.', allGuides: 'All articles', guidesHref: '/journal',
+    };
+---
+<Base lang={lang} title={t.title} description={t.description} image={hero} alternate={{ en: '/', zh: '/zh' }}>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy rise">
+        <script is:inline>try{if(sessionStorage.getItem('ezu-seen'))document.documentElement.classList.add('seen');else sessionStorage.setItem('ezu-seen','1')}catch(e){}</script>
+        <h1><span class="mark">{t.mark}</span>{zh && <br />}{t.h1rest}</h1>
+        <p class="lede">{t.lede}</p>
+        <div class="btn-row">
+          <a class="btn" href={`${pre}/contact`}>{t.book}</a>
+          <a class="btn btn--ghost" href={`${pre}/projects`}>{t.seeProjects}</a>
+        </div>
+      </div>
+      <div class="hero-photo rise-late">
+        <Photo src={hero} alt={t.heroAlt} sizes="(min-width: 1000px) 700px, 100vw" priority ratio="3/2" />
+        <Seal class="stamp" size={80} />
+        <p class="hero-cap">{t.heroCap} <a href={`${pre}/projects/kitchen-renovation-etobicoke`}>{t.seeProject}</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head has-link">
+        <div>
+          <h2>{t.workH}</h2>
+          <p>{t.workP}</p>
+        </div>
+        <a class="btn btn--ghost" href={`${pre}/projects`}>{t.allProjects} <ArrowRight size={18} aria-hidden="true" /></a>
+      </div>
+      <div class="work-grid">
+        {featured.map((p, i) => <ProjectCard project={p} feature={i === 0} sizes={i === 0 ? '(min-width: 1000px) 720px, 100vw' : '(min-width: 1000px) 460px, 100vw'} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--plaster" id="services">
+    <div class="wrap services">
+      <div class="services-intro">
+        <h2>{t.buildH}</h2>
+        <p>{t.buildP}</p>
+      </div>
+      <ul class="service-index">
+        {services.map((s) => (
+          <li>
+            <a href={`${pre}/services/${s.slug}`}>
+              <ServiceIcon slug={s.slug} />
+              <h3>{zh ? s.zh : s.name}</h3>
+              <p>{zh ? servicesZh[s.slug].short : s.short}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{t.baH}</h2>
+        <p>{t.baP}</p>
+      </div>
+      <div data-tabs>
+        <div class="tablist" role="tablist" aria-label={t.baLabel}>
+          {comparisons.map((x, i) => (
+            <button type="button" role="tab" id={`ba-tab-${i}`} aria-controls={`ba-panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>{x.title}</button>
+          ))}
+        </div>
+        {comparisons.map((x, i) => (
+          <div role="tabpanel" id={`ba-panel-${i}`} aria-labelledby={`ba-tab-${i}`} tabindex="0">
+            <BeforeAfter before={x.pair.before} after={x.pair.after} lang={lang} />
+            <p class="ba-cap">{zh ? x.zhNote : x.pair.note} <a href={x.href}>{t.seeProject}</a></p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--plaster process">
+    <div class="wrap">
+      <div class="section-head has-link">
+        <div>
+          <h2>{t.processH}</h2>
+          <p>{t.processP}</p>
+        </div>
+        <a class="btn btn--ghost" href={`${pre}/process`}>{t.processLink} <ArrowRight size={18} aria-hidden="true" /></a>
+      </div>
+    </div>
+    <ProcessScroll lang={lang} />
+  </section>
+
+  <section class="section section--ink seal-section">
+    <div class="wrap seal-grid">
+      <Seal size={168} class="big-seal" />
+      <div>
+        <h2>{t.sealH}</h2>
+        <p class="lede">{t.sealLede}</p>
+        <p>{t.sealP}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--plaster">
+    <div class="wrap areas">
+      <div>
+        <h2>{t.areasH}</h2>
+        <p>{t.areasP}</p>
+        {!zh && <p lang="zh-Hans" class="zh-note">我们可以用普通话沟通。<a href="/zh">查看中文介绍</a></p>}
+      </div>
+      <ul class="area-links">
+        {locations.map((l) => (
+          <li><a href={`${pre}/locations/${l.slug}`}><span>{zh ? cityZh[l.slug] ?? l.name : l.name}</span><span class="muted small">{l.neighbourhoods.slice(0, 3).join(', ')}</span></a></li>
+        ))}
+        <li><a href={`${pre}/locations`}><span>{t.allAreas}</span><span class="muted small">{t.moreAreas}</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="guides">
+    <div class="wrap">
+      <div class="section-head has-link">
+        <div>
+          <h2>{t.guidesH}</h2>
+          <p>{t.guidesP}</p>
+        </div>
+        <a class="btn btn--ghost" href={t.guidesHref}>{t.allGuides} <ArrowRight size={18} aria-hidden="true" /></a>
+      </div>
+      <ArticleList items={latest} cols lang={lang} />
+    </div>
+  </section>
+
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .hero { display: grid; align-content: center; min-height: calc(100svh - 4.5rem - 1px); padding-block: clamp(2rem, 1rem + 3vw, 4rem); }
+  /* The hero already ends with its own breathing room */
+  .hero + .section { padding-top: clamp(1rem, 0.5rem + 1.5vw, 2rem); }
+  .hero-grid { display: grid; gap: 2.5rem; align-items: center; }
+  @media (min-width: 1000px) { .hero-grid { grid-template-columns: 5fr 7fr; gap: 4rem; } }
+  .hero h1 { font-size: clamp(2.6rem, 1.4rem + 3.4vw, 4.25rem); line-height: 1.2; letter-spacing: -0.02em; max-width: 10ch; margin-bottom: 0.4em; }
+  /* Red line under "Your": draws in on the first page view of a session, then is simply there */
+  .mark { position: relative; display: inline-block; }
+  .mark::after { content: ''; position: absolute; left: 0; right: 0; bottom: -0.04em; height: 0.09em; background: var(--seal); transform-origin: left; }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html:not(.seen)) .mark::after { animation: draw 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s both; }
+    @keyframes draw { from { transform: scaleX(0); } }
+  }
+  .hero .lede { margin-bottom: 1.5rem; font-size: var(--step-0); max-width: 44ch; }
+  .hero-photo { position: relative; }
+  .hero-photo :global(.stamp) { position: absolute; right: 1.1rem; bottom: 3.3rem; }
+  @media (max-width: 700px) { .hero-photo :global(.stamp) { right: 0.75rem; bottom: 3rem; width: 60px; height: 60px; } }
+  .hero-cap { margin: 0.7rem 0 0; font-size: var(--step--1); color: var(--ink-2); }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-photo :global(.stamp) { animation: stamp 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.9s both; }
+    @keyframes stamp { from { opacity: 0; transform: scale(1.35) rotate(-6deg); } to { opacity: 1; transform: none; } }
+  }
+
+  .work-grid { display: grid; gap: 2.5rem 2rem; }
+  @media (min-width: 760px) { .work-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) {
+    .work-grid { grid-template-columns: 7fr 5fr; grid-template-rows: auto auto; }
+    .work-grid > :global(:first-child) { grid-row: span 2; }
+  }
+
+  .services { display: grid; gap: 2.5rem 4rem; }
+  @media (min-width: 1000px) { .services { grid-template-columns: 4fr 8fr; } .services-intro { position: sticky; top: 7rem; align-self: start; } }
+  .services-intro p { color: var(--ink-2); max-width: 44ch; }
+  .service-index { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid #c9cdc8; }
+  @media (min-width: 640px) { .service-index { grid-template-columns: 1fr 1fr; column-gap: 2.5rem; } }
+  .service-index li { border-bottom: 1px solid #c9cdc8; }
+  .service-index a { display: grid; grid-template-columns: 2.5rem 1fr; column-gap: 0.75rem; align-content: start; padding: 1.4rem 0 1.5rem; text-decoration: none; height: 100%; }
+  .service-index :global(.svc-icon) { grid-row: span 2; color: var(--seal); margin-top: 0.1rem; }
+  .service-index h3 { font-size: var(--step-2); margin-bottom: 0.4rem; }
+  .service-index p { margin: 0; color: var(--ink-2); }
+  .service-index a:hover h3 { color: var(--seal); }
+
+  .ba-cap { margin: 0.9rem 0 0; color: var(--ink-2); }
+  .ba-cap a { color: var(--ink); font-weight: 600; text-decoration-color: var(--seal); }
+  .process { padding-bottom: 0; }
+
+  .seal-grid { display: grid; gap: 2rem 4rem; align-items: center; }
+  @media (min-width: 800px) { .seal-grid { grid-template-columns: auto 1fr; } }
+  .seal-grid p:not(.lede) { max-width: 58ch; }
+  .seal-section .lede { color: #e3e6e2; }
+  @media (max-width: 799px) { .seal-section :global(.big-seal) { width: 112px; height: 112px; } }
+
+  .areas { display: grid; gap: 2rem 4rem; }
+  @media (min-width: 900px) { .areas { grid-template-columns: 5fr 7fr; } }
+  .areas p { color: var(--ink-2); max-width: 46ch; text-wrap: balance; }
+  .zh-note a { color: var(--ink); text-decoration-color: var(--seal); }
+  .area-links { list-style: none; margin: 0; padding: 0; border-top: 1px solid #c9cdc8; }
+  .area-links li { border-bottom: 1px solid #c9cdc8; }
+  .area-links a { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1.5rem; padding: 1rem 0; text-decoration: none; }
+  .area-links a span:first-child { font-size: var(--step-2); font-stretch: 75%; font-weight: 650; }
+  .area-links a:hover span:first-child { color: var(--seal); }
+</style>

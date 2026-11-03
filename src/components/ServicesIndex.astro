@@ -1,0 +1,50 @@
+---
+// One template for /services and /zh/services.
+import Base from '../layouts/Base.astro';
+import Cta from './Cta.astro';
+import PageHero from './PageHero.astro';
+import ServiceIcon from './ServiceIcon.astro';
+import { Image } from 'astro:assets';
+import { services } from '../data/services';
+import { servicesZh } from '../data/zh';
+import heroImg from '../assets/projects/vaughan-custom-home-kitchen.jpg';
+
+interface Props { lang?: 'en' | 'zh' }
+const { lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
+const pre = zh ? '/zh' : '';
+const t = zh
+  ? { title: '服务项目 | 定制住宅、扩建与装修 | EZU Construction', description: '在多伦多和约克区提供定制住宅、扩建、全屋翻新、厨房、浴室、地下室、后巷屋和各工种施工。普通话沟通。', h1: '服务项目', lede: '从新建定制住宅到单项工程，我们全程管理每一个项目，为每个阶段安排最合适的专业师傅：一份合同，一个时间表。', alt: '旺市定制住宅厨房：玻璃门吊柜和大理石岛台', caption: '旺市定制住宅的厨房。' }
+  : { title: 'Services: Custom Homes, Additions and Renovations', description: 'Custom homes, additions, whole-home renovations, kitchens, bathrooms, basements, laneway suites and trades across Toronto and York Region.', h1: 'Services', lede: 'From new custom homes to single-trade work, we manage every project end to end and assign the right specialist to each phase, under one contract and one schedule.', alt: 'Kitchen with glass-front upper cabinets and a marble island in our Vaughan custom home', caption: 'Kitchen, Vaughan custom home.' };
+---
+<Base lang={lang} title={t.title} description={t.description} alternate={{ en: '/services', zh: '/zh/services' }}>
+  <PageHero title={t.h1} lede={t.lede} image={heroImg} imageAlt={t.alt} caption={t.caption} />
+
+  <section class="wrap list">
+    {services.map((s, i) => (
+      <article class="row">
+        <a class="img" href={`${pre}/services/${s.slug}`} tabindex="-1" aria-hidden="true">
+          <Image src={s.image} alt="" widths={[480, 768]} sizes="(min-width: 900px) 380px, 100vw" format="webp" quality={74} loading={i < 2 ? 'eager' : 'lazy'} />
+        </a>
+        <div class="txt">
+          <h2><ServiceIcon slug={s.slug} size={30} /><a href={`${pre}/services/${s.slug}`}>{zh ? s.zh : s.name}</a></h2>
+          <p>{zh ? servicesZh[s.slug].short : s.short}</p>
+        </div>
+      </article>
+    ))}
+  </section>
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .list { padding-bottom: var(--space-section); }
+  .row { display: grid; gap: 1.25rem 3rem; padding-block: 2rem; border-top: 1px solid var(--line); align-items: center; }
+  @media (min-width: 760px) { .row { grid-template-columns: 22rem 1fr; } }
+  .img { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: var(--plaster); }
+  .img :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .txt h2 { font-size: var(--step-3); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .txt h2 :global(svg) { color: var(--seal); flex: none; }
+  .txt h2 a { text-decoration: none; }
+  .txt h2 a:hover { color: var(--seal); }
+  .txt p { color: var(--ink-2); max-width: 52ch; }
+</style>

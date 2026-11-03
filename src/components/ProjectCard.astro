@@ -1,18 +1,21 @@
 ---
 import { Image } from 'astro:assets';
 import type { Project } from '../data/projects';
-interface Props { project: Project; sizes?: string; priority?: boolean; headingLevel?: 'h2' | 'h3'; feature?: boolean }
-const { project: p, sizes = '(min-width: 1000px) 380px, (min-width: 640px) 50vw, 100vw', priority = false, headingLevel = 'h3', feature = false } = Astro.props;
+import { localizeProject } from '../data/projects-zh';
+// Pass the English project; lang picks the text and the link target.
+interface Props { project: Project; lang?: 'en' | 'zh'; sizes?: string; priority?: boolean; headingLevel?: 'h2' | 'h3'; feature?: boolean }
+const { lang = 'en', sizes = '(min-width: 1000px) 380px, (min-width: 640px) 50vw, 100vw', priority = false, headingLevel = 'h3', feature = false } = Astro.props;
+const p = localizeProject(Astro.props.project, lang);
 const H = headingLevel;
-const meta = p.location.replace(', Ontario', '');
+const meta = lang === 'zh' ? `${p.type}，${p.location}` : `${p.type} in ${p.location.replace(', Ontario', '')}`;
 ---
 <article class:list={['project-card', { feature }]}>
-  <a href={`/projects/${p.slug}`}>
+  <a href={`${lang === 'zh' ? '/zh' : ''}/projects/${p.slug}`}>
     <div class="img">
       <Image src={p.cover.src} alt={p.cover.alt} widths={[480, 768, 1080]} sizes={sizes} format="webp" quality={76} loading={priority ? 'eager' : 'lazy'} />
     </div>
     <H class="name">{p.title}</H>
-    <p class="meta">{p.type} in {meta}</p>
+    <p class="meta">{meta}</p>
   </a>
 </article>
 

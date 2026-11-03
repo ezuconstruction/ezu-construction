@@ -1,0 +1,70 @@
+---
+// One template for /process and /zh/process.
+import Base from '../layouts/Base.astro';
+import TimelineTabs from './TimelineTabs.astro';
+import ProcessScroll from './ProcessScroll.astro';
+import PageHero from './PageHero.astro';
+import Cta from './Cta.astro';
+import { Receipt, PenLine, MessageSquare } from '@lucide/astro';
+import headPhoto from '../assets/projects/etobicoke-kitchen-2.jpg';
+
+interface Props { lang?: 'en' | 'zh' }
+const { lang = 'en' } = Astro.props;
+const t = lang === 'zh'
+  ? {
+      title: '项目流程与工期 | 装修和定制住宅如何进行 | EZU Construction',
+      description: 'EZU Construction 在大多伦多地区如何完成装修或定制住宅：上门查看、设计、许可证、施工和保修，以及各类项目的典型工期。',
+      h1: '项目流程', lede: '五个清晰的阶段，从第一次上门到最终验收。无论是翻新厨房还是新建住宅，我们都用同样严谨的方法。',
+      alt: '白色厨房：白橡木烟罩和通高石英石背墙', caption: '怡陶碧谷厨房翻新。',
+      timeH: '典型工期', timeP: '大多伦多地区常见项目各阶段需要多长时间。许可证审批是变化最大的阶段。',
+      cols: [
+        ['付款', '签约时付定金，每个阶段完工并通过检查后付进度款，整改清单全部完成后付尾款。您永远不需要提前为未完成的工程付款。'],
+        ['变更', '每一项变更都书面记录费用和对工期的影响，经您书面确认后才施工。'],
+        ['您需要做的', '按时做出选材决定，按约定提供进出房屋的便利，并指定一位家庭联系人，随时解答问题。'],
+      ],
+    }
+  : {
+      title: 'Our Process: How We Deliver Renovations and Custom Homes',
+      description: 'How EZU Construction delivers a renovation or custom home in the GTA: site visit, design, permits, construction and warranty, with typical timelines.',
+      h1: 'Our process', lede: 'Five clearly defined stages, from the first site visit to final sign-off. The same disciplined approach applies whether we are renovating a kitchen or building a new home.',
+      alt: 'White kitchen with a white oak range hood and full-height quartz backsplash', caption: 'Kitchen renovation, Etobicoke.',
+      timeH: 'Typical timelines', timeP: 'How long common projects take in the GTA, phase by phase. Permit review is the most variable stage.',
+      cols: [
+        ['Payments', 'A deposit at signing, progress payments as each stage is completed and inspected, and a final payment once the deficiency list is closed. You never pay ahead of the work.'],
+        ['Changes', 'Every change is documented with its cost and schedule impact, and no work proceeds until you approve it in writing.'],
+        ['Your role', 'Timely decisions on selections, access to the house as agreed, and a designated contact on your side for questions as they arise.'],
+      ],
+    };
+const icons = [Receipt, PenLine, MessageSquare];
+---
+<Base lang={lang} title={t.title} description={t.description} alternate={{ en: '/process', zh: '/zh/process' }}>
+  <PageHero title={t.h1} lede={t.lede} image={headPhoto} imageAlt={t.alt} caption={t.caption} />
+
+  <ProcessScroll headingLevel="h2" lang={lang} />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{t.timeH}</h2><p>{t.timeP}</p></div>
+      <TimelineTabs lang={lang} />
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap cols">
+      {t.cols.map(([h, p], i) => {
+        const I = icons[i];
+        return <div><I size={30} aria-hidden="true" /><h2>{h}</h2><p>{p}</p></div>;
+      })}
+    </div>
+  </section>
+
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .cols { display: grid; gap: 2.5rem 3rem; }
+  @media (min-width: 900px) { .cols { grid-template-columns: repeat(3, 1fr); } }
+  .cols h2 { font-size: var(--step-2); }
+  .cols p { color: #c3c9c4; margin: 0; }
+  .cols :global(svg) { color: var(--seal); margin-bottom: 0.9rem; }
+</style>

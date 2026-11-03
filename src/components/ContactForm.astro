@@ -16,7 +16,7 @@ const t = zh
       message: 'Project details', messageHint: 'For example: kitchen and main bathroom, house built around 1990', submit: 'Send request',
       area: 'We take on projects within the Greater Toronto Area.', note: 'Our team replies within one business day.', subject: 'Website enquiry', other: 'Not sure yet',
     };
-const next = new URL('/contact/thanks', site.url).href;
+const next = new URL(zh ? '/zh/contact/thanks' : '/contact/thanks', site.url).href;
 ---
 <form class="contact-form" action={site.formAction} method="POST">
   <input type="hidden" name="_subject" value={t.subject} />

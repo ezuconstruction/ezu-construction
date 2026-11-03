@@ -7,6 +7,7 @@ category: Suites and units
 image: ../../assets/stock/suburban-homes.jpg
 imageAlt: Detached two-storey homes on a suburban street
 services: [basement-renovations, laneway-garden-suites]
+translation: zh/basement-rental-unit
 ---
 
 Since November 2022, Ontario has allowed up to three residential units on most urban residential lots as of right. The change came with the More Homes Built Faster Act, often called Bill 23, and it applies in Markham, Richmond Hill and Vaughan as much as in Toronto.

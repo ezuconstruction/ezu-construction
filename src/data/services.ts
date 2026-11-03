@@ -314,7 +314,7 @@ export const services: Service[] = [
       { q: 'What if my basement gets damp?', a: 'We find and fix the source first, whether that’s grading, downspouts, foundation cracks or a failed waterproofing membrane. Finishing over moisture is the most expensive mistake a basement can make.' },
       { q: 'Does a legal suite pay for itself?', a: 'Often, over time. It depends on construction cost and local rents. Our basement cost guide walks through the numbers, and we can price your basement after a site visit.', cta: 'Get a basement quote' },
     ],
-    articles: ['basement-renovation-cost-gta', 'toronto-secondary-suite-legalization-guide', 'additional-residential-units-york-region', 'basement-underpinning-vs-bench-footing'],
+    articles: ['basement-renovation-cost-gta', 'financing-a-secondary-suite', 'toronto-basement-flooding-subsidy', 'how-many-units-on-your-lot-gta-2026', 'toronto-secondary-suite-legalization-guide', 'additional-residential-units-york-region', 'basement-underpinning-vs-bench-footing'],
   },
   {
     slug: 'laneway-garden-suites',
@@ -357,7 +357,7 @@ export const services: Service[] = [
       { q: 'Are development charges waived?', a: 'Under provincial rules, an additional unit in an accessory building on an eligible lot is exempt from development charges. We confirm the current requirements with the municipality during design.' },
       { q: 'How long does it take?', a: 'Typically 8 to 16 weeks of design, 10 to 20 weeks for permits, and six to nine months of construction. We give you a realistic schedule once we’ve reviewed your lot.' },
     ],
-    articles: ['laneway-suite-cost-toronto', 'basement-suite-vs-laneway-suite-toronto', 'additional-residential-units-york-region', 'multigenerational-home-design-gta'],
+    articles: ['how-many-units-on-your-lot-gta-2026', 'laneway-suite-cost-toronto', 'financing-a-secondary-suite', 'basement-suite-vs-laneway-suite-toronto', 'additional-residential-units-york-region', 'multigenerational-home-design-gta'],
   },
   {
     slug: 'trades',

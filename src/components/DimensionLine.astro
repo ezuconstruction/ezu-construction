@@ -1,10 +1,11 @@
 ---
 // A drawing-style dimension line. Segment widths are proportional to their duration,
 // so the motif carries real information (how long each phase takes), not decoration.
-interface Props { phases: { label: string; weeks: [number, number] }[]; caption?: string }
-const { phases, caption } = Astro.props;
+interface Props { phases: { label: string; weeks: [number, number] }[]; caption?: string; lang?: 'en' | 'zh' }
+const { phases, caption, lang = 'en' } = Astro.props;
+const u = lang === 'zh' ? ' 周' : ' wk';
 const mid = (w: [number, number]) => (w[0] + w[1]) / 2;
-const fmt = (w: [number, number]) => (w[0] === w[1] ? `${w[0]} wk` : `${w[0]}–${w[1]} wk`);
+const fmt = (w: [number, number]) => (w[0] === w[1] ? `${w[0]}${u}` : `${w[0]}–${w[1]}${u}`);
 const total: [number, number] = [phases.reduce((a, p) => a + p.weeks[0], 0), phases.reduce((a, p) => a + p.weeks[1], 0)];
 ---
 <figure class="dim">
@@ -17,7 +18,7 @@ const total: [number, number] = [phases.reduce((a, p) => a + p.weeks[0], 0), pha
       </li>
     ))}
   </ol>
-  <figcaption>{caption ?? `Typical overall: ${total[0]}–${total[1]} weeks.`}</figcaption>
+  <figcaption>{caption ?? (lang === 'zh' ? `典型总工期：${total[0]}–${total[1]} 周。` : `Typical overall: ${total[0]}–${total[1]} weeks.`)}</figcaption>
 </figure>
 
 <style>

@@ -7,6 +7,8 @@ image: ../../../assets/projects/lakeside-after-lower.jpg
 imageAlt: 装修完成的地下室家庭活动区，浅色地板和嵌入式灯
 imageCaption: 我们完成的一个地下室翻新项目。
 lang: zh
+translation: additional-residential-units-york-region
+services: [basement-renovations]
 ---
 
 2022 年 11 月，安省通过了《加快建房法案》（Bill 23）。根据新规定，在有完整市政水电的城市住宅区，大多数独立屋、半独立屋和镇屋可以合法拥有**最多三个住宅单元**，例如：主屋 + 地下室单元 + 后院花园屋。

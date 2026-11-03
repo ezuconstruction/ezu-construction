@@ -228,6 +228,11 @@ html:has(.lightbox[open]) { overflow: hidden; }
 [role='tab']:focus-visible { outline: none; box-shadow: var(--ring); }
 [role='tab'] svg { flex: none; }
 [role='tabpanel'][hidden] { display: none; }
+/* Phones: wrap the tabs into a grid so none hide off-screen behind a sideways scroll */
+@media (max-width: 700px) {
+  .tablist { display: grid; grid-template-columns: 1fr 1fr; width: 100%; overflow: visible; }
+  [role='tab'] { justify-content: center; padding: 0.5rem 0.6rem; white-space: normal; text-align: center; line-height: 1.25; font-size: 0.95rem; }
+}
 
 /* ---------- FAQ (native details) ---------- */
 .faq { border-top: 1px solid var(--line); max-width: 52rem; }

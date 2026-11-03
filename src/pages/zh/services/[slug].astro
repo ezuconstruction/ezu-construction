@@ -1,0 +1,21 @@
+---
+import ServicePage from '../../../components/ServicePage.astro';
+import { services, type Service } from '../../../data/services';
+import { servicesZh, serviceAltsZh } from '../../../data/zh';
+
+export function getStaticPaths() {
+  return services.map((en) => {
+    const { card, timeline, ...z } = servicesZh[en.slug];
+    const a = serviceAltsZh[en.slug];
+    const s: Service = {
+      ...en, ...z, name: en.zh, imageAlt: a.image,
+      introImage: { ...en.introImage, alt: a.intro, caption: a.introCaption },
+      band: { ...en.band, alt: a.band, caption: a.bandCaption },
+      timeline: en.timeline?.map((x, i) => ({ ...x, label: timeline![i] })),
+    };
+    return { params: { slug: en.slug }, props: { s } };
+  });
+}
+interface Props { s: Service }
+---
+<ServicePage s={Astro.props.s} lang="zh" />

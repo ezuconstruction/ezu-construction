@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+---
+<Base lang="zh" title="使用条款 | EZU Construction" description="EZU Construction 网站的使用条款。" alternate={{ en: '/terms', zh: '/zh/terms' }}>
+  <article class="wrap legal prose">
+    <h1>使用条款</h1>
+    <p class="muted">最后更新：2026 年 10 月 3 日。本中文版仅供参考，如有歧义，以<a href="/terms">英文版</a>为准。</p>
+    <p>本网站由 {site.legalName} 发布。使用本网站即表示您同意以下条款。</p>
+    <h2>一般信息，而非建议</h2>
+    <p>我们的指南及其中的费用区间，是根据我们在大多伦多地区的经验整理的一般信息。它们不是报价，也不是工程、法律或财务建议。建筑规范、市政条例、补贴和价格都会变化。重要事项请向相关市政府或合格专业人士确认，并只以针对您具体项目的书面报价为准。</p>
+    <h2>照片与内容</h2>
+    <p>除非图片说明另有注明，项目照片展示的均为 EZU Construction 的工程。指南和服务页面中的部分示意图片为图库照片。本网站的文字和项目照片归 EZU Construction 所有，未经许可不得转用。</p>
+    <h2>链接</h2>
+    <p>为方便起见，我们链接到政府和第三方网站。我们不对其内容负责。</p>
+    <h2>适用法律</h2>
+    <p>本条款受安大略省法律以及适用于安大略省的加拿大联邦法律管辖。</p>
+  </article>
+</Base>
+<style>.legal { padding-block: clamp(2rem, 1.5rem + 3vw, 4.5rem) var(--space-section); }</style>

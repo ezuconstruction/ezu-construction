@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+---
+<Base lang="zh" title="无障碍 | EZU Construction" description="EZU Construction 对网站无障碍的承诺，以及如何获取其他格式的信息。" alternate={{ en: '/accessibility', zh: '/zh/accessibility' }}>
+  <article class="wrap legal prose">
+    <h1>无障碍</h1>
+    <p>我们希望每个人都能使用本网站，包括使用屏幕阅读器、键盘、放大工具或其他辅助技术的人。本网站按照《网页内容无障碍指南》（WCAG）2.1 AA 级标准建设，秉持安省《安大略省残障人士无障碍法》的精神。</p>
+    <h2>我们做了什么</h2>
+    <ul>
+      <li>文字和控件符合颜色对比度要求。</li>
+      <li>每个页面都可以用键盘操作，有清晰的焦点框和“跳到主要内容”链接。</li>
+      <li>图片都有文字描述，改造前后对比照片都有标注。</li>
+      <li>网站会遵循您设备的“减少动态效果”设置。</li>
+      <li>页面使用标准的 HTML 标题、列表和表单标签。</li>
+    </ul>
+    <h2>告诉我们遇到的障碍</h2>
+    <p>如果本网站有任何地方您无法使用，或您需要其他格式的信息，请致电 <a href={site.phoneHref}>{site.phone}</a> 或发邮件至 <a href={`mailto:${site.email}`}>{site.email}</a>。我们会回复并提供帮助。</p>
+    <h2>施工中的无障碍</h2>
+    <p>我们也为无障碍而设计和施工：无障碍淋浴、加宽门洞、坡道、一楼卧室和老人套房。详见我们的<a href="/zh/services/bathroom-renovations">浴室装修</a>和<a href="/zh/services/basement-renovations">地下室与出租单元</a>服务。</p>
+  </article>
+</Base>
+<style>.legal { padding-block: clamp(2rem, 1.5rem + 3vw, 4.5rem) var(--space-section); }</style>
