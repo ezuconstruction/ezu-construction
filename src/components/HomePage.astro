@@ -39,7 +39,7 @@ const t = zh
   ? {
       title: '万锦装修公司 | 多伦多、列治文山、旺市定制住宅与房屋翻新 | EZU Construction',
       description: 'EZU Construction 是总部位于万锦的家族企业，自 2016 年起在多伦多及约克区建造定制住宅、做房屋加建、全屋翻新、厨房浴室装修与地下室合法出租单元。全程普通话沟通，书面分项报价。',
-      mark: '您的', h1rest: '下一个家。',
+      h1: ['欢迎', '回家', '。', ''],
       lede: '经久耐用的定制住宅与房屋翻新。我们专注于新建住宅、厨房和浴室改造以及全屋升级，为现代生活而设计。全程可用普通话沟通。',
       book: '预约上门咨询', seeProjects: '查看项目案例', heroAlt: '翻新后的白色厨房：仿大理石石英石瀑布岛台、白橡木烟罩和黄铜吊灯',
       heroCap: '2023 年怡陶碧谷厨房翻新。', seeProject: '查看项目',
@@ -55,7 +55,7 @@ const t = zh
   : {
       title: 'EZU Construction | Custom Homes and Renovations, Markham & GTA',
       description: 'Family-owned Markham general contractor building custom homes, additions, kitchens, basements and second suites across Toronto and York Region since 2016.',
-      mark: 'Your', h1rest: ' next home.',
+      h1: ['', 'Your', ' next', 'home.'],
       lede: 'Custom homes and renovations built to last. We specialize in new home builds, kitchen and bathroom remodels, and whole-home upgrades. Designed for modern living.',
       book: 'Book a consultation', seeProjects: 'See our projects', heroAlt: 'Renovated white kitchen with a marble-look quartz waterfall island, white oak hood and brass pendants',
       heroCap: 'Kitchen renovation in Etobicoke, 2023.', seeProject: 'See the project',
@@ -74,7 +74,8 @@ const t = zh
     <div class="wrap hero-grid">
       <div class="hero-copy rise">
         <script is:inline>try{if(sessionStorage.getItem('ezu-seen'))document.documentElement.classList.add('seen');else sessionStorage.setItem('ezu-seen','1')}catch(e){}</script>
-        <h1><span class="mark">{t.mark}</span>{zh && <br />}{t.h1rest}</h1>
+        {/* [before, underlined word, rest of line one, line two]: the break is fixed so the headline never re-wraps */}
+        <h1>{t.h1[0]}<span class="mark">{t.h1[1]}</span>{t.h1[2]}{t.h1[3] && <><br />{t.h1[3]}</>}</h1>
         <p class="lede">{t.lede}</p>
         <div class="btn-row">
           <a class="btn" href={`${pre}/contact`}>{t.book}</a>
@@ -208,7 +209,7 @@ const t = zh
   .hero + .section { padding-top: clamp(1rem, 0.5rem + 1.5vw, 2rem); }
   .hero-grid { display: grid; gap: 2.5rem; align-items: center; }
   @media (min-width: 1000px) { .hero-grid { grid-template-columns: 5fr 7fr; gap: 4rem; } }
-  .hero h1 { font-size: clamp(2.6rem, 1.4rem + 3.4vw, 4.25rem); line-height: 1.2; letter-spacing: -0.02em; max-width: 10ch; margin-bottom: 0.4em; }
+  .hero h1 { font-size: clamp(2.6rem, 1.4rem + 3.4vw, 4.25rem); line-height: 1.2; letter-spacing: -0.02em; white-space: nowrap; margin-bottom: 0.4em; }
   /* Red line under "Your": draws in on the first page view of a session, then is simply there */
   .mark { position: relative; display: inline-block; }
   .mark::after { content: ''; position: absolute; left: 0; right: 0; bottom: -0.04em; height: 0.09em; background: var(--seal); transform-origin: left; }
