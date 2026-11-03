@@ -8,7 +8,7 @@ export async function GET() {
   const journal = await getCollection('journal');
   const day = (d: Date) => d.toISOString().slice(0, 10);
   const pages: { path: string; lastmod?: string }[] = [
-    ...['/', '/services', '/projects', '/locations', '/process', '/about', '/journal', '/contact', '/zh', '/privacy', '/terms', '/accessibility'].map((path) => ({ path })),
+    ...['/', '/services', '/projects', '/locations', '/process', '/about', '/journal', '/journal/all', '/contact', '/zh', '/privacy', '/terms', '/accessibility'].map((path) => ({ path })),
     ...services.map((s) => ({ path: `/services/${s.slug}` })),
     ...projects.map((p) => ({ path: `/projects/${p.slug}` })),
     ...locations.map((l) => ({ path: `/locations/${l.slug}` })),

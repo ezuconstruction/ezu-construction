@@ -10,6 +10,7 @@ const groups = cats.map((c) => ({ c, id: c.toLowerCase().replace(/\s+/g, '-'), i
 import PageHero from '../../components/PageHero.astro';
 import heroImg from '../../assets/stock/blueprints.jpg';
 import { Image } from 'astro:assets';
+import { ArrowRight } from '@lucide/astro';
 const [lead, ...next] = all.slice(0, 4);
 const fmt = (d: Date) => d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
@@ -22,7 +23,10 @@ const fmt = (d: Date) => d.toLocaleDateString('en-CA', { year: 'numeric', month:
 
   <section class="section section--plaster recent">
     <div class="wrap">
-      <div class="section-head"><h2>Recent</h2><p>The latest guides from our team.</p></div>
+      <div class="section-head has-link">
+        <div><h2>Recent</h2><p>The latest guides from our team.</p></div>
+        <a class="btn btn--ghost" href="/journal/all">All articles <ArrowRight size={18} aria-hidden="true" /></a>
+      </div>
       <div class="recent-grid">
         <a class="lead" href={'/journal/' + lead.id}>
           <span class="lead-img"><Image src={lead.data.image} alt="" widths={[480, 800, 1200]} sizes="(min-width: 1000px) 680px, 100vw" format="webp" quality={74} loading="lazy" /></span>

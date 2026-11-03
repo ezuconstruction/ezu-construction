@@ -14,7 +14,7 @@ export async function GET() {
   const out: string[] = [];
   out.push(`# ${site.name}: full text
 
-${site.name} is a family-owned general contractor based in ${site.address.city}, Ontario, founded in ${site.founded}. It builds custom homes and renovates houses in the Greater Toronto Area only. Languages: English and Mandarin.
+${site.name} is a family-owned general contractor based in ${site.address.city}, Ontario, founded in ${site.founded}. It builds custom homes and renovates houses in the Greater Toronto Area. Languages: English and Mandarin.
 
 - Address: ${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postal}, Canada
 - Phone: ${site.phone}
