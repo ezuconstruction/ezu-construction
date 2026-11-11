@@ -109,7 +109,7 @@ export const servicesZh: Record<string, ServiceZh> = {
       { q: '翻新可以申请补贴吗？', a: '保温、气密、窗户和热泵通常可以申请安省的 Home Renovation Savings 计划，有些项目需要在开工前做能效评估。我们会在规划阶段标出符合条件的项目，并在报价中单独列出，方便您申请。' },
       { q: '应该从哪里开始？', a: '从上门看房开始。我们和您一起查看房子的结构和机电，讨论优先顺序和预算，然后用书面形式列出工程范围和下一步。', cta: '预约上门看房' },
     ],
-    articles: ['zh/renovation-cost-guide'],
+    articles: ['zh/ontario-renovation-rebates', 'zh/national-heat-pump-rebate', 'zh/toronto-home-energy-loan', 'zh/toronto-rental-renovation-licence', 'zh/renovation-cost-guide'],
   },
   'kitchen-renovations': {
     title: '多伦多、万锦、列治文山厨房装修 | 中式爆炒厨房',
@@ -280,13 +280,13 @@ export const servicesZh: Record<string, ServiceZh> = {
       { q: '小工程有保修吗？', a: '有。无论大小，每项工程都有我们的书面施工质量保修。' },
       { q: '可以一次做几个工种吗？', a: '可以，而且通常更高效。比如地板、油漆和线条可以前后衔接，一张发票完成。' },
     ],
-    articles: ['zh/renovation-cost-guide'],
+    articles: ['zh/national-heat-pump-rebate', 'zh/toronto-home-energy-loan', 'zh/renovation-cost-guide'],
   },
 };
 
 
 export const cityZh: Record<string, string> = {
-  toronto: '多伦多', markham: '万锦', 'richmond-hill': '列治文山', vaughan: '旺市',
+  toronto: '多伦多', markham: '万锦', 'richmond-hill': '列治文山', vaughan: '旺市', 'east-york': '东约克',
 };
 
 // Chinese alt text and captions for each service's photos (hero, intro, band)

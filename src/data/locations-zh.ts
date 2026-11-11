@@ -4,7 +4,7 @@ import type { Location } from './locations';
 
 type Text = Pick<Location, 'title' | 'description' | 'lede' | 'intro'> & {
   housing: { era: string; body: string }[];
-  rules: { title: string; body: string; link?: string }[];
+  rules: { title: string; body: string; link?: string; href?: string }[]; // href: the Chinese page, when the English rule links to one of ours
 };
 
 const zh: Record<string, Text> = {
@@ -88,6 +88,26 @@ const zh: Record<string, Text> = {
       { title: '新增单元', body: '旺市按省级规定允许新增住宅单元，需符合其分区条例。合法地下室单元是最常见的选择。' },
     ],
   },
+  'east-york': {
+    title: '东约克地下室、扩建与装修承包商',
+    description: '在东约克、Leaside 和 Woodbine Heights 做地下室装修、合法出租单元、加建二层和全屋翻新。本地规定与真实造价。普通话沟通。',
+    lede: '东约克的战后平房和一层半房屋，是多伦多最适合装修地下室、加建一层或拆旧重建的房子之一。',
+    intro: [
+      '东约克大部分是在二战之后建成的：窄地块上朴实的砖砌平房和一层半房屋，西边是 Leaside 更早的两层砖房。这些房子建得扎实，但按今天的标准偏小，地下室低矮，厨房和浴室往往只翻新过一次。',
+      '因此，东约克是全市地下室装修、合法地下室单元、加建二层和整栋重建最活跃的地区之一。我们会围绕同样的限制来规划：地块宽度、层高、受保护树木和市政府的分区限制。',
+    ],
+    housing: [
+      { era: '1920–1940 年代', body: 'Leaside 和 Pape 一带的两层砖房。常见工程：打通一楼、新厨房、后院扩建和低矮地下室的下挖加深。' },
+      { era: '1945–1960 年', body: 'Woodbine Heights、O’Connor–Parkview 和 Topham Park 的战后平房和一层半房屋。最常见的地下室单元、加建二层和重建对象。' },
+      { era: '1960 年代以后', body: '填充式住宅和较新的半独立屋。以室内装修、地下室装修以及厨房和浴室翻新为主。' },
+    ],
+    rules: [
+      { title: '四个单元，部分选区六个', body: '多伦多允许住宅地块无需改分区建最多四个单元。2025 年市政府在九个选区放宽到六个，其中包括覆盖东约克大部分地区的 Toronto–Danforth 和 Beaches–East York；Leaside 所在的选区不在其中。' },
+      { title: '直径 30 厘米起需要树木许可证', body: '伤害或移除直径 30 厘米及以上的私人树木需要许可证。靠近 Don Valley 和 Taylor Creek 的地块可能受溪谷保护，任何大小的树木都受保护。', link: '多伦多市树木许可证' },
+      { title: '地下室防水补贴', body: '多伦多每处房产最多补贴 6,650 加元，用于止回阀、集水坑泵等工程。装修地下室时一起做最划算。', link: '多伦多地下室防水补贴', href: '/zh/toronto-flooding-subsidy' },
+      { title: '调整委员会', body: '东约克的窄地块往往很快就碰到覆盖率和退界限制。超出限制的扩建需要申请小幅变更，通常多花三到六个月。' },
+    ],
+  },
 };
 
 /** The location with its words in the requested language. */
@@ -99,7 +119,7 @@ export function localizeLocation(l: Location, lang: 'en' | 'zh' = 'en'): Locatio
     name: l.zh,
     title: z.title, description: z.description, lede: z.lede, intro: z.intro,
     housing: z.housing,
-    rules: l.rules.map((r, i) => ({ ...r, title: z.rules[i].title, body: z.rules[i].body, link: r.link && { ...r.link, label: z.rules[i].link ?? r.link.label } })),
+    rules: l.rules.map((r, i) => ({ ...r, title: z.rules[i].title, body: z.rules[i].body, link: r.link && { href: z.rules[i].href ?? r.link.href, label: z.rules[i].link ?? r.link.label } })),
   };
 }
 

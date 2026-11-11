@@ -36,6 +36,6 @@ export const nav = [
 ];
 
 export const areasServed = [
-  'Toronto', 'North York', 'Scarborough', 'Etobicoke', 'Markham', 'Unionville', 'Richmond Hill',
+  'Toronto', 'North York', 'Scarborough', 'Etobicoke', 'East York', 'Markham', 'Unionville', 'Richmond Hill',
   'Vaughan', 'Thornhill', 'Aurora', 'Newmarket', 'Stouffville', 'Pickering', 'Mississauga',
 ];

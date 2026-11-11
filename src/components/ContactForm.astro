@@ -8,14 +8,30 @@ const zh = lang === 'zh';
 const t = zh
   ? {
       name: '您的姓名', email: '电子邮箱', phone: '电话', type: '项目类型', choose: '请选择（可不填）',
+      city: '项目所在城市', chooseCity: '请选择城市', otherGta: '大多伦多其他城市', outside: '大多伦多地区以外',
+      outsideHint: '抱歉，我们只承接大多伦多地区的项目，可能无法为您服务。',
       message: '项目简介', messageHint: '例如：想翻新厨房和主卫，房子大约 1990 年建成', submit: '发送咨询',
       area: '我们只承接大多伦多地区（GTA）范围内的项目。', note: '我们会在一个工作日内回复。', subject: '网站中文咨询', other: '其他 / 不确定',
     }
   : {
       name: 'Name', email: 'Email', phone: 'Phone', type: 'Project type', choose: 'Choose one (optional)',
+      city: 'Project city', chooseCity: 'Choose a city', otherGta: 'Another GTA city', outside: 'Outside the GTA',
+      outsideHint: 'We only take on projects in the Greater Toronto Area, so we may not be able to help with this one.',
       message: 'Project details', messageHint: 'For example: kitchen and main bathroom, house built around 1990', submit: 'Send request',
       area: 'We take on projects within the Greater Toronto Area.', note: 'Our team replies within one business day.', subject: 'Website enquiry', other: 'Not sure yet',
     };
+// Values stay in English so every enquiry email reads the same; labels follow the page language.
+const zhCity: Record<string, string> = {
+  Toronto: '多伦多', 'North York': '北约克', Scarborough: '士嘉堡', Etobicoke: '怡陶碧谷', 'East York': '东约克',
+  Markham: '万锦', 'Richmond Hill': '列治文山', Vaughan: '旺市', Aurora: '奥罗拉', Newmarket: '新市',
+  Mississauga: '密西沙加', Brampton: '宾顿', Oakville: '奥克维尔', Burlington: '伯灵顿', Pickering: '皮克林', Ajax: '阿积士', Whitby: '惠特比', Oshawa: '奥沙华',
+};
+const regions: [string, string, string[]][] = [
+  ['Toronto', '多伦多', ['Toronto', 'North York', 'Scarborough', 'Etobicoke', 'East York']],
+  ['York Region', '约克区', ['Markham', 'Richmond Hill', 'Vaughan', 'Aurora', 'Newmarket', 'Stouffville', 'King', 'East Gwillimbury']],
+  ['Peel and Halton', '皮尔区与霍尔顿区', ['Mississauga', 'Brampton', 'Caledon', 'Oakville', 'Burlington', 'Milton']],
+  ['Durham', '达勒姆区', ['Pickering', 'Ajax', 'Whitby', 'Oshawa', 'Uxbridge']],
+];
 const next = new URL(zh ? '/zh/contact/thanks' : '/contact/thanks', site.url).href;
 ---
 <form class="contact-form" action={site.formAction} method="POST">
@@ -24,6 +40,10 @@ const next = new URL(zh ? '/zh/contact/thanks' : '/contact/thanks', site.url).hr
   <input type="hidden" name="_template" value="table" />
   <input type="hidden" name="_captcha" value="false" />
   <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+  <!-- Filled in by the script below: where the visitor sent the form from and how they reached the site -->
+  <input type="hidden" name="sent_from_page" value="" />
+  <input type="hidden" name="first_page_visited" value="" />
+  <input type="hidden" name="arrived_from" value="" />
 
   <p class="area wide"><MapPin size={18} aria-hidden="true" /><span>{t.area}</span></p>
 
@@ -31,6 +51,20 @@ const next = new URL(zh ? '/zh/contact/thanks' : '/contact/thanks', site.url).hr
   <div class="field"><label for="f-phone">{t.phone}</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" /></div>
   <div class="field"><label for="f-email">{t.email}</label><input id="f-email" name="email" type="email" autocomplete="email" required /></div>
   <div class="field">
+    <label for="f-city">{t.city}</label>
+    <select id="f-city" name="city" required aria-describedby="f-city-hint">
+      <option value="">{t.chooseCity}</option>
+      {regions.map(([en, zhName, cities]) => (
+        <optgroup label={zh ? zhName : en}>
+          {cities.map((c) => <option value={c}>{zh ? zhCity[c] ?? c : c}</option>)}
+        </optgroup>
+      ))}
+      <option value="Other GTA">{t.otherGta}</option>
+      <option value="Outside the GTA">{t.outside}</option>
+    </select>
+    <span class="hint" id="f-city-hint" hidden>{t.outsideHint}</span>
+  </div>
+  <div class="field wide">
     <label for="f-type">{t.type}</label>
     <select id="f-type" name="project_type">
       <option value="">{t.choose}</option>
@@ -49,6 +83,21 @@ const next = new URL(zh ? '/zh/contact/thanks' : '/contact/thanks', site.url).hr
   </div>
 </form>
 
+<script is:inline>
+  (function () {
+    var f = document.querySelector('.contact-form');
+    if (!f) return;
+    var src = {};
+    try { src = JSON.parse(sessionStorage.getItem('ezu-src') || '{}'); } catch (e) {}
+    f.elements.sent_from_page.value = location.pathname;
+    f.elements.first_page_visited.value = src.landing || '(unknown)';
+    f.elements.arrived_from.value = src.ref || '(unknown)';
+    // Say so up front when the project is outside the area we serve
+    var city = f.elements.city, hint = document.getElementById('f-city-hint');
+    city.addEventListener('change', function () { hint.hidden = city.value !== 'Outside the GTA'; });
+  })();
+</script>
+
 <style>
   /* One grid for every field, so labels and inputs line up across both columns */
   .contact-form { display: grid; gap: 1.25rem 1.5rem; align-items: start; }
@@ -57,6 +106,7 @@ const next = new URL(zh ? '/zh/contact/thanks' : '/contact/thanks', site.url).hr
   .area :global(svg) { flex: none; margin-top: 0.15rem; color: var(--seal); }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   textarea { min-height: 7.5rem; }
+  #f-city-hint { color: var(--seal-dark); }
   .submit { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 0.25rem; }
   .submit p { margin: 0; }
 </style>

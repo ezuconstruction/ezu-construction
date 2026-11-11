@@ -113,6 +113,8 @@ const blocks = [org, ...(cleanPath === '/' ? [website] : []), ...(jsonld ? (Arra
     <script is:inline>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};</script>
     <script is:inline defer src="/_vercel/insights/script.js"></script>
     <script is:inline defer src="/_vercel/speed-insights/script.js"></script>
+    <!-- First page of the visit and the site that sent it, kept for the session so the contact form can say where a lead came from -->
+    <script is:inline>try{if(!sessionStorage.getItem('ezu-src')){var r=document.referrer,u=r&&new URL(r);sessionStorage.setItem('ezu-src',JSON.stringify({ref:u&&u.hostname!==location.hostname?u.origin+u.pathname:'(direct)',landing:location.pathname+location.search}))}}catch(e){}</script>
   </head>
   <body class:list={{ fit }}>
     <a class="skip" href="#main">{lang === 'zh' ? '跳到主要内容' : 'Skip to content'}</a>

@@ -118,6 +118,32 @@ export const locations: Location[] = [
     projects: ['custom-home-construction-vaughan', 'modern-custom-home-richmond-hill'],
     articles: ['custom-home-cost-gta', 'renovate-add-or-rebuild', 'additional-residential-units-york-region', 'hcra-vs-tarion-ontario-homeowner-guide'],
   },
+  {
+    slug: 'east-york',
+    name: 'East York',
+    zh: '东约克',
+    title: 'Basement, Addition and Renovation Contractor in East York',
+    description: 'Basement renovations, legal suites, second-storey additions and whole-home renovations in East York, Leaside and Woodbine Heights. Local rules and real costs.',
+    lede: 'East York’s post-war bungalows and storey-and-a-halfs are some of the best houses in Toronto to finish a basement, add a storey or rebuild.',
+    intro: [
+      'Most of East York was built in the years after the Second World War: modest brick bungalows and storey-and-a-half houses on narrow lots, with Leaside’s older two-storey brick homes to the west. They are solidly built, but small by today’s standards, with low basements and kitchens and bathrooms that have often been redone only once.',
+      'That makes East York one of the most active parts of the city for basement renovations, legal basement suites, second-storey additions and full rebuilds. We plan each of those around the same constraints: lot width, ceiling height, protected trees and the city’s zoning limits.',
+    ],
+    neighbourhoods: ['Leaside', 'Woodbine Heights', 'Pape Village', 'O’Connor–Parkview', 'Topham Park', 'Governor’s Bridge', 'Bennington Heights', 'Danforth Village', 'Crescent Town', 'Thorncliffe Park'],
+    housing: [
+      { era: '1920s–1940s', body: 'Two-storey brick homes in Leaside and around Pape. Common work: opening up the main floor, new kitchens, rear additions and underpinning low basements.' },
+      { era: '1945–1960', body: 'Post-war bungalows and storey-and-a-halfs across Woodbine Heights, O’Connor–Parkview and Topham Park. The most common candidates for basement suites, second-storey additions and rebuilds.' },
+      { era: '1960s onward', body: 'Infill houses and newer semis. Mostly interior renovations, finished basements and kitchen and bathroom updates.' },
+    ],
+    rules: [
+      { icon: 'units', title: 'Four units, six in some wards', body: 'Toronto allows up to four units on residential lots as of right. In 2025 the city extended that to six in nine wards, including Toronto–Danforth and Beaches–East York, which cover much of East York; Leaside’s ward is not among them.' },
+      { icon: 'tree', title: 'Tree permits from 30 cm', body: 'A permit is needed to injure or remove a private tree 30 cm or more in diameter. Lots near the Don Valley and Taylor Creek can fall under ravine protection, where trees of any size are protected.', link: { href: 'https://www.toronto.ca/services-payments/building-construction/tree-permits/', label: 'City of Toronto tree permits' } },
+      { icon: 'water', title: 'Basement flooding protection', body: 'Toronto pays up to $6,650 per property toward backwater valves, sump pumps and related work. A basement renovation is the cheapest time to add them.', link: { href: '/journal/toronto-basement-flooding-subsidy', label: 'Toronto’s basement flooding subsidy' } },
+      { icon: 'variance', title: 'Committee of Adjustment', body: 'Narrow East York lots often meet the zoning limits on coverage and setbacks quickly. Additions that exceed them need a minor variance, which usually adds three to six months.' },
+    ],
+    projects: ['luxury-kitchen-renovation-toronto', 'kitchen-renovation-etobicoke'],
+    articles: ['basement-renovation-cost-gta', 'basement-underpinning-vs-bench-footing', 'toronto-basement-flooding-subsidy', 'second-story-vs-rear-addition-gta'],
+  },
 ];
 
 export const locationBySlug = (slug: string) => locations.find((l) => l.slug === slug);

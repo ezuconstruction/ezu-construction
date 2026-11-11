@@ -179,7 +179,7 @@ export const services: Service[] = [
       { q: 'Will a renovation qualify for rebates?', a: 'Insulation, air sealing, windows and heat pumps often qualify for Ontario’s Home Renovation Savings Program, and some upgrades need an energy assessment before work starts. We flag eligible items during planning and itemize them on your quote so claiming is straightforward.' },
       { q: 'Where do we start?', a: 'With a site visit. We walk the house with you, look at the structure and mechanicals, talk through priorities and budget, and then outline the scope and next steps in writing.', cta: 'Book a site visit' },
     ],
-    articles: ['renovate-add-or-rebuild', 'removing-a-load-bearing-wall', 'older-home-surprises', 'ontario-home-renovation-rebates', 'heat-pumps-older-gta-homes', 'aging-in-place-renovation-gta'],
+    articles: ['renovate-add-or-rebuild', 'removing-a-load-bearing-wall', 'older-home-surprises', 'ontario-home-renovation-rebates', 'national-heat-pump-rebate', 'toronto-home-energy-loan', 'heat-pumps-older-gta-homes', 'toronto-rental-renovation-licence', 'aging-in-place-renovation-gta'],
   },
   {
     slug: 'kitchen-renovations',
@@ -401,7 +401,7 @@ export const services: Service[] = [
       { q: 'Is smaller work covered by a warranty?', a: 'Yes. Every job, large or small, is covered by our written workmanship warranty.' },
       { q: 'Can you combine several trades in one visit?', a: 'Yes, and it’s usually more efficient. Flooring, paint and trim, for example, can be sequenced back to back under one invoice.' },
     ],
-    articles: ['older-home-surprises', 'how-to-compare-renovation-quotes', 'do-i-need-a-building-permit-ontario', 'window-door-replacement-cost-gta'],
+    articles: ['national-heat-pump-rebate', 'toronto-home-energy-loan', 'older-home-surprises', 'how-to-compare-renovation-quotes', 'do-i-need-a-building-permit-ontario', 'window-door-replacement-cost-gta'],
   },
 ];
 
