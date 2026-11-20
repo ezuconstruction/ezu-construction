@@ -7,6 +7,8 @@ npm install
 npm run dev      # http://localhost:4321
 npm run build    # outputs to dist/
 npm run preview  # serves dist/
+npm run check    # type-checks .astro and .ts files
+npm run indexnow # after a deploy: submits sitemap URLs to IndexNow (Bing, Yandex, …)
 ```
 
 ## Where things live
